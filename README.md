@@ -1,5 +1,5 @@
-# NoteCrypt
-Keep your notes safe and secure with Note Crypt for Android!
+# CryptCage
+Keep your notes safe and secure with CryptCage for Android!
 
 
 * Create different encrypted, with password, database files.

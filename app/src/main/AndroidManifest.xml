@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-        android:name="com.notecrypt.app.App"
+        android:name="com.cryptcage.app.App"
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -10,7 +10,7 @@
         android:theme="@style/AppBaseTheme">
 
         <activity
-            android:name="com.notecrypt.ui.SelectDatabaseActivity"
+            android:name="com.cryptcage.ui.SelectDatabaseActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:windowSoftInputMode="stateHidden">
@@ -21,24 +21,24 @@
         </activity>
 
         <activity
-            android:name="com.notecrypt.ui.MainActivity"
+            android:name="com.cryptcage.ui.MainActivity"
             android:exported="false"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.notecrypt.ui.EditNoteActivity"
+            android:name="com.cryptcage.ui.EditNoteActivity"
             android:exported="false"
             android:windowSoftInputMode="stateVisible|adjustResize" />
 
         <activity
-            android:name="com.notecrypt.ui.ReadNoteActivity"
+            android:name="com.cryptcage.ui.ReadNoteActivity"
             android:exported="false" />
 
         <activity
-            android:name="com.notecrypt.ui.SettingsActivity"
+            android:name="com.cryptcage.ui.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name="com.notecrypt.ui.FileViewActivity"
+            android:name="com.cryptcage.ui.FileViewActivity"
             android:exported="false" />
     </application>
 

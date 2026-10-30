@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Note Crypt Pro</string>
+    <string name="app_name">CryptCage</string>
     <string name="action_changePassword">Schimba Parola</string>
     <string name="action_newNote">Adauga Notita Noua</string>
     <string name="action_about">Despre</string>
@@ -43,7 +43,7 @@
     <string name="toast_success_deleteNote">Sters cu success</string>
     <string name="dialog_backClose">Sigur vrei sa inchizi baza de date?</string>
     <string name="title_backClose">Inchide</string>
-    <string name="toast_version">Versiune NoteCrypt</string>
+    <string name="toast_version">Versiune CryptCage</string>
     <string name="toast_createdBy">\nCreat de Ludovico de Nittis</string>
     <string name="toast_errorVersion">Eroare! Nu se poate gasi versiunea!</string>
     <string name="no_notes">Nu exista nici o notita.\nApasa butonu + pentru adaugare.</string>

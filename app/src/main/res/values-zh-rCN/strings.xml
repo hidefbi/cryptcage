@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">NoteCrypt Pro 加密笔记</string>
+    <string name="app_name">CryptCage</string>
 
     <string name="action_newNote">新建笔记</string>
     <string name="action_about">关于</string>
@@ -69,13 +69,13 @@
     <string name="toast_wrongNewPassword">两次输入的密码不一致</string>
     <string name="toast_nameInvalid">名称只能包含字母、数字、空格或短横线</string>
     <string name="toast_fileExists">已存在同名数据库</string>
-    <string name="toast_notVault">这不是 NoteCrypt 数据库文件</string>
+    <string name="toast_notVault">这不是 CryptCage 数据库文件</string>
     <string name="toast_tooLarge">文件太大</string>
     <string name="toast_IOError">读写出错</string>
     <string name="toast_fatalError">发生未知错误</string>
     <string name="toast_sort_alphabet">已按标题排序</string>
     <string name="toast_sort_creation">已按创建时间排序</string>
-    <string name="toast_version">NoteCrypt 版本</string>
+    <string name="toast_version">CryptCage 版本</string>
     <string name="toast_createdBy">\n作者：Ludovico de Nittis</string>
     <string name="toast_errorVersion">无法读取版本信息</string>
 

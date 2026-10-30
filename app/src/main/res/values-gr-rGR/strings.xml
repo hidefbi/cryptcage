@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Note Crypt Pro</string>
+    <string name="app_name">CryptCage</string>
     <string name="action_changePassword">Αλλαγή Κωδικού Πρόσβασης</string>
     <string name="action_newNote">Προσθήκη Νέας Σημείωσης</string>
     <string name="action_about">Σχετικά</string>
@@ -43,7 +43,7 @@
     <string name="toast_success_deleteNote">Διαγράφηκε επιτυχώς</string>
     <string name="dialog_backClose">Να κλέισει όντως η βάση δεδομένων;</string>
     <string name="title_backClose">Κλείσιμο</string>
-    <string name="toast_version">Έκδοση Notecrypt</string>
+    <string name="toast_version">Έκδοση CryptCage</string>
     <string name="toast_createdBy">\nΔημιουργήθηκε από τον Ludovico de Nittis</string>
     <string name="toast_errorVersion">Πρόβλημα στην εύρεση έκδοσης!</string>
     <string name="no_notes">Καμία σημείωση εδώ.\nΠιέστε το + πλήκτρο για να προσθέτε σημείωση.</string>

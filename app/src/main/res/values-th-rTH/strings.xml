@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Note Crypt Pro</string>
+    <string name="app_name">CryptCage</string>
     <string name="action_changePassword">เปลี่ยนรหัสผ่าน</string>
     <string name="action_newNote">เพิ่มบันทึกใหม่</string>
     <string name="action_about">เกี่ยวกับ</string>
@@ -43,7 +43,7 @@
     <string name="toast_success_deleteNote">ลบสำเร็จแล้ว</string>
     <string name="dialog_backClose">ต้องการปิดฐานข้อมูลนี้ใช่ไหม</string>
     <string name="title_backClose">ปิด</string>
-    <string name="toast_version">Notecrypt เวอร์ชั่น</string>
+    <string name="toast_version">CryptCage เวอร์ชั่น</string>
     <string name="toast_createdBy">\nสร้างโดย Ludovico de Nittis</string>
     <string name="toast_errorVersion">มีข้อผิดพลาดขณะกำลังค้นหาเวอร์ชั่น</string>
     <string name="no_notes">ยังไม่มีบันทึก.\nกดปุ่ม + เพื่อเพิ่มบันทึกใหม่</string>

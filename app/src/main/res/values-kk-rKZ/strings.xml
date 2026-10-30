@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Note Crypt Pro</string>
+    <string name="app_name">CryptCage</string>
     <string name="action_changePassword">Құпиясөзді өзгерту</string>
     <string name="action_newNote">Жаңа ескерту қосу</string>
     <string name="action_about">Қосымша туралы</string>
@@ -43,7 +43,7 @@
     <string name="toast_success_deleteNote">Сәтті жойылған</string>
     <string name="dialog_backClose">Дерекқорды шынымен жабу керек пе?</string>
     <string name="title_backClose">Жабу</string>
-    <string name="toast_version">Notecrypt нұсқасы</string>
+    <string name="toast_version">CryptCage нұсқасы</string>
     <string name="toast_createdBy">\nLudovico de Nittis жасалған</string>
     <string name="toast_errorVersion">Нұсқа іздеу қатесі!</string>
     <string name="no_notes">Ескертпелер жоқ. \ n Жазбаны қосу үшін + түймесін басыңыз.</string>

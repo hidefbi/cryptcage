@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Note Crypt Pro</string>
+    <string name="app_name">CryptCage</string>
     <string name="action_changePassword">Pakeisti slaptažodį</string>
     <string name="action_newNote">Pridėti naują lapa</string>
     <string name="action_about">Apie</string>
@@ -43,7 +43,7 @@
     <string name="toast_success_deleteNote">Sekmingai ištrintas jūsų lapas</string>
     <string name="dialog_backClose">Tikrai išjungti duomenų bazę?</string>
     <string name="title_backClose">Išjungti</string>
-    <string name="toast_version">Note Crypt versija.</string>
+    <string name="toast_version">CryptCage versija.</string>
     <string name="toast_createdBy">\nSukurta Ludovico de Nittis</string>
     <string name="toast_errorVersion">Klaida randant versija!</string>
     <string name="no_notes">Nera jokių lapų čia.\n Spauskite + mygtuką kad pridėtumete lapą.</string>

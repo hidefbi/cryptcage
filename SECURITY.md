@@ -1,6 +1,6 @@
 # Security notes
 
-This file describes how NoteCrypt protects a database and what it does not protect against.
+This file describes how CryptCage protects a database and what it does not protect against.
 
 ## What is stored
 

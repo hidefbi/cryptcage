@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Note Crypt Pro</string>
+    <string name="app_name">CryptCage</string>
     <string name="action_changePassword">पासवर्ड बदलें</string>
     <string name="action_newNote">नया नोट डालें</string>
     <string name="action_about">के बारे में</string>
@@ -43,7 +43,7 @@
     <string name="toast_success_deleteNote">सफलतापूर्वक मिटाये गए</string>
     <string name="dialog_backClose">वाकई में डेटाबेस बंद करें?</string>
     <string name="title_backClose">बंद करें</string>
-    <string name="toast_version">Notecrypt version</string>
+    <string name="toast_version">CryptCage version</string>
     <string name="toast_createdBy">\nलुडोविको द निटिस द्वारा बनाये गए</string>
     <string name="toast_errorVersion">वर्शन खोजने में त्रुटि!</string>
     <string name="no_notes">यहां कोई नोट नहीं है।\nनोट जुटाने के लिए + बटन दबाएं।</string>

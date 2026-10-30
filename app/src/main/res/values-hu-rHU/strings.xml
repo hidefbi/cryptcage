@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Note Crypt Pro</string>
+    <string name="app_name">CryptCage</string>
     <string name="action_changePassword">Jelszó Megváltoztatása</string>
     <string name="action_newNote">Új Jegyzet Létrehozása</string>
     <string name="action_about">Az Alkalmazásról</string>
@@ -43,7 +43,7 @@
     <string name="toast_success_deleteNote">Sikeresen törölve</string>
     <string name="dialog_backClose">Biztosan bezárja az adatbázist?</string>
     <string name="title_backClose">Bezárás</string>
-    <string name="toast_version">Notecrypt verzió</string>
+    <string name="toast_version">CryptCage verzió</string>
     <string name="toast_createdBy">\nKészítette Ludovico de Nittis</string>
     <string name="toast_errorVersion">Hiba a verzió keresésénél!</string>
     <string name="no_notes">Itt nincsenek jegyzetek.\nNyomja meg a + gombot jegyzet hozzáadásához.</string>

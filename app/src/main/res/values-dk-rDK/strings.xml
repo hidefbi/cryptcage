@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Note Crypt Pro</string>
+    <string name="app_name">CryptCage</string>
     <string name="action_changePassword">Skift Kodeord</string>
     <string name="action_newNote">Tilføj Ny Note</string>
-    <string name="action_about">Om Note Crypt Pro</string>
+    <string name="action_about">Om CryptCage</string>
     <string name="hint_field_new_password">Nyt Kodeord</string>
     <string name="hint_field_conf_password">Bekræft Kodeord</string>
     <string name="title_changeMasterPass">Indtast Nyt Master Kodeord</string>
@@ -43,7 +43,7 @@
     <string name="toast_success_deleteNote">Succesfuldt slettet</string>
     <string name="dialog_backClose">Er du sikker på du vil lukke databasen?</string>
     <string name="title_backClose">Luk</string>
-    <string name="toast_version">Notecrypt version</string>
+    <string name="toast_version">CryptCage version</string>
     <string name="toast_createdBy">\nLavet af Ludovico de Nittis</string>
     <string name="toast_errorVersion">Fejl ved at finde version!</string>
     <string name="no_notes">Ingen noter her.\nTryk på + knappen for at tilføje en note.</string>

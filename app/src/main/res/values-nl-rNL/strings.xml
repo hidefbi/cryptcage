@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Note Crypt Pro</string>
+    <string name="app_name">CryptCage</string>
     <string name="action_changePassword">Wachtwoord Veranderen</string>
     <string name="action_newNote">Nieuwe Notitie Toevoegen</string>
     <string name="action_about">Over</string>
@@ -43,7 +43,7 @@
     <string name="toast_success_deleteNote">Succesvol verwijderd</string>
     <string name="dialog_backClose">Wil je de database sluiten?</string>
     <string name="title_backClose">Sluiten</string>
-    <string name="toast_version">Notecrypt versie</string>
+    <string name="toast_version">CryptCage versie</string>
     <string name="toast_createdBy">\nGemaakt door Ludovico de Nittis</string>
     <string name="toast_errorVersion">Versie niet gevonden!</string>
     <string name="no_notes">Geen notities.\nDruk op de + knop om een notitie te maken.</string>

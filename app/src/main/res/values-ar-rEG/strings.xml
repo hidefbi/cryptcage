@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Note Crypt Pro</string>
+    <string name="app_name">CryptCage</string>
     <string name="action_changePassword">تغيير كلمة السر</string>
     <string name="action_newNote">اضف ملحوظة جديدة</string>
     <string name="action_about">عننا</string>
@@ -43,7 +43,7 @@
     <string name="toast_success_deleteNote">تم الحذف بنجاح</string>
     <string name="dialog_backClose">متأكد من اغلاق قاعدة البيانات؟</string>
     <string name="title_backClose">اغلق</string>
-    <string name="toast_version">Notecrypt اصدار</string>
+    <string name="toast_version">CryptCage اصدار</string>
     <string name="toast_createdBy">\n Ludovico de Nittis تم الانشاء بواسطة</string>
     <string name="toast_errorVersion">خطأ في الحصول على الاصدار !</string>
     <string name="no_notes">لا توجد ملحوظات هنا.\n اضغط على الـ+ لاضافة ملحوظة جديدة</string>

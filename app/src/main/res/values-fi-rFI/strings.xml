@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Note Crypt Pro</string>
+    <string name="app_name">CryptCage</string>
     <string name="action_changePassword">Vaihda salasana</string>
     <string name="action_newNote">Uusi muistiinpano</string>
     <string name="action_about">Tietoja</string>
@@ -43,7 +43,7 @@
     <string name="toast_success_deleteNote">Poistettu onnistuneesti</string>
     <string name="dialog_backClose">Haluatko varmasti sulkea tietokannan?</string>
     <string name="title_backClose">Sulje</string>
-    <string name="toast_version">Notecrypt versio</string>
+    <string name="toast_version">CryptCage versio</string>
     <string name="toast_createdBy">\nLuonut Ludovico de Nittis</string>
     <string name="toast_errorVersion">Virhe version haussa!</string>
     <string name="no_notes">Täällä ei ole vielä muistiinpanoja.\nPaina + painiketta lisätäksesi muistiinpanon.</string>

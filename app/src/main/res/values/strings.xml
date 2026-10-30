@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Note Crypt Pro</string>
+    <string name="app_name">CryptCage</string>
 
     <string name="action_newNote">Add new note</string>
     <string name="action_about">About</string>
@@ -69,13 +69,13 @@
     <string name="toast_wrongNewPassword">The two passwords do not match</string>
     <string name="toast_nameInvalid">Use letters, digits, spaces or dashes in the name</string>
     <string name="toast_fileExists">A database with this name already exists</string>
-    <string name="toast_notVault">This file is not a NoteCrypt database</string>
+    <string name="toast_notVault">This file is not a CryptCage database</string>
     <string name="toast_tooLarge">The file is too large</string>
     <string name="toast_IOError">Read or write error</string>
     <string name="toast_fatalError">Unexpected error</string>
     <string name="toast_sort_alphabet">Sorted by title</string>
     <string name="toast_sort_creation">Sorted by creation time</string>
-    <string name="toast_version">NoteCrypt version</string>
+    <string name="toast_version">CryptCage version</string>
     <string name="toast_createdBy">\nCreated by Ludovico de Nittis</string>
     <string name="toast_errorVersion">Could not read the version</string>
 

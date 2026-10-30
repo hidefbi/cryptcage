@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Note Crypt Pro</string>
+    <string name="app_name">CryptCage</string>
     <string name="action_changePassword">Đổi Mật khẩu</string>
     <string name="action_newNote">Thêm Ghi chú</string>
     <string name="action_about">Thông tin</string>
@@ -43,7 +43,7 @@
     <string name="toast_success_deleteNote">Ghi chú đã bị xóa</string>
     <string name="dialog_backClose">Đóng cơ sở dữ liệu?</string>
     <string name="title_backClose">Đóng</string>
-    <string name="toast_version">Phiên bản Notecrypt</string>
+    <string name="toast_version">Phiên bản CryptCage</string>
     <string name="toast_createdBy">\nTạo bởi Ludovico de Nittis</string>
     <string name="toast_errorVersion">Không thể tìm ra phiên bản!</string>
     <string name="no_notes">Chưa có Ghi chú nào.\nNhấn nút + để thêm ghi chú.</string>

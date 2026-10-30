@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Note Crypt Pro</string>
+    <string name="app_name">CryptCage</string>
     <string name="action_changePassword">Изменить пароль</string>
     <string name="action_newNote">Добавить новую Заметку</string>
     <string name="action_about">О нас</string>
@@ -43,7 +43,7 @@
     <string name="toast_success_deleteNote">Успещно удален</string>
     <string name="dialog_backClose">Вы действительно хотите закрыть базу данных?</string>
     <string name="title_backClose">Закрыть</string>
-    <string name="toast_version">Версия Notecrypt</string>
+    <string name="toast_version">Версия CryptCage</string>
     <string name="toast_createdBy">\nАвтор Ludovico de Nittis</string>
     <string name="toast_errorVersion">Ошибка поиска версии! </string>
     <string name="no_notes">Нет заметок. \ nНажмите кнопку +, чтобы добавить заметку.</string>

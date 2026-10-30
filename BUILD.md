@@ -1,4 +1,4 @@
-# Building NoteCrypt Pro from the terminal
+# Building CryptCage from the terminal
 
 These steps use the Android command-line tools, Gradle and adb. Android Studio is not needed.
 
@@ -13,7 +13,7 @@ These steps use the Android command-line tools, Gradle and adb. Android Studio i
 
     export ANDROID_HOME=$HOME/Android/Sdk
     export PATH=$PATH:$ANDROID_HOME/platform-tools
-    cd notecryptpro-2.0-src
+    cd cryptcage-2.0-src
     echo "sdk.dir=$ANDROID_HOME" > local.properties
     ./gradlew testDebugUnitTest
     ./gradlew assembleDebug
@@ -24,13 +24,13 @@ The debug APK is written to app/build/outputs/apk/debug/app-debug.apk.
 
 Create a keystore once and keep it safe. Losing it means existing installs can no longer be updated.
 
-    keytool -genkeypair -v -keystore $HOME/notecrypt-release.jks \
-        -alias notecrypt -keyalg RSA -keysize 4096 -validity 10000
+    keytool -genkeypair -v -keystore $HOME/cryptcage-release.jks \
+        -alias cryptcage -keyalg RSA -keysize 4096 -validity 10000
 
 Add these lines to ~/.gradle/gradle.properties (not to the project):
 
-    NC_KEYSTORE=/home/you/notecrypt-release.jks
-    NC_KEY_ALIAS=notecrypt
+    NC_KEYSTORE=/home/you/cryptcage-release.jks
+    NC_KEY_ALIAS=cryptcage
     NC_STORE_PASS=...
     NC_KEY_PASS=...
 
@@ -51,7 +51,7 @@ Use -r to keep the data of an existing install. This only works when the signatu
 
 - Databases are stored in the app's private storage. Uninstalling the app deletes them. Export every database first.
 - The debug and release builds have different signatures. Installing one over the other fails until the app is uninstalled, which deletes the data.
-- Databases from version 1.x are in the shared NoteCrypt folder. Import them from the start screen after the update.
+- Databases from version 1.x are in the shared CryptCage folder. Import them from the start screen after the update.
 
 ## Checks before a release
 

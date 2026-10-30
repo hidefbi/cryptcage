@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Note Crypt Pro</string>
+    <string name="app_name">CryptCage</string>
     <string name="action_changePassword">パスワードを変更</string>
     <string name="action_newNote">新しいメモを追加</string>
     <string name="action_about">アプリについて</string>
@@ -43,7 +43,7 @@
     <string name="toast_success_deleteNote">削除しました</string>
     <string name="dialog_backClose">データベースを閉じてもよろしいですか?</string>
     <string name="title_backClose">閉じる</string>
-    <string name="toast_version">Notecrypt バージョン</string>
+    <string name="toast_version">CryptCage バージョン</string>
     <string name="toast_createdBy">\n作成者 Ludovico de Nittis</string>
     <string name="toast_errorVersion">バージョンの取得時にエラー!</string>
     <string name="no_notes">ここにメモはありません。\n+ ボタンを押してメモを追加してください。</string>

@@ -1,14 +1,14 @@
 ## Privacy Policy
 
-This document describes what NoteCrypt does with your information.
+This document describes what CryptCage does with your information.
 
 ## Information collection
 
-NoteCrypt does not collect, store or transmit any personal information. The app does not request the Internet permission, so it cannot send data off the device. There are no analytics, advertising or crash-reporting libraries in the app.
+CryptCage does not collect, store or transmit any personal information. The app does not request the Internet permission, so it cannot send data off the device. There are no analytics, advertising or crash-reporting libraries in the app.
 
 ## Permissions
 
-NoteCrypt does not request any permission. Your notes are kept in the app's private storage, which other apps cannot read. To save a copy outside the app, or to open a database from another location, you choose the file yourself through the system file picker; the app only receives the file you picked.
+CryptCage does not request any permission. Your notes are kept in the app's private storage, which other apps cannot read. To save a copy outside the app, or to open a database from another location, you choose the file yourself through the system file picker; the app only receives the file you picked.
 
 ## Data stored on the device
 
@@ -22,7 +22,7 @@ Encryption protects your notes against people and programs that only have the fi
 
 ## Children's privacy
 
-NoteCrypt is a general purpose tool and does not collect information from anyone, children included.
+CryptCage is a general purpose tool and does not collect information from anyone, children included.
 
 ## Changes to this policy
 

@@ -1,12 +1,12 @@
-# NoteCrypt Frequently Asked Questions(FAQs).
-This is a compilation of Frequently Asked Questions for NoteCrypt. This document will aid prospective and existing end-users of the software as a self-service guide in cases where the developer can't be reached. This document is subject to change and modifications at any time. Thus it'll be updated from time to time consequently to suit any new changes to the software as new developments would be implemented which might cause a discrepancy with this current document.
+# CryptCage Frequently Asked Questions(FAQs).
+This is a compilation of Frequently Asked Questions for CryptCage. This document will aid prospective and existing end-users of the software as a self-service guide in cases where the developer can't be reached. This document is subject to change and modifications at any time. Thus it'll be updated from time to time consequently to suit any new changes to the software as new developments would be implemented which might cause a discrepancy with this current document.
 
-**What is NoteCrypt?**
-- NoteCrypt is an Android software that helps you secure your supposedly private notes in an encrypted database.
+**What is CryptCage?**
+- CryptCage is an Android software that helps you secure your supposedly private notes in an encrypted database.
 
-**What are the features of NoteCrypt?**
+**What are the features of CryptCage?**
 
-NoteCrypt has quite a handful of features they include;
+CryptCage has quite a handful of features they include;
 
 - Multiple database creation with different passwords.
 - Create a new note.
@@ -24,7 +24,7 @@ NoteCrypt has quite a handful of features they include;
 
 **Can I change my database password at a later time?**
 
-- Yes, you can change the password of a database at any time. This is one of the features of NoteCrypt. To change the database password, 
+- Yes, you can change the password of a database at any time. This is one of the features of CryptCage. To change the database password, 
 
 - first, unlock the database, 
 - click the 3 dots by the top right of the app, 
@@ -33,11 +33,11 @@ NoteCrypt has quite a handful of features they include;
 
 **Can I delete a database?**
 
-- Yes. Deleting a database removes its file from the app. NoteCrypt keeps no other copies of it, so the notes in it cannot be recovered afterwards.
+- Yes. Deleting a database removes its file from the app. CryptCage keeps no other copies of it, so the notes in it cannot be recovered afterwards.
 
 **Where are my databases stored?**
 
-- Databases are kept in the app's private storage. Other apps cannot read them, and NoteCrypt does not ask for any storage permission. To keep a copy somewhere else, use "Export encrypted copy" in the menu of an open database. To open a database that is stored elsewhere, use the import button on the start screen.
+- Databases are kept in the app's private storage. Other apps cannot read them, and CryptCage does not ask for any storage permission. To keep a copy somewhere else, use "Export encrypted copy" in the menu of an open database. To open a database that is stored elsewhere, use the import button on the start screen.
 
 **Can I share my notes to other locations and mediums?**
 
@@ -50,18 +50,18 @@ Yes, notes in a database can be shared to other locations or mediums. To share a
 
 **I have note files in my device storage, can I import them into a database?**
 
-- You can import a whole NoteCrypt database file with the import button on the start screen. Individual text files cannot be imported; copy the text into a new note in NoteCrypt instead.
+- You can import a whole CryptCage database file with the import button on the start screen. Individual text files cannot be imported; copy the text into a new note in CryptCage instead.
 
-**Important note is a feature of NoteCrypt, how can I mark a note as important?**
+**Important note is a feature of CryptCage, how can I mark a note as important?**
 
 To mark a note as important or favorite note,
 - unlock the database where the note is contained
 - open the note 
 - click the star icon on the top of the app and the note is now marked as important/favorite
 
-**I like to format my texts, does NoteCrypt support markdown text styling?**
+**I like to format my texts, does CryptCage support markdown text styling?**
 
-- No, NoteCrypt does not support markdown text styling, but the formats can be inputted when creating a note and you can preview with on a platform that supports markdown.
+- No, CryptCage does not support markdown text styling, but the formats can be inputted when creating a note and you can preview with on a platform that supports markdown.
 
 **What's the purpose of tags?**
 
@@ -79,9 +79,9 @@ To mark a note as important or favorite note,
 
 - No, lost passwords cannot be recovered. Keep the password somewhere safe, for example in a password manager.
 
-**I used an older version of NoteCrypt. Will my databases still open?**
+**I used an older version of CryptCage. Will my databases still open?**
 
-- Yes, with the same password. The first time you open an older database, it is rewritten in the current format automatically. Older versions looked for databases in the shared "NoteCrypt" folder; that folder is no longer read, so use the import button to bring those files in.
+- Yes, with the same password. The first time you open an older database, it is rewritten in the current format automatically. Older versions looked for databases in the shared "CryptCage" folder; that folder is no longer read, so use the import button to bring those files in.
 
 **Can you or someone else read my notes?** 
 
@@ -93,11 +93,11 @@ To mark a note as important or favorite note,
 
 **Are there locked functionalities I need to pay for before use?**
 
-- No, NoteCrypt is an open source software that is totally free and contains no unnecessary ads and in-app purchases.
+- No, CryptCage is an open source software that is totally free and contains no unnecessary ads and in-app purchases.
 
-**I'm skeptical about my privacy, does the developer have access to and collects any information externally when I utilize NoteCrypt?**
+**I'm skeptical about my privacy, does the developer have access to and collects any information externally when I utilize CryptCage?**
 
-- No, the developer has no means of collecting your information when the software is utilized. Read [NoteCrypt Privacy policy](https://github.com/RyuzakiKK/NoteCrypt/blob/master/Privacy.md)
+- No, the developer has no means of collecting your information when the software is utilized. Read [CryptCage Privacy policy](https://github.com/RyuzakiKK/NoteCrypt/blob/master/Privacy.md)
 
 **I experienced a crash, how can and where do I send a crash report?
 

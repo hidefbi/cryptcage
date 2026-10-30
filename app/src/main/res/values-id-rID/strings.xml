@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Note Crypt Pro</string>
+    <string name="app_name">CryptCage</string>
     <string name="action_changePassword">Ganti Kata Sandi</string>
     <string name="action_newNote">Tambahkan Catatan Baru</string>
     <string name="action_about">Tentang</string>
@@ -43,7 +43,7 @@
     <string name="toast_success_deleteNote">Berhasil dihapus</string>
     <string name="dialog_backClose">Apakah yakin ingin menutup database?</string>
     <string name="title_backClose">Tutup</string>
-    <string name="toast_version">versi Notecrypt</string>
+    <string name="toast_version">versi CryptCage</string>
     <string name="toast_createdBy">\nDibuat oleh Ludovico de Nittis</string>
     <string name="toast_errorVersion">Kesalahan mencari versi!</string>
     <string name="no_notes">Tidak ada catatan di sini.\nTekan tombol + untuk menambahkan catatan.</string>

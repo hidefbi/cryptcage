@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Note Crypt Pro</string>
+    <string name="app_name">CryptCage</string>
     <string name="action_changePassword">Alterar Password</string>
     <string name="action_newNote">Adicionar nova Nota</string>
     <string name="action_about">Sobre</string>
@@ -43,7 +43,7 @@
     <string name="toast_success_deleteNote">Nota apagada com sucesso</string>
     <string name="dialog_backClose">Tem a certeza que deseja fechar a Base de dados?</string>
     <string name="title_backClose">Fechar</string>
-    <string name="toast_version">Versão do Notecrypt </string>
+    <string name="toast_version">Versão do CryptCage </string>
     <string name="toast_createdBy">\nCriada por Ludovico de Nittis</string>
     <string name="toast_errorVersion">Erro a encontrar a versão!</string>
     <string name="no_notes">Não existem notas.\nPressione o botão "+" para adicionar uma nova nota.</string>

@@ -7,11 +7,11 @@ plugins {
 def releaseKeystore = findProperty('NC_KEYSTORE')
 
 android {
-    namespace 'com.notecryptpro'
+    namespace 'com.cryptcage'
     compileSdk 34
 
     defaultConfig {
-        applicationId 'com.notecryptpro'
+        applicationId 'com.cryptcage'
         minSdk 21
         targetSdk 34
         versionCode 24
