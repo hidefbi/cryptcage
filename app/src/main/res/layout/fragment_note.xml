@@ -78,7 +78,7 @@
                     style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:hint="@string/hint_field_title">
+                    android:hint="@string/hint_field_title">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/field_title"
@@ -94,7 +94,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    app:hint="@string/hint_field_tags">
+                    android:hint="@string/hint_field_tags">
 
                     <androidx.appcompat.widget.AppCompatMultiAutoCompleteTextView
                         android:id="@+id/field_tags"
@@ -109,7 +109,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    app:hint="@string/note_note">
+                    android:hint="@string/note_note">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/field_body"
