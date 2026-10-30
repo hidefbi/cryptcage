@@ -185,6 +185,16 @@ public class App extends Application {
                 current.vault.save();
             } catch (VaultException e) {
                 Tasks.ui(() -> Toast.makeText(app, R.string.toast_saveFailed, Toast.LENGTH_LONG).show());
+                return;
+            }
+            // The save has succeeded. A failed rewrite leaves the saved file in place, so it is
+            // simply tried again after a later save.
+            try {
+                if (current.vault.needsCompaction()) {
+                    current.vault.compact();
+                }
+            } catch (VaultException ignored) {
+                // nothing to report: the data is saved and the old file is still valid
             }
         });
     }

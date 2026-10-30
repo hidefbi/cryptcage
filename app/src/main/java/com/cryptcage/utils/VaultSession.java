@@ -229,7 +229,7 @@ public final class VaultSession implements AutoCloseable {
             if (entry.isFile()) {
                 continue;
             }
-            for (String tag : DatabaseForNotes.splitTags(entry.tags)) {
+            for (String tag : TagText.splitTags(entry.tags)) {
                 final String key = tag.toLowerCase(Locale.ROOT);
                 final Integer count = counts.get(key);
                 counts.put(key, count == null ? 1 : count + 1);
@@ -249,7 +249,7 @@ public final class VaultSession implements AutoCloseable {
             if (entry.isFile()) {
                 continue;
             }
-            for (String part : DatabaseForNotes.splitTags(entry.tags)) {
+            for (String part : TagText.splitTags(entry.tags)) {
                 if (part.toLowerCase(Locale.ROOT).equals(key)) {
                     ids.add(entry.id);
                     break;

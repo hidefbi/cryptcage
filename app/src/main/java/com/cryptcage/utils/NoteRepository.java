@@ -234,7 +234,7 @@ final class NoteRepository implements AutoCloseable {
     private long put(final Entry existing, final int kind, final String title, final String tags,
                      final String fileName, final byte[] data) throws StoreException {
         final String cleanTitle = title == null ? "" : title;
-        final String cleanTags = DatabaseForNotes.cleanTags(tags);
+        final String cleanTags = TagText.cleanTags(tags);
         final String cleanName = fileName == null ? "" : fileName;
         final long newCost = textBytes(cleanTitle) + textBytes(cleanTags) + textBytes(cleanName) + data.length;
         final long oldCost = existing == null ? 0 : costOf(existing);
