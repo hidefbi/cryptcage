@@ -73,4 +73,8 @@
     <string name="action_starred">Importante</string>
     <string name="action_share">Condidivi</string>
 
+    <string name="file_noPreview">Questo file non può essere mostrato né modificato come testo. Esportalo per conservarne una copia.</string>
+    <string name="toast_secretFile">Questa è una chiave o un certificato. Tienilo riservato.</string>
+    <string name="import_createTitle">Creare un database?</string>
+    <string name="import_createMessage">Verrà creato un nuovo database e questo file vi sarà salvato. Subito dopo imposterai la sua password.</string>
 </resources>

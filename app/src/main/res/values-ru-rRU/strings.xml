@@ -72,4 +72,8 @@
     <string name="action_search">Поис</string>
     <string name="action_starred">Важно</string>
     <string name="action_share">Поделиться</string>
+    <string name="file_noPreview">Этот файл нельзя показать или изменить как текст. Экспортируйте его, чтобы сохранить копию.</string>
+    <string name="toast_secretFile">Это ключ или сертификат. Храните его в тайне.</string>
+    <string name="import_createTitle">Создать базу данных?</string>
+    <string name="import_createMessage">Будет создана новая база данных, и этот файл будет сохранён в ней. Затем вы зададите её пароль.</string>
 </resources>

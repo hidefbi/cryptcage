@@ -28,6 +28,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.cryptcage.app.App;
 import com.cryptcage.app.Tasks;
 import com.cryptcage.utils.DatabaseForNotes;
+import com.cryptcage.utils.FileTypes;
 import com.cryptcage.utils.StringMethods;
 import com.cryptcage.utils.VaultException;
 import com.cryptcage.utils.VaultFile;
@@ -48,6 +49,20 @@ public class SelectDatabaseActivity extends SecureActivity
     private ArrayAdapter<String> adapter;
     private ActivityResultLauncher<String[]> importLauncher;
     private String pendingCreateName;
+    private PendingImport pendingImport;
+
+    /** A file picked on the start screen, to be stored in the database that is about to be created. */
+    private static final class PendingImport {
+        final String fileName;
+        final byte[] data;
+        final boolean secret;
+
+        PendingImport(final String fileName, final byte[] data, final boolean secret) {
+            this.fileName = fileName;
+            this.data = data;
+            this.secret = secret;
+        }
+    }
 
     @Override
     protected boolean needsVault() {
@@ -65,7 +80,7 @@ public class SelectDatabaseActivity extends SecureActivity
                     @Override
                     public void onActivityResult(final Uri uri) {
                         if (uri != null) {
-                            importVault(uri);
+                            onFilePicked(uri);
                         }
                     }
                 });
@@ -163,6 +178,7 @@ public class SelectDatabaseActivity extends SecureActivity
             toast(R.string.toast_fileExists);
             return;
         }
+        pendingImport = null;
         pendingCreateName = name;
         ChoosePasswordDialogFragment.newInstance(ChoosePasswordDialogFragment.PURPOSE_CREATE)
                 .show(getSupportFragmentManager(), "create_password");
@@ -217,19 +233,25 @@ public class SelectDatabaseActivity extends SecureActivity
             return;
         }
         final File file = fileFor(pendingCreateName);
+        final PendingImport imported = pendingImport;
         pendingCreateName = null;
+        pendingImport = null;
         setBusy(true);
         Tasks.io(() -> {
             VaultKey key = null;
             try {
                 key = VaultFile.createKey(password);
                 final DatabaseForNotes db = new DatabaseForNotes();
+                if (imported != null) {
+                    db.addFile(imported.fileName, imported.data);
+                }
                 VaultFile.save(file, db, key);
                 final VaultKey created = key;
                 Tasks.ui(() -> {
                     setBusy(false);
                     App.setSession(new App.Session(file, db, created));
-                    toast(R.string.toast_success_newDB);
+                    toast(imported != null && imported.secret
+                            ? R.string.toast_secretFile : R.string.toast_success_newDB);
                     startActivity(new Intent(this, MainActivity.class));
                 });
             } catch (VaultException e) {
@@ -245,6 +267,86 @@ public class SelectDatabaseActivity extends SecureActivity
                 Arrays.fill(password, '\0');
             }
         });
+    }
+
+    /** A picked file that is a supported file type is imported into a new database; anything else is a vault. */
+    private void onFilePicked(final Uri uri) {
+        final String display = displayName(uri);
+        if (FileTypes.kindOf(display) == null) {
+            importVault(uri);
+            return;
+        }
+        importAsDatabase(uri, display);
+    }
+
+    private void importAsDatabase(final Uri uri, final String display) {
+        final String fileName = FileTypes.cleanFileName(display);
+        if (fileName == null) {
+            toast(R.string.toast_fileUnsupported);
+            return;
+        }
+        setBusy(true);
+        Tasks.io(() -> {
+            final byte[] data;
+            try {
+                data = ImportSource.readLimited(getContentResolver(), uri);
+            } catch (IOException e) {
+                Tasks.ui(() -> {
+                    setBusy(false);
+                    toast(R.string.toast_IOError);
+                });
+                return;
+            }
+            if (data == null) {
+                Tasks.ui(() -> {
+                    setBusy(false);
+                    toast(R.string.toast_tooLarge);
+                });
+                return;
+            }
+            final FileTypes.Check check = FileTypes.check(fileName, data);
+            if (!check.matches) {
+                Tasks.ui(() -> {
+                    setBusy(false);
+                    toast(R.string.toast_fileInvalid);
+                });
+                return;
+            }
+            Tasks.ui(() -> {
+                setBusy(false);
+                askCreateDatabase(new PendingImport(fileName, data, check.secret()));
+            });
+        });
+    }
+
+    private void askCreateDatabase(final PendingImport imported) {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.import_createTitle)
+                .setMessage(R.string.import_createMessage)
+                .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                    pendingImport = imported;
+                    pendingCreateName = uniqueDatabaseName(imported.fileName);
+                    ChoosePasswordDialogFragment.newInstance(ChoosePasswordDialogFragment.PURPOSE_CREATE)
+                            .show(getSupportFragmentManager(), "create_password");
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
+    }
+
+    /** A database name taken from the file name, with a number added if that name is already in use. */
+    private String uniqueDatabaseName(final String fileName) {
+        final String stem = fileName.substring(0, fileName.lastIndexOf('.'));
+        String base = StringMethods.sanitizeName(stem);
+        if (base == null) {
+            base = getString(R.string.imported_name);
+        }
+        String candidate = base;
+        int i = 2;
+        while (fileFor(candidate).exists()) {
+            candidate = base + " (" + i + ")";
+            i++;
+        }
+        return candidate;
     }
 
     private void importVault(final Uri uri) {

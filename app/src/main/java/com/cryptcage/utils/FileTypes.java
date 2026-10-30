@@ -51,6 +51,11 @@ public final class FileTypes {
             return kind != null && kind.editable && matches;
         }
 
+        /** True for text of a supported text type, whether or not it may be edited. */
+        public boolean text() {
+            return kind != null && kind.category == Category.TEXT && matches;
+        }
+
         /** Keys and certificates get a warning when they are imported. */
         public boolean secret() {
             return kind != null && kind.category == Category.SECRET;
@@ -105,6 +110,26 @@ public final class FileTypes {
             return new Check(kind, false);
         }
         return new Check(kind, matchesSignature(kind, data));
+    }
+
+    /**
+     * A file name that is safe to store: directories are dropped, the name is sanitized,
+     * and the extension is kept in lower case. Null if the extension is not supported
+     * or nothing usable is left of the name.
+     */
+    public static String cleanFileName(final String raw) {
+        if (raw == null) {
+            return null;
+        }
+        final String path = raw.replace('\\', '/');
+        final String name = path.substring(path.lastIndexOf('/') + 1);
+        final String ext = extensionOf(name);
+        if (ext.isEmpty() || KINDS.get(ext) == null) {
+            return null;
+        }
+        final String stem = name.substring(0, name.length() - ext.length() - 1);
+        final String cleaned = StringMethods.sanitizeName(stem);
+        return cleaned == null ? null : cleaned + "." + ext;
     }
 
     /** Lower-case extension without the dot, or an empty string. */

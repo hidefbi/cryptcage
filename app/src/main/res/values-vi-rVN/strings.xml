@@ -72,4 +72,8 @@
     <string name="action_search">Tìm kiếm</string>
     <string name="action_starred">Quan trọng</string>
     <string name="action_share">Chia sẻ</string>
+    <string name="file_noPreview">Không thể hiển thị hoặc chỉnh sửa tệp này dưới dạng văn bản. Hãy xuất tệp để giữ một bản sao.</string>
+    <string name="toast_secretFile">Đây là khóa hoặc chứng chỉ. Hãy giữ bí mật.</string>
+    <string name="import_createTitle">Tạo cơ sở dữ liệu?</string>
+    <string name="import_createMessage">Một cơ sở dữ liệu mới sẽ được tạo và tệp này sẽ được lưu trong đó. Tiếp theo, bạn đặt mật khẩu cho nó.</string>
 </resources>

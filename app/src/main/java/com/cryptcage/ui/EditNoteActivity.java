@@ -17,6 +17,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.cryptcage.app.App;
 import com.cryptcage.utils.DatabaseForNotes;
 import com.cryptcage.utils.FileKinds;
+import com.cryptcage.utils.FileTypes;
 import com.cryptcage.utils.Notes;
 import com.cryptcage.R;
 
@@ -72,12 +73,14 @@ public class EditNoteActivity extends SecureActivity {
                 return;
             }
             if (note.isFile()) {
-                if (FileKinds.typeOf(note.getFileName()) == FileKinds.Type.PDF) {
+                final byte[] stored = note.getData() == null ? new byte[0] : note.getData();
+                if (!FileTypes.check(note.getFileName(), stored).editable()) {
+                    toast(R.string.file_noPreview);
                     finish();
                     return;
                 }
                 fileMode = true;
-                originalData = note.getData() == null ? new byte[0] : note.getData().clone();
+                originalData = stored.clone();
                 originalTitle = nullToEmpty(note.getFileName());
                 originalBody = new String(originalData, StandardCharsets.UTF_8);
                 titleField.setHint(R.string.file_hint_name);
@@ -169,8 +172,7 @@ public class EditNoteActivity extends SecureActivity {
      * If the text was not touched, the original bytes are written back unchanged.
      */
     private void saveFile(final App.Session session, final String title, final String body) {
-        final FileKinds.Type type = FileKinds.typeOf(originalTitle);
-        final String name = FileKinds.cleanFileName(title, type);
+        final String name = FileTypes.cleanFileName(withOriginalExtension(title, originalTitle));
         if (name == null) {
             toast(R.string.toast_nameInvalid);
             return;
@@ -190,6 +192,13 @@ public class EditNoteActivity extends SecureActivity {
             return;
         }
         finishSaved();
+    }
+
+    /** The typed name with the original extension, so that renaming never changes the file type. */
+    private static String withOriginalExtension(final String title, final String original) {
+        final String typed = title.trim();
+        final String stem = FileTypes.kindOf(typed) == null ? typed : typed.substring(0, typed.lastIndexOf('.'));
+        return stem + "." + FileTypes.extensionOf(original);
     }
 
     private void finishSaved() {

@@ -72,4 +72,8 @@
     <string name="action_search">Іздеу</string>
     <string name="action_starred">Маңызды</string>
     <string name="action_share">Ортақтасу</string>
+    <string name="file_noPreview">Бұл файлды мәтін ретінде көрсету немесе өңдеу мүмкін емес. Көшірмесін сақтау үшін экспорттаңыз.</string>
+    <string name="toast_secretFile">Бұл кілт немесе сертификат. Оны құпия сақтаңыз.</string>
+    <string name="import_createTitle">Дерекқор жасалсын ба?</string>
+    <string name="import_createMessage">Жаңа дерекқор жасалып, бұл файл соған сақталады. Одан кейін оған құпия сөз орнатасыз.</string>
 </resources>

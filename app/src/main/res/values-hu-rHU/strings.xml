@@ -72,4 +72,8 @@
     <string name="action_search">Keresés</string>
     <string name="action_starred">Fontos</string>
     <string name="action_share">Megosztás</string>
+    <string name="file_noPreview">Ez a fájl szövegként nem jeleníthető meg és nem szerkeszthető. Másolat megtartásához exportálja.</string>
+    <string name="toast_secretFile">Ez kulcs vagy tanúsítvány. Tartsa titokban.</string>
+    <string name="import_createTitle">Létrehoz egy adatbázist?</string>
+    <string name="import_createMessage">Új adatbázis jön létre, és a fájl ebbe kerül. Ezután be kell állítania a jelszavát.</string>
 </resources>

@@ -72,4 +72,8 @@
     <string name="action_search">Αναζήτηση</string>
     <string name="action_starred">Σημαντικό</string>
     <string name="action_share">Κοινοποίηση</string>
+    <string name="file_noPreview">Αυτό το αρχείο δεν μπορεί να εμφανιστεί ή να επεξεργαστεί ως κείμενο. Εξαγάγετέ το για να κρατήσετε αντίγραφο.</string>
+    <string name="toast_secretFile">Πρόκειται για κλειδί ή πιστοποιητικό. Κρατήστε το μυστικό.</string>
+    <string name="import_createTitle">Δημιουργία βάσης δεδομένων;</string>
+    <string name="import_createMessage">Θα δημιουργηθεί μια νέα βάση δεδομένων και το αρχείο θα αποθηκευτεί σε αυτήν. Στη συνέχεια θα ορίσετε τον κωδικό της.</string>
 </resources>

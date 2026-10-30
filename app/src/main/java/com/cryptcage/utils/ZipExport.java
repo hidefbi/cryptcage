@@ -169,8 +169,7 @@ public final class ZipExport {
     }
 
     static String fileEntryName(final String fileName) {
-        final FileKinds.Type type = FileKinds.typeOf(fileName);
-        final String cleaned = type == null ? null : FileKinds.cleanFileName(fileName, type);
+        final String cleaned = FileTypes.cleanFileName(fileName);
         return cleaned == null ? "attachment.bin" : cleaned;
     }
 

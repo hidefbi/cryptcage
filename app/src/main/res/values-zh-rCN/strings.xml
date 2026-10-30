@@ -102,7 +102,7 @@
     <string name="action_prev">上一页</string>
     <string name="action_next">下一页</string>
     <string name="toast_fileImported">文件已导入</string>
-    <string name="toast_fileUnsupported">只能导入 .ovpn、.conf、.pdf、.txt 文件</string>
+    <string name="toast_fileUnsupported">无法导入此文件类型</string>
     <string name="toast_fileInvalid">文件内容与类型不符，或文本不是 UTF-8 编码</string>
     <string name="toast_vaultFull">数据库已满，请先删除部分内容后再添加</string>
     <string name="toast_pdfFailed">无法打开此 PDF 文件</string>
@@ -130,4 +130,8 @@
         <item>light</item>
         <item>dark</item>
     </string-array>
+    <string name="file_noPreview">该文件无法以文本形式显示或编辑。请导出以保留副本。</string>
+    <string name="toast_secretFile">这是密钥或证书，请妥善保密。</string>
+    <string name="import_createTitle">创建数据库？</string>
+    <string name="import_createMessage">将创建一个新数据库并保存此文件，接下来请设置数据库密码。</string>
 </resources>

@@ -72,4 +72,8 @@
     <string name="action_search">Etsi</string>
     <string name="action_starred">Tärkeä</string>
     <string name="action_share">Jaa</string>
+    <string name="file_noPreview">Tätä tiedostoa ei voi näyttää tai muokata tekstinä. Vie se tallentaaksesi kopion.</string>
+    <string name="toast_secretFile">Tämä on avain tai varmenne. Pidä se salassa.</string>
+    <string name="import_createTitle">Luodaanko tietokanta?</string>
+    <string name="import_createMessage">Uusi tietokanta luodaan ja tiedosto tallennetaan siihen. Seuraavaksi asetat sille salasanan.</string>
 </resources>

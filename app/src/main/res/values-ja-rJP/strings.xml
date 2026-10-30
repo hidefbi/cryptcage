@@ -72,4 +72,8 @@
     <string name="action_search">検索</string>
     <string name="action_starred">重要</string>
     <string name="action_share">共有</string>
+    <string name="file_noPreview">このファイルはテキストとして表示・編集できません。コピーを残すには書き出してください。</string>
+    <string name="toast_secretFile">これは鍵または証明書です。秘密に保管してください。</string>
+    <string name="import_createTitle">データベースを作成しますか？</string>
+    <string name="import_createMessage">新しいデータベースを作成し、このファイルを保存します。次にパスワードを設定します。</string>
 </resources>

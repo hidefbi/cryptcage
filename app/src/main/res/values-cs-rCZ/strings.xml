@@ -72,4 +72,8 @@
     <string name="action_search">Hledat</string>
     <string name="action_starred">Důležité</string>
     <string name="action_share">Sdílet</string>
+    <string name="file_noPreview">Tento soubor nelze zobrazit ani upravit jako text. Exportujte jej pro uložení kopie.</string>
+    <string name="toast_secretFile">Toto je klíč nebo certifikát. Uchovávejte jej v tajnosti.</string>
+    <string name="import_createTitle">Vytvořit databázi?</string>
+    <string name="import_createMessage">Vytvoří se nová databáze a tento soubor se do ní uloží. Dále nastavíte její heslo.</string>
 </resources>

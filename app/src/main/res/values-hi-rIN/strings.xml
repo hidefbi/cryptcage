@@ -72,4 +72,8 @@
     <string name="action_search">खोज</string>
     <string name="action_starred">जरूरी</string>
     <string name="action_share">शेयर</string>
+    <string name="file_noPreview">यह फ़ाइल टेक्स्ट के रूप में न दिखाई जा सकती है न संपादित की जा सकती है। प्रतिलिपि रखने के लिए इसे निर्यात करें।</string>
+    <string name="toast_secretFile">यह एक कुंजी या प्रमाणपत्र है। इसे गोपनीय रखें।</string>
+    <string name="import_createTitle">डेटाबेस बनाएं?</string>
+    <string name="import_createMessage">एक नया डेटाबेस बनाया जाएगा और यह फ़ाइल उसमें सहेजी जाएगी। इसके बाद आप इसका पासवर्ड सेट करेंगे।</string>
 </resources>

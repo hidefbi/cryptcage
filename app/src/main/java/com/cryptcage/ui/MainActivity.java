@@ -1,8 +1,6 @@
 package com.cryptcage.ui;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,10 +15,8 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.OpenableColumns;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,6 +37,7 @@ import com.cryptcage.app.App;
 import com.cryptcage.app.Tasks;
 import com.cryptcage.utils.DatabaseForNotes;
 import com.cryptcage.utils.FileKinds;
+import com.cryptcage.utils.FileTypes;
 import com.cryptcage.utils.Notes;
 import com.cryptcage.utils.StringMethods;
 import com.cryptcage.utils.VaultException;
@@ -407,34 +404,33 @@ public class MainActivity extends SecureActivity implements ChoosePasswordDialog
         final Context app = getApplicationContext();
         final ContentResolver resolver = getContentResolver();
         Tasks.io(() -> {
-            final String display = displayName(resolver, uri);
-            final FileKinds.Type type = FileKinds.typeOf(display);
-            final String name = type == null ? null : FileKinds.cleanFileName(display, type);
-            if (type == null || name == null) {
+            final String name = FileTypes.cleanFileName(ImportSource.displayName(resolver, uri));
+            if (name == null) {
                 Tasks.ui(() -> toast(app, R.string.toast_fileUnsupported));
                 return;
             }
-            byte[] read = null;
+            final byte[] data;
             try {
-                read = readLimited(resolver, uri);
+                data = ImportSource.readLimited(resolver, uri);
             } catch (IOException e) {
                 Tasks.ui(() -> toast(app, R.string.toast_IOError));
                 return;
             }
-            if (read == null) {
+            if (data == null) {
                 Tasks.ui(() -> toast(app, R.string.toast_tooLarge));
                 return;
             }
-            if (!FileKinds.validContent(type, read)) {
+            final FileTypes.Check check = FileTypes.check(name, data);
+            if (!check.matches) {
                 Tasks.ui(() -> toast(app, R.string.toast_fileInvalid));
                 return;
             }
-            final byte[] data = read;
-            Tasks.ui(() -> addStoredFile(app, name, data));
+            final boolean secret = check.secret();
+            Tasks.ui(() -> addStoredFile(app, name, data, secret));
         });
     }
 
-    private void addStoredFile(final Context app, final String name, final byte[] data) {
+    private void addStoredFile(final Context app, final String name, final byte[] data, final boolean secret) {
         final App.Session session = App.session();
         if (session == null) {
             return;
@@ -449,40 +445,7 @@ public class MainActivity extends SecureActivity implements ChoosePasswordDialog
         }
         App.persist(app);
         refresh();
-        toast(app, R.string.toast_fileImported);
-    }
-
-    private static String displayName(final ContentResolver resolver, final Uri uri) {
-        try (Cursor cursor = resolver.query(uri, new String[]{OpenableColumns.DISPLAY_NAME}, null, null, null)) {
-            if (cursor != null && cursor.moveToFirst()) {
-                return cursor.getString(0);
-            }
-        } catch (RuntimeException ignored) {
-            // some providers refuse the query; the type check then rejects the file
-        }
-        return null;
-    }
-
-    /** Reads the whole stream, or returns null when it is larger than the single-file limit. */
-    private static byte[] readLimited(final ContentResolver resolver, final Uri uri) throws IOException {
-        final InputStream in = resolver.openInputStream(uri);
-        if (in == null) {
-            throw new IOException("cannot open " + uri);
-        }
-        try {
-            final ByteArrayOutputStream out = new ByteArrayOutputStream();
-            final byte[] buf = new byte[8192];
-            int n;
-            while ((n = in.read(buf)) != -1) {
-                out.write(buf, 0, n);
-                if (out.size() > FileKinds.MAX_FILE_BYTES) {
-                    return null;
-                }
-            }
-            return out.toByteArray();
-        } finally {
-            in.close();
-        }
+        toast(app, secret ? R.string.toast_secretFile : R.string.toast_fileImported);
     }
 
     /** The image slot of a list row: the star for a note, the type icon for a file. */

@@ -67,4 +67,23 @@ public class FileTypesTest {
     public void emptyContentMatchesNothing() {
         assertFalse(FileTypes.check("a.txt", new byte[0]).matches);
     }
+
+    @Test
+    public void importedNamesKeepTheirSupportedExtension() {
+        assertEquals("Notes.json", FileTypes.cleanFileName("C:\\dir\\Notes.JSON"));
+        assertEquals("config.conf", FileTypes.cleanFileName("/sdcard/a/config.conf"));
+        assertNull(FileTypes.cleanFileName("setup.exe"));
+        assertNull(FileTypes.cleanFileName(".txt"));
+        assertNull(FileTypes.cleanFileName(null));
+    }
+
+    @Test
+    public void textIsReadableAndEditableOnlyWhereAllowed() {
+        assertTrue(FileTypes.check("a.json", ascii("{}")).editable());
+        assertTrue(FileTypes.check("a.json", ascii("{}")).text());
+        assertTrue(FileTypes.check("k.pem", ascii("-----BEGIN")).text());
+        assertFalse(FileTypes.check("k.pem", ascii("-----BEGIN")).editable());
+        assertFalse(FileTypes.check("a.png", new byte[]{1, 2, 3}).text());
+        assertFalse(FileTypes.check("a.pdf", ascii("%PDF-1.4")).text());
+    }
 }

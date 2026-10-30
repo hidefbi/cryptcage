@@ -72,4 +72,8 @@
     <string name="action_search">Buscar</string>
     <string name="action_starred">Importante</string>
     <string name="action_share">Compartilhar</string>
+    <string name="file_noPreview">Este arquivo não pode ser exibido nem editado como texto. Exporte-o para manter uma cópia.</string>
+    <string name="toast_secretFile">Este é uma chave ou certificado. Mantenha-o em sigilo.</string>
+    <string name="import_createTitle">Criar um banco de dados?</string>
+    <string name="import_createMessage">Um novo banco de dados será criado e este arquivo será guardado nele. Em seguida, você define a senha.</string>
 </resources>

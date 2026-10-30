@@ -72,4 +72,8 @@
     <string name="action_search">Søg</string>
     <string name="action_starred">Vigtigt</string>
     <string name="action_share">Del</string>
+    <string name="file_noPreview">Denne fil kan ikke vises eller redigeres som tekst. Eksportér den for at beholde en kopi.</string>
+    <string name="toast_secretFile">Dette er en nøgle eller et certifikat. Hold det hemmeligt.</string>
+    <string name="import_createTitle">Opret en database?</string>
+    <string name="import_createMessage">En ny database oprettes, og filen gemmes i den. Derefter angiver du adgangskoden.</string>
 </resources>

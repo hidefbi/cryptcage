@@ -72,4 +72,8 @@
     <string name="action_search">Suche</string>
     <string name="action_starred">Wichtig</string>
     <string name="action_share">Teilen</string>
+    <string name="file_noPreview">Diese Datei kann nicht als Text angezeigt oder bearbeitet werden. Exportieren Sie sie, um eine Kopie zu behalten.</string>
+    <string name="toast_secretFile">Dies ist ein Schlüssel oder Zertifikat. Halten Sie es geheim.</string>
+    <string name="import_createTitle">Datenbank erstellen?</string>
+    <string name="import_createMessage">Es wird eine neue Datenbank erstellt und diese Datei darin gespeichert. Anschließend legen Sie ihr Passwort fest.</string>
 </resources>

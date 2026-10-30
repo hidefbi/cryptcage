@@ -72,4 +72,8 @@
     <string name="action_search">بحث</string>
     <string name="action_starred">مهم</string>
     <string name="action_share">مشاركة</string>
+    <string name="file_noPreview">لا يمكن عرض هذا الملف أو تحريره كنص. صدّره للاحتفاظ بنسخة.</string>
+    <string name="toast_secretFile">هذا مفتاح أو شهادة. احرص على إبقائه سرياً.</string>
+    <string name="import_createTitle">إنشاء قاعدة بيانات؟</string>
+    <string name="import_createMessage">سيتم إنشاء قاعدة بيانات جديدة وتخزين هذا الملف فيها. ستحدد كلمة مرورها بعد ذلك.</string>
 </resources>

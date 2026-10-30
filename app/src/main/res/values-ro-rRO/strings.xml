@@ -72,4 +72,8 @@
     <string name="action_search">Cauta</string>
     <string name="action_starred">Important</string>
     <string name="action_share">Partajare</string>
+    <string name="file_noPreview">Acest fișier nu poate fi afișat sau editat ca text. Exportați-l pentru a păstra o copie.</string>
+    <string name="toast_secretFile">Acesta este o cheie sau un certificat. Păstrați-l în secret.</string>
+    <string name="import_createTitle">Creați o bază de date?</string>
+    <string name="import_createMessage">Se va crea o bază de date nouă, în care va fi salvat acest fișier. Apoi îi veți seta parola.</string>
 </resources>

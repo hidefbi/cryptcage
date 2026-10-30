@@ -72,4 +72,8 @@
     <string name="action_search">Ieškoti</string>
     <string name="action_starred">Svarbųs</string>
     <string name="action_share">Pasidalinti</string>
+    <string name="file_noPreview">Šio failo negalima rodyti ar redaguoti kaip teksto. Eksportuokite jį, kad išsaugotumėte kopiją.</string>
+    <string name="toast_secretFile">Tai raktas ar sertifikatas. Laikykite jį paslaptyje.</string>
+    <string name="import_createTitle">Sukurti duomenų bazę?</string>
+    <string name="import_createMessage">Bus sukurta nauja duomenų bazė ir šis failas bus joje išsaugotas. Toliau nustatysite jos slaptažodį.</string>
 </resources>

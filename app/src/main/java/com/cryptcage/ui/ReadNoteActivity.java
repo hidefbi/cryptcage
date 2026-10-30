@@ -23,6 +23,7 @@ import androidx.preference.PreferenceManager;
 import com.cryptcage.app.App;
 import com.cryptcage.app.Tasks;
 import com.cryptcage.utils.FileKinds;
+import com.cryptcage.utils.FileTypes;
 import com.cryptcage.utils.Notes;
 import com.cryptcage.R;
 
@@ -70,11 +71,19 @@ public class ReadNoteActivity extends SecureActivity {
             return;
         }
         setTitle(note.getTitle());
-        final String text = note.isFile() ? decode(note.getData()) : note.getNote();
+        final boolean viewable = !note.isFile() || FileTypes.check(note.getFileName(), note.getData()).text();
+        String text = null;
+        if (viewable) {
+            text = note.isFile() ? decode(note.getData()) : note.getNote();
+        }
         final boolean blank = text == null || text.isEmpty();
         bodyView.setText(blank ? "" : text);
         bodyView.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize());
-        emptyView.setText(blank ? getString(R.string.no_textNote) : "");
+        if (!viewable) {
+            emptyView.setText(R.string.file_noPreview);
+        } else {
+            emptyView.setText(blank ? getString(R.string.no_textNote) : "");
+        }
         emptyView.setVisibility(blank ? View.VISIBLE : View.GONE);
         invalidateOptionsMenu();
     }

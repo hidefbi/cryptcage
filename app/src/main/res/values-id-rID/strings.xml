@@ -72,4 +72,8 @@
     <string name="action_search">Cari</string>
     <string name="action_starred">Penting</string>
     <string name="action_share">Bagikan</string>
+    <string name="file_noPreview">File ini tidak dapat ditampilkan atau diedit sebagai teks. Ekspor untuk menyimpan salinan.</string>
+    <string name="toast_secretFile">Ini adalah kunci atau sertifikat. Jaga kerahasiaannya.</string>
+    <string name="import_createTitle">Buat basis data?</string>
+    <string name="import_createMessage">Basis data baru akan dibuat dan file ini akan disimpan di dalamnya. Selanjutnya, atur kata sandinya.</string>
 </resources>

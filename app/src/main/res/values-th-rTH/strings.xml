@@ -72,4 +72,8 @@
     <string name="action_search">ค้นหา</string>
     <string name="action_starred">สำคัญ</string>
     <string name="action_share">แบ่งบัน</string>
+    <string name="file_noPreview">ไม่สามารถแสดงหรือแก้ไขไฟล์นี้เป็นข้อความได้ ส่งออกไฟล์เพื่อเก็บสำเนาไว้</string>
+    <string name="toast_secretFile">นี่คือกุญแจหรือใบรับรอง โปรดเก็บเป็นความลับ</string>
+    <string name="import_createTitle">สร้างฐานข้อมูลหรือไม่?</string>
+    <string name="import_createMessage">ระบบจะสร้างฐานข้อมูลใหม่และบันทึกไฟล์นี้ลงไป จากนั้นคุณจะตั้งรหัสผ่านให้ฐานข้อมูล</string>
 </resources>
