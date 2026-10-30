@@ -10,16 +10,14 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.cryptcage.app.App;
 
 /**
- * Base for every screen. Blocks screenshots and the recent-apps preview, keeps the content
- * clear of the system bars, and returns to the database picker when the vault is locked.
- * The background comes from the theme, so the screen is light or dark as a whole.
+ * Base for every screen. Blocks screenshots and the recent-apps preview, and returns to the
+ * database picker when the vault is locked. The window keeps content clear of the system bars,
+ * so no extra inset padding is applied here. The background comes from the theme, so the
+ * screen is light or dark as a whole.
  */
 public abstract class SecureActivity extends AppCompatActivity {
 
@@ -35,7 +33,7 @@ public abstract class SecureActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         super.onCreate(savedInstanceState);
-        applySystemBarInsets();
+        getWindow().getDecorView().setBackgroundColor(themeBackground());
     }
 
     @Override
@@ -45,17 +43,6 @@ public abstract class SecureActivity extends AppCompatActivity {
         if (content != null) {
             content.setBackgroundColor(themeBackground());
         }
-    }
-
-    private void applySystemBarInsets() {
-        final View decor = getWindow().getDecorView();
-        decor.setBackgroundColor(themeBackground());
-        ViewCompat.setOnApplyWindowInsetsListener(decor, (view, insets) -> {
-            final Insets bars = insets.getInsets(
-                    WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.displayCutout());
-            view.setPadding(bars.left, bars.top, bars.right, bars.bottom);
-            return insets;
-        });
     }
 
     private int themeBackground() {
