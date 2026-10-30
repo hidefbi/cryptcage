@@ -12,6 +12,7 @@ final class StoreException extends Exception {
         IO,
         EXISTS,
         BAD_ARGUMENT,
+        LIMIT_REACHED,
         INTERNAL
     }
 
