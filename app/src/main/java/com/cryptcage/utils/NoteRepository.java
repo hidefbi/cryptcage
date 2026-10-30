@@ -186,6 +186,12 @@ final class NoteRepository implements AutoCloseable {
         store = store.compact();
     }
 
+    /** Commits pending changes, then makes the file open with a new password. */
+    void changePassword(final char[] password) throws StoreException {
+        commit();
+        store = store.rekey(password);
+    }
+
     @Override
     public void close() {
         store.close();

@@ -376,6 +376,30 @@ public class BlockStoreTest {
         }
     }
 
+    @Test
+    public void rekeyChangesPasswordAndKeepsData() throws Exception {
+        final File file = newFile();
+        BlockStore store = BlockStore.create(file, password(), ITERATIONS);
+        try {
+            store.putBlock(1, bytes("kept"));
+            store.commit(bytes("p"));
+            store = store.rekey("new password".toCharArray());
+            assertEquals("kept", text(store.getBlock(1)));
+        } finally {
+            store.close();
+        }
+        try {
+            BlockStore.open(file, password());
+            fail("old password still opens the container");
+        } catch (StoreException e) {
+            assertEquals(Reason.AUTH_FAILED, e.reason());
+        }
+        try (BlockStore reopened = BlockStore.open(file, "new password".toCharArray())) {
+            assertEquals("kept", text(reopened.getBlock(1)));
+            assertEquals("p", text(reopened.payload()));
+        }
+    }
+
     private static void assertCorrupt(final BlockStore store, final long id) {
         try {
             store.getBlock(id);

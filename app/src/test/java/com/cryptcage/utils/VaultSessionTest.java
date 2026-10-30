@@ -169,6 +169,21 @@ public class VaultSessionTest {
     }
 
     @Test
+    public void changePasswordKeepsContentAndDropsOldPassword() throws Exception {
+        final File file = newFile();
+        final long id;
+        try (VaultSession session = VaultSession.create(file, password())) {
+            id = session.addNote("t", "body", "");
+            session.changePassword("second password".toCharArray());
+            assertEquals("body", session.body(id));
+        }
+        assertReason(Reason.BAD_PASSWORD_OR_DAMAGED, () -> VaultSession.open(file, password()));
+        try (VaultSession session = VaultSession.open(file, "second password".toCharArray())) {
+            assertEquals("body", session.body(id));
+        }
+    }
+
+    @Test
     public void compactionKeepsContent() throws Exception {
         final File file = newFile();
         final long id;

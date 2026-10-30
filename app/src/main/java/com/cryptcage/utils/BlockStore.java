@@ -32,6 +32,9 @@ import com.cryptcage.utils.StoreException.Reason;
  * A commit appends the index, syncs, and then writes the header slot of the new generation.
  * The two slots alternate, so a crash leaves either the old state or the new one.
  *
+ * Compaction and a password change both write a new file and put it in place of the old one.
+ * The records are re-encrypted only when needed; a password change keeps them as they are.
+ *
  * Known limit: whoever can write the file can put back an earlier committed state. Detecting
  * that needs a counter kept outside the file.
  */
@@ -72,6 +75,7 @@ final class BlockStore implements AutoCloseable {
     private final RandomAccessFile raf;
     private final File path;
     private final byte[] fileId;
+    private final byte[] dataKey;
     private final byte[] blockKey;
     private final byte[] macKey;
     private final Map<Long, Ref> catalog = new TreeMap<>();
@@ -105,18 +109,19 @@ final class BlockStore implements AutoCloseable {
         }
     }
 
-    private BlockStore(final RandomAccessFile raf, final File path, final byte[] fileId,
+    private BlockStore(final RandomAccessFile raf, final File path, final byte[] fileId, final byte[] dataKey,
                        final byte[] blockKey, final byte[] macKey) {
         this.raf = raf;
         this.path = path;
         this.fileId = fileId.clone();
+        this.dataKey = dataKey.clone();
         this.blockKey = blockKey.clone();
         this.macKey = macKey.clone();
     }
 
     private static BlockStore withDataKey(final RandomAccessFile raf, final File path, final byte[] fileId,
                                           final byte[] dataKey) throws GeneralSecurityException {
-        return new BlockStore(raf, path, fileId,
+        return new BlockStore(raf, path, fileId, dataKey,
                 deriveKey(dataKey, "cc3 block key"), deriveKey(dataKey, "cc3 slot mac"));
     }
 
@@ -129,22 +134,10 @@ final class BlockStore implements AutoCloseable {
             throw new StoreException(Reason.EXISTS, null);
         }
         final byte[] fileId = Cryptox.randomBytes(FILE_ID_BYTES);
-        final byte[] salt = Cryptox.randomBytes(Cryptox.SALT_BYTES);
         final byte[] dataKey = Cryptox.randomBytes(Cryptox.KEY_BYTES);
-        final byte[] prologue = new byte[PROLOGUE_BYTES];
-        byte[] kek = null;
         RandomAccessFile raf = null;
         try {
-            System.arraycopy(MAGIC, 0, prologue, 0, MAGIC.length);
-            prologue[OFF_VERSION] = (byte) VERSION;
-            System.arraycopy(fileId, 0, prologue, OFF_FILE_ID, FILE_ID_BYTES);
-            ByteBuffer.wrap(prologue).putInt(OFF_ITERATIONS, iterations);
-            System.arraycopy(salt, 0, prologue, OFF_SALT, salt.length);
-
-            kek = Cryptox.pbkdf2Sha256(password, salt, iterations);
-            final byte[] wrapped = Cryptox.seal(kek, authenticatedPrologue(prologue), dataKey);
-            System.arraycopy(wrapped, 0, prologue, OFF_WRAP, WRAP_BYTES);
-
+            final byte[] prologue = buildPrologue(fileId, iterations, password, dataKey);
             raf = new RandomAccessFile(file, "rw");
             raf.write(prologue);
             raf.write(new byte[DATA_START - PROLOGUE_BYTES]);
@@ -163,9 +156,6 @@ final class BlockStore implements AutoCloseable {
             discard(file, raf);
             throw e;
         } finally {
-            if (kek != null) {
-                Arrays.fill(kek, (byte) 0);
-            }
             Arrays.fill(dataKey, (byte) 0);
         }
     }
@@ -339,61 +329,25 @@ final class BlockStore implements AutoCloseable {
      */
     BlockStore compact() throws StoreException {
         ensureOpen();
-        if (pending) {
-            throw new StoreException(Reason.BAD_ARGUMENT, "commit before compacting");
-        }
-        final File tmp = new File(path.getParentFile(), "." + path.getName() + ".compact");
-        if (tmp.exists() && !tmp.delete()) {
-            throw new StoreException(Reason.IO, "could not clear an old temporary file");
-        }
-        try {
-            writeCopy(tmp);
-            if (!tmp.renameTo(path)) {
-                tmp.delete();
-                throw new StoreException(Reason.IO, "could not replace the container");
-            }
-        } catch (IOException e) {
-            tmp.delete();
-            throw new StoreException(Reason.IO, e.getMessage());
-        }
-        final BlockStore fresh;
-        try {
-            fresh = new BlockStore(new RandomAccessFile(path, "rw"), path, fileId, blockKey, macKey);
-        } catch (IOException e) {
-            throw new StoreException(Reason.IO, e.getMessage());
-        }
-        try {
-            fresh.load();
-        } catch (IOException | GeneralSecurityException e) {
-            fresh.close();
-            throw new StoreException(Reason.CORRUPT, "compacted container does not load");
-        } catch (StoreException e) {
-            fresh.close();
-            throw e;
-        }
-        close();
-        return fresh;
+        requireCommitted();
+        return rewrite(readPrologue());
     }
 
-    private void writeCopy(final File tmp) throws IOException, StoreException {
-        final byte[] prologue = readBytes(0, PROLOGUE_BYTES);
-        final RandomAccessFile out = new RandomAccessFile(tmp, "rw");
-        final BlockStore copy = new BlockStore(out, tmp, fileId, blockKey, macKey);
-        boolean done = false;
+    /**
+     * Replaces the password that protects the container. Records and the data key stay the same;
+     * only the prologue changes. Changes must be committed first. Returns the store for the new
+     * file; this store is closed afterwards.
+     */
+    BlockStore rekey(final char[] password) throws StoreException {
+        ensureOpen();
+        requireCommitted();
+        final byte[] prologue;
         try {
-            out.write(prologue);
-            out.write(new byte[DATA_START - PROLOGUE_BYTES]);
-            for (long id : new ArrayList<>(catalog.keySet())) {
-                copy.putBlock(id, getBlock(id));
-            }
-            copy.commit(payload);
-            done = true;
-        } finally {
-            copy.close();
-            if (!done) {
-                tmp.delete();
-            }
+            prologue = buildPrologue(fileId, Cryptox.DEFAULT_ITERATIONS, password, dataKey);
+        } catch (GeneralSecurityException e) {
+            throw new StoreException(Reason.INTERNAL, "key setup failed");
         }
+        return rewrite(prologue);
     }
 
     @Override
@@ -402,6 +356,7 @@ final class BlockStore implements AutoCloseable {
             return;
         }
         closed = true;
+        Arrays.fill(dataKey, (byte) 0);
         Arrays.fill(blockKey, (byte) 0);
         Arrays.fill(macKey, (byte) 0);
         closeQuietly(raf);
@@ -425,6 +380,78 @@ final class BlockStore implements AutoCloseable {
     /** Test hook: how long a block's record is in the file. */
     int lengthOf(final long id) {
         return catalog.get(id).length;
+    }
+
+    private void requireCommitted() throws StoreException {
+        if (pending) {
+            throw new StoreException(Reason.BAD_ARGUMENT, "commit before rewriting the container");
+        }
+    }
+
+    private byte[] readPrologue() throws StoreException {
+        try {
+            return readBytes(0, PROLOGUE_BYTES);
+        } catch (IOException e) {
+            throw new StoreException(Reason.IO, e.getMessage());
+        }
+    }
+
+    /**
+     * Writes a new file with the given prologue and the current records, puts it in place of
+     * this one, and returns a store for it. This store is closed afterwards.
+     */
+    private BlockStore rewrite(final byte[] prologue) throws StoreException {
+        final File tmp = new File(path.getParentFile(), "." + path.getName() + ".compact");
+        if (tmp.exists() && !tmp.delete()) {
+            throw new StoreException(Reason.IO, "could not clear an old temporary file");
+        }
+        try {
+            writeCopy(tmp, prologue);
+            if (!tmp.renameTo(path)) {
+                tmp.delete();
+                throw new StoreException(Reason.IO, "could not replace the container");
+            }
+        } catch (IOException e) {
+            tmp.delete();
+            throw new StoreException(Reason.IO, e.getMessage());
+        }
+        final BlockStore fresh;
+        try {
+            fresh = new BlockStore(new RandomAccessFile(path, "rw"), path, fileId, dataKey, blockKey, macKey);
+        } catch (IOException e) {
+            throw new StoreException(Reason.IO, e.getMessage());
+        }
+        try {
+            fresh.load();
+        } catch (IOException | GeneralSecurityException e) {
+            fresh.close();
+            throw new StoreException(Reason.CORRUPT, "rewritten container does not load");
+        } catch (StoreException e) {
+            fresh.close();
+            throw e;
+        }
+        close();
+        return fresh;
+    }
+
+    private void writeCopy(final File tmp, final byte[] prologue) throws IOException, StoreException {
+        final RandomAccessFile out = new RandomAccessFile(tmp, "rw");
+        final BlockStore copy = new BlockStore(out, tmp, fileId, dataKey, blockKey, macKey);
+        boolean done = false;
+        try {
+            out.write(prologue);
+            out.write(new byte[DATA_START - PROLOGUE_BYTES]);
+            for (long id : new ArrayList<>(catalog.keySet())) {
+                copy.putBlock(id, getBlock(id));
+            }
+            copy.commit(payload);
+            done = true;
+        } finally {
+            copy.close();
+            if (!done) {
+                tmp.delete();
+            }
+        }
     }
 
     private void load() throws StoreException, IOException, GeneralSecurityException {
@@ -573,6 +600,30 @@ final class BlockStore implements AutoCloseable {
         if (closed) {
             throw new IllegalStateException("container is closed");
         }
+    }
+
+    /** The header as it is written to disk: magic, version, KDF settings, salt and wrapped data key. */
+    private static byte[] buildPrologue(final byte[] fileId, final int iterations, final char[] password,
+                                        final byte[] dataKey) throws GeneralSecurityException {
+        final byte[] salt = Cryptox.randomBytes(Cryptox.SALT_BYTES);
+        final byte[] prologue = new byte[PROLOGUE_BYTES];
+        System.arraycopy(MAGIC, 0, prologue, 0, MAGIC.length);
+        prologue[OFF_VERSION] = (byte) VERSION;
+        System.arraycopy(fileId, 0, prologue, OFF_FILE_ID, FILE_ID_BYTES);
+        ByteBuffer.wrap(prologue).putInt(OFF_ITERATIONS, iterations);
+        System.arraycopy(salt, 0, prologue, OFF_SALT, salt.length);
+
+        byte[] kek = null;
+        try {
+            kek = Cryptox.pbkdf2Sha256(password, salt, iterations);
+            final byte[] wrapped = Cryptox.seal(kek, authenticatedPrologue(prologue), dataKey);
+            System.arraycopy(wrapped, 0, prologue, OFF_WRAP, WRAP_BYTES);
+        } finally {
+            if (kek != null) {
+                Arrays.fill(kek, (byte) 0);
+            }
+        }
+        return prologue;
     }
 
     private static byte[] authenticatedPrologue(final byte[] prologue) {

@@ -13,6 +13,9 @@ import java.util.TreeMap;
 /**
  * An open vault as the screens use it. Bodies and file contents are read only when asked for,
  * so the list stays cheap even when the vault is large. Changes are saved by {@link #save()}.
+ *
+ * Every method is synchronized, so the screens and background tasks can share one session.
+ * Search takes the lock once per note, so the screen stays responsive while it runs.
  */
 public final class VaultSession implements AutoCloseable {
 
@@ -21,6 +24,9 @@ public final class VaultSession implements AutoCloseable {
 
     /** Largest single file that can be attached. */
     public static final long MAX_FILE_BYTES = FileKinds.MAX_FILE_BYTES;
+
+    /** Largest container file that can be imported. Leaves room for unused records. */
+    public static final long MAX_CONTAINER_BYTES = 2L * CONTENT_LIMIT;
 
     /** What a list row needs. Bodies and file contents are not included. */
     public static final class Summary {
@@ -80,7 +86,7 @@ public final class VaultSession implements AutoCloseable {
     }
 
     /** All entries in creation order. */
-    public List<Summary> list() {
+    public synchronized List<Summary> list() {
         final List<Summary> out = new ArrayList<>();
         for (NoteRepository.Entry entry : repo.list()) {
             out.add(new Summary(entry));
@@ -88,12 +94,12 @@ public final class VaultSession implements AutoCloseable {
         return out;
     }
 
-    public Summary summary(final long id) throws VaultException {
+    public synchronized Summary summary(final long id) throws VaultException {
         return new Summary(entry(id));
     }
 
     /** The text of a note. */
-    public String body(final long id) throws VaultException {
+    public synchronized String body(final long id) throws VaultException {
         try {
             return repo.readBody(id);
         } catch (StoreException e) {
@@ -102,7 +108,7 @@ public final class VaultSession implements AutoCloseable {
     }
 
     /** The contents of a file entry. */
-    public byte[] fileData(final long id) throws VaultException {
+    public synchronized byte[] fileData(final long id) throws VaultException {
         try {
             return repo.readFile(id);
         } catch (StoreException e) {
@@ -110,7 +116,8 @@ public final class VaultSession implements AutoCloseable {
         }
     }
 
-    public long addNote(final String title, final String body, final String tags) throws VaultException {
+    public synchronized long addNote(final String title, final String body, final String tags)
+            throws VaultException {
         try {
             return repo.addNote(title, body, tags);
         } catch (StoreException e) {
@@ -118,7 +125,7 @@ public final class VaultSession implements AutoCloseable {
         }
     }
 
-    public void updateNote(final long id, final String title, final String body, final String tags)
+    public synchronized void updateNote(final long id, final String title, final String body, final String tags)
             throws VaultException {
         try {
             repo.updateNote(id, title, body, tags);
@@ -127,7 +134,7 @@ public final class VaultSession implements AutoCloseable {
         }
     }
 
-    public long addFile(final String name, final byte[] data) throws VaultException {
+    public synchronized long addFile(final String name, final byte[] data) throws VaultException {
         checkFileSize(data);
         try {
             return repo.addFile(name, data);
@@ -136,7 +143,8 @@ public final class VaultSession implements AutoCloseable {
         }
     }
 
-    public void replaceFile(final long id, final String name, final byte[] data) throws VaultException {
+    public synchronized void replaceFile(final long id, final String name, final byte[] data)
+            throws VaultException {
         checkFileSize(data);
         try {
             repo.replaceFile(id, name, data);
@@ -145,7 +153,7 @@ public final class VaultSession implements AutoCloseable {
         }
     }
 
-    public void setStarred(final long id, final boolean starred) throws VaultException {
+    public synchronized void setStarred(final long id, final boolean starred) throws VaultException {
         try {
             repo.setStarred(id, starred);
         } catch (StoreException e) {
@@ -153,7 +161,7 @@ public final class VaultSession implements AutoCloseable {
         }
     }
 
-    public void setReadOnly(final long id, final boolean readOnly) throws VaultException {
+    public synchronized void setReadOnly(final long id, final boolean readOnly) throws VaultException {
         try {
             repo.setReadOnly(id, readOnly);
         } catch (StoreException e) {
@@ -161,7 +169,7 @@ public final class VaultSession implements AutoCloseable {
         }
     }
 
-    public void delete(final long id) throws VaultException {
+    public synchronized void delete(final long id) throws VaultException {
         try {
             repo.delete(id);
         } catch (StoreException e) {
@@ -171,24 +179,37 @@ public final class VaultSession implements AutoCloseable {
 
     /**
      * Ids of entries whose title, tags or file name contain the text, or whose note body does.
-     * Case is ignored. Every note body is read, so this can take a while on a large vault.
-     * An empty text matches everything.
+     * Case is ignored. Every note body is read, so this can take a while on a large vault; call it
+     * off the UI thread. An empty text matches everything.
      */
     public List<Long> search(final String text) throws VaultException {
-        final List<Long> hits = new ArrayList<>();
         final String needle = text == null ? "" : text.trim().toLowerCase(Locale.ROOT);
-        for (NoteRepository.Entry entry : repo.list()) {
-            if (needle.isEmpty() || matchesIndex(entry, needle)) {
-                hits.add(entry.id);
-            } else if (!entry.isFile() && body(entry.id).toLowerCase(Locale.ROOT).contains(needle)) {
-                hits.add(entry.id);
+        final List<Long> ids;
+        synchronized (this) {
+            ids = new ArrayList<>();
+            for (NoteRepository.Entry entry : repo.list()) {
+                ids.add(entry.id);
+            }
+        }
+        final List<Long> hits = new ArrayList<>();
+        for (Long id : ids) {
+            synchronized (this) {
+                final NoteRepository.Entry entry = repo.entry(id);
+                if (entry == null) {
+                    continue;
+                }
+                if (needle.isEmpty() || matchesIndex(entry, needle)) {
+                    hits.add(id);
+                } else if (!entry.isFile() && bodyContains(id, needle)) {
+                    hits.add(id);
+                }
             }
         }
         return hits;
     }
 
     /** Lower-cased tag names mapped to how many entries use them. */
-    public Map<String, Integer> tagCounts() {
+    public synchronized Map<String, Integer> tagCounts() {
         final Map<String, Integer> counts = new TreeMap<>();
         for (NoteRepository.Entry entry : repo.list()) {
             if (entry.isFile()) {
@@ -204,7 +225,7 @@ public final class VaultSession implements AutoCloseable {
     }
 
     /** Ids of notes carrying the tag. */
-    public List<Long> withTag(final String tag) {
+    public synchronized List<Long> withTag(final String tag) {
         final List<Long> ids = new ArrayList<>();
         if (tag == null) {
             return ids;
@@ -225,7 +246,7 @@ public final class VaultSession implements AutoCloseable {
     }
 
     /** Saves every change made since the last save. */
-    public void save() throws VaultException {
+    public synchronized void save() throws VaultException {
         try {
             repo.commit();
         } catch (StoreException e) {
@@ -233,8 +254,20 @@ public final class VaultSession implements AutoCloseable {
         }
     }
 
+    /**
+     * Makes the vault open with a new password. Pending changes are saved first. The old password
+     * stops working as soon as this returns. Slow; run it off the UI thread.
+     */
+    public synchronized void changePassword(final char[] password) throws VaultException {
+        try {
+            repo.changePassword(password);
+        } catch (StoreException e) {
+            throw translate(e);
+        }
+    }
+
     /** True when the file holds enough unused data that a rewrite would be worth it. */
-    public boolean needsCompaction() throws VaultException {
+    public synchronized boolean needsCompaction() throws VaultException {
         try {
             return repo.needsCompaction();
         } catch (StoreException e) {
@@ -243,7 +276,7 @@ public final class VaultSession implements AutoCloseable {
     }
 
     /** Rewrites the file without unused data. Saves pending changes first. Slow; run it off the UI thread. */
-    public void compact() throws VaultException {
+    public synchronized void compact() throws VaultException {
         try {
             repo.compact();
         } catch (StoreException e) {
@@ -252,12 +285,12 @@ public final class VaultSession implements AutoCloseable {
     }
 
     /** Content counted against {@link #CONTENT_LIMIT}. */
-    public long usedBytes() {
+    public synchronized long usedBytes() {
         return repo.usedBytes();
     }
 
     @Override
-    public void close() {
+    public synchronized void close() {
         repo.close();
     }
 
@@ -267,6 +300,14 @@ public final class VaultSession implements AutoCloseable {
             throw new VaultException(VaultException.Reason.REJECTED, null);
         }
         return entry;
+    }
+
+    private boolean bodyContains(final long id, final String needle) throws VaultException {
+        try {
+            return repo.readBody(id).toLowerCase(Locale.ROOT).contains(needle);
+        } catch (StoreException e) {
+            throw translate(e);
+        }
     }
 
     private static boolean matchesIndex(final NoteRepository.Entry entry, final String needle) {
