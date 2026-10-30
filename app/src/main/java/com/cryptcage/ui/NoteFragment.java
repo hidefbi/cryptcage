@@ -21,10 +21,10 @@ import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
 import com.cryptcage.app.App;
-import com.cryptcage.utils.DatabaseForNotes;
 import com.cryptcage.utils.FileKinds;
 import com.cryptcage.utils.FileTypes;
-import com.cryptcage.utils.Notes;
+import com.cryptcage.utils.VaultException;
+import com.cryptcage.utils.VaultSession;
 import com.cryptcage.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textfield.TextInputEditText;
@@ -118,10 +118,7 @@ public class NoteFragment extends Fragment {
             removedLater();
             return;
         }
-        final ArrayList<String> knownTags = new ArrayList<>();
-        synchronized (session.db) {
-            knownTags.addAll(session.db.tagCounts().keySet());
-        }
+        final ArrayList<String> knownTags = new ArrayList<>(session.vault.tagCounts().keySet());
         tagsField.setAdapter(new ArrayAdapter<>(requireContext(),
                 android.R.layout.simple_dropdown_item_1line, knownTags));
         tagsField.setTokenizer(new TagTokenizer());
@@ -201,42 +198,37 @@ public class NoteFragment extends Fragment {
         }
     }
 
-    private Notes currentNote() {
-        final App.Session session = App.session();
-        if (session == null) {
-            return null;
-        }
-        synchronized (session.db) {
-            return session.db.get(noteId);
-        }
-    }
-
     /** Copies the stored note or file into the originals. Returns false if it no longer exists. */
     private boolean loadOriginals() {
-        final Notes note = currentNote();
-        if (note == null) {
+        final App.Session session = App.session();
+        if (session == null) {
             return false;
         }
-        if (note.isFile()) {
-            final byte[] stored = note.getData() == null ? new byte[0] : note.getData();
-            final FileTypes.Check check = FileTypes.check(note.getFileName(), stored);
-            fileMode = true;
-            canEdit = check.editable();
-            canView = check.text();
-            starred = false;
-            originalData = stored.clone();
-            originalTitle = nullToEmpty(note.getFileName());
-            originalTags = "";
-            originalBody = canView ? new String(stored, StandardCharsets.UTF_8) : "";
-        } else {
-            fileMode = false;
-            canEdit = true;
-            canView = true;
-            starred = note.isStarred();
-            originalData = null;
-            originalTitle = nullToEmpty(note.getTitle());
-            originalTags = nullToEmpty(note.getTags());
-            originalBody = nullToEmpty(note.getNote());
+        try {
+            final VaultSession.Summary note = session.vault.summary(noteId);
+            if (note.file) {
+                final byte[] stored = session.vault.fileData(noteId);
+                final FileTypes.Check check = FileTypes.check(note.fileName, stored);
+                fileMode = true;
+                canEdit = check.editable();
+                canView = check.text();
+                starred = false;
+                originalData = stored.clone();
+                originalTitle = nullToEmpty(note.fileName);
+                originalTags = "";
+                originalBody = canView ? new String(stored, StandardCharsets.UTF_8) : "";
+            } else {
+                fileMode = false;
+                canEdit = true;
+                canView = true;
+                starred = note.starred;
+                originalData = null;
+                originalTitle = nullToEmpty(note.title);
+                originalTags = nullToEmpty(note.tags);
+                originalBody = session.vault.body(noteId);
+            }
+        } catch (VaultException e) {
+            return false;
         }
         return true;
     }
@@ -377,16 +369,14 @@ public class NoteFragment extends Fragment {
     private void saveNote(final App.Session session, final String title, final String body, final String tags) {
         final long id;
         try {
-            synchronized (session.db) {
-                if (noteId < 0) {
-                    id = session.db.add(title, body, tags);
-                } else {
-                    session.db.update(noteId, title, body, tags);
-                    id = noteId;
-                }
+            if (noteId < 0) {
+                id = session.vault.addNote(title, body, tags);
+            } else {
+                session.vault.updateNote(noteId, title, body, tags);
+                id = noteId;
             }
-        } catch (DatabaseForNotes.ContentLimitException e) {
-            toast(R.string.toast_vaultFull);
+        } catch (VaultException e) {
+            toast(VaultMessages.messageFor(e.getReason()));
             return;
         }
         noteId = id;
@@ -413,11 +403,9 @@ public class NoteFragment extends Fragment {
             return;
         }
         try {
-            synchronized (session.db) {
-                session.db.replaceFile(noteId, name, data);
-            }
-        } catch (DatabaseForNotes.ContentLimitException e) {
-            toast(R.string.toast_vaultFull);
+            session.vault.replaceFile(noteId, name, data);
+        } catch (VaultException e) {
+            toast(VaultMessages.messageFor(e.getReason()));
             return;
         }
         originalTitle = name;
@@ -439,8 +427,11 @@ public class NoteFragment extends Fragment {
         if (session == null) {
             return;
         }
-        synchronized (session.db) {
-            session.db.setStarred(noteId, !starred);
+        try {
+            session.vault.setStarred(noteId, !starred);
+        } catch (VaultException e) {
+            toast(VaultMessages.messageFor(e.getReason()));
+            return;
         }
         starred = !starred;
         App.persist(requireContext());
@@ -455,8 +446,11 @@ public class NoteFragment extends Fragment {
                 .setPositiveButton(R.string.yes, (dialog, which) -> {
                     final App.Session session = App.session();
                     if (session != null) {
-                        synchronized (session.db) {
-                            session.db.delete(noteId);
+                        try {
+                            session.vault.delete(noteId);
+                        } catch (VaultException e) {
+                            toast(VaultMessages.messageFor(e.getReason()));
+                            return;
                         }
                         App.persist(requireContext());
                     }

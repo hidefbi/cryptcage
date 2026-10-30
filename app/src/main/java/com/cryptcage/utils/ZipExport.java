@@ -67,29 +67,24 @@ public final class ZipExport {
     private ZipExport() {
     }
 
-    /** Builds the plan for the given entry ids. Unknown ids are skipped. */
-    public static Plan collect(final DatabaseForNotes db, final Collection<Long> ids) {
+    /**
+     * Builds the plan for the given entry ids, in id order. Every id must exist: the ids come
+     * from the list, so a missing one means the vault changed underneath the export.
+     */
+    public static Plan collect(final VaultSession vault, final Collection<Long> ids) throws VaultException {
         final List<Entry> entries = new ArrayList<>();
         final List<Record> records = new ArrayList<>();
         final Set<String> used = new HashSet<>();
-        final List<Long> ordered = new ArrayList<>(new TreeSet<>(ids));
-        synchronized (db) {
-            for (Long id : ordered) {
-                final Notes item = db.get(id);
-                if (item == null) {
-                    continue;
-                }
-                if (item.isFile()) {
-                    final String name = unique(used, fileEntryName(item.getFileName()));
-                    final byte[] data = item.getData() == null ? new byte[0] : item.getData().clone();
-                    entries.add(new Entry(name, data));
-                    records.add(new Record(id, item.getTitle(), "", false, true, name));
-                } else {
-                    final String name = unique(used, noteEntryName(item.getTitle()));
-                    final String body = item.getNote() == null ? "" : item.getNote();
-                    entries.add(new Entry(name, body.getBytes(StandardCharsets.UTF_8)));
-                    records.add(new Record(id, item.getTitle(), item.getTags(), item.isStarred(), false, name));
-                }
+        for (Long id : new TreeSet<>(ids)) {
+            final VaultSession.Summary item = vault.summary(id);
+            if (item.file) {
+                final String name = unique(used, fileEntryName(item.fileName));
+                entries.add(new Entry(name, vault.fileData(id)));
+                records.add(new Record(id, item.title, "", false, true, name));
+            } else {
+                final String name = unique(used, noteEntryName(item.title));
+                entries.add(new Entry(name, vault.body(id).getBytes(StandardCharsets.UTF_8)));
+                records.add(new Record(id, item.title, item.tags, item.starred, false, name));
             }
         }
         return new Plan(entries, records);

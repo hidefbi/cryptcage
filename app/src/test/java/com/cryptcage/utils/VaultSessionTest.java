@@ -169,6 +169,18 @@ public class VaultSessionTest {
     }
 
     @Test
+    public void closedSessionFailsSafely() throws Exception {
+        final VaultSession session = VaultSession.create(newFile(), password());
+        final long id = session.addNote("t", "body", "");
+        session.close();
+        assertTrue(session.list().isEmpty());
+        assertTrue(session.tagCounts().isEmpty());
+        assertReason(Reason.REJECTED, () -> session.body(id));
+        assertReason(Reason.REJECTED, () -> session.save());
+        assertReason(Reason.REJECTED, () -> session.search("t"));
+    }
+
+    @Test
     public void changePasswordKeepsContentAndDropsOldPassword() throws Exception {
         final File file = newFile();
         final long id;

@@ -27,12 +27,10 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.cryptcage.app.App;
 import com.cryptcage.app.Tasks;
-import com.cryptcage.utils.DatabaseForNotes;
 import com.cryptcage.utils.FileTypes;
 import com.cryptcage.utils.StringMethods;
 import com.cryptcage.utils.VaultException;
-import com.cryptcage.utils.VaultFile;
-import com.cryptcage.utils.VaultKey;
+import com.cryptcage.utils.VaultSession;
 import com.cryptcage.R;
 
 /**
@@ -208,14 +206,14 @@ public class SelectDatabaseActivity extends SecureActivity
         setBusy(true);
         Tasks.io(() -> {
             try {
-                final VaultFile.Opened opened = VaultFile.open(file, password);
+                final VaultSession vault = VaultSession.open(file, password);
                 Tasks.ui(() -> {
                     setBusy(false);
-                    App.setSession(new App.Session(file, opened.db, opened.key));
+                    App.setSession(new App.Session(file, vault));
                     startActivity(new Intent(this, MainActivity.class));
                 });
             } catch (VaultException e) {
-                final int message = messageFor(e.getReason());
+                final int message = VaultMessages.messageFor(e.getReason());
                 Tasks.ui(() -> {
                     setBusy(false);
                     toast(message);
@@ -238,25 +236,24 @@ public class SelectDatabaseActivity extends SecureActivity
         pendingImport = null;
         setBusy(true);
         Tasks.io(() -> {
-            VaultKey key = null;
+            VaultSession vault = null;
             try {
-                key = VaultFile.createKey(password);
-                final DatabaseForNotes db = new DatabaseForNotes();
+                vault = VaultSession.create(file, password);
                 if (imported != null) {
-                    db.addFile(imported.fileName, imported.data);
+                    vault.addFile(imported.fileName, imported.data);
                 }
-                VaultFile.save(file, db, key);
-                final VaultKey created = key;
+                vault.save();
+                final VaultSession created = vault;
                 Tasks.ui(() -> {
                     setBusy(false);
-                    App.setSession(new App.Session(file, db, created));
+                    App.setSession(new App.Session(file, created));
                     toast(imported != null && imported.secret
                             ? R.string.toast_secretFile : R.string.toast_success_newDB);
                     startActivity(new Intent(this, MainActivity.class));
                 });
             } catch (VaultException e) {
-                if (key != null) {
-                    key.wipe();
+                if (vault != null) {
+                    vault.close();
                 }
                 file.delete();
                 Tasks.ui(() -> {
@@ -367,7 +364,7 @@ public class SelectDatabaseActivity extends SecureActivity
                 }
                 result = R.string.toast_imported;
             } catch (VaultException e) {
-                result = messageFor(e.getReason());
+                result = VaultMessages.messageFor(e.getReason());
             } catch (IOException e) {
                 result = R.string.toast_IOError;
             } finally {
@@ -399,13 +396,13 @@ public class SelectDatabaseActivity extends SecureActivity
             boolean checked = false;
             while ((n = in.read(buf)) != -1) {
                 if (!checked) {
-                    if (!VaultFile.looksLikeVault(Arrays.copyOf(buf, n))) {
+                    if (!VaultSession.looksLikeVault(Arrays.copyOf(buf, n))) {
                         throw new VaultException(VaultException.Reason.NOT_A_VAULT, null);
                     }
                     checked = true;
                 }
                 total += n;
-                if (total > VaultFile.MAX_BYTES) {
+                if (total > VaultSession.MAX_CONTAINER_BYTES) {
                     throw new VaultException(VaultException.Reason.TOO_LARGE, null);
                 }
                 out.write(buf, 0, n);
@@ -447,21 +444,6 @@ public class SelectDatabaseActivity extends SecureActivity
 
     private void setBusy(final boolean busy) {
         spinner.setVisibility(busy ? View.VISIBLE : View.GONE);
-    }
-
-    private int messageFor(final VaultException.Reason reason) {
-        switch (reason) {
-            case BAD_PASSWORD_OR_DAMAGED:
-                return R.string.toast_wrongPassword;
-            case NOT_A_VAULT:
-                return R.string.toast_notVault;
-            case TOO_LARGE:
-                return R.string.toast_tooLarge;
-            case IO:
-                return R.string.toast_IOError;
-            default:
-                return R.string.toast_fatalError;
-        }
     }
 
     private void toast(final int message) {

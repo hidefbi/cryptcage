@@ -146,10 +146,7 @@ final class ExportFlow {
             final File temp = new File(app.getCacheDir(), "export-" + System.nanoTime() + ".zip");
             boolean ok;
             try {
-                final ZipExport.Plan plan;
-                synchronized (session.db) {
-                    plan = ZipExport.collect(session.db, ids);
-                }
+                final ZipExport.Plan plan = ZipExport.collect(session.vault, ids);
                 if (encrypted) {
                     EncryptedZip.write(temp, plan, password);
                 } else {

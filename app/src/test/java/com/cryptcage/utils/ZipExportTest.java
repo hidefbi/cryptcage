@@ -1,22 +1,39 @@
 package com.cryptcage.utils;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 
 public class ZipExportTest {
+
+    @Rule
+    public TemporaryFolder folder = new TemporaryFolder();
+
+    private int counter;
+
+    private VaultSession newVault() throws VaultException {
+        counter++;
+        final File file = new File(folder.getRoot(), "vault" + counter + ".cc3");
+        return VaultSession.create(file, "pw".toCharArray());
+    }
 
     private static Map<String, byte[]> readZip(final File file) throws IOException {
         final Map<String, byte[]> out = new HashMap<>();
@@ -35,68 +52,56 @@ public class ZipExportTest {
         return out;
     }
 
-    private static File exportToTemp(final DatabaseForNotes db, final long... ids) throws IOException {
-        final java.util.List<Long> list = new java.util.ArrayList<>();
+    private File exportToTemp(final VaultSession vault, final long... ids) throws Exception {
+        final List<Long> list = new ArrayList<>();
         for (long id : ids) {
             list.add(id);
         }
-        final File file = File.createTempFile("export", ".zip");
-        ZipExport.writePlain(file, ZipExport.collect(db, list));
+        final File file = folder.newFile();
+        ZipExport.writePlain(file, ZipExport.collect(vault, list));
         return file;
     }
 
     @Test
-    public void singleNoteIsStillAZip() throws IOException {
-        final DatabaseForNotes db = new DatabaseForNotes();
-        final long id = db.add("Hello", "body text", "work");
-        final File file = exportToTemp(db, id);
-        try {
-            final Map<String, byte[]> zip = readZip(file);
+    public void singleNoteIsStillAZip() throws Exception {
+        try (VaultSession vault = newVault()) {
+            final long id = vault.addNote("Hello", "body text", "work");
+            final Map<String, byte[]> zip = readZip(exportToTemp(vault, id));
             assertEquals(2, zip.size());
             assertTrue(Arrays.equals("body text".getBytes(StandardCharsets.UTF_8), zip.get("Hello.txt")));
             assertTrue(zip.containsKey(ZipExport.MANIFEST_NAME));
-        } finally {
-            file.delete();
         }
     }
 
     @Test
-    public void onlySelectedItemsAreExported() throws IOException {
-        final DatabaseForNotes db = new DatabaseForNotes();
-        final long keep = db.add("Keep", "k", "");
-        db.add("Skip", "s", "");
-        final long fileId = db.addFile("office.ovpn", "client\n".getBytes(StandardCharsets.UTF_8));
-        final File file = exportToTemp(db, keep, fileId);
-        try {
-            final Map<String, byte[]> zip = readZip(file);
+    public void onlySelectedItemsAreExported() throws Exception {
+        try (VaultSession vault = newVault()) {
+            final long keep = vault.addNote("Keep", "k", "");
+            vault.addNote("Skip", "s", "");
+            final long fileId = vault.addFile("office.ovpn", "client\n".getBytes(StandardCharsets.UTF_8));
+            final Map<String, byte[]> zip = readZip(exportToTemp(vault, keep, fileId));
             assertEquals(3, zip.size());
             assertTrue(zip.containsKey("Keep.txt"));
             assertTrue(zip.containsKey("office.ovpn"));
-            assertTrue(!zip.containsKey("Skip.txt"));
+            assertFalse(zip.containsKey("Skip.txt"));
             assertTrue(Arrays.equals("client\n".getBytes(StandardCharsets.UTF_8), zip.get("office.ovpn")));
-        } finally {
-            file.delete();
         }
     }
 
     @Test
-    public void duplicateTitlesGetDistinctNames() throws IOException {
-        final DatabaseForNotes db = new DatabaseForNotes();
-        final long a = db.add("Same", "one", "");
-        final long b = db.add("same", "two", "");
-        final File file = exportToTemp(db, a, b);
-        try {
-            final Map<String, byte[]> zip = readZip(file);
+    public void duplicateTitlesGetDistinctNames() throws Exception {
+        try (VaultSession vault = newVault()) {
+            final long a = vault.addNote("Same", "one", "");
+            final long b = vault.addNote("same", "two", "");
+            final Map<String, byte[]> zip = readZip(exportToTemp(vault, a, b));
             assertTrue(zip.containsKey("Same.txt"));
             assertTrue(zip.containsKey("same (2).txt"));
-        } finally {
-            file.delete();
         }
     }
 
     @Test
     public void manifestEscapesQuotesAndNewlines() {
-        final java.util.List<ZipExport.Record> records = new java.util.ArrayList<>();
+        final List<ZipExport.Record> records = new ArrayList<>();
         records.add(new ZipExport.Record(7L, "a \"quoted\"\nline", "x", true, false, "a.txt"));
         final String json = new String(ZipExport.manifest(records, false), StandardCharsets.UTF_8);
         assertTrue(json.contains("\"title\": \"a \\\"quoted\\\"\\nline\""));
@@ -104,10 +109,15 @@ public class ZipExportTest {
     }
 
     @Test
-    public void unknownIdsAreSkipped() {
-        final DatabaseForNotes db = new DatabaseForNotes();
-        final long id = db.add("One", "1", "");
-        final ZipExport.Plan plan = ZipExport.collect(db, java.util.Arrays.asList(id, 999L));
-        assertEquals(1, plan.entries.size());
+    public void missingIdIsRejected() throws Exception {
+        try (VaultSession vault = newVault()) {
+            final long id = vault.addNote("One", "1", "");
+            try {
+                ZipExport.collect(vault, Arrays.asList(id, 999L));
+                fail("a missing id was exported");
+            } catch (VaultException e) {
+                assertEquals(VaultException.Reason.REJECTED, e.getReason());
+            }
+        }
     }
 }

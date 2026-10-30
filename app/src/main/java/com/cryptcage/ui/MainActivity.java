@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -36,14 +37,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cryptcage.app.App;
 import com.cryptcage.app.Tasks;
-import com.cryptcage.utils.DatabaseForNotes;
 import com.cryptcage.utils.FileKinds;
 import com.cryptcage.utils.FileTypes;
-import com.cryptcage.utils.Notes;
 import com.cryptcage.utils.StringMethods;
 import com.cryptcage.utils.VaultException;
-import com.cryptcage.utils.VaultFile;
-import com.cryptcage.utils.VaultKey;
+import com.cryptcage.utils.VaultSession;
 import com.cryptcage.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomappbar.BottomAppBar;
@@ -55,6 +53,9 @@ import com.google.android.material.textfield.TextInputEditText;
 /**
  * The notes of an open vault. On a phone the list fills the screen and a note opens in
  * NoteActivity. On a wide screen the list sits on the left and the note on the right.
+ *
+ * The list is built from the index only, so bodies are not read to show it. A text search reads
+ * the bodies on a worker thread and the newest search wins.
  */
 public class MainActivity extends SecureActivity
         implements ChoosePasswordDialogFragment.Callback, NoteFragment.Listener {
@@ -82,6 +83,9 @@ public class MainActivity extends SecureActivity
 
     private String selectedTag;
     private String query = "";
+    /** Ids that match the query, or null when no search is applied. */
+    private Set<Long> searchHits;
+    private long searchToken;
     private boolean selecting;
     private boolean rebuildingChips;
     private boolean twoPane;
@@ -145,7 +149,7 @@ public class MainActivity extends SecureActivity
             @Override
             public void afterTextChanged(final Editable s) {
                 query = s == null ? "" : s.toString().trim();
-                refresh();
+                startSearch();
             }
         });
 
@@ -207,14 +211,11 @@ public class MainActivity extends SecureActivity
         final Context app = getApplicationContext();
         Tasks.io(() -> {
             try {
-                final VaultKey key = VaultFile.createKey(password);
-                VaultFile.save(current.file, current.db, key);
-                Tasks.ui(() -> {
-                    App.setSession(new App.Session(current.file, current.db, key));
-                    toast(app, R.string.toast_success_changePsw);
-                });
+                current.vault.changePassword(password);
+                Tasks.ui(() -> toast(app, R.string.toast_success_changePsw));
             } catch (VaultException e) {
-                Tasks.ui(() -> toast(app, R.string.toast_IOError));
+                final int message = VaultMessages.messageFor(e.getReason());
+                Tasks.ui(() -> toast(app, message));
             } finally {
                 Arrays.fill(password, '\0');
             }
@@ -289,9 +290,12 @@ public class MainActivity extends SecureActivity
             return;
         }
         final boolean pdf;
-        synchronized (session.db) {
-            final Notes note = session.db.get(id);
-            pdf = note != null && note.isFile() && FileKinds.typeOf(note.getFileName()) == FileKinds.Type.PDF;
+        try {
+            final VaultSession.Summary note = session.vault.summary(id);
+            pdf = note.file && FileKinds.typeOf(note.fileName) == FileKinds.Type.PDF;
+        } catch (VaultException e) {
+            toast(VaultMessages.messageFor(e.getReason()));
+            return;
         }
         if (pdf) {
             startActivity(new Intent(this, FileViewActivity.class)
@@ -384,9 +388,12 @@ public class MainActivity extends SecureActivity
     private void deleteEntries(final List<Long> ids) {
         final App.Session session = App.session();
         if (session != null) {
-            synchronized (session.db) {
-                for (Long id : ids) {
-                    session.db.delete(id);
+            for (Long id : ids) {
+                try {
+                    session.vault.delete(id);
+                } catch (VaultException e) {
+                    toast(VaultMessages.messageFor(e.getReason()));
+                    break;
                 }
             }
             App.persist(this);
@@ -399,59 +406,98 @@ public class MainActivity extends SecureActivity
     }
 
     private List<Long> allIds() {
+        final List<Long> ids = new ArrayList<>();
         final App.Session session = App.session();
-        if (session == null) {
-            return new ArrayList<>();
+        if (session != null) {
+            for (VaultSession.Summary note : session.vault.list()) {
+                ids.add(note.id);
+            }
         }
-        synchronized (session.db) {
-            return new ArrayList<>(session.db.allIds());
-        }
+        return ids;
     }
 
-    /** Rebuilds the list and the tag chips from the open database. */
+    /** Runs the text search on a worker thread. The newest request wins; an empty query clears it. */
+    private void startSearch() {
+        final long token = ++searchToken;
+        final String text = query;
+        final App.Session session = App.session();
+        if (text.isEmpty() || session == null) {
+            searchHits = null;
+            refresh();
+            return;
+        }
+        Tasks.io(() -> {
+            final List<Long> hits;
+            try {
+                hits = session.vault.search(text);
+            } catch (VaultException e) {
+                final int message = VaultMessages.messageFor(e.getReason());
+                Tasks.ui(() -> {
+                    if (App.session() == session) {
+                        toast(message);
+                    }
+                });
+                return;
+            }
+            Tasks.ui(() -> {
+                if (token == searchToken && App.session() == session) {
+                    searchHits = new HashSet<>(hits);
+                    refresh();
+                }
+            });
+        });
+    }
+
+    /** Rebuilds the list and the tag chips from the open vault's index. */
     private void refresh() {
         final App.Session session = App.session();
         if (session == null) {
             return;
         }
-        final DatabaseForNotes db = session.db;
+        final VaultSession vault = session.vault;
         final boolean alphabetical = prefs().getBoolean(PREF_ALPHABETICAL, false);
         final String untitled = getString(R.string.no_title);
-        final List<NotesAdapter.Item> shown = new ArrayList<>();
-        final Map<String, Integer> counts;
-        final int total;
 
-        synchronized (db) {
-            selectedIds.retainAll(db.allIds());
-            counts = db.tagCounts();
-            total = db.size();
-            if (selectedTag != null && !counts.containsKey(selectedTag)) {
-                selectedTag = null;
+        final List<VaultSession.Summary> all = vault.list();
+        final Map<String, Integer> counts = vault.tagCounts();
+        final int total = all.size();
+
+        final Set<Long> existing = new HashSet<>();
+        for (VaultSession.Summary note : all) {
+            existing.add(note.id);
+        }
+        selectedIds.retainAll(existing);
+        if (selectedTag != null && !counts.containsKey(selectedTag)) {
+            selectedTag = null;
+        }
+        final Set<Long> tagged = selectedTag == null ? null : new HashSet<>(vault.withTag(selectedTag));
+
+        final List<VaultSession.Summary> rows = new ArrayList<>();
+        for (VaultSession.Summary note : all) {
+            if (tagged != null && !tagged.contains(note.id)) {
+                continue;
             }
-            final List<Long> ids = new ArrayList<>(selectedTag == null ? db.allIds() : db.findTag(selectedTag));
-            Collections.sort(ids, (a, b) -> {
-                final Notes na = db.get(a);
-                final Notes nb = db.get(b);
-                final int starred = Boolean.compare(nb.isStarred(), na.isStarred());
-                if (starred != 0) {
-                    return starred;
-                }
-                if (alphabetical) {
-                    final String ta = na.getTitle() == null ? "" : na.getTitle();
-                    final String tb = nb.getTitle() == null ? "" : nb.getTitle();
-                    return ta.compareToIgnoreCase(tb);
-                }
-                return Long.compare(a, b);
-            });
-            for (Long id : ids) {
-                final Notes note = db.get(id);
-                if (!query.isEmpty()
-                        && !StringMethods.containsIgnoreCase(note.getTitle(), query)
-                        && !StringMethods.containsIgnoreCase(note.getNote(), query)) {
-                    continue;
-                }
-                shown.add(itemFor(id, note, untitled, selecting && selectedIds.contains(id)));
+            if (searchHits != null && !query.isEmpty() && !searchHits.contains(note.id)) {
+                continue;
             }
+            rows.add(note);
+        }
+        Collections.sort(rows, (a, b) -> {
+            final int starred = Boolean.compare(b.starred, a.starred);
+            if (starred != 0) {
+                return starred;
+            }
+            if (alphabetical) {
+                final String ta = a.title == null ? "" : a.title;
+                final String tb = b.title == null ? "" : b.title;
+                return ta.compareToIgnoreCase(tb);
+            }
+            return Long.compare(a.id, b.id);
+        });
+
+        final List<NotesAdapter.Item> shown = new ArrayList<>();
+        for (VaultSession.Summary note : rows) {
+            shown.add(itemFor(note, untitled, selecting && selectedIds.contains(note.id)));
         }
 
         rebuildChips(total, counts);
@@ -463,18 +509,18 @@ public class MainActivity extends SecureActivity
                 : StringMethods.getNameDB(session.file.getName()));
     }
 
-    private static NotesAdapter.Item itemFor(final long id, final Notes note, final String untitled,
+    private static NotesAdapter.Item itemFor(final VaultSession.Summary note, final String untitled,
                                              final boolean selected) {
-        final String title = note.getTitle();
+        final String title = note.title;
         final String shownTitle = title == null || title.isEmpty() ? untitled : title;
-        if (note.isFile()) {
-            final FileKinds.Type type = FileKinds.typeOf(note.getFileName());
+        if (note.file) {
+            final FileKinds.Type type = FileKinds.typeOf(note.fileName);
             final FileKinds.Type shownType = type == null ? FileKinds.Type.TXT : type;
-            return new NotesAdapter.Item(id, shownTitle, shownType.name(), shownType, false, selected);
+            return new NotesAdapter.Item(note.id, shownTitle, shownType.name(), shownType, false, selected);
         }
-        final String tags = note.getTags();
+        final String tags = note.tags;
         final String subtitle = tags == null || tags.isEmpty() ? null : tags.replace(",", ", ");
-        return new NotesAdapter.Item(id, shownTitle, subtitle, null, note.isStarred(), selected);
+        return new NotesAdapter.Item(note.id, shownTitle, subtitle, null, note.starred, selected);
     }
 
     private void rebuildChips(final int total, final Map<String, Integer> counts) {
@@ -537,11 +583,9 @@ public class MainActivity extends SecureActivity
             return;
         }
         try {
-            synchronized (session.db) {
-                session.db.addFile(name, data);
-            }
-        } catch (DatabaseForNotes.ContentLimitException e) {
-            toast(app, R.string.toast_vaultFull);
+            session.vault.addFile(name, data);
+        } catch (VaultException e) {
+            toast(app, VaultMessages.messageFor(e.getReason()));
             return;
         }
         App.persist(app);

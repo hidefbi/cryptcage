@@ -12,10 +12,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
 
-import com.cryptcage.utils.DatabaseForNotes;
 import com.cryptcage.utils.VaultException;
-import com.cryptcage.utils.VaultFile;
-import com.cryptcage.utils.VaultKey;
+import com.cryptcage.utils.VaultSession;
 import com.cryptcage.R;
 
 import java.io.File;
@@ -39,16 +37,14 @@ public class App extends Application {
 
     private static final Runnable AUTO_LOCK = () -> lock();
 
-    /** An unlocked vault: where it lives on disk, its notes, and the key used to save them. */
+    /** An unlocked vault: where it lives on disk and the open session on it. */
     public static final class Session {
         public final File file;
-        public final DatabaseForNotes db;
-        public final VaultKey key;
+        public final VaultSession vault;
 
-        public Session(final File file, final DatabaseForNotes db, final VaultKey key) {
+        public Session(final File file, final VaultSession vault) {
             this.file = file;
-            this.db = db;
-            this.key = key;
+            this.vault = vault;
         }
     }
 
@@ -137,21 +133,21 @@ public class App extends Application {
         return session != null;
     }
 
-    /** Makes the given vault the open one. The previous key (if any) is wiped. */
+    /** Makes the given vault the open one. The previous vault (if any) is closed. */
     public static void setSession(final Session next) {
         final Session previous;
         synchronized (App.class) {
             previous = session;
             session = next;
         }
-        if (previous != null && previous.key != next.key) {
-            Tasks.io(() -> previous.key.wipe());
+        if (previous != null && previous.vault != next.vault) {
+            Tasks.io(previous.vault::close);
         }
     }
 
     /**
      * Closes the open vault. A final save is queued first, so the last edit is never lost,
-     * and the key is wiped once the worker thread has finished with it.
+     * and the vault is closed once the worker thread has finished with it.
      */
     public static void lock() {
         final Session closing;
@@ -165,18 +161,18 @@ public class App extends Application {
         }
         Tasks.io(() -> {
             try {
-                VaultFile.save(closing.file, closing.db, closing.key);
+                closing.vault.save();
             } catch (VaultException ignored) {
-                // the previous good file is still on disk; nothing else to do here
+                // the previous good state is still on disk; nothing else to do here
             } finally {
-                closing.key.wipe();
+                closing.vault.close();
             }
         });
     }
 
     /**
      * Saves the open vault on the worker thread. The session is read when the task runs,
-     * so a save queued before a password change still uses the key that is current then.
+     * so a save queued before a lock or a password change uses the vault that is current then.
      */
     public static void persist(final Context context) {
         final Context app = context.getApplicationContext();
@@ -186,7 +182,7 @@ public class App extends Application {
                 return;
             }
             try {
-                VaultFile.save(current.file, current.db, current.key);
+                current.vault.save();
             } catch (VaultException e) {
                 Tasks.ui(() -> Toast.makeText(app, R.string.toast_saveFailed, Toast.LENGTH_LONG).show());
             }

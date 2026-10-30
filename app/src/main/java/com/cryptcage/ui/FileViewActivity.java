@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cryptcage.app.App;
-import com.cryptcage.utils.Notes;
+import com.cryptcage.utils.VaultException;
 import com.cryptcage.R;
 
 /**
@@ -100,12 +100,13 @@ public class FileViewActivity extends SecureActivity {
         if (session == null) {
             return null;
         }
-        synchronized (session.db) {
-            final Notes note = session.db.get(id);
-            if (note == null || !note.isFile() || note.getData() == null) {
+        try {
+            if (!session.vault.summary(id).file) {
                 return null;
             }
-            return note.getData().clone();
+            return session.vault.fileData(id);
+        } catch (VaultException e) {
+            return null;
         }
     }
 
