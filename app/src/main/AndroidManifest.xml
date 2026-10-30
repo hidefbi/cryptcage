@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:name="com.notecrypt.app.App"
+        android:allowBackup="false"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppBaseTheme">
+
+        <activity
+            android:name="com.notecrypt.ui.SelectDatabaseActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.notecrypt.ui.MainActivity"
+            android:exported="false"
+            android:label="@string/app_name" />
+
+        <activity
+            android:name="com.notecrypt.ui.EditNoteActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+
+        <activity
+            android:name="com.notecrypt.ui.ReadNoteActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.notecrypt.ui.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.notecrypt.ui.FileViewActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

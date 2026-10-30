@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="tech_background">#F3F7FA</color>
+    <color name="tech_surface">#FFFFFF</color>
+    <color name="tech_on_surface">#0F1B2A</color>
+    <color name="tech_surface_variant">#E3ECF2</color>
+    <color name="tech_on_surface_variant">#3E5061</color>
+    <color name="tech_outline">#8AA0B2</color>
+    <color name="tech_primary">#0891B2</color>
+    <color name="tech_on_primary">#FFFFFF</color>
+    <color name="tech_primary_container">#C8F1F9</color>
+    <color name="tech_on_primary_container">#003641</color>
+    <color name="tech_secondary_container">#D3EEF5</color>
+    <color name="tech_selected">#CDEFF7</color>
+</resources>

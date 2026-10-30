@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_starred"
+        android:icon="@drawable/icon_star_outline"
+        app:showAsAction="always"
+        android:title="@string/action_starred"/>
+    <item
+        android:id="@+id/action_edit"
+        android:icon="@drawable/icon_edit"
+        app:showAsAction="always"
+        android:title="@string/action_edit"/>
+    <item
+        android:id="@+id/action_exportFile"
+        android:icon="@drawable/icon_save"
+        app:showAsAction="ifRoom"
+        android:title="@string/action_exportFile"/>
+    <item
+        android:id="@+id/action_delete"
+        android:icon="@drawable/icon_delete"
+        app:showAsAction="ifRoom"
+        android:title="@string/action_delete"/>
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/icon_share"
+        app:showAsAction="ifRoom"
+        android:title="@string/action_share"/>
+
+</menu>

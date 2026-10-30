@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppBaseTheme" parent="Theme.Material3.DayNight">
+        <item name="colorPrimary">@color/tech_primary</item>
+        <item name="colorOnPrimary">@color/tech_on_primary</item>
+        <item name="colorPrimaryContainer">@color/tech_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/tech_on_primary_container</item>
+        <item name="colorSecondaryContainer">@color/tech_secondary_container</item>
+        <item name="colorSurface">@color/tech_surface</item>
+        <item name="colorOnSurface">@color/tech_on_surface</item>
+        <item name="colorSurfaceVariant">@color/tech_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/tech_on_surface_variant</item>
+        <item name="colorOutline">@color/tech_outline</item>
+        <item name="android:colorBackground">@color/tech_background</item>
+        <item name="android:selectableItemBackground">@drawable/selector</item>
+    </style>
+
+</resources>

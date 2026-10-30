@@ -1,0 +1,43 @@
+Unreleased
+* Removed the reader for first-release (1.x) files. Open them with 2.0 or 2.1 before updating.
+* Removed the option to hide entry names in encrypted exports. Names are kept as they are.
+* Encrypted exports are read back and compared with the source data before the file is kept.
+
+2.0 (versionCode 23)
+* Security: new vault format (v2). AES-256-GCM replaces AES-128-CBC, so any change to the file is detected. PBKDF2-HMAC-SHA256 with 600,000 iterations replaces PBKDF2-HMAC-SHA1 with 1,024 iterations.
+* Security: databases from 1.x open with the same password and are rewritten in the new format on first open, replacing the old file in place.
+* Security: notes are no longer stored as Java serialized objects. Opening an old file only accepts the classes a vault can contain.
+* Security: saves are atomic (write to a temporary file, then replace). The old hidden backup copies were removed; they kept copies encrypted with previous passwords.
+* Security: the master password is no longer passed between screens in an Intent. The key is kept in memory only while the vault is open and wiped on lock.
+* Security: password rules for new and changed passwords: at least 12 characters, mixed kinds unless 16 or longer.
+* Security: screenshots and recent-apps previews are blocked. Backups of app data are disabled.
+* Security: the app no longer needs storage permission. Databases live in the app's private storage; use Export and Import to move them.
+* Security: the vault locks automatically one minute after the app leaves the foreground.
+* Fix: editing the only note of a tag while filtered by that tag no longer crashes and no longer loses the edit.
+* Fix: tags can be separated by the Chinese comma as well as the English comma.
+* Fix: Chinese strings are used for Simplified Chinese locales, including zh-Hans regions. Remaining hard-coded text now comes from resources.
+* Fix: the search screen is part of the main list; the separate exported search activity was removed.
+* Change: targetSdk 34, minSdk 21, AndroidX libraries, Android Gradle Plugin 8.5.
+* Change: the PRNG compatibility patch was removed; the system SecureRandom is used.
+
+1.44
+* Add support to wider aspect ratio
+* Add Privacy Policy and FAQs (thanks to HarryHeights #41 #43)
+* NoteCrypt is now also translated in: Arabic, Czech, Danish, Finnish, French, German, Greek, Hindi, Hungarian, Indonesian, Kazakh, Lithuanian, Polish, Portuguese, Romanian, Russian, Spanish (Mexico), Spanish, Thai, Ukrainian, Vietnamese.
+Thanks to all the amazing contributors!
+
+1.43
+* Add Brazilian Portuguese translation (thanks to hanelore #8)
+* Prevent leaking passwords to accessibility services (thanks to mohammadnaseri #9 )
+
+1.42
+* Fixed issue #1 that prevented old Android versions to create a new DB
+* Added the Japanese translation (thanks to naofum)
+
+1.41
+* Fixed ActionBar color
+* Circular button for add a new note is available also for the old android versions
+
+1.40
+* The notes can now be shared individually
+* Bug fix when very large notes were stored

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NoteCrypt Pro 加密笔记</string>
+
+    <string name="action_newNote">新建笔记</string>
+    <string name="action_about">关于</string>
+    <string name="action_settings">设置</string>
+    <string name="action_changePassword">修改密码</string>
+    <string name="action_export">导出全部</string>
+    <string name="action_import">导入数据库</string>
+    <string name="action_filter">按标签筛选</string>
+    <string name="action_sort">排序</string>
+    <string name="action_search">搜索</string>
+    <string name="action_starred">星标</string>
+    <string name="action_share">分享</string>
+    <string name="action_edit">编辑</string>
+    <string name="action_save">保存</string>
+    <string name="action_delete">删除</string>
+    <string name="share_chooser">分享笔记</string>
+
+    <string name="title_createPassword">设置主密码</string>
+    <string name="title_changeMasterPass">输入新的主密码</string>
+    <string name="title_password">输入密码</string>
+    <string name="hint_field_new_password">新密码</string>
+    <string name="hint_field_conf_password">确认密码</string>
+    <string name="hint_field_password">密码</string>
+    <string name="pw_too_short">密码至少需要 %1$d 个字符。</string>
+    <string name="pw_too_simple">请混合使用字母、数字或符号，或使用 16 个字符以上的密码。</string>
+
+    <string name="title_databaseLocation">数据库名称：</string>
+    <string name="title_recentDB">数据库（点击打开，长按删除）：</string>
+    <string name="butt_open">打开</string>
+    <string name="butt_create">新建</string>
+    <string name="deleteRecent_message">删除此数据库？\n此操作无法撤销。</string>
+    <string name="imported_name">已导入</string>
+
+    <string name="title_note">标题：</string>
+    <string name="tags_note">标签：</string>
+    <string name="note_note">正文：</string>
+    <string name="hint_field_title">标题</string>
+    <string name="hint_field_tags">标签1，标签2，标签3……</string>
+    <string name="no_title">（无标题）</string>
+    <string name="all_items">全部</string>
+    <string name="no_notes">还没有笔记。\n点击 + 添加一条。</string>
+    <string name="no_textNote">这条笔记没有内容。</string>
+
+    <string name="title_deleteNote">删除笔记</string>
+    <string name="dialog_deleteNote">确定删除这条笔记吗？</string>
+    <string name="dialog_backNoSave">修改尚未保存。\n确定要离开吗？</string>
+    <string name="title_backClose">关闭</string>
+    <string name="dialog_backClose">关闭此数据库？</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+
+    <string name="toast_success_newNote">笔记已保存</string>
+    <string name="toast_success_deleteNote">笔记已删除</string>
+    <string name="toast_success_newDB">数据库已创建</string>
+    <string name="toast_success_changePsw">密码已修改</string>
+    <string name="toast_upgraded">数据库已升级为新的加密格式</string>
+    <string name="toast_imported">数据库已导入</string>
+    <string name="toast_exported">加密副本已导出</string>
+    <string name="toast_exportFailed">导出失败</string>
+    <string name="toast_saveFailed">保存失败，最近的修改可能会丢失。</string>
+    <string name="toast_locked">数据库已锁定</string>
+    <string name="toast_emptyPassword">密码不能为空</string>
+    <string name="toast_wrongPassword">密码错误，或数据库已损坏</string>
+    <string name="toast_wrongPath">没有找到这个名称的数据库</string>
+    <string name="toast_errorCreatingDB">无法创建数据库</string>
+    <string name="toast_wrongNewPassword">两次输入的密码不一致</string>
+    <string name="toast_nameInvalid">名称只能包含字母、数字、空格或短横线</string>
+    <string name="toast_fileExists">已存在同名数据库</string>
+    <string name="toast_notVault">这不是 NoteCrypt 数据库文件</string>
+    <string name="toast_tooLarge">文件太大</string>
+    <string name="toast_IOError">读写出错</string>
+    <string name="toast_fatalError">发生未知错误</string>
+    <string name="toast_sort_alphabet">已按标题排序</string>
+    <string name="toast_sort_creation">已按创建时间排序</string>
+    <string name="toast_version">NoteCrypt 版本</string>
+    <string name="toast_createdBy">\n作者：Ludovico de Nittis</string>
+    <string name="toast_errorVersion">无法读取版本信息</string>
+
+    <string name="pref_drawer">启动时展开标签抽屉</string>
+    <string name="pref_drawer_summ">打开数据库时短暂显示标签抽屉</string>
+    <string name="pref_textSize">笔记字号</string>
+    <string-array name="pref_textSize_entries">
+        <item>极小</item>
+        <item>小</item>
+        <item>正常</item>
+        <item>大</item>
+        <item>极大</item>
+    </string-array>
+    <string-array name="pref_textSize_values">
+        <item>15</item>
+        <item>18</item>
+        <item>20</item>
+        <item>22</item>
+        <item>25</item>
+    </string-array>
+    <string name="pref_textSize_default">20</string>
+    <string name="action_importFile">导入文件</string>
+    <string name="action_exportFile">导出</string>
+    <string name="action_prev">上一页</string>
+    <string name="action_next">下一页</string>
+    <string name="toast_fileImported">文件已导入</string>
+    <string name="toast_fileUnsupported">只能导入 .ovpn、.conf、.pdf、.txt 文件</string>
+    <string name="toast_fileInvalid">文件内容与类型不符，或文本不是 UTF-8 编码</string>
+    <string name="toast_vaultFull">数据库已满，请先删除部分内容后再添加</string>
+    <string name="toast_pdfFailed">无法打开此 PDF 文件</string>
+    <string name="file_hint_name">文件名</string>
+    <string name="pdf_page">第 %1$d 页，共 %2$d 页</string>
+    <string name="pdf_content_desc">PDF 页面</string>
+    <string name="action_exportSelected">导出所选</string>
+    <string name="action_cancelSelection">取消选择</string>
+    <string name="export_mode_title">导出方式</string>
+    <string name="export_plain">普通 ZIP（不加密）</string>
+    <string name="export_encrypted">加密 ZIP（AES-256）</string>
+    <string name="export_password_title">设置导出密码</string>
+    <string name="toast_zipSaved">ZIP 已保存</string>
+    <string name="toast_nothingSelected">请先选择至少一项</string>
+    <string name="selected_count">已选 %1$d 项</string>
+    <string name="dialog_deleteSelected">删除所选的 %1$d 项？</string>
+    <string name="pref_theme">主题</string>
+    <string-array name="pref_theme_entries">
+        <item>跟随系统</item>
+        <item>浅色</item>
+        <item>深色</item>
+    </string-array>
+    <string-array name="pref_theme_values">
+        <item>system</item>
+        <item>light</item>
+        <item>dark</item>
+    </string-array>
+</resources>
