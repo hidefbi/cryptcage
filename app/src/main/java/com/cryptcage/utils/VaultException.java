@@ -15,7 +15,11 @@ public class VaultException extends Exception {
         /** Disk or file system error. */
         IO,
         /** Something unexpected inside the crypto layer. */
-        INTERNAL
+        INTERNAL,
+        /** The vault has reached its content limit, so the change was not made. */
+        LIMIT_REACHED,
+        /** The change is not allowed, for example because the entry is read-only. */
+        REJECTED
     }
 
     private final Reason reason;
