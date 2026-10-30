@@ -26,6 +26,9 @@ final class NoteRepository implements AutoCloseable {
     /** Total size of titles, tags, names, bodies and file contents. */
     static final long CONTENT_LIMIT = 1L << 30;
 
+    /** Unused bytes below this amount are not worth a rewrite. */
+    static final long COMPACT_MIN_WASTE = 64L << 20;
+
     private static final int INDEX_VERSION = 1;
     private static final int MAX_STRING_BYTES = 1 << 20;
     private static final int MAX_ENTRIES = 1_000_000;
@@ -61,7 +64,7 @@ final class NoteRepository implements AutoCloseable {
         }
     }
 
-    private final BlockStore store;
+    private BlockStore store;
     private final TreeMap<Long, Entry> entries = new TreeMap<>();
     private long nextEntry = 1;
     private long nextBlock = 1;
@@ -164,6 +167,23 @@ final class NoteRepository implements AutoCloseable {
     /** Saves every change made since the last commit. */
     void commit() throws StoreException {
         store.commit(encodeIndex());
+    }
+
+    /** Bytes the file takes up on disk. */
+    long fileBytes() throws StoreException {
+        return store.fileBytes();
+    }
+
+    /** True when unused records take up more than half the file and more than 64 MB. */
+    boolean needsCompaction() throws StoreException {
+        final long waste = store.fileBytes() - store.liveBytes();
+        return waste > COMPACT_MIN_WASTE && waste > store.liveBytes();
+    }
+
+    /** Commits pending changes, then rewrites the file without the unused records. */
+    void compact() throws StoreException {
+        commit();
+        store = store.compact();
     }
 
     @Override

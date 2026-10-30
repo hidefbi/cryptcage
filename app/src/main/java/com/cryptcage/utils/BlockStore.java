@@ -70,6 +70,7 @@ final class BlockStore implements AutoCloseable {
             4 + MAX_BLOCKS * ENTRY_BYTES + 4 + MAX_PAYLOAD_BYTES + RECORD_OVERHEAD;
 
     private final RandomAccessFile raf;
+    private final File path;
     private final byte[] fileId;
     private final byte[] blockKey;
     private final byte[] macKey;
@@ -77,6 +78,7 @@ final class BlockStore implements AutoCloseable {
     private byte[] payload = new byte[0];
     private long generation;
     private boolean closed;
+    private boolean pending;
     private List<byte[]> nonceLog;
 
     private static final class Ref {
@@ -103,12 +105,19 @@ final class BlockStore implements AutoCloseable {
         }
     }
 
-    private BlockStore(final RandomAccessFile raf, final byte[] fileId, final byte[] dataKey)
-            throws GeneralSecurityException {
+    private BlockStore(final RandomAccessFile raf, final File path, final byte[] fileId,
+                       final byte[] blockKey, final byte[] macKey) {
         this.raf = raf;
-        this.fileId = fileId;
-        this.blockKey = deriveKey(dataKey, "cc3 block key");
-        this.macKey = deriveKey(dataKey, "cc3 slot mac");
+        this.path = path;
+        this.fileId = fileId.clone();
+        this.blockKey = blockKey.clone();
+        this.macKey = macKey.clone();
+    }
+
+    private static BlockStore withDataKey(final RandomAccessFile raf, final File path, final byte[] fileId,
+                                          final byte[] dataKey) throws GeneralSecurityException {
+        return new BlockStore(raf, path, fileId,
+                deriveKey(dataKey, "cc3 block key"), deriveKey(dataKey, "cc3 slot mac"));
     }
 
     /** Makes a new, empty container at a path that does not exist yet. */
@@ -141,7 +150,7 @@ final class BlockStore implements AutoCloseable {
             raf.write(new byte[DATA_START - PROLOGUE_BYTES]);
             raf.getFD().sync();
 
-            final BlockStore store = new BlockStore(raf, fileId, dataKey);
+            final BlockStore store = withDataKey(raf, file, fileId, dataKey);
             store.commit(new byte[0]);
             return store;
         } catch (GeneralSecurityException e) {
@@ -198,7 +207,7 @@ final class BlockStore implements AutoCloseable {
                 throw new StoreException(Reason.CORRUPT, "data key length");
             }
             final byte[] fileId = Arrays.copyOfRange(prologue, OFF_FILE_ID, OFF_FILE_ID + FILE_ID_BYTES);
-            final BlockStore store = new BlockStore(raf, fileId, dataKey);
+            final BlockStore store = withDataKey(raf, file, fileId, dataKey);
             store.load();
             opened = true;
             return store;
@@ -232,6 +241,7 @@ final class BlockStore implements AutoCloseable {
             raf.seek(offset);
             raf.write(record);
             catalog.put(id, new Ref(offset, record.length, gen));
+            pending = true;
         } catch (GeneralSecurityException e) {
             throw new StoreException(Reason.INTERNAL, "block seal");
         } catch (IOException e) {
@@ -258,7 +268,9 @@ final class BlockStore implements AutoCloseable {
 
     void removeBlock(final long id) {
         ensureOpen();
-        catalog.remove(id);
+        if (catalog.remove(id) != null) {
+            pending = true;
+        }
     }
 
     Set<Long> blockIds() {
@@ -292,10 +304,95 @@ final class BlockStore implements AutoCloseable {
             raf.getFD().sync();
             generation = gen;
             payload = userPayload.clone();
+            pending = false;
         } catch (GeneralSecurityException e) {
             throw new StoreException(Reason.INTERNAL, "index seal");
         } catch (IOException e) {
             throw new StoreException(Reason.IO, e.getMessage());
+        }
+    }
+
+    /** Bytes the container occupies on disk, unused records included. */
+    long fileBytes() throws StoreException {
+        ensureOpen();
+        try {
+            return raf.length();
+        } catch (IOException e) {
+            throw new StoreException(Reason.IO, e.getMessage());
+        }
+    }
+
+    /** Bytes that the saved state needs: the header area and every referenced record. */
+    long liveBytes() {
+        ensureOpen();
+        long total = DATA_START;
+        for (Ref ref : catalog.values()) {
+            total += ref.length;
+        }
+        return total;
+    }
+
+    /**
+     * Rewrites the container with only the blocks in use and puts the result in place of this
+     * file. The data key is reused, so no password is needed. Changes must be committed first.
+     * Returns the store for the new file; this store is closed afterwards.
+     */
+    BlockStore compact() throws StoreException {
+        ensureOpen();
+        if (pending) {
+            throw new StoreException(Reason.BAD_ARGUMENT, "commit before compacting");
+        }
+        final File tmp = new File(path.getParentFile(), "." + path.getName() + ".compact");
+        if (tmp.exists() && !tmp.delete()) {
+            throw new StoreException(Reason.IO, "could not clear an old temporary file");
+        }
+        try {
+            writeCopy(tmp);
+            if (!tmp.renameTo(path)) {
+                tmp.delete();
+                throw new StoreException(Reason.IO, "could not replace the container");
+            }
+        } catch (IOException e) {
+            tmp.delete();
+            throw new StoreException(Reason.IO, e.getMessage());
+        }
+        final BlockStore fresh;
+        try {
+            fresh = new BlockStore(new RandomAccessFile(path, "rw"), path, fileId, blockKey, macKey);
+        } catch (IOException e) {
+            throw new StoreException(Reason.IO, e.getMessage());
+        }
+        try {
+            fresh.load();
+        } catch (IOException | GeneralSecurityException e) {
+            fresh.close();
+            throw new StoreException(Reason.CORRUPT, "compacted container does not load");
+        } catch (StoreException e) {
+            fresh.close();
+            throw e;
+        }
+        close();
+        return fresh;
+    }
+
+    private void writeCopy(final File tmp) throws IOException, StoreException {
+        final byte[] prologue = readBytes(0, PROLOGUE_BYTES);
+        final RandomAccessFile out = new RandomAccessFile(tmp, "rw");
+        final BlockStore copy = new BlockStore(out, tmp, fileId, blockKey, macKey);
+        boolean done = false;
+        try {
+            out.write(prologue);
+            out.write(new byte[DATA_START - PROLOGUE_BYTES]);
+            for (long id : new ArrayList<>(catalog.keySet())) {
+                copy.putBlock(id, getBlock(id));
+            }
+            copy.commit(payload);
+            done = true;
+        } finally {
+            copy.close();
+            if (!done) {
+                tmp.delete();
+            }
         }
     }
 

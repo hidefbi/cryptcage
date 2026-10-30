@@ -2,6 +2,7 @@ package com.cryptcage.utils;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -321,6 +322,57 @@ public class BlockStoreTest {
             fail("old format accepted");
         } catch (StoreException e) {
             assertEquals(Reason.NOT_A_STORE, e.reason());
+        }
+    }
+
+    @Test
+    public void compactionDropsUnusedRecordsAndKeepsState() throws Exception {
+        final File file = newFile();
+        final byte[] latest;
+        final long before;
+        BlockStore store = BlockStore.create(file, password(), ITERATIONS);
+        try {
+            store.putBlock(1, random(50_000, 1));
+            store.putBlock(2, random(50_000, 2));
+            store.putBlock(3, bytes("three"));
+            store.commit(bytes("p1"));
+            for (int round = 0; round < 6; round++) {
+                store.putBlock(1, random(50_000, 10 + round));
+                store.commit(bytes("p-" + round));
+            }
+            store.removeBlock(2);
+            store.commit(bytes("final"));
+            latest = store.getBlock(1);
+            before = store.fileBytes();
+            assertTrue(store.liveBytes() < before);
+
+            store = store.compact();
+            assertEquals(new TreeSet<>(Arrays.asList(1L, 3L)), store.blockIds());
+            assertArrayEquals(latest, store.getBlock(1));
+            assertEquals("three", text(store.getBlock(3)));
+            assertEquals("final", text(store.payload()));
+            assertTrue(store.fileBytes() < before / 2);
+        } finally {
+            store.close();
+        }
+        assertFalse(new File(folder.getRoot(), "." + file.getName() + ".compact").exists());
+        try (BlockStore reopened = BlockStore.open(file, password())) {
+            assertArrayEquals(latest, reopened.getBlock(1));
+            assertEquals("final", text(reopened.payload()));
+        }
+    }
+
+    @Test
+    public void compactionRefusesUncommittedChanges() throws Exception {
+        try (BlockStore store = BlockStore.create(newFile(), password(), ITERATIONS)) {
+            store.commit(bytes("p"));
+            store.putBlock(1, bytes("not yet saved"));
+            try {
+                store.compact();
+                fail("compacted with uncommitted changes");
+            } catch (StoreException e) {
+                assertEquals(Reason.BAD_ARGUMENT, e.reason());
+            }
         }
     }
 

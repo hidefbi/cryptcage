@@ -213,6 +213,33 @@ public class NoteRepositoryTest {
         }
     }
 
+    @Test
+    public void compactionShrinksFileAndKeepsContent() throws Exception {
+        final File file = newFile();
+        final long before;
+        try (NoteRepository repo = NoteRepository.create(file, password(), ITERATIONS)) {
+            final long id = repo.addNote("t", repeat('a', 2 << 20), "");
+            repo.addFile("keep.bin", randomBytes(300_000, 4));
+            repo.commit();
+            for (char c = 'b'; c <= 'i'; c++) {
+                repo.updateNote(id, "t", repeat(c, 2 << 20), "");
+                repo.commit();
+            }
+            before = repo.fileBytes();
+            assertFalse(repo.needsCompaction());
+
+            repo.compact();
+            assertTrue(repo.fileBytes() < before / 2);
+            assertEquals(repeat('i', 2 << 20), repo.readBody(id));
+            assertArrayEquals(randomBytes(300_000, 4), repo.readFile(id + 1));
+        }
+        assertFalse(new File(folder.getRoot(), ".vault.cc3.compact").exists());
+        try (NoteRepository repo = NoteRepository.open(file, password())) {
+            assertEquals(repeat('i', 2 << 20), repo.readBody(1));
+            assertArrayEquals(randomBytes(300_000, 4), repo.readFile(2));
+        }
+    }
+
     private static String repeat(final char c, final int count) {
         final char[] chars = new char[count];
         java.util.Arrays.fill(chars, c);
