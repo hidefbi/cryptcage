@@ -70,6 +70,6 @@
     <string name="toast_secretFile">Ceci est une clé ou un certificat. Gardez-le confidentiel.</string>
     <string name="import_createTitle">Créer une base de données ?</string>
     <string name="import_createMessage">Une nouvelle base de données sera créée et ce fichier y sera enregistré. Vous définirez ensuite son mot de passe.</string>
-    <string name="select_note_hint">Sélectionnez une note pour l'afficher ou la modifier</string>
+    <string name="select_note_hint">Sélectionnez une note pour l\'afficher ou la modifier</string>
     <string name="action_cancelEdit">Annuler la modification</string>
 </resources>
