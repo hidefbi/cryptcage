@@ -44,7 +44,6 @@
     <string name="dialog_backClose">वाकई में डेटाबेस बंद करें?</string>
     <string name="title_backClose">बंद करें</string>
     <string name="toast_version">CryptCage version</string>
-    <string name="toast_createdBy">\nलुडोविको द निटिस द्वारा बनाये गए</string>
     <string name="toast_errorVersion">वर्शन खोजने में त्रुटि!</string>
     <string name="no_notes">यहां कोई नोट नहीं है।\nनोट जुटाने के लिए + बटन दबाएं।</string>
     <string name="no_textNote">खाली नोट टेक्स्ट।</string>

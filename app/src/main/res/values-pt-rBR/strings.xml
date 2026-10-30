@@ -44,7 +44,6 @@
     <string name="dialog_backClose">Realmente deseja fechar o banco de dados?</string>
     <string name="title_backClose">Fechar</string>
     <string name="toast_version">Versão Do CryptCage</string>
-    <string name="toast_createdBy">\nCriado por Ludovico de Nittis</string>
     <string name="toast_errorVersion">Erro para encontrar a versão!</string>
     <string name="no_notes">Sem notas aqui.\nAperte o botão + para adicionar uma nota.</string>
     <string name="no_textNote">Texto Com Nota Vazia.</string>

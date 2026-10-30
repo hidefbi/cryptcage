@@ -4,7 +4,7 @@ plugins {
 
 // Release signing is optional. Put the values in ~/.gradle/gradle.properties,
 // never in this project. Without them, the release build is left unsigned.
-def releaseKeystore = findProperty('NC_KEYSTORE')
+def releaseKeystore = findProperty('CC_KEYSTORE')
 
 android {
     namespace 'com.cryptcage'
@@ -22,9 +22,9 @@ android {
         release {
             if (releaseKeystore) {
                 storeFile file(releaseKeystore)
-                storePassword findProperty('NC_STORE_PASS')
-                keyAlias findProperty('NC_KEY_ALIAS')
-                keyPassword findProperty('NC_KEY_PASS')
+                storePassword findProperty('CC_STORE_PASS')
+                keyAlias findProperty('CC_KEY_ALIAS')
+                keyPassword findProperty('CC_KEY_PASS')
             }
         }
     }

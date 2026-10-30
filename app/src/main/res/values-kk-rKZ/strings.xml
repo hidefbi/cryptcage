@@ -44,7 +44,6 @@
     <string name="dialog_backClose">Дерекқорды шынымен жабу керек пе?</string>
     <string name="title_backClose">Жабу</string>
     <string name="toast_version">CryptCage нұсқасы</string>
-    <string name="toast_createdBy">\nLudovico de Nittis жасалған</string>
     <string name="toast_errorVersion">Нұсқа іздеу қатесі!</string>
     <string name="no_notes">Ескертпелер жоқ. \ n Жазбаны қосу үшін + түймесін басыңыз.</string>
     <string name="no_textNote">Бос мәтіндік ескерту.</string>

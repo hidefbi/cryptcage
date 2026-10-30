@@ -44,7 +44,6 @@
     <string name="dialog_backClose">Να κλέισει όντως η βάση δεδομένων;</string>
     <string name="title_backClose">Κλείσιμο</string>
     <string name="toast_version">Έκδοση CryptCage</string>
-    <string name="toast_createdBy">\nΔημιουργήθηκε από τον Ludovico de Nittis</string>
     <string name="toast_errorVersion">Πρόβλημα στην εύρεση έκδοσης!</string>
     <string name="no_notes">Καμία σημείωση εδώ.\nΠιέστε το + πλήκτρο για να προσθέτε σημείωση.</string>
     <string name="no_textNote">Κενό Κείμενο Σημείωσης.</string>

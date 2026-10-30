@@ -56,9 +56,7 @@
     <string name="toast_success_deleteNote">笔记已删除</string>
     <string name="toast_success_newDB">数据库已创建</string>
     <string name="toast_success_changePsw">密码已修改</string>
-    <string name="toast_upgraded">数据库已升级为新的加密格式</string>
     <string name="toast_imported">数据库已导入</string>
-    <string name="toast_exported">加密副本已导出</string>
     <string name="toast_exportFailed">导出失败</string>
     <string name="toast_saveFailed">保存失败，最近的修改可能会丢失。</string>
     <string name="toast_locked">数据库已锁定</string>
@@ -76,7 +74,6 @@
     <string name="toast_sort_alphabet">已按标题排序</string>
     <string name="toast_sort_creation">已按创建时间排序</string>
     <string name="toast_version">CryptCage 版本</string>
-    <string name="toast_createdBy">\n作者：Ludovico de Nittis</string>
     <string name="toast_errorVersion">无法读取版本信息</string>
 
     <string name="pref_drawer">启动时展开标签抽屉</string>

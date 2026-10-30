@@ -10,12 +10,6 @@ import org.junit.Test;
 public class StringMethodsTest {
 
     @Test
-    public void extensionIsAddedOnce() {
-        assertEquals("/test_path/file_name.ncf", StringMethods.checkExtension("/test_path/file_name"));
-        assertEquals("notes.ncf", StringMethods.checkExtension("notes.ncf"));
-    }
-
-    @Test
     public void nameWithoutExtension() {
         assertEquals("file_name", StringMethods.getNameDB("/test_path/file_name.ncf"));
         assertEquals("file_name", StringMethods.getNameDB("/test_path/file_name"));

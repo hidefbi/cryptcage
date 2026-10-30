@@ -44,7 +44,6 @@
     <string name="dialog_backClose">Дійсно закрити базу даних?</string>
     <string name="title_backClose">Закрити</string>
     <string name="toast_version">CryptCage версія</string>
-    <string name="toast_createdBy">\nСтворено: Ludovico de Nittis</string>
     <string name="toast_errorVersion">Помилка при пошуку версії!</string>
     <string name="no_notes">Нотатки відсутні.\nНатисніть кнопку + щоб додати нотатку.</string>
     <string name="no_textNote">Порожня нотатка.</string>

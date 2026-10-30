@@ -13,7 +13,7 @@ These steps use the Android command-line tools, Gradle and adb. Android Studio i
 
     export ANDROID_HOME=$HOME/Android/Sdk
     export PATH=$PATH:$ANDROID_HOME/platform-tools
-    cd cryptcage-2.0-src
+    cd CryptCage
     echo "sdk.dir=$ANDROID_HOME" > local.properties
     ./gradlew testDebugUnitTest
     ./gradlew assembleDebug
@@ -29,10 +29,10 @@ Create a keystore once and keep it safe. Losing it means existing installs can n
 
 Add these lines to ~/.gradle/gradle.properties (not to the project):
 
-    NC_KEYSTORE=/home/you/cryptcage-release.jks
-    NC_KEY_ALIAS=cryptcage
-    NC_STORE_PASS=...
-    NC_KEY_PASS=...
+    CC_KEYSTORE=/home/you/cryptcage-release.jks
+    CC_KEY_ALIAS=cryptcage
+    CC_STORE_PASS=...
+    CC_KEY_PASS=...
 
 Then build:
 

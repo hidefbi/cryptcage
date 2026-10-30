@@ -44,7 +44,6 @@
     <string name="dialog_backClose">Apakah yakin ingin menutup database?</string>
     <string name="title_backClose">Tutup</string>
     <string name="toast_version">versi CryptCage</string>
-    <string name="toast_createdBy">\nDibuat oleh Ludovico de Nittis</string>
     <string name="toast_errorVersion">Kesalahan mencari versi!</string>
     <string name="no_notes">Tidak ada catatan di sini.\nTekan tombol + untuk menambahkan catatan.</string>
     <string name="no_textNote">Teks Catatan Kosong.</string>

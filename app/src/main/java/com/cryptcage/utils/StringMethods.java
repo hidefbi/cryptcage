@@ -13,14 +13,6 @@ public final class StringMethods {
     private StringMethods() {
     }
 
-    /** Appends the extension unless the path already ends with it. */
-    public static String checkExtension(final String path) {
-        if (path.equals("") || path.length() < EXTENSION.length() || !path.endsWith(EXTENSION)) {
-            return path + EXTENSION;
-        }
-        return path;
-    }
-
     /** Name of the vault without directories and without the extension. */
     public static String getNameDB(final String path) {
         String name = path.substring(path.lastIndexOf('/') + 1);

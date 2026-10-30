@@ -44,7 +44,6 @@
     <string name="dialog_backClose">متأكد من اغلاق قاعدة البيانات؟</string>
     <string name="title_backClose">اغلق</string>
     <string name="toast_version">CryptCage اصدار</string>
-    <string name="toast_createdBy">\n Ludovico de Nittis تم الانشاء بواسطة</string>
     <string name="toast_errorVersion">خطأ في الحصول على الاصدار !</string>
     <string name="no_notes">لا توجد ملحوظات هنا.\n اضغط على الـ+ لاضافة ملحوظة جديدة</string>
     <string name="no_textNote">ملحوظة فارغة .</string>

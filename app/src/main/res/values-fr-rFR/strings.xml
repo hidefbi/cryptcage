@@ -44,7 +44,6 @@
     <string name="dialog_backClose">Voulez-vous fermer la base de données ?</string>
     <string name="title_backClose">Fermer</string>
     <string name="toast_version">Version du logiciel</string>
-    <string name="toast_createdBy">\nCréé par Ludovico de Nittis</string>
     <string name="toast_errorVersion">Erreur lors de la recherche de la version !</string>
     <string name="no_notes">Aucune note.\nUtilisez le bouton \'+\' pour en ajouter une.</string>
     <string name="no_textNote">Aucune note de type texte.</string>

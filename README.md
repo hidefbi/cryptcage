@@ -18,12 +18,3 @@ If you forget your password, the notes will be inaccessible.
 
 Databases from older versions still open with the same password and are upgraded automatically the first time they are opened.
 
-Thanks to [naofum](https://github.com/naofum) for the Japanese translation and to [hanelore](https://github.com/hanelore) for the Brazilian Portuguese translation.
-
-## Download
-
-[<img src="https://f-droid.org/badge/get-it-on.png"
-      alt="Get it on F-Droid"
-      height="80">](https://f-droid.org/app/com.notecryptpro) [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
-      alt="Get it on Google Play"
-      height="80">](https://play.google.com/store/apps/developer?id=Ludovico+de+Nittis)

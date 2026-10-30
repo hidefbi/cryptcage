@@ -30,6 +30,6 @@ This policy may be updated when the app changes. The date of the latest change i
 
 ## Contact
 
-Questions about this policy can be sent through an [issue on GitHub](https://github.com/RyuzakiKK/NoteCrypt/issues/new).
+Questions about this policy can be sent through the issue tracker of the repository you obtained CryptCage from.
 
 Last updated: 2026-10-27.

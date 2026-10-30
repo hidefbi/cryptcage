@@ -44,7 +44,6 @@
     <string name="dialog_backClose">データベースを閉じてもよろしいですか?</string>
     <string name="title_backClose">閉じる</string>
     <string name="toast_version">CryptCage バージョン</string>
-    <string name="toast_createdBy">\n作成者 Ludovico de Nittis</string>
     <string name="toast_errorVersion">バージョンの取得時にエラー!</string>
     <string name="no_notes">ここにメモはありません。\n+ ボタンを押してメモを追加してください。</string>
     <string name="no_textNote">メモは空です。</string>

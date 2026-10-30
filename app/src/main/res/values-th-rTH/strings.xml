@@ -44,7 +44,6 @@
     <string name="dialog_backClose">ต้องการปิดฐานข้อมูลนี้ใช่ไหม</string>
     <string name="title_backClose">ปิด</string>
     <string name="toast_version">CryptCage เวอร์ชั่น</string>
-    <string name="toast_createdBy">\nสร้างโดย Ludovico de Nittis</string>
     <string name="toast_errorVersion">มีข้อผิดพลาดขณะกำลังค้นหาเวอร์ชั่น</string>
     <string name="no_notes">ยังไม่มีบันทึก.\nกดปุ่ม + เพื่อเพิ่มบันทึกใหม่</string>
     <string name="no_textNote">ไม่มีข้อความ</string>

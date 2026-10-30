@@ -56,9 +56,7 @@
     <string name="toast_success_deleteNote">Note deleted</string>
     <string name="toast_success_newDB">Database created</string>
     <string name="toast_success_changePsw">Password changed</string>
-    <string name="toast_upgraded">Database upgraded to the current format</string>
     <string name="toast_imported">Database imported</string>
-    <string name="toast_exported">Encrypted copy saved</string>
     <string name="toast_exportFailed">Export failed</string>
     <string name="toast_saveFailed">Could not save. Your latest changes may be lost.</string>
     <string name="toast_locked">The database is locked</string>
@@ -76,7 +74,6 @@
     <string name="toast_sort_alphabet">Sorted by title</string>
     <string name="toast_sort_creation">Sorted by creation time</string>
     <string name="toast_version">CryptCage version</string>
-    <string name="toast_createdBy">\nCreated by Ludovico de Nittis</string>
     <string name="toast_errorVersion">Could not read the version</string>
 
     <string name="pref_drawer">Open the tag drawer on start</string>

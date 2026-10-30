@@ -44,7 +44,6 @@
     <string name="dialog_backClose">Tikrai išjungti duomenų bazę?</string>
     <string name="title_backClose">Išjungti</string>
     <string name="toast_version">CryptCage versija.</string>
-    <string name="toast_createdBy">\nSukurta Ludovico de Nittis</string>
     <string name="toast_errorVersion">Klaida randant versija!</string>
     <string name="no_notes">Nera jokių lapų čia.\n Spauskite + mygtuką kad pridėtumete lapą.</string>
     <string name="no_textNote">Tuščio lapo tekstas.</string>

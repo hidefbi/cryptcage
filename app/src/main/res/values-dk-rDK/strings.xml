@@ -44,7 +44,6 @@
     <string name="dialog_backClose">Er du sikker på du vil lukke databasen?</string>
     <string name="title_backClose">Luk</string>
     <string name="toast_version">CryptCage version</string>
-    <string name="toast_createdBy">\nLavet af Ludovico de Nittis</string>
     <string name="toast_errorVersion">Fejl ved at finde version!</string>
     <string name="no_notes">Ingen noter her.\nTryk på + knappen for at tilføje en note.</string>
     <string name="no_textNote">Tom Note Tekst.</string>

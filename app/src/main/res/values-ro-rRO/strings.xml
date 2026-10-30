@@ -44,7 +44,6 @@
     <string name="dialog_backClose">Sigur vrei sa inchizi baza de date?</string>
     <string name="title_backClose">Inchide</string>
     <string name="toast_version">Versiune CryptCage</string>
-    <string name="toast_createdBy">\nCreat de Ludovico de Nittis</string>
     <string name="toast_errorVersion">Eroare! Nu se poate gasi versiunea!</string>
     <string name="no_notes">Nu exista nici o notita.\nApasa butonu + pentru adaugare.</string>
     <string name="no_textNote">Notita goala.</string>

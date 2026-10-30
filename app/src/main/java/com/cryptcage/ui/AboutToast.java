@@ -16,8 +16,7 @@ final class AboutToast {
         String text;
         try {
             final PackageInfo info = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-            text = context.getString(R.string.toast_version) + " " + info.versionName
-                    + context.getString(R.string.toast_createdBy);
+            text = context.getString(R.string.toast_version) + " " + info.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             text = context.getString(R.string.toast_errorVersion);
         }

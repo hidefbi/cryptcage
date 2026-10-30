@@ -44,7 +44,6 @@
     <string name="dialog_backClose">Đóng cơ sở dữ liệu?</string>
     <string name="title_backClose">Đóng</string>
     <string name="toast_version">Phiên bản CryptCage</string>
-    <string name="toast_createdBy">\nTạo bởi Ludovico de Nittis</string>
     <string name="toast_errorVersion">Không thể tìm ra phiên bản!</string>
     <string name="no_notes">Chưa có Ghi chú nào.\nNhấn nút + để thêm ghi chú.</string>
     <string name="no_textNote">Ghi chú đang trống.</string>

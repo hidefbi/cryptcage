@@ -44,7 +44,6 @@
     <string name="dialog_backClose">Вы действительно хотите закрыть базу данных?</string>
     <string name="title_backClose">Закрыть</string>
     <string name="toast_version">Версия CryptCage</string>
-    <string name="toast_createdBy">\nАвтор Ludovico de Nittis</string>
     <string name="toast_errorVersion">Ошибка поиска версии! </string>
     <string name="no_notes">Нет заметок. \ nНажмите кнопку +, чтобы добавить заметку.</string>
     <string name="no_textNote">Пустая заметка.</string>

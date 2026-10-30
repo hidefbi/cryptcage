@@ -44,7 +44,6 @@
     <string name="dialog_backClose">Biztosan bezárja az adatbázist?</string>
     <string name="title_backClose">Bezárás</string>
     <string name="toast_version">CryptCage verzió</string>
-    <string name="toast_createdBy">\nKészítette Ludovico de Nittis</string>
     <string name="toast_errorVersion">Hiba a verzió keresésénél!</string>
     <string name="no_notes">Itt nincsenek jegyzetek.\nNyomja meg a + gombot jegyzet hozzáadásához.</string>
     <string name="no_textNote">Üres Jegyzet Szöveg.</string>

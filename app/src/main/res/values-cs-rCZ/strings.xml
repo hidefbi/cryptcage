@@ -44,7 +44,6 @@
     <string name="dialog_backClose">Určitě chcete zavřít databázi?</string>
     <string name="title_backClose">Zavřít</string>
     <string name="toast_version">CryptCage verze</string>
-    <string name="toast_createdBy">\nVytvořil Ludovico de Nittis</string>
     <string name="toast_errorVersion">Chyba při zjišťování verze!</string>
     <string name="no_notes">Nejsou zde žádné poznámky.\nKlikněte na + pro přidání nové poznámky.</string>
     <string name="no_textNote">Prázdný Text Poznámky.</string>

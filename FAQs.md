@@ -97,11 +97,11 @@ To mark a note as important or favorite note,
 
 **I'm skeptical about my privacy, does the developer have access to and collects any information externally when I utilize CryptCage?**
 
-- No, the developer has no means of collecting your information when the software is utilized. Read [CryptCage Privacy policy](https://github.com/RyuzakiKK/NoteCrypt/blob/master/Privacy.md)
+- No, the developer has no means of collecting your information when the software is utilized. Read the [Privacy policy](Privacy.md)
 
 **I experienced a crash, how can and where do I send a crash report?
 
-If you experienced a crash, you can send a detailed crash report to the developer via an [issue](https://github.com/RyuzakiKK/NoteCrypt/issues/new) on Github, preferably with a logcat, to enable the developer to pinpoint the cause of the crash and fix it accordingly.
+If you experienced a crash, you can send a detailed crash report to the developer through the issue tracker of the repository you obtained CryptCage from, preferably with a logcat, to enable the developer to pinpoint the cause of the crash and fix it accordingly.
 
 **I need to make further inquiries, how can I contact the developer?**
-For more inquiries, contact the developer via an [issue](https://github.com/RyuzakiKK/NoteCrypt/issues/new) on Github.
+For more inquiries, use the issue tracker of the repository you obtained CryptCage from.
