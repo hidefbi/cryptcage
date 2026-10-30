@@ -1,3 +1,9 @@
+/*
+ * Copyright (C) 2026 hidefbi
+ * Part of CryptCage, which is based on NoteCrypt Pro (see NOTICE.md).
+ * Distributed under the GNU General Public License, version 3 or later.
+ * See the LICENSE file in the project root.
+ */
 package com.cryptcage.ui;
 
 import java.io.IOException;

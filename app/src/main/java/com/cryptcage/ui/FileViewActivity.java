@@ -1,3 +1,9 @@
+/*
+ * Copyright (C) Ludovico de Nittis
+ * Modified by hidefbi on 2026-10-31. The changes are listed in NOTICE.md.
+ * Distributed under the GNU General Public License, version 3 or later.
+ * See the LICENSE file in the project root.
+ */
 package com.cryptcage.ui;
 
 import java.io.File;

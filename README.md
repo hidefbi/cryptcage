@@ -16,5 +16,11 @@ Keep your notes safe and secure with CryptCage for Android!
 
 If you forget your password, the notes will be inaccessible.
 
-Databases from older versions still open with the same password and are upgraded automatically the first time they are opened.
+Databases created by older versions use a different file format and cannot be opened by this version.
+
+## License
+
+CryptCage is free software, distributed under the GNU General Public License, version 3 or later. See the LICENSE file.
+
+It is a modified version of NoteCrypt Pro, written by Ludovico de Nittis. NOTICE.md lists the changes.
 
