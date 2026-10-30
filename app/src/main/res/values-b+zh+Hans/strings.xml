@@ -8,7 +8,6 @@
     <string name="action_changePassword">修改密码</string>
     <string name="action_export">导出全部</string>
     <string name="action_import">导入数据库</string>
-    <string name="action_filter">按标签筛选</string>
     <string name="action_sort">排序</string>
     <string name="action_search">搜索</string>
     <string name="action_starred">星标</string>
@@ -34,8 +33,6 @@
     <string name="deleteRecent_message">删除此数据库？\n此操作无法撤销。</string>
     <string name="imported_name">已导入</string>
 
-    <string name="title_note">标题：</string>
-    <string name="tags_note">标签：</string>
     <string name="note_note">正文：</string>
     <string name="hint_field_title">标题</string>
     <string name="hint_field_tags">标签1，标签2，标签3……</string>
@@ -76,8 +73,6 @@
     <string name="toast_version">CryptCage 版本</string>
     <string name="toast_errorVersion">无法读取版本信息</string>
 
-    <string name="pref_drawer">启动时展开标签抽屉</string>
-    <string name="pref_drawer_summ">打开数据库时短暂显示标签抽屉</string>
     <string name="pref_textSize">笔记字号</string>
     <string-array name="pref_textSize_entries">
         <item>极小</item>
@@ -131,4 +126,6 @@
     <string name="toast_secretFile">这是密钥或证书，请妥善保密。</string>
     <string name="import_createTitle">创建数据库？</string>
     <string name="import_createMessage">将创建一个新数据库并保存此文件，接下来请设置数据库密码。</string>
+    <string name="select_note_hint">选择一条笔记以查看或编辑</string>
+    <string name="action_cancelEdit">取消编辑</string>
 </resources>

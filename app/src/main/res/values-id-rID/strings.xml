@@ -12,8 +12,6 @@
     <string name="butt_open">Buka</string>
     <string name="butt_create">Buat</string>
     <string name="hint_field_password">Kata Sandi</string>
-    <string name="title_note">Judul:</string>
-    <string name="tags_note">Tag:</string>
     <string name="note_note">Catatan:</string>
     <string name="hint_field_title">Judul</string>
     <string name="hint_field_tags">Tag1, Tag2, Tag3&#8230;</string>
@@ -32,7 +30,6 @@
     <string name="dialog_backNoSave">Hasil edit Anda tidak akan disimpan.\nApakah Anda yakin ingin keluar?</string>
     <string name="toast_success_newDB">Database berhasil dibuat</string>
     <string name="toast_success_changePsw">Kata sandi berhasil diubah</string>
-    <string name="action_filter">Filter berdasarkan Tag</string>
     <string name="dialog_deleteNote">Anda yakin ingin menghapus catatan ini?</string>
     <string name="title_deleteNote">Hapus Catatan</string>
     <string name="yes">Ya</string>
@@ -47,8 +44,6 @@
     <string name="toast_errorVersion">Kesalahan mencari versi!</string>
     <string name="no_notes">Tidak ada catatan di sini.\nTekan tombol + untuk menambahkan catatan.</string>
     <string name="no_textNote">Teks Catatan Kosong.</string>
-    <string name="pref_drawer">Filter animasi saat mulai</string>
-    <string name="pref_drawer_summ">Tampilkan animasi dari laci filter di sebelah kanan</string>
     <string name="action_settings">Pengaturan</string>
     <string name="title_recentDB">Database di folder default dan baru-baru ini (klik untuk membuka):</string>
     <string name="deleteRecent_message">Hapus database?\nTindakan ini tidak dapat diubah.</string>
@@ -75,4 +70,6 @@
     <string name="toast_secretFile">Ini adalah kunci atau sertifikat. Jaga kerahasiaannya.</string>
     <string name="import_createTitle">Buat basis data?</string>
     <string name="import_createMessage">Basis data baru akan dibuat dan file ini akan disimpan di dalamnya. Selanjutnya, atur kata sandinya.</string>
+    <string name="select_note_hint">Pilih catatan untuk dilihat atau diedit</string>
+    <string name="action_cancelEdit">Batalkan pengeditan</string>
 </resources>

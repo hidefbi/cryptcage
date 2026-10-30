@@ -12,8 +12,6 @@
     <string name="butt_open">Apri</string>
     <string name="butt_create">Crea</string>
     <string name="hint_field_password">Password</string>
-    <string name="title_note">Titolo:</string>
-    <string name="tags_note">Tags:</string>
     <string name="note_note">Nota:</string>
     <string name="hint_field_title">Titolo</string>
     <string name="hint_field_tags">Tag1, Tag2, Tag3&#8230;</string>
@@ -32,7 +30,6 @@
     <string name="dialog_backNoSave">Le modifiche effettuate verranno perse.\nSicuro di voler uscire?</string>
     <string name="toast_success_newDB">Database creato con successo</string>
     <string name="toast_success_changePsw">La Password è stata cambiata</string>
-    <string name="action_filter">Filtra con i Tag</string>
     <string name="dialog_deleteNote">Sei sicuro di voler cancellare questa nota?</string>
     <string name="title_deleteNote">Elimina nota</string>
     <string name="yes">Si</string>
@@ -47,8 +44,6 @@
     <string name="toast_errorVersion">Errore nel trovare la versione!</string>
     <string name="no_notes">Non ci sono note.\nPremi il pulsante + per aggiungerne.</string>
     <string name="no_textNote">Il testo della nota è vuoto.</string>
-    <string name="pref_drawer">Animazione dei filtri all\'avvio</string>
-    <string name="pref_drawer_summ">Visualizza l\'animazione dei filtri sulla destra</string>
     <string name="action_settings">Preferenze</string>
     <string name="title_recentDB">Database recenti e nella cartella di default (clicca per aprire):</string>
     <string name="deleteRecent_message">Vuoi eliminare il database?\nLa cancellazione è irreversibile.</string>
@@ -76,4 +71,6 @@
     <string name="toast_secretFile">Questa è una chiave o un certificato. Tienilo riservato.</string>
     <string name="import_createTitle">Creare un database?</string>
     <string name="import_createMessage">Verrà creato un nuovo database e questo file vi sarà salvato. Subito dopo imposterai la sua password.</string>
+    <string name="select_note_hint">Seleziona una nota per visualizzarla o modificarla</string>
+    <string name="action_cancelEdit">Annulla modifica</string>
 </resources>

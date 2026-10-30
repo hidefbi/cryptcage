@@ -12,8 +12,6 @@
     <string name="butt_open">افتح</string>
     <string name="butt_create">انشئ</string>
     <string name="hint_field_password">كلمة سر</string>
-    <string name="title_note">العنوان:</string>
-    <string name="tags_note">التصنيفات:</string>
     <string name="note_note">ملحوظة:</string>
     <string name="hint_field_title">العنوان</string>
     <string name="hint_field_tags">Tag1, Tag2, Tag3&#8230;</string>
@@ -32,7 +30,6 @@
     <string name="dialog_backNoSave">لن يتم حفظ تعديلاتك.\n هل انت متأكد من الخروج ؟</string>
     <string name="toast_success_newDB">تم انشاء قاعدة البيانات بنجاح</string>
     <string name="toast_success_changePsw">تم تغيير كلمة السر بنجاح</string>
-    <string name="action_filter">الاختيار بحسب التصنيفات</string>
     <string name="dialog_deleteNote">هل انت متأكد انك تريد حذف هذه الملحوظة ؟</string>
     <string name="title_deleteNote">حذف الملحوظة</string>
     <string name="yes">نعم</string>
@@ -47,8 +44,6 @@
     <string name="toast_errorVersion">خطأ في الحصول على الاصدار !</string>
     <string name="no_notes">لا توجد ملحوظات هنا.\n اضغط على الـ+ لاضافة ملحوظة جديدة</string>
     <string name="no_textNote">ملحوظة فارغة .</string>
-    <string name="pref_drawer">Animation filter on start</string>
-    <string name="pref_drawer_summ">Display the animation of the filter drawer on the right</string>
     <string name="action_settings">الاعدادات</string>
     <string name="title_recentDB"> قاعدة البينات في المكان الافتراضي والاخير اضغط للفتح </string>
     <string name="deleteRecent_message">حذف قاعدة البيانات ؟\nلا يمكن الرجوع في هذه العملية.</string>
@@ -75,4 +70,6 @@
     <string name="toast_secretFile">هذا مفتاح أو شهادة. احرص على إبقائه سرياً.</string>
     <string name="import_createTitle">إنشاء قاعدة بيانات؟</string>
     <string name="import_createMessage">سيتم إنشاء قاعدة بيانات جديدة وتخزين هذا الملف فيها. ستحدد كلمة مرورها بعد ذلك.</string>
+    <string name="select_note_hint">اختر ملاحظة لعرضها أو تعديلها</string>
+    <string name="action_cancelEdit">إلغاء التعديل</string>
 </resources>

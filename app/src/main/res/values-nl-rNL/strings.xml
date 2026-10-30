@@ -12,8 +12,6 @@
     <string name="butt_open">Openen</string>
     <string name="butt_create">Aanmaken</string>
     <string name="hint_field_password">Wachtwoord</string>
-    <string name="title_note">Titel:</string>
-    <string name="tags_note">Tags:</string>
     <string name="note_note">Notitie:</string>
     <string name="hint_field_title">Titel</string>
     <string name="hint_field_tags">Tag1, Tag2, Tag3&#8230;</string>
@@ -32,7 +30,6 @@
     <string name="dialog_backNoSave">Je aanpassingen zijn nog niet opgeslagen.\nWeet je zeker dat je wil stoppen?</string>
     <string name="toast_success_newDB">Database succesvol aangemaakt</string>
     <string name="toast_success_changePsw">Wachtwoord succesvol aangepast</string>
-    <string name="action_filter">Filter op Tag</string>
     <string name="dialog_deleteNote">Weet je zeker dat je deze notitie wil verwijderen?</string>
     <string name="title_deleteNote">Notitie verwijderen</string>
     <string name="yes">Ja</string>
@@ -47,8 +44,6 @@
     <string name="toast_errorVersion">Versie niet gevonden!</string>
     <string name="no_notes">Geen notities.\nDruk op de + knop om een notitie te maken.</string>
     <string name="no_textNote">Lege notitie tekst.</string>
-    <string name="pref_drawer">Animatie filteren bij start</string>
-    <string name="pref_drawer_summ">Laat de animatie op het filter scherm rechts zien</string>
     <string name="action_settings">Instellingen</string>
     <string name="title_recentDB">Database in default folder en recent (klik om te openen):</string>
     <string name="deleteRecent_message">Database verwijderen?\nDeze actie kan niet ongedaan worden gemaakt.</string>
@@ -75,4 +70,6 @@
     <string name="toast_secretFile">Dit is een sleutel of certificaat. Houd het geheim.</string>
     <string name="import_createTitle">Een database maken?</string>
     <string name="import_createMessage">Er wordt een nieuwe database gemaakt en dit bestand wordt daarin opgeslagen. Daarna stelt u het wachtwoord in.</string>
+    <string name="select_note_hint">Selecteer een notitie om te bekijken of te bewerken</string>
+    <string name="action_cancelEdit">Bewerken annuleren</string>
 </resources>

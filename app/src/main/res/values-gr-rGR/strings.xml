@@ -12,8 +12,6 @@
     <string name="butt_open">Άνοιγμα</string>
     <string name="butt_create">Δημιουργία</string>
     <string name="hint_field_password">Κωδικός Πρόσβασης</string>
-    <string name="title_note">Τίτλος:</string>
-    <string name="tags_note">Ετικέτα:</string>
     <string name="note_note">Σημείωση:</string>
     <string name="hint_field_title">Τίτλος</string>
     <string name="hint_field_tags">Σημείωση1, Σημείωση2, Σημείωση3&#8230;</string>
@@ -32,7 +30,6 @@
     <string name="dialog_backNoSave">Η επεξεργασία σας δεν θα αποθηκευτεί.\nΕίστε σίγουροι ότι θέλετε να αποχωρήσετε;</string>
     <string name="toast_success_newDB">Η βάση δεδομένων δημιουργήθηκε επιτυχώς</string>
     <string name="toast_success_changePsw">PΟ Κωδικός Πρόσβασης άλλαξε επιτυχώς</string>
-    <string name="action_filter">Φιλτράρισμα ανά ετικέτα</string>
     <string name="dialog_deleteNote">Είστε σίγουροι πως θέλετε να διαγράψετε αυτή τη σημείωση;</string>
     <string name="title_deleteNote">Διαγραφή σημείωσης</string>
     <string name="yes">Ναι</string>
@@ -47,8 +44,6 @@
     <string name="toast_errorVersion">Πρόβλημα στην εύρεση έκδοσης!</string>
     <string name="no_notes">Καμία σημείωση εδώ.\nΠιέστε το + πλήκτρο για να προσθέτε σημείωση.</string>
     <string name="no_textNote">Κενό Κείμενο Σημείωσης.</string>
-    <string name="pref_drawer">Φίλτρο Animation στην αρχή</string>
-    <string name="pref_drawer_summ">Προβολή του animation του συρατριού φίλτρων στα δεξιά</string>
     <string name="action_settings">Ρυθμίσεις</string>
     <string name="title_recentDB">Βάση δεδομένων στον προεπιλεγμένο φάκελο και ενημερωμένη(πατήστε για άνοιγμα)):</string>
     <string name="deleteRecent_message">Διαγραφή της βάσης?\nΜη αναστρέψιμη ενέργεια.</string>
@@ -75,4 +70,6 @@
     <string name="toast_secretFile">Πρόκειται για κλειδί ή πιστοποιητικό. Κρατήστε το μυστικό.</string>
     <string name="import_createTitle">Δημιουργία βάσης δεδομένων;</string>
     <string name="import_createMessage">Θα δημιουργηθεί μια νέα βάση δεδομένων και το αρχείο θα αποθηκευτεί σε αυτήν. Στη συνέχεια θα ορίσετε τον κωδικό της.</string>
+    <string name="select_note_hint">Επιλέξτε μια σημείωση για προβολή ή επεξεργασία</string>
+    <string name="action_cancelEdit">Ακύρωση επεξεργασίας</string>
 </resources>

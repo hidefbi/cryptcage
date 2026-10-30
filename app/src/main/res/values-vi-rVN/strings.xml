@@ -12,8 +12,6 @@
     <string name="butt_open">Mở</string>
     <string name="butt_create">Tạo</string>
     <string name="hint_field_password">Mật khẩu</string>
-    <string name="title_note">Tiêu đề:</string>
-    <string name="tags_note">Nhãn:</string>
     <string name="note_note">Ghi chú:</string>
     <string name="hint_field_title">Tiêu đề</string>
     <string name="hint_field_tags">Nhãn1, Nhãn2, Nhãn3&#8230;</string>
@@ -32,7 +30,6 @@
     <string name="dialog_backNoSave">Các thay đổi của bạn sẽ không được lưu.\nBạn có muốn thoát?</string>
     <string name="toast_success_newDB">Cơ sở dữ liệu đã được tạo</string>
     <string name="toast_success_changePsw">Mật khẩu đã được thay đổi</string>
-    <string name="action_filter">Lọc với Nhãn</string>
     <string name="dialog_deleteNote">Bạn có muốn xóa Ghi chú này?</string>
     <string name="title_deleteNote">Xóa Ghi chú</string>
     <string name="yes">Có</string>
@@ -47,8 +44,6 @@
     <string name="toast_errorVersion">Không thể tìm ra phiên bản!</string>
     <string name="no_notes">Chưa có Ghi chú nào.\nNhấn nút + để thêm ghi chú.</string>
     <string name="no_textNote">Ghi chú đang trống.</string>
-    <string name="pref_drawer">Hoạt ảnh Lọc khi khởi động</string>
-    <string name="pref_drawer_summ">Hiển thị hoạt ảnh của Lọc ở bên phải</string>
     <string name="action_settings">Cài đặt</string>
     <string name="title_recentDB">Cơ sở dữ liệu ở Thư mục Mặc định và Gần đây (chạm để mở):</string>
     <string name="deleteRecent_message">Xóa cơ sở dữ liệu?\nHành động này không thể hoàn tác.</string>
@@ -75,4 +70,6 @@
     <string name="toast_secretFile">Đây là khóa hoặc chứng chỉ. Hãy giữ bí mật.</string>
     <string name="import_createTitle">Tạo cơ sở dữ liệu?</string>
     <string name="import_createMessage">Một cơ sở dữ liệu mới sẽ được tạo và tệp này sẽ được lưu trong đó. Tiếp theo, bạn đặt mật khẩu cho nó.</string>
+    <string name="select_note_hint">Chọn một ghi chú để xem hoặc chỉnh sửa</string>
+    <string name="action_cancelEdit">Hủy chỉnh sửa</string>
 </resources>

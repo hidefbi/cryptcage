@@ -12,8 +12,6 @@
     <string name="butt_open">खोलें</string>
     <string name="butt_create">बनाए</string>
     <string name="hint_field_password">पासवर्ड</string>
-    <string name="title_note">शीर्षक:</string>
-    <string name="tags_note">टैग्स:</string>
     <string name="note_note">नोट:</string>
     <string name="hint_field_title">शीर्षक</string>
     <string name="hint_field_tags">टैग1, टैग2, टैग3&#8230;</string>
@@ -32,7 +30,6 @@
     <string name="dialog_backNoSave">आपके संपादन सहेज नहीं होंगे।\nक्या आप वाकई बाहर निकलना चाहते हैं?</string>
     <string name="toast_success_newDB">डेटाबेस सफलतापूर्वक बनाये गए</string>
     <string name="toast_success_changePsw">पासवर्ड सफलतापूर्वक बदल दिया है</string>
-    <string name="action_filter">टैग द्वारा फ़िल्टर करें</string>
     <string name="dialog_deleteNote">क्या आप पक्का इस नोट को मिटाना चाहते हैं?</string>
     <string name="title_deleteNote">नोट मिटाएं</string>
     <string name="yes">हाँ</string>
@@ -47,8 +44,6 @@
     <string name="toast_errorVersion">वर्शन खोजने में त्रुटि!</string>
     <string name="no_notes">यहां कोई नोट नहीं है।\nनोट जुटाने के लिए + बटन दबाएं।</string>
     <string name="no_textNote">खाली नोट टेक्स्ट।</string>
-    <string name="pref_drawer">शुरुआत पर एनीमेशन फिल्टर</string>
-    <string name="pref_drawer_summ">फिल्टर ड्रॉवर की एनीमेशन दाईं ओर प्रदर्शित करें</string>
     <string name="action_settings">सेटिंग्स</string>
     <string name="title_recentDB">डिफॉल्ट फोल्डर और रीसेंट में डेटाबेस (खोलने के लिए क्लिक करें):</string>
     <string name="deleteRecent_message">डेटाबेस मिटाएं?\nयह क्रिया अपरिवर्तनीय है।</string>
@@ -75,4 +70,6 @@
     <string name="toast_secretFile">यह एक कुंजी या प्रमाणपत्र है। इसे गोपनीय रखें।</string>
     <string name="import_createTitle">डेटाबेस बनाएं?</string>
     <string name="import_createMessage">एक नया डेटाबेस बनाया जाएगा और यह फ़ाइल उसमें सहेजी जाएगी। इसके बाद आप इसका पासवर्ड सेट करेंगे।</string>
+    <string name="select_note_hint">देखने या संपादित करने के लिए कोई नोट चुनें</string>
+    <string name="action_cancelEdit">संपादन रद्द करें</string>
 </resources>

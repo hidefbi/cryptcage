@@ -12,8 +12,6 @@
     <string name="butt_open">Deschide</string>
     <string name="butt_create">Creeaza</string>
     <string name="hint_field_password">Parola</string>
-    <string name="title_note">Titlu:</string>
-    <string name="tags_note">Etichete:</string>
     <string name="note_note">Notita:</string>
     <string name="hint_field_title">Titlu</string>
     <string name="hint_field_tags">Eticheta1, Eticheta2, Eticheta3&#8230;</string>
@@ -32,7 +30,6 @@
     <string name="dialog_backNoSave">Schimbarile nu vor fi salvate.\nSigur vrei sa iesi?</string>
     <string name="toast_success_newDB">Baza de date a fost creata</string>
     <string name="toast_success_changePsw">Parola a fost schimbata</string>
-    <string name="action_filter">Filtreaza dupa eticheta</string>
     <string name="dialog_deleteNote">Sigur vrei sa stergi aceasta notita?</string>
     <string name="title_deleteNote">Sterge Notita</string>
     <string name="yes">Da</string>
@@ -47,8 +44,6 @@
     <string name="toast_errorVersion">Eroare! Nu se poate gasi versiunea!</string>
     <string name="no_notes">Nu exista nici o notita.\nApasa butonu + pentru adaugare.</string>
     <string name="no_textNote">Notita goala.</string>
-    <string name="pref_drawer">Filtru animatie la pornire</string>
-    <string name="pref_drawer_summ">Afiseaza animatia meniului cu filtre din dreapta.</string>
     <string name="action_settings">Setari</string>
     <string name="title_recentDB">Baze de date recente sau in locatia prestabilita (click pentru deschidere):</string>
     <string name="deleteRecent_message">Sterge baza de date?\nAceasta actiune este ireversibila.</string>
@@ -75,4 +70,6 @@
     <string name="toast_secretFile">Acesta este o cheie sau un certificat. Păstrați-l în secret.</string>
     <string name="import_createTitle">Creați o bază de date?</string>
     <string name="import_createMessage">Se va crea o bază de date nouă, în care va fi salvat acest fișier. Apoi îi veți seta parola.</string>
+    <string name="select_note_hint">Selectați o notiță pentru a o vedea sau edita</string>
+    <string name="action_cancelEdit">Anulați editarea</string>
 </resources>

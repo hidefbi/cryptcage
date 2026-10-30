@@ -12,8 +12,6 @@
     <string name="butt_open">Ашу</string>
     <string name="butt_create">Қосу</string>
     <string name="hint_field_password">Құпиясөз</string>
-    <string name="title_note">Атауы:</string>
-    <string name="tags_note">Тегтер:</string>
     <string name="note_note">Ескерту:</string>
     <string name="hint_field_title">Атауы</string>
     <string name="hint_field_tags"> Тег1, Тег2, Тег3&#8230;</string>
@@ -32,7 +30,6 @@
     <string name="dialog_backNoSave">Сіздің өзгертулеріңіз сақталмайды. \ n Шығуды қалайсыз ба?</string>
     <string name="toast_success_newDB">Дерекқор сәтті жасалған</string>
     <string name="toast_success_changePsw">Құпия сөз сәтті өзгертілді</string>
-    <string name="action_filter">Тег бойынша сүзу</string>
     <string name="dialog_deleteNote">Осы ескертуді жойғыңыз келе ме?</string>
     <string name="title_deleteNote">Ескертуді жою</string>
     <string name="yes">Иә</string>
@@ -47,8 +44,6 @@
     <string name="toast_errorVersion">Нұсқа іздеу қатесі!</string>
     <string name="no_notes">Ескертпелер жоқ. \ n Жазбаны қосу үшін + түймесін басыңыз.</string>
     <string name="no_textNote">Бос мәтіндік ескерту.</string>
-    <string name="pref_drawer">Старт кезінде анимация сүзгісі </string>
-    <string name="pref_drawer_summ">Сүзгі терезесінің анимациясын оң жақта көрсету</string>
     <string name="action_settings">Параметрлер</string>
     <string name="title_recentDB">Дерекқор әдепкі қалтада және соңғы (ашу үшін басыңыз):</string>
     <string name="deleteRecent_message">Дерекқорды жою керек пе? \ nБұл әрекет кері қайтарылмайды.</string>
@@ -75,4 +70,6 @@
     <string name="toast_secretFile">Бұл кілт немесе сертификат. Оны құпия сақтаңыз.</string>
     <string name="import_createTitle">Дерекқор жасалсын ба?</string>
     <string name="import_createMessage">Жаңа дерекқор жасалып, бұл файл соған сақталады. Одан кейін оған құпия сөз орнатасыз.</string>
+    <string name="select_note_hint">Көру немесе өңдеу үшін жазбаны таңдаңыз</string>
+    <string name="action_cancelEdit">Өңдеуді болдырмау</string>
 </resources>

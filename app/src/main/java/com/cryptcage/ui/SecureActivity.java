@@ -1,12 +1,15 @@
 package com.cryptcage.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -59,6 +62,13 @@ public abstract class SecureActivity extends AppCompatActivity {
         final TypedValue value = new TypedValue();
         getTheme().resolveAttribute(android.R.attr.colorBackground, value, true);
         return value.data;
+    }
+
+    /** The drawable that a theme attribute points to, such as a toolbar icon. */
+    static Drawable themeDrawable(final Context context, final int attr) {
+        final TypedValue value = new TypedValue();
+        context.getTheme().resolveAttribute(attr, value, true);
+        return ContextCompat.getDrawable(context, value.resourceId);
     }
 
     /** Returns true if this screen was replaced by the database picker. */

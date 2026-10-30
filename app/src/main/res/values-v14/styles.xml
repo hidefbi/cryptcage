@@ -16,4 +16,9 @@
         <item name="android:selectableItemBackground">@drawable/selector</item>
     </style>
 
+    <style name="AppBaseTheme.NoActionBar" parent="AppBaseTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 </resources>

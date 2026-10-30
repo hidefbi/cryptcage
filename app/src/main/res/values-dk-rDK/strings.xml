@@ -12,8 +12,6 @@
     <string name="butt_open">Åben</string>
     <string name="butt_create">Opret</string>
     <string name="hint_field_password">Kodeord</string>
-    <string name="title_note">Titel:</string>
-    <string name="tags_note">Tags:</string>
     <string name="note_note">Note:</string>
     <string name="hint_field_title">Titel</string>
     <string name="hint_field_tags">Tag1, Tag2, Tag3&#8230;</string>
@@ -32,7 +30,6 @@
     <string name="dialog_backNoSave">Dine ændringer vil ikke blive gemt.\nEr du sikker på du vil lukke?</string>
     <string name="toast_success_newDB">Database succesfuldt oprettet</string>
     <string name="toast_success_changePsw">Kodeord succesfuldt ændret</string>
-    <string name="action_filter">Filtrer på Tag</string>
     <string name="dialog_deleteNote">Er du sikker på at du vil slette denne note?</string>
     <string name="title_deleteNote">Slet Note</string>
     <string name="yes">Ja</string>
@@ -47,8 +44,6 @@
     <string name="toast_errorVersion">Fejl ved at finde version!</string>
     <string name="no_notes">Ingen noter her.\nTryk på + knappen for at tilføje en note.</string>
     <string name="no_textNote">Tom Note Tekst.</string>
-    <string name="pref_drawer">Animation filter ved start</string>
-    <string name="pref_drawer_summ">Vis animation af filter siden til højre</string>
     <string name="action_settings">Indstillinger</string>
     <string name="title_recentDB">Database standard mappen og nylige (klik for at åbne):</string>
     <string name="deleteRecent_message">Slet databasen?\nDenne handling kan ikke fortrydes.</string>
@@ -75,4 +70,6 @@
     <string name="toast_secretFile">Dette er en nøgle eller et certifikat. Hold det hemmeligt.</string>
     <string name="import_createTitle">Opret en database?</string>
     <string name="import_createMessage">En ny database oprettes, og filen gemmes i den. Derefter angiver du adgangskoden.</string>
+    <string name="select_note_hint">Vælg en note for at se eller redigere den</string>
+    <string name="action_cancelEdit">Annuller redigering</string>
 </resources>

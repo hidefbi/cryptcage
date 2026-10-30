@@ -12,8 +12,6 @@
     <string name="butt_open">Öffnen</string>
     <string name="butt_create">Erstellen</string>
     <string name="hint_field_password">Passwort</string>
-    <string name="title_note">Titel:</string>
-    <string name="tags_note">Tags:</string>
     <string name="note_note">Notiz:</string>
     <string name="hint_field_title">Titel</string>
     <string name="hint_field_tags">Tag1, Tag2, Tag3&#8230;</string>
@@ -32,7 +30,6 @@
     <string name="dialog_backNoSave">Deine Änderungen werden nicht gespeichert.\nWillst du das Programm sicher schließen?</string>
     <string name="toast_success_newDB">Datenbank erfolgreich erstellt</string>
     <string name="toast_success_changePsw">Passwort erfolgreich geändert</string>
-    <string name="action_filter">Filtern nach Notiz / Tag</string>
     <string name="dialog_deleteNote">Willst du diese Notiz sicher löschen?</string>
     <string name="title_deleteNote">Notiz löschen</string>
     <string name="yes">Ja</string>
@@ -47,8 +44,6 @@
     <string name="toast_errorVersion">Fehler bei der Versionsfindung!</string>
     <string name="no_notes">Keine Notizen hier.\nDrücke den + Knopf um eine zu erstellen.</string>
     <string name="no_textNote">Leerer Notiz Text.</string>
-    <string name="pref_drawer">Animation starten beim App Start</string>
-    <string name="pref_drawer_summ">Zeig die Animation des Filter\'s auf der rechten Seite an</string>
     <string name="action_settings">Einstellungen</string>
     <string name="title_recentDB">Datenbank im Standard Ordner:</string>
     <string name="deleteRecent_message">Datenbank löschen?\nDieser Vorgang ist nicht umkehrbar.</string>
@@ -75,4 +70,6 @@
     <string name="toast_secretFile">Dies ist ein Schlüssel oder Zertifikat. Halten Sie es geheim.</string>
     <string name="import_createTitle">Datenbank erstellen?</string>
     <string name="import_createMessage">Es wird eine neue Datenbank erstellt und diese Datei darin gespeichert. Anschließend legen Sie ihr Passwort fest.</string>
+    <string name="select_note_hint">Wähle eine Notiz zum Anzeigen oder Bearbeiten</string>
+    <string name="action_cancelEdit">Bearbeitung abbrechen</string>
 </resources>

@@ -12,8 +12,6 @@
     <string name="butt_open">Otwórz</string>
     <string name="butt_create">Utwórz</string>
     <string name="hint_field_password">Hasło</string>
-    <string name="title_note">Tytuł:</string>
-    <string name="tags_note">Etykieta:</string>
     <string name="note_note">Notatka:</string>
     <string name="hint_field_title">Tytuł</string>
     <string name="hint_field_tags">Etykieta1, Etykieta2, Etykieta3&#8230;</string>
@@ -32,7 +30,6 @@
     <string name="dialog_backNoSave">Twoje zmiany nie zostaną zapisane.\nCzy na pewno zakończyć?</string>
     <string name="toast_success_newDB">Baza danych została pomyślnie utworzona</string>
     <string name="toast_success_changePsw">Hasło poprawnie zmienione</string>
-    <string name="action_filter">Filtruj według etykiet</string>
     <string name="dialog_deleteNote">Jesteś pewien, że chcesz usunąć tę notatkę?</string>
     <string name="title_deleteNote">Usuń notatkę</string>
     <string name="yes">Tak</string>
@@ -47,8 +44,6 @@
     <string name="toast_errorVersion">Błąd podczas sprawdzania wersji!</string>
     <string name="no_notes">Brak notatek.\nNaciśnij przycisk +, aby dodać notatkę.</string>
     <string name="no_textNote">Pusty tekst notatki.</string>
-    <string name="pref_drawer">Filtr animacji na starcie</string>
-    <string name="pref_drawer_summ">Wyświetl animację filtra po prawej stronie</string>
     <string name="action_settings">Ustawienia</string>
     <string name="title_recentDB">Baza danych w folderze domyślnym i ostatnio otwarta (kliknij, aby otworzyć):</string>
     <string name="deleteRecent_message">Usunąć bazę danych?\nTo działanie jest nieodwracalne.</string>
@@ -75,4 +70,6 @@
     <string name="toast_secretFile">To jest klucz lub certyfikat. Zachowaj go w tajemnicy.</string>
     <string name="import_createTitle">Utworzyć bazę danych?</string>
     <string name="import_createMessage">Zostanie utworzona nowa baza danych i ten plik zostanie w niej zapisany. Następnie ustawisz jej hasło.</string>
+    <string name="select_note_hint">Wybierz notatkę, aby ją wyświetlić lub edytować</string>
+    <string name="action_cancelEdit">Anuluj edycję</string>
 </resources>

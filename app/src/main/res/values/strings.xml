@@ -8,7 +8,6 @@
     <string name="action_changePassword">Change password</string>
     <string name="action_export">Export all</string>
     <string name="action_import">Import database</string>
-    <string name="action_filter">Filter by tag</string>
     <string name="action_sort">Sort list</string>
     <string name="action_search">Search</string>
     <string name="action_starred">Starred</string>
@@ -34,8 +33,6 @@
     <string name="deleteRecent_message">Delete this database?\nThis cannot be undone.</string>
     <string name="imported_name">Imported</string>
 
-    <string name="title_note">Title:</string>
-    <string name="tags_note">Tags:</string>
     <string name="note_note">Note:</string>
     <string name="hint_field_title">Title</string>
     <string name="hint_field_tags">Tag1, Tag2, Tag3…</string>
@@ -76,8 +73,6 @@
     <string name="toast_version">CryptCage version</string>
     <string name="toast_errorVersion">Could not read the version</string>
 
-    <string name="pref_drawer">Open the tag drawer on start</string>
-    <string name="pref_drawer_summ">Briefly show the tag drawer when a database opens</string>
     <string name="pref_textSize">Note font size</string>
     <string-array name="pref_textSize_entries">
         <item>Very small</item>
@@ -131,4 +126,6 @@
     <string name="toast_secretFile">This is a key or certificate. Keep it private.</string>
     <string name="import_createTitle">Create a database?</string>
     <string name="import_createMessage">A new database will be created and this file will be stored in it. You will set its password next.</string>
+    <string name="select_note_hint">Select a note to view or edit it</string>
+    <string name="action_cancelEdit">Cancel editing</string>
 </resources>

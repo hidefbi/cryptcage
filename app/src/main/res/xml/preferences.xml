@@ -9,12 +9,6 @@
         android:key="pref_theme"
         android:title="@string/pref_theme" />
 
-    <androidx.preference.SwitchPreferenceCompat
-        android:defaultValue="true"
-        android:key="pref_drawer"
-        android:summary="@string/pref_drawer_summ"
-        android:title="@string/pref_drawer" />
-
     <androidx.preference.ListPreference
         android:defaultValue="@string/pref_textSize_default"
         android:dialogTitle="@string/pref_textSize"

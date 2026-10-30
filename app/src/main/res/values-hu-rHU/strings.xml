@@ -12,8 +12,6 @@
     <string name="butt_open">Megnyitás</string>
     <string name="butt_create">Létrehoz</string>
     <string name="hint_field_password">Jelszó</string>
-    <string name="title_note">Cím:</string>
-    <string name="tags_note">Címkék:</string>
     <string name="note_note">Jegyzet:</string>
     <string name="hint_field_title">Cím</string>
     <string name="hint_field_tags">Címke1, Címke2, Címke3&#8230;</string>
@@ -32,7 +30,6 @@
     <string name="dialog_backNoSave">A módosítások nem lesznek elmentve.\nBiztosan ki akar lépni?</string>
     <string name="toast_success_newDB">Adatbázis sikeresen létrehozva</string>
     <string name="toast_success_changePsw">Jelszó sikeresen megváltoztatva</string>
-    <string name="action_filter">Szűrés címkékre</string>
     <string name="dialog_deleteNote">Biztosan le akarja törölni ezt a jegyzetet?</string>
     <string name="title_deleteNote">Jegyzet Törlése</string>
     <string name="yes">Igen</string>
@@ -47,8 +44,6 @@
     <string name="toast_errorVersion">Hiba a verzió keresésénél!</string>
     <string name="no_notes">Itt nincsenek jegyzetek.\nNyomja meg a + gombot jegyzet hozzáadásához.</string>
     <string name="no_textNote">Üres Jegyzet Szöveg.</string>
-    <string name="pref_drawer">Animáció szűrő indításkor</string>
-    <string name="pref_drawer_summ">A szűrő animáció megjelenítése a jobb oldalon</string>
     <string name="action_settings">Beállítások</string>
     <string name="title_recentDB">Adatbázis az alapértelmezett mappában (kattintson a megnyitáshoz):</string>
     <string name="deleteRecent_message">Törli az adatbázist?\nA törlés végleges.</string>
@@ -75,4 +70,6 @@
     <string name="toast_secretFile">Ez kulcs vagy tanúsítvány. Tartsa titokban.</string>
     <string name="import_createTitle">Létrehoz egy adatbázist?</string>
     <string name="import_createMessage">Új adatbázis jön létre, és a fájl ebbe kerül. Ezután be kell állítania a jelszavát.</string>
+    <string name="select_note_hint">Válasszon egy jegyzetet a megtekintéshez vagy szerkesztéshez</string>
+    <string name="action_cancelEdit">Szerkesztés megszakítása</string>
 </resources>

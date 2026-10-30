@@ -12,8 +12,6 @@
     <string name="butt_open">開く</string>
     <string name="butt_create">作成</string>
     <string name="hint_field_password">パスワード</string>
-    <string name="title_note">タイトル:</string>
-    <string name="tags_note">タグ:</string>
     <string name="note_note">メモ:</string>
     <string name="hint_field_title">タイトル</string>
     <string name="hint_field_tags">タグ1, タグ2, タグ3&#8230;</string>
@@ -32,7 +30,6 @@
     <string name="dialog_backNoSave">編集内容は保存されません。\n終了してもよろしいですか?</string>
     <string name="toast_success_newDB">データベースを作成しました</string>
     <string name="toast_success_changePsw">パスワードを変更しました</string>
-    <string name="action_filter">タグでフィルター</string>
     <string name="dialog_deleteNote">このメモを削除してもよろしいですか?</string>
     <string name="title_deleteNote">メモを削除</string>
     <string name="yes">はい</string>
@@ -47,8 +44,6 @@
     <string name="toast_errorVersion">バージョンの取得時にエラー!</string>
     <string name="no_notes">ここにメモはありません。\n+ ボタンを押してメモを追加してください。</string>
     <string name="no_textNote">メモは空です。</string>
-    <string name="pref_drawer">開始時のアニメーションフィルター</string>
-    <string name="pref_drawer_summ">右にあるフィルタードロワーのアニメーションを表示します</string>
     <string name="action_settings">設定</string>
     <string name="title_recentDB">デフォルトのフォルダーと最近使用したデータベース (クリックして開きます):</string>
     <string name="deleteRecent_message">データベースを削除しますか?\nこの操作は元に戻せません。</string>
@@ -75,4 +70,6 @@
     <string name="toast_secretFile">これは鍵または証明書です。秘密に保管してください。</string>
     <string name="import_createTitle">データベースを作成しますか？</string>
     <string name="import_createMessage">新しいデータベースを作成し、このファイルを保存します。次にパスワードを設定します。</string>
+    <string name="select_note_hint">表示または編集するメモを選択してください</string>
+    <string name="action_cancelEdit">編集を取り消す</string>
 </resources>

@@ -12,8 +12,6 @@
     <string name="butt_open">Открыть</string>
     <string name="butt_create">Создать</string>
     <string name="hint_field_password">Пароль</string>
-    <string name="title_note">Название:</string>
-    <string name="tags_note">Теги:</string>
     <string name="note_note">Заметки:</string>
     <string name="hint_field_title">Название</string>
     <string name="hint_field_tags">Тег1, Тег2, Тег3&#8230;</string>
@@ -32,7 +30,6 @@
     <string name="dialog_backNoSave">Ваше редактирование не будет сохранено.\nВы действительно хотите выйти?</string>
     <string name="toast_success_newDB">База данных успешно создана</string>
     <string name="toast_success_changePsw">Пароль успешно редактирован</string>
-    <string name="action_filter">Фильтр по тегу</string>
     <string name="dialog_deleteNote">Вы уверены, что хотите удалить эту заметку?</string>
     <string name="title_deleteNote">Удалить заметку</string>
     <string name="yes">Да</string>
@@ -47,8 +44,6 @@
     <string name="toast_errorVersion">Ошибка поиска версии! </string>
     <string name="no_notes">Нет заметок. \ nНажмите кнопку +, чтобы добавить заметку.</string>
     <string name="no_textNote">Пустая заметка.</string>
-    <string name="pref_drawer">Анимационный фильтр при запуске</string>
-    <string name="pref_drawer_summ">Отобразить анимацию фильтра справа</string>
     <string name="action_settings">Настройки</string>
     <string name="title_recentDB">База данных в папке по умолчанию и последние (нажмите, чтобы открыть):</string>
     <string name="deleteRecent_message">Удалить базу данных?\nЭто действие необратимо.</string>
@@ -75,4 +70,6 @@
     <string name="toast_secretFile">Это ключ или сертификат. Храните его в тайне.</string>
     <string name="import_createTitle">Создать базу данных?</string>
     <string name="import_createMessage">Будет создана новая база данных, и этот файл будет сохранён в ней. Затем вы зададите её пароль.</string>
+    <string name="select_note_hint">Выберите заметку, чтобы просмотреть или изменить её</string>
+    <string name="action_cancelEdit">Отменить редактирование</string>
 </resources>

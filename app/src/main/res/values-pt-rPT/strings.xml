@@ -12,8 +12,6 @@
     <string name="butt_open">Abrir</string>
     <string name="butt_create">Criar</string>
     <string name="hint_field_password">Password</string>
-    <string name="title_note">Título:</string>
-    <string name="tags_note">Tags:</string>
     <string name="note_note">Nota:</string>
     <string name="hint_field_title">Título</string>
     <string name="hint_field_tags">Tag1, Tag2, Tag3&#8230;</string>
@@ -32,7 +30,6 @@
     <string name="dialog_backNoSave">A sua edição não foi gravada.\nDeseja mesmo sair?</string>
     <string name="toast_success_newDB">Base de dados criada sem erros</string>
     <string name="toast_success_changePsw">Password alterada com sucesso</string>
-    <string name="action_filter">Filtrar por Tag</string>
     <string name="dialog_deleteNote">Tem a certeza que deseja apagar a nota ?</string>
     <string name="title_deleteNote">Apagar a nota</string>
     <string name="yes">Sim</string>
@@ -47,8 +44,6 @@
     <string name="toast_errorVersion">Erro a encontrar a versão!</string>
     <string name="no_notes">Não existem notas.\nPressione o botão "+" para adicionar uma nova nota.</string>
     <string name="no_textNote">Nota de Texto Vazia.</string>
-    <string name="pref_drawer">Filtro de Animação de início</string>
-    <string name="pref_drawer_summ">Mostrar as animações de filtros disponíveis à direita Display </string>
     <string name="action_settings">Configurações</string>
     <string name="title_recentDB"> Base de dados na pasta Default e Recente (clicar para abrir):</string>
     <string name="deleteRecent_message">Apagar a Base de dados?\nEsta acção é irreversível.</string>
@@ -75,4 +70,6 @@
     <string name="toast_secretFile">Esta é uma chave ou certificado. Mantenha-o em segredo.</string>
     <string name="import_createTitle">Criar uma base de dados?</string>
     <string name="import_createMessage">Será criada uma nova base de dados e este ficheiro será guardado nela. De seguida, defina a palavra-passe.</string>
+    <string name="select_note_hint">Selecione uma nota para a ver ou editar</string>
+    <string name="action_cancelEdit">Cancelar edição</string>
 </resources>

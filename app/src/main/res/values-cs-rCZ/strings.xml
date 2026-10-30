@@ -12,8 +12,6 @@
     <string name="butt_open">Otevřít</string>
     <string name="butt_create">Vytvořit</string>
     <string name="hint_field_password">Heslo</string>
-    <string name="title_note">Název:</string>
-    <string name="tags_note">Tagy:</string>
     <string name="note_note">Poznámka:</string>
     <string name="hint_field_title">Název</string>
     <string name="hint_field_tags">Tag1, Tag2, Tag3&#8230;</string>
@@ -32,7 +30,6 @@
     <string name="dialog_backNoSave">Vaše úpravy nebudou uloženy.\nChcete zkončit bez uložení?</string>
     <string name="toast_success_newDB">Databáze byla úspěšně vytvořena</string>
     <string name="toast_success_changePsw">Heslo bylo úspěšně změněno</string>
-    <string name="action_filter">Seřadit podle Tagu</string>
     <string name="dialog_deleteNote">Chcete určitě odstranit tuto poznámku?</string>
     <string name="title_deleteNote">Odstranit Poznámku</string>
     <string name="yes">Ano</string>
@@ -47,8 +44,6 @@
     <string name="toast_errorVersion">Chyba při zjišťování verze!</string>
     <string name="no_notes">Nejsou zde žádné poznámky.\nKlikněte na + pro přidání nové poznámky.</string>
     <string name="no_textNote">Prázdný Text Poznámky.</string>
-    <string name="pref_drawer">Animovaný filtr při startu</string>
-    <string name="pref_drawer_summ">Zobrazit animaci vykreslení filtru vpravo</string>
     <string name="action_settings">Nastavení</string>
     <string name="title_recentDB">Databáze ve výchozí složce a poslední (kliněte pro otevření):</string>
     <string name="deleteRecent_message">Chcete smazat databázi?\nTato akce je nevratná.</string>
@@ -75,4 +70,6 @@
     <string name="toast_secretFile">Toto je klíč nebo certifikát. Uchovávejte jej v tajnosti.</string>
     <string name="import_createTitle">Vytvořit databázi?</string>
     <string name="import_createMessage">Vytvoří se nová databáze a tento soubor se do ní uloží. Dále nastavíte její heslo.</string>
+    <string name="select_note_hint">Vyberte poznámku pro zobrazení nebo úpravu</string>
+    <string name="action_cancelEdit">Zrušit úpravy</string>
 </resources>

@@ -12,8 +12,6 @@
     <string name="butt_open">Avaa</string>
     <string name="butt_create">Luo</string>
     <string name="hint_field_password">Salasana</string>
-    <string name="title_note">Otsikko:</string>
-    <string name="tags_note">Tunnisteet:</string>
     <string name="note_note">Muistiinpano:</string>
     <string name="hint_field_title">Otsikko</string>
     <string name="hint_field_tags">Tunniste1, Tunniste2, Tunniste3&#8230;</string>
@@ -32,7 +30,6 @@
     <string name="dialog_backNoSave">Tekemiäsi muutoksia ei tallenneta.\nHaluatko varmasti poistua?</string>
     <string name="toast_success_newDB">Tietokanta luotu onnistuneesti</string>
     <string name="toast_success_changePsw">Salasana vaihdettu onnistuneesti</string>
-    <string name="action_filter">Suodata tunnisteen mukaan</string>
     <string name="dialog_deleteNote">Haluatko varmasti poistaa muistiinpanon?</string>
     <string name="title_deleteNote">Poista muistiinpano</string>
     <string name="yes">Kyllä</string>
@@ -47,8 +44,6 @@
     <string name="toast_errorVersion">Virhe version haussa!</string>
     <string name="no_notes">Täällä ei ole vielä muistiinpanoja.\nPaina + painiketta lisätäksesi muistiinpanon.</string>
     <string name="no_textNote">Tyhjä muistiinpanon sisältö.</string>
-    <string name="pref_drawer">Animaatiosuodatin sovelluksen käynnistyessä</string>
-    <string name="pref_drawer_summ">Näytä suotimien animaatio oikealla</string>
     <string name="action_settings">Asetukset</string>
     <string name="title_recentDB">Tietokanta oletushakemistossa (klikkaa avataksesi):</string>
     <string name="deleteRecent_message">Poista tietokanta?\nTätä toimintoa ei voi peruuttaa.</string>
@@ -75,4 +70,6 @@
     <string name="toast_secretFile">Tämä on avain tai varmenne. Pidä se salassa.</string>
     <string name="import_createTitle">Luodaanko tietokanta?</string>
     <string name="import_createMessage">Uusi tietokanta luodaan ja tiedosto tallennetaan siihen. Seuraavaksi asetat sille salasanan.</string>
+    <string name="select_note_hint">Valitse muistio nähdäksesi tai muokataksesi sitä</string>
+    <string name="action_cancelEdit">Peruuta muokkaus</string>
 </resources>
