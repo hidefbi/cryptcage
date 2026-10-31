@@ -64,7 +64,18 @@ final class NoteGestures implements RecyclerView.OnItemTouchListener {
     private int dragPosition = RecyclerView.NO_POSITION;
     private boolean moved;
 
-    private final Runnable openMenu = () -> {
+    private final Runnable openMenu = this::openMenuNow;
+
+    NoteGestures(final RecyclerView list, final NotesAdapter adapter, final Host host) {
+        this.list = list;
+        this.adapter = adapter;
+        this.host = host;
+        this.slop = ViewConfiguration.get(list.getContext()).getScaledTouchSlop();
+        this.longPressTimeout = ViewConfiguration.getLongPressTimeout();
+    }
+
+    /** Runs when the press has lasted the long-press time without moving far. */
+    private void openMenuNow() {
         if (phase != Phase.PRESSED || row == null || list == null) {
             return;
         }
@@ -74,14 +85,6 @@ final class NoteGestures implements RecyclerView.OnItemTouchListener {
         phase = Phase.MENU;
         row.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
         host.showMenu(adapter.idAt(list.getChildAdapterPosition(row)), row, downX, downY);
-    };
-
-    NoteGestures(final RecyclerView list, final NotesAdapter adapter, final Host host) {
-        this.list = list;
-        this.adapter = adapter;
-        this.host = host;
-        this.slop = ViewConfiguration.get(list.getContext()).getScaledTouchSlop();
-        this.longPressTimeout = ViewConfiguration.getLongPressTimeout();
     }
 
     @Override
