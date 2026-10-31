@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">Tempo até o texto copiado ser apagado da área de transferência. 0:00:00 mantém o texto.</string>
     <string name="action_copyToClipboard">Copiar para a área de transferência</string>
     <string name="toast_copiedToClipboard">Copiado para a área de transferência</string>
+    <string name="pw_strength_weak">Fraca</string>
+    <string name="pw_strength_fair">Razoável</string>
+    <string name="pw_strength_good">Boa</string>
+    <string name="pw_strength_strong">Forte</string>
+    <string name="pw_hint_short">Adicione mais %1$d caracteres.</string>
+    <string name="pw_hint_longer">Com 16 caracteres não é preciso misturar tipos.</string>
 </resources>

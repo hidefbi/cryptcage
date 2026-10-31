@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">कॉपी किया गया टेक्स्ट क्लिपबोर्ड से हटने से पहले का समय। 0:00:00 रखेगा।</string>
     <string name="action_copyToClipboard">क्लिपबोर्ड पर कॉपी करें</string>
     <string name="toast_copiedToClipboard">क्लिपबोर्ड पर कॉपी किया गया</string>
+    <string name="pw_strength_weak">कमज़ोर</string>
+    <string name="pw_strength_fair">ठीक-ठाक</string>
+    <string name="pw_strength_good">अच्छा</string>
+    <string name="pw_strength_strong">मजबूत</string>
+    <string name="pw_hint_short">%1$d अक्षर और जोड़ें।</string>
+    <string name="pw_hint_longer">16 अक्षर होने पर मिश्रण की ज़रूरत नहीं है।</string>
 </resources>

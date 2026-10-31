@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">Tiempo antes de borrar el texto copiado del portapapeles. 0:00:00 lo mantiene.</string>
     <string name="action_copyToClipboard">Copiar al portapapeles</string>
     <string name="toast_copiedToClipboard">Copiado al portapapeles</string>
+    <string name="pw_strength_weak">Débil</string>
+    <string name="pw_strength_fair">Aceptable</string>
+    <string name="pw_strength_good">Buena</string>
+    <string name="pw_strength_strong">Fuerte</string>
+    <string name="pw_hint_short">Añade %1$d caracteres más.</string>
+    <string name="pw_hint_longer">Con 16 caracteres no hace falta mezclar tipos.</string>
 </resources>

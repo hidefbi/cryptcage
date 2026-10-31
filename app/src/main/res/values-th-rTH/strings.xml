@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">เวลาก่อนลบข้อความที่คัดลอกออกจากคลิปบอร์ด 0:00:00 คือไม่ลบ</string>
     <string name="action_copyToClipboard">คัดลอกไปยังคลิปบอร์ด</string>
     <string name="toast_copiedToClipboard">คัดลอกไปยังคลิปบอร์ดแล้ว</string>
+    <string name="pw_strength_weak">อ่อน</string>
+    <string name="pw_strength_fair">พอใช้</string>
+    <string name="pw_strength_good">ดี</string>
+    <string name="pw_strength_strong">แข็งแรง</string>
+    <string name="pw_hint_short">เพิ่มอีก %1$d ตัวอักษร</string>
+    <string name="pw_hint_longer">ใช้ 16 ตัวอักษรขึ้นไปก็ไม่ต้องผสมชนิดอักขระ</string>
 </resources>

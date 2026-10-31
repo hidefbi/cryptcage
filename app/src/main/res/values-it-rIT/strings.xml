@@ -109,4 +109,10 @@
     <string name="pref_clipboardTimeout_summary">Tempo prima che il testo copiato venga cancellato dagli appunti. 0:00:00 lo mantiene.</string>
     <string name="action_copyToClipboard">Copia negli appunti</string>
     <string name="toast_copiedToClipboard">Copiato negli appunti</string>
+    <string name="pw_strength_weak">Debole</string>
+    <string name="pw_strength_fair">Discreta</string>
+    <string name="pw_strength_good">Buona</string>
+    <string name="pw_strength_strong">Forte</string>
+    <string name="pw_hint_short">Aggiungi ancora %1$d caratteri.</string>
+    <string name="pw_hint_longer">Con 16 caratteri non serve mescolare i tipi.</string>
 </resources>

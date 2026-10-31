@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">Doba, po které se zkopírovaný text vymaže ze schránky. 0:00:00 ji ponechá.</string>
     <string name="action_copyToClipboard">Kopírovat do schránky</string>
     <string name="toast_copiedToClipboard">Zkopírováno do schránky</string>
+    <string name="pw_strength_weak">Slabé</string>
+    <string name="pw_strength_fair">Přijatelné</string>
+    <string name="pw_strength_good">Dobré</string>
+    <string name="pw_strength_strong">Silné</string>
+    <string name="pw_hint_short">Přidejte ještě %1$d znaků.</string>
+    <string name="pw_hint_longer">Při 16 znacích není nutné míchat znaky.</string>
 </resources>

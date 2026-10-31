@@ -8,9 +8,13 @@ package com.cryptcage.ui;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +22,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
 import com.cryptcage.utils.PasswordPolicy;
+import com.cryptcage.utils.PasswordStrength;
 import com.cryptcage.R;
 
 /** Asks for a new master password, twice, and checks it against the password policy. */
@@ -34,6 +39,8 @@ public class ChoosePasswordDialogFragment extends DialogFragment {
 
     private EditText fieldNew;
     private EditText fieldConfirm;
+    private ProgressBar strengthBar;
+    private TextView strengthText;
 
     public static ChoosePasswordDialogFragment newInstance(final String purpose) {
         final ChoosePasswordDialogFragment fragment = new ChoosePasswordDialogFragment();
@@ -49,6 +56,22 @@ public class ChoosePasswordDialogFragment extends DialogFragment {
         final View view = LayoutInflater.from(requireContext()).inflate(R.layout.new_password, null);
         fieldNew = view.findViewById(R.id.field_password);
         fieldConfirm = view.findViewById(R.id.conf_field_password);
+        strengthBar = view.findViewById(R.id.strength_bar);
+        strengthText = view.findViewById(R.id.strength_text);
+        fieldNew.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(final CharSequence s, final int start, final int count, final int after) {
+            }
+
+            @Override
+            public void onTextChanged(final CharSequence s, final int start, final int before, final int count) {
+            }
+
+            @Override
+            public void afterTextChanged(final Editable s) {
+                showStrength(s.toString());
+            }
+        });
         final String purpose = getArguments() == null ? PURPOSE_CHANGE : getArguments().getString(ARG_PURPOSE);
         final int title = PURPOSE_CREATE.equals(purpose) ? R.string.title_createPassword : R.string.title_changeMasterPass;
         return new AlertDialog.Builder(requireContext())
@@ -65,6 +88,32 @@ public class ChoosePasswordDialogFragment extends DialogFragment {
         final AlertDialog dialog = (AlertDialog) getDialog();
         if (dialog != null) {
             dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> submit());
+        }
+    }
+
+    /** Shows the meter while typing. It only informs, so the accept or reject rule stays in submit(). */
+    private void showStrength(final String password) {
+        final PasswordStrength.Reading reading = PasswordStrength.read(password);
+        strengthBar.setProgress(reading.level);
+        switch (reading.level) {
+            case 1:
+                strengthText.setText(getString(R.string.pw_strength_weak) + "\n"
+                        + getString(R.string.pw_hint_short, reading.missing));
+                break;
+            case 2:
+                strengthText.setText(getString(R.string.pw_strength_fair) + "\n"
+                        + getString(R.string.pw_too_simple));
+                break;
+            case 3:
+                strengthText.setText(getString(R.string.pw_strength_good) + "\n"
+                        + getString(R.string.pw_hint_longer));
+                break;
+            case 4:
+                strengthText.setText(getString(R.string.pw_strength_strong));
+                break;
+            default:
+                strengthText.setText("");
+                break;
         }
     }
 

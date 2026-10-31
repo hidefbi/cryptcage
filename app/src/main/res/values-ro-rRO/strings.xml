@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">Timpul până când textul copiat este șters din clipboard. 0:00:00 îl păstrează.</string>
     <string name="action_copyToClipboard">Copiază în clipboard</string>
     <string name="toast_copiedToClipboard">Copiat în clipboard</string>
+    <string name="pw_strength_weak">Slabă</string>
+    <string name="pw_strength_fair">Acceptabilă</string>
+    <string name="pw_strength_good">Bună</string>
+    <string name="pw_strength_strong">Puternică</string>
+    <string name="pw_hint_short">Adăugați încă %1$d caractere.</string>
+    <string name="pw_hint_longer">Cu 16 caractere nu este nevoie de amestec de tipuri.</string>
 </resources>

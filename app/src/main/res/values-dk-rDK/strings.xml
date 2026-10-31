@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">Tid før kopieret tekst slettes fra udklipsholderen. 0:00:00 beholder den.</string>
     <string name="action_copyToClipboard">Kopier til udklipsholder</string>
     <string name="toast_copiedToClipboard">Kopieret til udklipsholder</string>
+    <string name="pw_strength_weak">Svag</string>
+    <string name="pw_strength_fair">Middel</string>
+    <string name="pw_strength_good">God</string>
+    <string name="pw_strength_strong">Stærk</string>
+    <string name="pw_hint_short">Tilføj %1$d tegn mere.</string>
+    <string name="pw_hint_longer">Med 16 tegn kræves ingen blanding.</string>
 </resources>

@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">Thời gian trước khi xóa văn bản đã sao chép khỏi bộ nhớ tạm. 0:00:00 là giữ nguyên.</string>
     <string name="action_copyToClipboard">Sao chép vào bộ nhớ tạm</string>
     <string name="toast_copiedToClipboard">Đã sao chép vào bộ nhớ tạm</string>
+    <string name="pw_strength_weak">Yếu</string>
+    <string name="pw_strength_fair">Trung bình</string>
+    <string name="pw_strength_good">Tốt</string>
+    <string name="pw_strength_strong">Mạnh</string>
+    <string name="pw_hint_short">Thêm %1$d ký tự nữa.</string>
+    <string name="pw_hint_longer">Dùng 16 ký tự trở lên thì không cần trộn loại ký tự.</string>
 </resources>

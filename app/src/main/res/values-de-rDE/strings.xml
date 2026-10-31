@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">Zeit, nach der kopierter Text aus der Zwischenablage gelöscht wird. 0:00:00 behält ihn.</string>
     <string name="action_copyToClipboard">In die Zwischenablage kopieren</string>
     <string name="toast_copiedToClipboard">In die Zwischenablage kopiert</string>
+    <string name="pw_strength_weak">Schwach</string>
+    <string name="pw_strength_fair">Mittel</string>
+    <string name="pw_strength_good">Gut</string>
+    <string name="pw_strength_strong">Stark</string>
+    <string name="pw_hint_short">Noch %1$d Zeichen hinzufügen.</string>
+    <string name="pw_hint_longer">Mit 16 Zeichen ist keine Mischung nötig.</string>
 </resources>

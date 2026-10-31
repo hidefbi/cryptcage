@@ -153,4 +153,10 @@
     <string name="pref_clipboardTimeout_summary">复制的内容在这段时间后从剪贴板清除，设为 0:00:00 则不清除。</string>
     <string name="action_copyToClipboard">复制到剪贴板</string>
     <string name="toast_copiedToClipboard">已复制到剪贴板</string>
+    <string name="pw_strength_weak">弱</string>
+    <string name="pw_strength_fair">一般</string>
+    <string name="pw_strength_good">良好</string>
+    <string name="pw_strength_strong">强</string>
+    <string name="pw_hint_short">还需输入 %1$d 个字符。</string>
+    <string name="pw_hint_longer">输入 16 个字符即可跳过字符种类要求。</string>
 </resources>

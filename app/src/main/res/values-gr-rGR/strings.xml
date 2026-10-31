@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">Χρόνος πριν διαγραφεί το αντιγραμμένο κείμενο από το πρόχειρο. Το 0:00:00 το διατηρεί.</string>
     <string name="action_copyToClipboard">Αντιγραφή στο πρόχειρο</string>
     <string name="toast_copiedToClipboard">Αντιγράφηκε στο πρόχειρο</string>
+    <string name="pw_strength_weak">Αδύναμος</string>
+    <string name="pw_strength_fair">Μέτριος</string>
+    <string name="pw_strength_good">Καλός</string>
+    <string name="pw_strength_strong">Ισχυρός</string>
+    <string name="pw_hint_short">Προσθέστε ακόμη %1$d χαρακτήρες.</string>
+    <string name="pw_hint_longer">Με 16 χαρακτήρες δεν χρειάζεται ανάμειξη.</string>
 </resources>

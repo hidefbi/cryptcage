@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">Durée avant effacement du texte copié du presse-papiers. 0:00:00 le conserve.</string>
     <string name="action_copyToClipboard">Copier dans le presse-papiers</string>
     <string name="toast_copiedToClipboard">Copié dans le presse-papiers</string>
+    <string name="pw_strength_weak">Faible</string>
+    <string name="pw_strength_fair">Correct</string>
+    <string name="pw_strength_good">Bon</string>
+    <string name="pw_strength_strong">Fort</string>
+    <string name="pw_hint_short">Ajoutez encore %1$d caractères.</string>
+    <string name="pw_hint_longer">16 caractères suffisent sans mélange de types.</string>
 </resources>

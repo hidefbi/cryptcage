@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">المدة قبل مسح النص المنسوخ من الحافظة. 0:00:00 يعني عدم المسح.</string>
     <string name="action_copyToClipboard">نسخ إلى الحافظة</string>
     <string name="toast_copiedToClipboard">تم النسخ إلى الحافظة</string>
+    <string name="pw_strength_weak">ضعيفة</string>
+    <string name="pw_strength_fair">مقبولة</string>
+    <string name="pw_strength_good">جيدة</string>
+    <string name="pw_strength_strong">قوية</string>
+    <string name="pw_hint_short">أضف %1$d حرفًا آخر.</string>
+    <string name="pw_hint_longer">استخدم 16 حرفًا على الأقل لتجاوز قاعدة التنويع.</string>
 </resources>

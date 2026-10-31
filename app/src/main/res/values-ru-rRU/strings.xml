@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">Время, через которое скопированный текст очищается из буфера. 0:00:00 означает не очищать.</string>
     <string name="action_copyToClipboard">Копировать в буфер</string>
     <string name="toast_copiedToClipboard">Скопировано в буфер</string>
+    <string name="pw_strength_weak">Слабый</string>
+    <string name="pw_strength_fair">Допустимый</string>
+    <string name="pw_strength_good">Хороший</string>
+    <string name="pw_strength_strong">Надёжный</string>
+    <string name="pw_hint_short">Добавьте ещё %1$d символов.</string>
+    <string name="pw_hint_longer">При 16 символах смешивать типы не нужно.</string>
 </resources>

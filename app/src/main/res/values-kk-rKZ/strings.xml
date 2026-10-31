@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">Көшірілген мәтін буферден өшірілгенге дейінгі уақыт. 0:00:00 сақтайды.</string>
     <string name="action_copyToClipboard">Буферге көшіру</string>
     <string name="toast_copiedToClipboard">Буферге көшірілді</string>
+    <string name="pw_strength_weak">Әлсіз</string>
+    <string name="pw_strength_fair">Орташа</string>
+    <string name="pw_strength_good">Жақсы</string>
+    <string name="pw_strength_strong">Күшті</string>
+    <string name="pw_hint_short">Тағы %1$d таңба қосыңыз.</string>
+    <string name="pw_hint_longer">16 таңба болса, әртүрлі таңба қажет емес.</string>
 </resources>

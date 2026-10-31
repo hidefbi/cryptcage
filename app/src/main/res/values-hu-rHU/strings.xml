@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">Ennyi idő után törlődik a másolt szöveg a vágólapról. A 0:00:00 megtartja.</string>
     <string name="action_copyToClipboard">Másolás a vágólapra</string>
     <string name="toast_copiedToClipboard">Másolva a vágólapra</string>
+    <string name="pw_strength_weak">Gyenge</string>
+    <string name="pw_strength_fair">Elfogadható</string>
+    <string name="pw_strength_good">Jó</string>
+    <string name="pw_strength_strong">Erős</string>
+    <string name="pw_hint_short">Még %1$d karaktert adjon hozzá.</string>
+    <string name="pw_hint_longer">16 karakternél nem kell vegyes karaktereket használni.</string>
 </resources>

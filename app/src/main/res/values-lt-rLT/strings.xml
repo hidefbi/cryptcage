@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">Laikas, po kurio nukopijuotas tekstas išvalomas iš iškarpinės. 0:00:00 palieka.</string>
     <string name="action_copyToClipboard">Kopijuoti į iškarpinę</string>
     <string name="toast_copiedToClipboard">Nukopijuota į iškarpinę</string>
+    <string name="pw_strength_weak">Silpnas</string>
+    <string name="pw_strength_fair">Vidutinis</string>
+    <string name="pw_strength_good">Geras</string>
+    <string name="pw_strength_strong">Stiprus</string>
+    <string name="pw_hint_short">Pridėkite dar %1$d simbolių.</string>
+    <string name="pw_hint_longer">Su 16 simbolių nereikia maišyti simbolių tipų.</string>
 </resources>

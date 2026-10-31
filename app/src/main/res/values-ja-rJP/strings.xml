@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">コピーしたテキストをクリップボードから消去するまでの時間。0:00:00 で消去しません。</string>
     <string name="action_copyToClipboard">クリップボードにコピー</string>
     <string name="toast_copiedToClipboard">クリップボードにコピーしました</string>
+    <string name="pw_strength_weak">弱い</string>
+    <string name="pw_strength_fair">普通</string>
+    <string name="pw_strength_good">良好</string>
+    <string name="pw_strength_strong">強い</string>
+    <string name="pw_hint_short">あと %1$d 文字追加してください。</string>
+    <string name="pw_hint_longer">16 文字以上にすると文字の種類の条件は不要です。</string>
 </resources>

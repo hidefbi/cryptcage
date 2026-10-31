@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">Aika, jonka kuluttua kopioitu teksti poistetaan leikepöydältä. 0:00:00 säilyttää sen.</string>
     <string name="action_copyToClipboard">Kopioi leikepöydälle</string>
     <string name="toast_copiedToClipboard">Kopioitu leikepöydälle</string>
+    <string name="pw_strength_weak">Heikko</string>
+    <string name="pw_strength_fair">Kohtalainen</string>
+    <string name="pw_strength_good">Hyvä</string>
+    <string name="pw_strength_strong">Vahva</string>
+    <string name="pw_hint_short">Lisää vielä %1$d merkkiä.</string>
+    <string name="pw_hint_longer">16 merkillä sekoitusta ei tarvita.</string>
 </resources>

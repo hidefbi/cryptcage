@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">Czas, po którym skopiowany tekst zostanie usunięty ze schowka. 0:00:00 zachowuje go.</string>
     <string name="action_copyToClipboard">Kopiuj do schowka</string>
     <string name="toast_copiedToClipboard">Skopiowano do schowka</string>
+    <string name="pw_strength_weak">Słabe</string>
+    <string name="pw_strength_fair">Średnie</string>
+    <string name="pw_strength_good">Dobre</string>
+    <string name="pw_strength_strong">Silne</string>
+    <string name="pw_hint_short">Dodaj jeszcze %1$d znaków.</string>
+    <string name="pw_hint_longer">Przy 16 znakach nie trzeba mieszać rodzajów znaków.</string>
 </resources>

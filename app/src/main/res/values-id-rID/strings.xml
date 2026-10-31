@@ -108,4 +108,10 @@
     <string name="pref_clipboardTimeout_summary">Waktu sebelum teks yang disalin dihapus dari papan klip. 0:00:00 membiarkannya.</string>
     <string name="action_copyToClipboard">Salin ke papan klip</string>
     <string name="toast_copiedToClipboard">Disalin ke papan klip</string>
+    <string name="pw_strength_weak">Lemah</string>
+    <string name="pw_strength_fair">Cukup</string>
+    <string name="pw_strength_good">Baik</string>
+    <string name="pw_strength_strong">Kuat</string>
+    <string name="pw_hint_short">Tambahkan %1$d karakter lagi.</string>
+    <string name="pw_hint_longer">Dengan 16 karakter, campuran jenis karakter tidak diperlukan.</string>
 </resources>
