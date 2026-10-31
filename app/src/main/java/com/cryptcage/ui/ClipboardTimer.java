@@ -16,7 +16,6 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 
 import androidx.preference.PreferenceManager;
 
@@ -40,7 +39,6 @@ final class ClipboardTimer {
     static final String KEY_UID = "copy_uid";
     static final String KEY_EXPIRES = "expires_at";
 
-    private static final String TAG = "CryptCageClipboard";
     private static final Handler HANDLER = new Handler(Looper.getMainLooper());
     private static Runnable pending;
     private static boolean installed;
@@ -91,10 +89,8 @@ final class ClipboardTimer {
     private static void onClipChanged() {
         final ClipboardManager clipboard = (ClipboardManager) appContext.getSystemService(Context.CLIPBOARD_SERVICE);
         if (!foreground || clipboard == null || !clipboard.hasPrimaryClip()) {
-            Log.i(TAG, "clip changed: ignored (foreground=" + foreground + ")");
             return;
         }
-        Log.i(TAG, "clip changed in app: starting timer");
         startTimer(appContext);
     }
 
@@ -115,16 +111,13 @@ final class ClipboardTimer {
         final int seconds = seconds(app);
         if (seconds == 0) {
             prefs(app).edit().remove(KEY_UID).remove(KEY_EXPIRES).apply();
-            Log.i(TAG, "timer: timeout is 0, not cleared");
             return;
         }
         final String uid = UUID.randomUUID().toString();
         final long expires = System.currentTimeMillis() + seconds * 1000L;
         prefs(app).edit().putString(KEY_UID, uid).putLong(KEY_EXPIRES, expires).apply();
-        Log.i(TAG, "timer: uid=" + uid + " seconds=" + seconds);
         pending = () -> {
             pending = null;
-            Log.i(TAG, "timer fired: uid=" + uid);
             expire(app, uid);
         };
         HANDLER.postDelayed(pending, seconds * 1000L);
@@ -147,12 +140,10 @@ final class ClipboardTimer {
         final String stored = prefs.getString(KEY_UID, null);
         final long expires = prefs.getLong(KEY_EXPIRES, 0L);
         if (!ClipboardExpiry.isDue(stored, uid, expires, System.currentTimeMillis())) {
-            Log.i(TAG, "expire: uid=" + uid + " not due (stored=" + stored + ")");
             return;
         }
         prefs.edit().remove(KEY_UID).remove(KEY_EXPIRES).apply();
         clear(app);
-        Log.i(TAG, "expire: cleared uid=" + uid);
     }
 
     private static void cancelPending() {
