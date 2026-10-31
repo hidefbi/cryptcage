@@ -105,7 +105,7 @@
     <string name="category_security">Безопасность</string>
     <string name="category_about">О приложении</string>
     <string name="pref_clipboardTimeout">Время хранения буфера</string>
-    <string name="pref_clipboardTimeout_summary">Время, через которое скопированный текст очищается из буфера. 0:00:00 — не очищать.</string>
+    <string name="pref_clipboardTimeout_summary">Время, через которое скопированный текст очищается из буфера. 0:00:00 означает не очищать.</string>
     <string name="action_copyToClipboard">Копировать в буфер</string>
     <string name="toast_copiedToClipboard">Скопировано в буфер</string>
 </resources>
