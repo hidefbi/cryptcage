@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
 
 /**
  * Long press and drag for the note list.
@@ -77,6 +78,11 @@ final class NoteGestures implements RecyclerView.OnItemTouchListener {
         this.slop = ViewConfiguration.get(list.getContext()).getScaledTouchSlop();
         this.longPressTimeout = ViewConfiguration.getLongPressTimeout();
         this.density = list.getResources().getDisplayMetrics().density;
+        // A change animation replaces the row's view with a new one. The gesture would then hold a
+        // view that is no longer in the list, so the highlight is applied in place instead.
+        if (list.getItemAnimator() instanceof SimpleItemAnimator) {
+            ((SimpleItemAnimator) list.getItemAnimator()).setSupportsChangeAnimations(false);
+        }
     }
 
     @Override
@@ -187,7 +193,9 @@ final class NoteGestures implements RecyclerView.OnItemTouchListener {
     }
 
     private void startDrag() {
-        dragPosition = list.getChildAdapterPosition(row);
+        // Take the row again from the press point, so a view replaced while the menu was open is not used.
+        row = list.findChildViewUnder(downX, downY);
+        dragPosition = row == null ? RecyclerView.NO_POSITION : list.getChildAdapterPosition(row);
         if (dragPosition == RecyclerView.NO_POSITION) {
             phase = Phase.IGNORE;
             return;
