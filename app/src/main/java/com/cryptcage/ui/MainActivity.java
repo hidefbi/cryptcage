@@ -169,9 +169,12 @@ public class MainActivity extends SecureActivity
             public void showMenu(final long id, final View row, final float x, final float y) {
                 MainActivity.this.dismissMenu();
                 final VaultSession.Summary note = summaryOrNull(id);
-                if (note != null) {
-                    notePopup = NoteMenu.show(MainActivity.this, notesList, id, note.readOnly, x, y, noteActions);
+                if (note == null) {
+                    gestures.menuClosed();
+                    return;
                 }
+                notePopup = NoteMenu.show(MainActivity.this, notesList, id, note.readOnly, x, y, noteActions,
+                        () -> gestures.menuClosed());
             }
 
             @Override
@@ -538,8 +541,10 @@ public class MainActivity extends SecureActivity
         }
     };
 
+    /** Closes the menu. The listener is removed first, so the highlight is kept by the caller. */
     private void dismissMenu() {
         if (notePopup != null) {
+            notePopup.setOnDismissListener(null);
             notePopup.dismiss();
             notePopup = null;
         }

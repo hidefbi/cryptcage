@@ -20,10 +20,11 @@ import androidx.recyclerview.widget.RecyclerView;
 /**
  * Long press and drag for the note list.
  *
- * A press that stays in place for the long-press time opens the menu for its row. Moving the
- * finger after that closes the menu and drags the row to a new place. Other rows move out of the
- * way while the finger moves, and the new order is saved when the finger lifts. Short presses,
- * and presses that move before the menu opens, are left to the rows and to the list's scrolling.
+ * A press that stays in place for the long-press time opens the menu for its row, and the row is
+ * shown darker. Moving the finger after that closes the menu and drags the row. The dragged card
+ * follows the finger, and the other rows step aside once the finger passes their middle. The new
+ * order is saved when the finger lifts. Short presses, and presses that move before the menu
+ * opens, are left to the rows and to the list's scrolling.
  */
 final class NoteGestures implements RecyclerView.OnItemTouchListener {
 
@@ -38,10 +39,10 @@ final class NoteGestures implements RecyclerView.OnItemTouchListener {
         /** Shows the menu for a row. The coordinates are relative to the list. */
         void showMenu(long id, View row, float x, float y);
 
-        /** Closes the menu if it is open. */
+        /** Closes the menu without running the listener that clears the highlight. */
         void dismissMenu();
 
-        /** Called after a drag ends with a new order. The ids are in the shown order. */
+        /** Called after a drag that moved rows. The ids are in the shown order. */
         void orderChanged(List<Long> ids);
     }
 
@@ -49,22 +50,25 @@ final class NoteGestures implements RecyclerView.OnItemTouchListener {
 
     private static final int EDGE_DP = 56;
     private static final int SCROLL_DP = 12;
+    private static final int LIFT_DP = 6;
 
+    private final RecyclerView list;
     private final NotesAdapter adapter;
     private final Host host;
     private final Handler handler = new Handler(Looper.getMainLooper());
     private final int slop;
     private final int longPressTimeout;
+    private final float density;
+    private final Runnable openMenu = this::openMenuNow;
 
-    private RecyclerView list;
     private Phase phase = Phase.IDLE;
     private View row;
     private float downX;
     private float downY;
+    private float grabOffset;
     private int dragPosition = RecyclerView.NO_POSITION;
     private boolean moved;
-
-    private final Runnable openMenu = this::openMenuNow;
+    private RecyclerView.ItemAnimator savedAnimator;
 
     NoteGestures(final RecyclerView list, final NotesAdapter adapter, final Host host) {
         this.list = list;
@@ -72,19 +76,7 @@ final class NoteGestures implements RecyclerView.OnItemTouchListener {
         this.host = host;
         this.slop = ViewConfiguration.get(list.getContext()).getScaledTouchSlop();
         this.longPressTimeout = ViewConfiguration.getLongPressTimeout();
-    }
-
-    /** Runs when the press has lasted the long-press time without moving far. */
-    private void openMenuNow() {
-        if (phase != Phase.PRESSED || row == null || list == null) {
-            return;
-        }
-        if (!host.menuAllowed()) {
-            return;
-        }
-        phase = Phase.MENU;
-        row.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
-        host.showMenu(adapter.idAt(list.getChildAdapterPosition(row)), row, downX, downY);
+        this.density = list.getResources().getDisplayMetrics().density;
     }
 
     @Override
@@ -106,13 +98,13 @@ final class NoteGestures implements RecyclerView.OnItemTouchListener {
                     cancelTimer();
                     phase = Phase.IDLE;
                 }
-                return phase == Phase.MENU || phase == Phase.DRAG || phase == Phase.IGNORE;
+                return isOwning();
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
                 cancelTimer();
-                return phase == Phase.MENU || phase == Phase.DRAG || phase == Phase.IGNORE;
+                return isOwning();
             default:
-                return phase == Phase.MENU || phase == Phase.DRAG || phase == Phase.IGNORE;
+                return isOwning();
         }
     }
 
@@ -121,23 +113,26 @@ final class NoteGestures implements RecyclerView.OnItemTouchListener {
         switch (e.getActionMasked()) {
             case MotionEvent.ACTION_MOVE:
                 if (phase == Phase.MENU && distance(e) > slop) {
-                    host.dismissMenu();
                     if (host.dragAllowed() && row != null) {
-                        phase = Phase.DRAG;
-                        dragPosition = rv.getChildAdapterPosition(row);
-                        moved = false;
+                        startDrag();
                     } else {
                         phase = Phase.IGNORE;
                     }
+                    host.dismissMenu();
                 }
                 if (phase == Phase.DRAG) {
-                    dragTo(rv, e);
+                    dragTo(e);
                 }
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
-                if (phase == Phase.DRAG && moved) {
-                    host.orderChanged(adapter.idsInOrder());
+                if (phase == Phase.DRAG) {
+                    endDrag();
+                    if (moved) {
+                        host.orderChanged(adapter.idsInOrder());
+                    }
+                } else if (phase == Phase.IGNORE) {
+                    adapter.clearPressed();
                 }
                 reset();
                 break;
@@ -151,26 +146,97 @@ final class NoteGestures implements RecyclerView.OnItemTouchListener {
         // Nothing to do: the list is not nested in another scrolling view.
     }
 
-    /** Moves the dragged row under the finger and scrolls the list when the finger nears an edge. */
-    private void dragTo(final RecyclerView rv, final MotionEvent e) {
-        final View under = rv.findChildViewUnder(e.getX(), e.getY());
+    /** Called when the menu closes by itself: a tap outside it or a menu row. */
+    void menuClosed() {
+        if (phase == Phase.DRAG) {
+            return;
+        }
+        if (phase == Phase.MENU) {
+            phase = Phase.IDLE;
+        }
+        adapter.clearPressed();
+    }
+
+    /** Stops a press that is in progress, for example when the screen goes to the background. */
+    void cancel() {
+        if (phase == Phase.DRAG) {
+            endDrag();
+        }
+        adapter.clearPressed();
+        reset();
+    }
+
+    /** Runs when the press has lasted the long-press time without moving far. */
+    private void openMenuNow() {
+        if (phase != Phase.PRESSED || row == null || !host.menuAllowed()) {
+            return;
+        }
+        final long id = adapter.idAt(list.getChildAdapterPosition(row));
+        if (id < 0) {
+            return;
+        }
+        phase = Phase.MENU;
+        row.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+        adapter.setPressed(id);
+        host.showMenu(id, row, downX, downY);
+    }
+
+    /** True while this class handles the touch, so the card does not also receive it. */
+    private boolean isOwning() {
+        return phase == Phase.MENU || phase == Phase.DRAG || phase == Phase.IGNORE;
+    }
+
+    private void startDrag() {
+        dragPosition = list.getChildAdapterPosition(row);
+        if (dragPosition == RecyclerView.NO_POSITION) {
+            phase = Phase.IGNORE;
+            return;
+        }
+        phase = Phase.DRAG;
+        moved = false;
+        grabOffset = downY - row.getTop();
+        row.setTranslationZ(LIFT_DP * density);
+        // Animated steps make the other rows arrive late. Without animation they follow the finger.
+        savedAnimator = list.getItemAnimator();
+        list.setItemAnimator(null);
+    }
+
+    /** Puts the dragged card under the finger and steps the other rows once the finger passes them. */
+    private void dragTo(final MotionEvent e) {
+        final float y = e.getY();
+        row.setTranslationY(y - grabOffset - row.getTop());
+
+        final View under = list.findChildViewUnder(e.getX(), y);
         if (under != null) {
-            final int target = rv.getChildAdapterPosition(under);
-            if (target != RecyclerView.NO_POSITION && dragPosition != RecyclerView.NO_POSITION
-                    && target != dragPosition) {
-                adapter.move(dragPosition, target);
-                dragPosition = target;
-                moved = true;
+            final int target = list.getChildAdapterPosition(under);
+            if (target != RecyclerView.NO_POSITION && target != dragPosition) {
+                final float middle = under.getTop() + under.getHeight() / 2f;
+                final boolean passed = target > dragPosition ? y > middle : y < middle;
+                if (passed) {
+                    adapter.move(dragPosition, target);
+                    dragPosition = target;
+                    moved = true;
+                }
             }
         }
-        final float density = rv.getResources().getDisplayMetrics().density;
+
         final int edge = Math.round(EDGE_DP * density);
         final int step = Math.round(SCROLL_DP * density);
-        if (e.getY() < edge) {
-            rv.scrollBy(0, -step);
-        } else if (e.getY() > rv.getHeight() - edge) {
-            rv.scrollBy(0, step);
+        if (y < edge) {
+            list.scrollBy(0, -step);
+        } else if (y > list.getHeight() - edge) {
+            list.scrollBy(0, step);
         }
+    }
+
+    private void endDrag() {
+        if (row != null) {
+            row.setTranslationY(0);
+            row.setTranslationZ(0);
+        }
+        list.setItemAnimator(savedAnimator);
+        savedAnimator = null;
+        adapter.clearPressed();
     }
 
     private float distance(final MotionEvent e) {
@@ -189,10 +255,5 @@ final class NoteGestures implements RecyclerView.OnItemTouchListener {
         row = null;
         dragPosition = RecyclerView.NO_POSITION;
         moved = false;
-    }
-
-    /** Stops a press that is in progress, for example when the screen goes to the background. */
-    void cancel() {
-        reset();
     }
 }

@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cryptcage.utils.FileKinds;
@@ -53,8 +54,12 @@ final class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.Holder> {
         }
     }
 
+    /** Alpha of the on-surface colour laid over a row that is pressed or dragged (about 18%). */
+    private static final int PRESSED_ALPHA = 0x2E;
+
     private final List<Item> items = new ArrayList<>();
     private final Listener listener;
+    private long pressedId = -1;
 
     NotesAdapter(final Listener listener) {
         this.listener = listener;
@@ -93,6 +98,33 @@ final class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.Holder> {
         return items.get(position).id;
     }
 
+    /** Shows the row with this id as pressed, darker than the other rows. Pass -1 to clear it. */
+    void setPressed(final long id) {
+        if (pressedId == id) {
+            return;
+        }
+        final long previous = pressedId;
+        pressedId = id;
+        refreshRow(previous);
+        refreshRow(id);
+    }
+
+    void clearPressed() {
+        setPressed(-1);
+    }
+
+    private void refreshRow(final long id) {
+        if (id < 0) {
+            return;
+        }
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).id == id) {
+                notifyItemChanged(i);
+                return;
+            }
+        }
+    }
+
     /** Moves a row while a drag is running. The rows change only on the screen until the drop. */
     void move(final int from, final int to) {
         Collections.swap(items, from, to);
@@ -128,9 +160,7 @@ final class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.Holder> {
                 com.google.android.material.R.attr.colorOnSurfaceVariant));
         holder.type.setAlpha(item.readOnly ? 0.6f : 1f);
 
-        holder.card.setCardBackgroundColor(MaterialColors.getColor(view,
-                item.selected ? androidx.appcompat.R.attr.colorPrimary
-                        : com.google.android.material.R.attr.colorSurface));
+        holder.card.setCardBackgroundColor(backgroundFor(view, item));
         holder.card.setStrokeColor(MaterialColors.getColor(view,
                 item.selected ? androidx.appcompat.R.attr.colorPrimary
                         : com.google.android.material.R.attr.colorOutline));
@@ -143,6 +173,23 @@ final class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.Holder> {
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    /**
+     * The card colour. A selected row uses the primary colour. A pressed or dragged row is the
+     * surface with the on-surface colour laid over it, so it is darker on light themes and still
+     * stands out on dark ones.
+     */
+    private int backgroundFor(final View view, final Item item) {
+        if (item.selected) {
+            return MaterialColors.getColor(view, androidx.appcompat.R.attr.colorPrimary);
+        }
+        final int surface = MaterialColors.getColor(view, com.google.android.material.R.attr.colorSurface);
+        if (item.id != pressedId) {
+            return surface;
+        }
+        final int onSurface = MaterialColors.getColor(view, com.google.android.material.R.attr.colorOnSurface);
+        return ColorUtils.compositeColors(ColorUtils.setAlphaComponent(onSurface, PRESSED_ALPHA), surface);
     }
 
     private static int iconFor(final FileKinds.Type type) {

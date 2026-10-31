@@ -44,12 +44,13 @@ final class NoteMenu {
      * A read-only note shows the writable row and no delete row.
      */
     static PopupWindow show(final Context context, final View parent, final long id, final boolean readOnly,
-                            final float x, final float y, final Actions actions) {
+                            final float x, final float y, final Actions actions, final Runnable onClosed) {
         final View content = LayoutInflater.from(context).inflate(R.layout.popup_note_menu, null);
         final PopupWindow popup = new PopupWindow(content, ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, true);
         popup.setOutsideTouchable(true);
         popup.setBackgroundDrawable(new ColorDrawable(0));
+        popup.setOnDismissListener(() -> onClosed.run());
 
         content.findViewById(R.id.note_menu_select).setOnClickListener(v -> {
             popup.dismiss();
