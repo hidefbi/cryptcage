@@ -101,4 +101,11 @@
     <string name="action_discardDraft">Отбросить</string>
     <string name="dialog_restoreDraft">В этой заметке есть несохранённые изменения. Восстановить их?</string>
     <string name="toast_noteTooLarge">Заметка слишком большая для сохранения (лимит 8 МБ)</string>
+    <string name="category_appearance">Оформление</string>
+    <string name="category_security">Безопасность</string>
+    <string name="category_about">О приложении</string>
+    <string name="pref_clipboardTimeout">Время хранения буфера</string>
+    <string name="pref_clipboardTimeout_summary">Время, через которое скопированный текст очищается из буфера. 0:00:00 — не очищать.</string>
+    <string name="action_copyToClipboard">Копировать в буфер</string>
+    <string name="toast_copiedToClipboard">Скопировано в буфер</string>
 </resources>

@@ -102,4 +102,11 @@
     <string name="action_discardDraft">Scarta</string>
     <string name="dialog_restoreDraft">Questa nota ha modifiche non salvate di prima. Ripristinarle?</string>
     <string name="toast_noteTooLarge">La nota è troppo grande per essere salvata (limite 8 MB)</string>
+    <string name="category_appearance">Aspetto</string>
+    <string name="category_security">Sicurezza</string>
+    <string name="category_about">Informazioni</string>
+    <string name="pref_clipboardTimeout">Scadenza appunti</string>
+    <string name="pref_clipboardTimeout_summary">Tempo prima che il testo copiato venga cancellato dagli appunti. 0:00:00 lo mantiene.</string>
+    <string name="action_copyToClipboard">Copia negli appunti</string>
+    <string name="toast_copiedToClipboard">Copiato negli appunti</string>
 </resources>

@@ -101,4 +101,11 @@
     <string name="action_discardDraft">Kassér</string>
     <string name="dialog_restoreDraft">Denne note har ikke-gemte ændringer fra tidligere. Gendan dem?</string>
     <string name="toast_noteTooLarge">Noten er for stor til at blive gemt (grænse 8 MB)</string>
+    <string name="category_appearance">Udseende</string>
+    <string name="category_security">Sikkerhed</string>
+    <string name="category_about">Om</string>
+    <string name="pref_clipboardTimeout">Udklipsholder-timeout</string>
+    <string name="pref_clipboardTimeout_summary">Tid før kopieret tekst slettes fra udklipsholderen. 0:00:00 beholder den.</string>
+    <string name="action_copyToClipboard">Kopier til udklipsholder</string>
+    <string name="toast_copiedToClipboard">Kopieret til udklipsholder</string>
 </resources>

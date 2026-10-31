@@ -101,4 +101,11 @@
     <string name="action_discardDraft">Elvetés</string>
     <string name="dialog_restoreDraft">Ebben a jegyzetben korábbi, nem mentett változtatások vannak. Visszaállítja őket?</string>
     <string name="toast_noteTooLarge">A jegyzet túl nagy a mentéshez (korlát 8 MB)</string>
+    <string name="category_appearance">Megjelenés</string>
+    <string name="category_security">Biztonság</string>
+    <string name="category_about">Névjegy</string>
+    <string name="pref_clipboardTimeout">Vágólap időkorlát</string>
+    <string name="pref_clipboardTimeout_summary">Ennyi idő után törlődik a másolt szöveg a vágólapról. A 0:00:00 megtartja.</string>
+    <string name="action_copyToClipboard">Másolás a vágólapra</string>
+    <string name="toast_copiedToClipboard">Másolva a vágólapra</string>
 </resources>

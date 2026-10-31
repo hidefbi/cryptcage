@@ -23,6 +23,7 @@ This list covers the changes made by hidefbi on 2026-10-31 and the earlier chang
 - Unused code, contributor names and developer links were removed. The license and copyright notices were kept.
 - A long press on a note opens a menu with select, export, copy, read-only and delete. The list can be reordered by dragging, and a read-only note cannot be changed, starred or deleted.
 - The note editor has undo and redo. Unsaved text is kept as a draft sealed with the vault key, and it is offered again when the note is opened. A note body can be at most 8 MB when it is written. KeePass databases (.kdbx) can be stored as files.
+- Settings are grouped into appearance, security and about. The clipboard timeout is set as hours, minutes and seconds, and copied note text is cleared from the clipboard after that time. The master password can be changed from the settings.
 - Test coverage was added for the storage format, compaction, password change and the vault session.
 
 ## Dates

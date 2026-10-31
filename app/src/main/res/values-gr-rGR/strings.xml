@@ -101,4 +101,11 @@
     <string name="action_discardDraft">Απόρριψη</string>
     <string name="dialog_restoreDraft">Αυτή η σημείωση έχει μη αποθηκευμένες αλλαγές από πριν. Να επαναφερθούν;</string>
     <string name="toast_noteTooLarge">Η σημείωση είναι πολύ μεγάλη για αποθήκευση (όριο 8 MB)</string>
+    <string name="category_appearance">Εμφάνιση</string>
+    <string name="category_security">Ασφάλεια</string>
+    <string name="category_about">Σχετικά</string>
+    <string name="pref_clipboardTimeout">Χρονικό όριο προχείρου</string>
+    <string name="pref_clipboardTimeout_summary">Χρόνος πριν διαγραφεί το αντιγραμμένο κείμενο από το πρόχειρο. Το 0:00:00 το διατηρεί.</string>
+    <string name="action_copyToClipboard">Αντιγραφή στο πρόχειρο</string>
+    <string name="toast_copiedToClipboard">Αντιγράφηκε στο πρόχειρο</string>
 </resources>

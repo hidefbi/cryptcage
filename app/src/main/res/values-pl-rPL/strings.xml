@@ -101,4 +101,11 @@
     <string name="action_discardDraft">Odrzuć</string>
     <string name="dialog_restoreDraft">Ta notatka ma wcześniejsze niezapisane zmiany. Przywrócić je?</string>
     <string name="toast_noteTooLarge">Notatka jest zbyt duża, aby ją zapisać (limit 8 MB)</string>
+    <string name="category_appearance">Wygląd</string>
+    <string name="category_security">Bezpieczeństwo</string>
+    <string name="category_about">O aplikacji</string>
+    <string name="pref_clipboardTimeout">Limit czasu schowka</string>
+    <string name="pref_clipboardTimeout_summary">Czas, po którym skopiowany tekst zostanie usunięty ze schowka. 0:00:00 zachowuje go.</string>
+    <string name="action_copyToClipboard">Kopiuj do schowka</string>
+    <string name="toast_copiedToClipboard">Skopiowano do schowka</string>
 </resources>

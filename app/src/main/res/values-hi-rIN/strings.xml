@@ -101,4 +101,11 @@
     <string name="action_discardDraft">छोड़ें</string>
     <string name="dialog_restoreDraft">इस नोट में पहले के बिना सहेजे गए बदलाव हैं। क्या उन्हें वापस लाएँ?</string>
     <string name="toast_noteTooLarge">नोट सहेजने के लिए बहुत बड़ा है (सीमा 8 MB)</string>
+    <string name="category_appearance">दिखावट</string>
+    <string name="category_security">सुरक्षा</string>
+    <string name="category_about">परिचय</string>
+    <string name="pref_clipboardTimeout">क्लिपबोर्ड समय-सीमा</string>
+    <string name="pref_clipboardTimeout_summary">कॉपी किया गया टेक्स्ट क्लिपबोर्ड से हटने से पहले का समय। 0:00:00 रखेगा।</string>
+    <string name="action_copyToClipboard">क्लिपबोर्ड पर कॉपी करें</string>
+    <string name="toast_copiedToClipboard">क्लिपबोर्ड पर कॉपी किया गया</string>
 </resources>

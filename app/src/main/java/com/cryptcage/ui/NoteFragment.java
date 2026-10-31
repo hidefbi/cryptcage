@@ -442,6 +442,7 @@ public class NoteFragment extends Fragment {
         menu.findItem(R.id.action_edit).setVisible(!editing && canEdit);
         menu.findItem(R.id.action_save).setVisible(editing);
         menu.findItem(R.id.action_share).setVisible(!editing && !fileMode);
+        menu.findItem(R.id.action_copyToClipboard).setVisible(!editing && !fileMode);
         menu.findItem(R.id.action_exportFile).setVisible(!editing);
         menu.findItem(R.id.action_delete).setVisible(!editing && !readOnly);
         menu.findItem(R.id.action_undo).setVisible(editing);
@@ -471,6 +472,9 @@ public class NoteFragment extends Fragment {
             save();
         } else if (id == R.id.action_exportFile) {
             listener().onExportNote(noteId);
+        } else if (id == R.id.action_copyToClipboard) {
+            ClipboardTimer.copy(requireContext(), originalBody);
+            Toast.makeText(requireContext(), R.string.toast_copiedToClipboard, Toast.LENGTH_SHORT).show();
         } else if (id == R.id.action_share) {
             share();
         } else if (id == R.id.action_delete) {

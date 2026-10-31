@@ -146,4 +146,11 @@
     <string name="action_discardDraft">丢弃</string>
     <string name="dialog_restoreDraft">这条笔记有之前未保存的修改，是否恢复？</string>
     <string name="toast_noteTooLarge">笔记过大，无法保存（上限 8 MB）</string>
+    <string name="category_appearance">外观</string>
+    <string name="category_security">安全</string>
+    <string name="category_about">关于</string>
+    <string name="pref_clipboardTimeout">剪贴板超时</string>
+    <string name="pref_clipboardTimeout_summary">复制的内容在这段时间后从剪贴板清除，设为 0:00:00 则不清除。</string>
+    <string name="action_copyToClipboard">复制到剪贴板</string>
+    <string name="toast_copiedToClipboard">已复制到剪贴板</string>
 </resources>

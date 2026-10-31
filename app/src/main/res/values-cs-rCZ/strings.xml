@@ -101,4 +101,11 @@
     <string name="action_discardDraft">Zahodit</string>
     <string name="dialog_restoreDraft">Tato poznámka obsahuje dříve neuložené změny. Obnovit je?</string>
     <string name="toast_noteTooLarge">Poznámka je příliš velká na uložení (limit 8 MB)</string>
+    <string name="category_appearance">Vzhled</string>
+    <string name="category_security">Zabezpečení</string>
+    <string name="category_about">O aplikaci</string>
+    <string name="pref_clipboardTimeout">Časový limit schránky</string>
+    <string name="pref_clipboardTimeout_summary">Doba, po které se zkopírovaný text vymaže ze schránky. 0:00:00 ji ponechá.</string>
+    <string name="action_copyToClipboard">Kopírovat do schránky</string>
+    <string name="toast_copiedToClipboard">Zkopírováno do schránky</string>
 </resources>

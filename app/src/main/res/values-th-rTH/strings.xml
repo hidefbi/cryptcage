@@ -101,4 +101,11 @@
     <string name="action_discardDraft">ทิ้ง</string>
     <string name="dialog_restoreDraft">บันทึกนี้มีการเปลี่ยนแปลงที่ยังไม่ได้บันทึกจากก่อนหน้า ต้องการกู้คืนหรือไม่</string>
     <string name="toast_noteTooLarge">บันทึกใหญ่เกินไปที่จะบันทึก (จำกัด 8 MB)</string>
+    <string name="category_appearance">รูปลักษณ์</string>
+    <string name="category_security">ความปลอดภัย</string>
+    <string name="category_about">เกี่ยวกับ</string>
+    <string name="pref_clipboardTimeout">หมดเวลาคลิปบอร์ด</string>
+    <string name="pref_clipboardTimeout_summary">เวลาก่อนลบข้อความที่คัดลอกออกจากคลิปบอร์ด 0:00:00 คือไม่ลบ</string>
+    <string name="action_copyToClipboard">คัดลอกไปยังคลิปบอร์ด</string>
+    <string name="toast_copiedToClipboard">คัดลอกไปยังคลิปบอร์ดแล้ว</string>
 </resources>

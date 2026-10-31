@@ -1,30 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <androidx.preference.ListPreference
-        android:defaultValue="blue"
-        android:dialogTitle="@string/pref_palette"
-        android:entries="@array/pref_palette_entries"
-        android:entryValues="@array/pref_palette_values"
-        android:key="pref_palette"
-        android:title="@string/pref_palette" />
+    <PreferenceCategory
+        android:key="category_appearance"
+        android:title="@string/category_appearance">
 
-    <androidx.preference.SwitchPreferenceCompat
-        android:defaultValue="false"
-        android:key="pref_screenshot"
-        android:summary="@string/pref_screenshot_summary"
-        android:title="@string/pref_screenshot" />
+        <androidx.preference.ListPreference
+            android:defaultValue="blue"
+            android:dialogTitle="@string/pref_palette"
+            android:entries="@array/pref_palette_entries"
+            android:entryValues="@array/pref_palette_values"
+            android:key="pref_palette"
+            android:title="@string/pref_palette" />
 
-    <androidx.preference.ListPreference
-        android:defaultValue="@string/pref_textSize_default"
-        android:dialogTitle="@string/pref_textSize"
-        android:entries="@array/pref_textSize_entries"
-        android:entryValues="@array/pref_textSize_values"
-        android:key="pref_textSize"
-        android:title="@string/pref_textSize" />
+        <androidx.preference.ListPreference
+            android:defaultValue="@string/pref_textSize_default"
+            android:dialogTitle="@string/pref_textSize"
+            android:entries="@array/pref_textSize_entries"
+            android:entryValues="@array/pref_textSize_values"
+            android:key="pref_textSize"
+            android:title="@string/pref_textSize" />
+    </PreferenceCategory>
 
-    <androidx.preference.Preference
-        android:key="pref_about"
-        android:title="@string/action_about" />
+    <PreferenceCategory
+        android:key="category_security"
+        android:title="@string/category_security">
+
+        <androidx.preference.SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="pref_screenshot"
+            android:summary="@string/pref_screenshot_summary"
+            android:title="@string/pref_screenshot" />
+
+        <com.cryptcage.ui.DurationPreference
+            android:defaultValue="20"
+            android:dialogMessage="@string/pref_clipboardTimeout_summary"
+            android:key="pref_clipboardTimeout"
+            android:title="@string/pref_clipboardTimeout" />
+
+        <androidx.preference.Preference
+            android:key="pref_changePassword"
+            android:title="@string/action_changePassword" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="category_about"
+        android:title="@string/category_about">
+
+        <androidx.preference.Preference
+            android:key="pref_about"
+            android:title="@string/action_about" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

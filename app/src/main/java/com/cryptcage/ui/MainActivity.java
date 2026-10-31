@@ -240,6 +240,7 @@ public class MainActivity extends SecureActivity
             return;
         }
         screenshotBar.setVisibility(App.allowsScreenshots(this) ? View.VISIBLE : View.GONE);
+        ClipboardTimer.clearIfExpired(this);
         refresh();
     }
 
@@ -271,23 +272,11 @@ public class MainActivity extends SecureActivity
 
     @Override
     public void onPasswordChosen(final String purpose, final char[] password) {
-        final App.Session current = App.session();
-        if (!ChoosePasswordDialogFragment.PURPOSE_CHANGE.equals(purpose) || current == null) {
+        if (!ChoosePasswordDialogFragment.PURPOSE_CHANGE.equals(purpose)) {
             Arrays.fill(password, '\0');
             return;
         }
-        final Context app = getApplicationContext();
-        Tasks.io(() -> {
-            try {
-                current.vault.changePassword(password);
-                Tasks.ui(() -> toast(app, R.string.toast_success_changePsw));
-            } catch (VaultException e) {
-                final int message = VaultMessages.messageFor(e.getReason());
-                Tasks.ui(() -> toast(app, message));
-            } finally {
-                Arrays.fill(password, '\0');
-            }
-        });
+        PasswordChange.apply(this, password);
     }
 
     @Override

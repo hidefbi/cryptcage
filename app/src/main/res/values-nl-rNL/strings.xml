@@ -101,4 +101,11 @@
     <string name="action_discardDraft">Negeren</string>
     <string name="dialog_restoreDraft">Deze notitie heeft eerder niet-opgeslagen wijzigingen. Herstellen?</string>
     <string name="toast_noteTooLarge">De notitie is te groot om op te slaan (limiet 8 MB)</string>
+    <string name="category_appearance">Weergave</string>
+    <string name="category_security">Beveiliging</string>
+    <string name="category_about">Over</string>
+    <string name="pref_clipboardTimeout">Time-out klembord</string>
+    <string name="pref_clipboardTimeout_summary">Tijd voordat gekopieerde tekst uit het klembord wordt gewist. 0:00:00 bewaart hem.</string>
+    <string name="action_copyToClipboard">Kopiëren naar klembord</string>
+    <string name="toast_copiedToClipboard">Gekopieerd naar klembord</string>
 </resources>

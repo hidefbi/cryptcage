@@ -101,4 +101,11 @@
     <string name="action_discardDraft">Тастау</string>
     <string name="dialog_restoreDraft">Бұл жазбада бұрын сақталмаған өзгерістер бар. Қалпына келтірілсін бе?</string>
     <string name="toast_noteTooLarge">Жазба сақтау үшін тым үлкен (шегі 8 МБ)</string>
+    <string name="category_appearance">Сыртқы түрі</string>
+    <string name="category_security">Қауіпсіздік</string>
+    <string name="category_about">Туралы</string>
+    <string name="pref_clipboardTimeout">Буфер уақыт шегі</string>
+    <string name="pref_clipboardTimeout_summary">Көшірілген мәтін буферден өшірілгенге дейінгі уақыт. 0:00:00 сақтайды.</string>
+    <string name="action_copyToClipboard">Буферге көшіру</string>
+    <string name="toast_copiedToClipboard">Буферге көшірілді</string>
 </resources>

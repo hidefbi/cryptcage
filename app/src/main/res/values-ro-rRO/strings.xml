@@ -101,4 +101,11 @@
     <string name="action_discardDraft">Renunță</string>
     <string name="dialog_restoreDraft">Această notiță are modificări nesalvate din urmă. Să fie restaurate?</string>
     <string name="toast_noteTooLarge">Notița este prea mare pentru a fi salvată (limită 8 MB)</string>
+    <string name="category_appearance">Aspect</string>
+    <string name="category_security">Securitate</string>
+    <string name="category_about">Despre</string>
+    <string name="pref_clipboardTimeout">Expirare clipboard</string>
+    <string name="pref_clipboardTimeout_summary">Timpul până când textul copiat este șters din clipboard. 0:00:00 îl păstrează.</string>
+    <string name="action_copyToClipboard">Copiază în clipboard</string>
+    <string name="toast_copiedToClipboard">Copiat în clipboard</string>
 </resources>

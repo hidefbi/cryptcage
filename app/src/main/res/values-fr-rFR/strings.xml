@@ -101,4 +101,11 @@
     <string name="action_discardDraft">Ignorer</string>
     <string name="dialog_restoreDraft">Cette note contient des modifications non enregistrées. Les restaurer ?</string>
     <string name="toast_noteTooLarge">La note est trop volumineuse pour être enregistrée (limite 8 Mo)</string>
+    <string name="category_appearance">Apparence</string>
+    <string name="category_security">Sécurité</string>
+    <string name="category_about">À propos</string>
+    <string name="pref_clipboardTimeout">Délai du presse-papiers</string>
+    <string name="pref_clipboardTimeout_summary">Durée avant effacement du texte copié du presse-papiers. 0:00:00 le conserve.</string>
+    <string name="action_copyToClipboard">Copier dans le presse-papiers</string>
+    <string name="toast_copiedToClipboard">Copié dans le presse-papiers</string>
 </resources>

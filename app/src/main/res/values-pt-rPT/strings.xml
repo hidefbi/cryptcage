@@ -101,4 +101,11 @@
     <string name="action_discardDraft">Descartar</string>
     <string name="dialog_restoreDraft">Esta nota tem alterações não guardadas de antes. Restaurá-las?</string>
     <string name="toast_noteTooLarge">A nota é demasiado grande para ser guardada (limite de 8 MB)</string>
+    <string name="category_appearance">Aparência</string>
+    <string name="category_security">Segurança</string>
+    <string name="category_about">Sobre</string>
+    <string name="pref_clipboardTimeout">Tempo limite da área de transferência</string>
+    <string name="pref_clipboardTimeout_summary">Tempo até o texto copiado ser apagado da área de transferência. 0:00:00 mantém o texto.</string>
+    <string name="action_copyToClipboard">Copiar para a área de transferência</string>
+    <string name="toast_copiedToClipboard">Copiado para a área de transferência</string>
 </resources>

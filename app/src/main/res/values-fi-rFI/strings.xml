@@ -101,4 +101,11 @@
     <string name="action_discardDraft">Hylkää</string>
     <string name="dialog_restoreDraft">Tässä muistiinpanossa on aiemmin tallentamattomia muutoksia. Palautetaanko ne?</string>
     <string name="toast_noteTooLarge">Muistiinpano on liian suuri tallennettavaksi (raja 8 Mt)</string>
+    <string name="category_appearance">Ulkoasu</string>
+    <string name="category_security">Turvallisuus</string>
+    <string name="category_about">Tietoja</string>
+    <string name="pref_clipboardTimeout">Leikepöydän aikakatkaisu</string>
+    <string name="pref_clipboardTimeout_summary">Aika, jonka kuluttua kopioitu teksti poistetaan leikepöydältä. 0:00:00 säilyttää sen.</string>
+    <string name="action_copyToClipboard">Kopioi leikepöydälle</string>
+    <string name="toast_copiedToClipboard">Kopioitu leikepöydälle</string>
 </resources>

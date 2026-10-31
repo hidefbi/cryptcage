@@ -101,4 +101,11 @@
     <string name="action_discardDraft">تجاهل</string>
     <string name="dialog_restoreDraft">لدى هذه الملاحظة تغييرات غير محفوظة من قبل. هل تريد استعادتها؟</string>
     <string name="toast_noteTooLarge">الملاحظة كبيرة جدًا ولا يمكن حفظها (الحد 8 ميغابايت)</string>
+    <string name="category_appearance">المظهر</string>
+    <string name="category_security">الأمان</string>
+    <string name="category_about">حول</string>
+    <string name="pref_clipboardTimeout">مهلة الحافظة</string>
+    <string name="pref_clipboardTimeout_summary">المدة قبل مسح النص المنسوخ من الحافظة. 0:00:00 يعني عدم المسح.</string>
+    <string name="action_copyToClipboard">نسخ إلى الحافظة</string>
+    <string name="toast_copiedToClipboard">تم النسخ إلى الحافظة</string>
 </resources>

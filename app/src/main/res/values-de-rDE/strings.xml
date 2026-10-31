@@ -101,4 +101,11 @@
     <string name="action_discardDraft">Verwerfen</string>
     <string name="dialog_restoreDraft">Diese Notiz hat früher nicht gespeicherte Änderungen. Wiederherstellen?</string>
     <string name="toast_noteTooLarge">Die Notiz ist zu groß zum Speichern (Limit 8 MB)</string>
+    <string name="category_appearance">Darstellung</string>
+    <string name="category_security">Sicherheit</string>
+    <string name="category_about">Info</string>
+    <string name="pref_clipboardTimeout">Zwischenablage-Zeitlimit</string>
+    <string name="pref_clipboardTimeout_summary">Zeit, nach der kopierter Text aus der Zwischenablage gelöscht wird. 0:00:00 behält ihn.</string>
+    <string name="action_copyToClipboard">In die Zwischenablage kopieren</string>
+    <string name="toast_copiedToClipboard">In die Zwischenablage kopiert</string>
 </resources>

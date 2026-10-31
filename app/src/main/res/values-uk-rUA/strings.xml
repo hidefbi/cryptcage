@@ -101,4 +101,11 @@
     <string name="action_discardDraft">Відхилити</string>
     <string name="dialog_restoreDraft">У цій нотатці є незбережені зміни з попереднього разу. Відновити їх?</string>
     <string name="toast_noteTooLarge">Нотатка завелика для збереження (ліміт 8 МБ)</string>
+    <string name="category_appearance">Вигляд</string>
+    <string name="category_security">Безпека</string>
+    <string name="category_about">Про застосунок</string>
+    <string name="pref_clipboardTimeout">Час зберігання буфера</string>
+    <string name="pref_clipboardTimeout_summary">Час, через який скопійований текст очищується з буфера. 0:00:00 — не очищувати.</string>
+    <string name="action_copyToClipboard">Копіювати в буфер</string>
+    <string name="toast_copiedToClipboard">Скопійовано в буфер</string>
 </resources>

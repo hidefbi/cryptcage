@@ -101,4 +101,11 @@
     <string name="action_discardDraft">Descartar</string>
     <string name="dialog_restoreDraft">Esta nota tiene cambios sin guardar de antes. ¿Restaurarlos?</string>
     <string name="toast_noteTooLarge">La nota es demasiado grande para guardarla (límite 8 MB)</string>
+    <string name="category_appearance">Apariencia</string>
+    <string name="category_security">Seguridad</string>
+    <string name="category_about">Acerca de</string>
+    <string name="pref_clipboardTimeout">Tiempo de espera del portapapeles</string>
+    <string name="pref_clipboardTimeout_summary">Tiempo antes de borrar el texto copiado del portapapeles. 0:00:00 lo mantiene.</string>
+    <string name="action_copyToClipboard">Copiar al portapapeles</string>
+    <string name="toast_copiedToClipboard">Copiado al portapapeles</string>
 </resources>

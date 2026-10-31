@@ -33,6 +33,10 @@
         app:showAsAction="ifRoom"
         android:title="@string/action_share"/>
     <item
+        android:id="@+id/action_copyToClipboard"
+        app:showAsAction="never"
+        android:title="@string/action_copyToClipboard"/>
+    <item
         android:id="@+id/action_exportFile"
         app:showAsAction="never"
         android:title="@string/action_exportFile"/>

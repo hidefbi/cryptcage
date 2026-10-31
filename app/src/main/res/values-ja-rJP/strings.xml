@@ -101,4 +101,11 @@
     <string name="action_discardDraft">破棄</string>
     <string name="dialog_restoreDraft">このメモには以前の未保存の変更があります。復元しますか？</string>
     <string name="toast_noteTooLarge">メモが大きすぎて保存できません（上限 8 MB）</string>
+    <string name="category_appearance">外観</string>
+    <string name="category_security">セキュリティ</string>
+    <string name="category_about">情報</string>
+    <string name="pref_clipboardTimeout">クリップボードの保存時間</string>
+    <string name="pref_clipboardTimeout_summary">コピーしたテキストをクリップボードから消去するまでの時間。0:00:00 で消去しません。</string>
+    <string name="action_copyToClipboard">クリップボードにコピー</string>
+    <string name="toast_copiedToClipboard">クリップボードにコピーしました</string>
 </resources>

@@ -101,4 +101,11 @@
     <string name="action_discardDraft">Bỏ qua</string>
     <string name="dialog_restoreDraft">Ghi chú này có thay đổi chưa lưu từ trước. Khôi phục các thay đổi đó?</string>
     <string name="toast_noteTooLarge">Ghi chú quá lớn để lưu (giới hạn 8 MB)</string>
+    <string name="category_appearance">Giao diện</string>
+    <string name="category_security">Bảo mật</string>
+    <string name="category_about">Giới thiệu</string>
+    <string name="pref_clipboardTimeout">Thời gian lưu bộ nhớ tạm</string>
+    <string name="pref_clipboardTimeout_summary">Thời gian trước khi xóa văn bản đã sao chép khỏi bộ nhớ tạm. 0:00:00 là giữ nguyên.</string>
+    <string name="action_copyToClipboard">Sao chép vào bộ nhớ tạm</string>
+    <string name="toast_copiedToClipboard">Đã sao chép vào bộ nhớ tạm</string>
 </resources>

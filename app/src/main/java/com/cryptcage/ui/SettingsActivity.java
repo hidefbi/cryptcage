@@ -6,6 +6,8 @@
  */
 package com.cryptcage.ui;
 
+import java.util.Arrays;
+
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -13,8 +15,9 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.cryptcage.R;
+import com.cryptcage.app.App;
 
-public class SettingsActivity extends SecureActivity {
+public class SettingsActivity extends SecureActivity implements ChoosePasswordDialogFragment.Callback {
 
     @Override
     protected boolean needsVault() {
@@ -44,6 +47,15 @@ public class SettingsActivity extends SecureActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onPasswordChosen(final String purpose, final char[] password) {
+        if (!ChoosePasswordDialogFragment.PURPOSE_CHANGE.equals(purpose)) {
+            Arrays.fill(password, '\0');
+            return;
+        }
+        PasswordChange.apply(this, password);
+    }
+
     public static class SettingsFragment extends PreferenceFragmentCompat {
         @Override
         public void onCreatePreferences(final Bundle savedInstanceState, final String rootKey) {
@@ -54,6 +66,20 @@ public class SettingsActivity extends SecureActivity {
             if (palette != null) {
                 palette.setOnPreferenceChangeListener((preference, value) -> {
                     requireView().post(() -> requireActivity().recreate());
+                    return true;
+                });
+            }
+            final boolean unlocked = App.isUnlocked();
+            final Preference clipboard = findPreference("pref_clipboardTimeout");
+            if (clipboard != null) {
+                clipboard.setVisible(unlocked);
+            }
+            final Preference changePassword = findPreference("pref_changePassword");
+            if (changePassword != null) {
+                changePassword.setVisible(unlocked);
+                changePassword.setOnPreferenceClickListener(preference -> {
+                    ChoosePasswordDialogFragment.newInstance(ChoosePasswordDialogFragment.PURPOSE_CHANGE)
+                            .show(getParentFragmentManager(), "change_password");
                     return true;
                 });
             }
