@@ -57,6 +57,13 @@ public class SettingsActivity extends SecureActivity {
                     return true;
                 });
             }
+            final Preference about = findPreference("pref_about");
+            if (about != null) {
+                about.setOnPreferenceClickListener(preference -> {
+                    AboutToast.show(requireContext());
+                    return true;
+                });
+            }
             final Preference screenshot = findPreference("pref_screenshot");
             if (screenshot != null) {
                 screenshot.setOnPreferenceChangeListener((preference, value) -> {

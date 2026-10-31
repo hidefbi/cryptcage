@@ -4,12 +4,11 @@
 
     <item
         android:id="@+id/action_exportSelected"
-        android:icon="@drawable/icon_save"
         app:showAsAction="always"
         android:title="@string/action_exportSelected"/>
     <item
         android:id="@+id/action_deleteSelected"
-        app:showAsAction="never"
+        app:showAsAction="always"
         android:title="@string/action_delete"/>
 
 </menu>

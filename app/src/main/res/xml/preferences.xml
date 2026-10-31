@@ -23,4 +23,8 @@
         android:key="pref_textSize"
         android:title="@string/pref_textSize" />
 
+    <androidx.preference.Preference
+        android:key="pref_about"
+        android:title="@string/action_about" />
+
 </PreferenceScreen>

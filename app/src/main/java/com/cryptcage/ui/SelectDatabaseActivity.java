@@ -141,8 +141,6 @@ public class SelectDatabaseActivity extends SecureActivity
         buttonOpen.setOnClickListener(v -> onOpenClicked());
         findViewById(R.id.buttonCreate).setOnClickListener(v -> onCreateClicked());
         findViewById(R.id.cardImport).setOnClickListener(v -> importLauncher.launch(new String[]{"*/*"}));
-        findViewById(R.id.buttonSettings).setOnClickListener(v ->
-                startActivity(new Intent(this, SettingsActivity.class)));
     }
 
     @Override
@@ -153,7 +151,7 @@ public class SelectDatabaseActivity extends SecureActivity
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.start, menu);
         return true;
     }
 
@@ -162,8 +160,6 @@ public class SelectDatabaseActivity extends SecureActivity
         final int id = item.getItemId();
         if (id == R.id.action_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
-        } else if (id == R.id.action_about) {
-            AboutToast.show(this);
         } else {
             return super.onOptionsItemSelected(item);
         }

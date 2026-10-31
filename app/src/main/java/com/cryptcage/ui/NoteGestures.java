@@ -23,9 +23,9 @@ import androidx.recyclerview.widget.SimpleItemAnimator;
  *
  * A press that stays in place for the long-press time opens the menu for its row, and the row is
  * shown darker. Moving the finger after that closes the menu and drags the row. The dragged card
- * follows the finger, and the other rows step aside once the finger passes their middle. The new
- * order is saved when the finger lifts. Short presses, and presses that move before the menu
- * opens, are left to the rows and to the list's scrolling.
+ * follows the finger, and the other rows step aside, up or down, once the finger passes their
+ * middle. The new order is saved when the finger lifts. Short presses, and presses that move
+ * before the menu opens, are left to the rows and to the list's scrolling.
  */
 final class NoteGestures implements RecyclerView.OnItemTouchListener {
 
@@ -66,10 +66,12 @@ final class NoteGestures implements RecyclerView.OnItemTouchListener {
     private View row;
     private float downX;
     private float downY;
+    private float lastY;
     private float grabOffset;
     private int dragPosition = RecyclerView.NO_POSITION;
     private boolean moved;
     private RecyclerView.ItemAnimator savedAnimator;
+    private final View.OnLayoutChangeListener keepUnderFinger = this::keepUnderFinger;
 
     NoteGestures(final RecyclerView list, final NotesAdapter adapter, final Host host) {
         this.list = list;
@@ -202,24 +204,30 @@ final class NoteGestures implements RecyclerView.OnItemTouchListener {
         }
         phase = Phase.DRAG;
         moved = false;
+        lastY = downY;
         grabOffset = downY - row.getTop();
         row.setTranslationZ(LIFT_DP * density);
+        row.addOnLayoutChangeListener(keepUnderFinger);
         // Animated steps make the other rows arrive late. Without animation they follow the finger.
         savedAnimator = list.getItemAnimator();
         list.setItemAnimator(null);
     }
 
-    /** Puts the dragged card under the finger and steps the other rows once the finger passes them. */
+    /**
+     * Puts the dragged card under the finger and steps the other rows once the finger passes
+     * them, upward or downward. The dragged row itself is left out of the search, because its
+     * translated position would otherwise hide the row above it.
+     */
     private void dragTo(final MotionEvent e) {
-        final float y = e.getY();
-        row.setTranslationY(y - grabOffset - row.getTop());
+        lastY = e.getY();
+        row.setTranslationY(lastY - grabOffset - row.getTop());
 
-        final View under = list.findChildViewUnder(e.getX(), y);
+        final View under = rowUnder(lastY);
         if (under != null) {
             final int target = list.getChildAdapterPosition(under);
             if (target != RecyclerView.NO_POSITION && target != dragPosition) {
                 final float middle = under.getTop() + under.getHeight() / 2f;
-                final boolean passed = target > dragPosition ? y > middle : y < middle;
+                final boolean passed = target > dragPosition ? lastY > middle : lastY < middle;
                 if (passed) {
                     adapter.move(dragPosition, target);
                     dragPosition = target;
@@ -230,15 +238,36 @@ final class NoteGestures implements RecyclerView.OnItemTouchListener {
 
         final int edge = Math.round(EDGE_DP * density);
         final int step = Math.round(SCROLL_DP * density);
-        if (y < edge) {
+        if (lastY < edge) {
             list.scrollBy(0, -step);
-        } else if (y > list.getHeight() - edge) {
+        } else if (lastY > list.getHeight() - edge) {
             list.scrollBy(0, step);
+        }
+    }
+
+    /** The row whose layout bounds contain this height, other than the dragged row. */
+    private View rowUnder(final float y) {
+        for (int i = 0; i < list.getChildCount(); i++) {
+            final View child = list.getChildAt(i);
+            if (child != row && y >= child.getTop() && y < child.getBottom()) {
+                return child;
+            }
+        }
+        return null;
+    }
+
+    /** Runs when the layout moves the dragged row. Its offset is set again so it stays under the finger. */
+    private void keepUnderFinger(final View view, final int left, final int top, final int right,
+                                 final int bottom, final int oldLeft, final int oldTop, final int oldRight,
+                                 final int oldBottom) {
+        if (phase == Phase.DRAG && view == row) {
+            view.setTranslationY(lastY - grabOffset - view.getTop());
         }
     }
 
     private void endDrag() {
         if (row != null) {
+            row.removeOnLayoutChangeListener(keepUnderFinger);
             row.setTranslationY(0);
             row.setTranslationZ(0);
         }

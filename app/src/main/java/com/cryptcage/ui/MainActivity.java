@@ -87,6 +87,7 @@ public class MainActivity extends SecureActivity
     private ActivityResultLauncher<String[]> importLauncher;
     private ExportFlow exportFlow;
     private NoteGestures gestures;
+    private View screenshotBar;
     private PopupWindow notePopup;
 
     private final Map<Integer, String> chipTags = new HashMap<>();
@@ -120,6 +121,7 @@ public class MainActivity extends SecureActivity
         fab = findViewById(R.id.fab);
         fabScrim = findViewById(R.id.fab_scrim);
         fabMenu = findViewById(R.id.fab_menu);
+        screenshotBar = findViewById(R.id.screenshot_bar);
         detailPane = findViewById(R.id.detail_pane);
         detailEmpty = findViewById(R.id.detail_empty);
         twoPane = detailPane != null;
@@ -237,6 +239,7 @@ public class MainActivity extends SecureActivity
         if (redirectIfLocked()) {
             return;
         }
+        screenshotBar.setVisibility(App.allowsScreenshots(this) ? View.VISIBLE : View.GONE);
         refresh();
     }
 
@@ -413,6 +416,10 @@ public class MainActivity extends SecureActivity
         toolbar.getMenu().clear();
         if (selecting) {
             toolbar.inflateMenu(R.menu.selection);
+            toolbar.getMenu().findItem(R.id.action_exportSelected)
+                    .setIcon(EmojiIcon.of(this, EmojiIcon.EXPORT));
+            toolbar.getMenu().findItem(R.id.action_deleteSelected)
+                    .setIcon(EmojiIcon.of(this, EmojiIcon.DELETE));
             toolbar.setNavigationIcon(SecureActivity.themeDrawable(this,
                     androidx.appcompat.R.attr.actionModeCloseDrawable));
             toolbar.setNavigationContentDescription(R.string.action_cancelSelection);

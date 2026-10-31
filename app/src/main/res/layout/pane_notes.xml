@@ -76,6 +76,18 @@
                 android:textAppearance="?attr/textAppearanceBodyLarge"
                 android:textColor="?attr/colorOnSurfaceVariant" />
         </FrameLayout>
+        <TextView
+            android:id="@+id/screenshot_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorError"
+            android:gravity="center"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="@string/pref_screenshot"
+            android:textAppearance="?attr/textAppearanceLabelLarge"
+            android:textColor="?attr/colorOnError"
+            android:visibility="gone" />
     </LinearLayout>
 
     <View
@@ -111,12 +123,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                <TextView
+                    style="@style/NoteMenuIcon"
+                    android:layout_height="wrap_content"
                     android:importantForAccessibility="no"
-                    android:src="@drawable/ic_add_white_24dp"
-                    android:tint="?attr/colorPrimary" />
+                    android:text="&#x1F4DA;" />
 
                 <TextView
                     style="@style/FabMenuLabel"
@@ -131,12 +142,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                <TextView
+                    style="@style/NoteMenuIcon"
+                    android:layout_height="wrap_content"
                     android:importantForAccessibility="no"
-                    android:src="@drawable/ic_import_outline"
-                    android:tint="?attr/colorPrimary" />
+                    android:text="&#x23EB;" />
 
                 <TextView
                     style="@style/FabMenuLabel"
@@ -151,12 +161,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                <TextView
+                    style="@style/NoteMenuIcon"
+                    android:layout_height="wrap_content"
                     android:importantForAccessibility="no"
-                    android:src="@drawable/ic_export_outline"
-                    android:tint="?attr/colorPrimary" />
+                    android:text="&#x23EC;" />
 
                 <TextView
                     style="@style/FabMenuLabel"
