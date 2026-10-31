@@ -50,7 +50,6 @@ import com.cryptcage.utils.VaultException;
 import com.cryptcage.utils.VaultSession;
 import com.cryptcage.R;
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -76,8 +75,10 @@ public class MainActivity extends SecureActivity
     private ChipGroup tagGroup;
     private RecyclerView notesList;
     private TextView emptyView;
-    private BottomAppBar bottomBar;
     private FloatingActionButton fab;
+    private View fabScrim;
+    private View fabMenu;
+    private boolean fabMenuOpen;
     private View detailPane;
     private TextView detailEmpty;
     private NotesAdapter adapter;
@@ -111,17 +112,29 @@ public class MainActivity extends SecureActivity
         tagGroup = findViewById(R.id.tag_group);
         notesList = findViewById(R.id.notes_list);
         emptyView = findViewById(R.id.empty);
-        bottomBar = findViewById(R.id.bottom_bar);
         fab = findViewById(R.id.fab);
+        fabScrim = findViewById(R.id.fab_scrim);
+        fabMenu = findViewById(R.id.fab_menu);
         detailPane = findViewById(R.id.detail_pane);
         detailEmpty = findViewById(R.id.detail_empty);
         twoPane = detailPane != null;
 
         toolbar.setOnMenuItemClickListener(this::onMenuItem);
         toolbar.setNavigationOnClickListener(v -> exitSelection());
-        bottomBar.replaceMenu(R.menu.bottom_bar);
-        bottomBar.setOnMenuItemClickListener(this::onMenuItem);
-        fab.setOnClickListener(v -> onAddClicked());
+        fab.setOnClickListener(v -> toggleFabMenu());
+        fabScrim.setOnClickListener(v -> closeFabMenu());
+        findViewById(R.id.fab_action_new).setOnClickListener(v -> {
+            closeFabMenu();
+            onAddClicked();
+        });
+        findViewById(R.id.fab_action_import).setOnClickListener(v -> {
+            closeFabMenu();
+            importLauncher.launch(new String[]{"*/*"});
+        });
+        findViewById(R.id.fab_action_export).setOnClickListener(v -> {
+            closeFabMenu();
+            exportFlow.start(allIds());
+        });
 
         adapter = new NotesAdapter(new NotesAdapter.Listener() {
             @Override
@@ -187,6 +200,10 @@ public class MainActivity extends SecureActivity
 
     @Override
     public void onBackPressed() {
+        if (fabMenuOpen) {
+            closeFabMenu();
+            return;
+        }
         final Fragment detail = getSupportFragmentManager().findFragmentByTag(DETAIL_TAG);
         if (detail instanceof NoteFragment && ((NoteFragment) detail).handleBack()) {
             return;
@@ -272,10 +289,6 @@ public class MainActivity extends SecureActivity
         } else if (id == R.id.action_changePassword) {
             ChoosePasswordDialogFragment.newInstance(ChoosePasswordDialogFragment.PURPOSE_CHANGE)
                     .show(getSupportFragmentManager(), "change_password");
-        } else if (id == R.id.action_export) {
-            exportFlow.start(allIds());
-        } else if (id == R.id.action_importFile) {
-            importLauncher.launch(new String[]{"*/*"});
         } else if (id == R.id.action_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
         } else if (id == R.id.action_about) {
@@ -369,10 +382,37 @@ public class MainActivity extends SecureActivity
             toolbar.setNavigationIcon(null);
         }
         if (selecting) {
+            closeFabMenu();
             fab.hide();
         } else {
             fab.show();
         }
+    }
+
+    private void toggleFabMenu() {
+        if (fabMenuOpen) {
+            closeFabMenu();
+        } else {
+            openFabMenu();
+        }
+    }
+
+    /** Opens the add menu above the button. The button turns into a close icon. */
+    private void openFabMenu() {
+        fabMenuOpen = true;
+        fabScrim.setVisibility(View.VISIBLE);
+        fabMenu.setVisibility(View.VISIBLE);
+        fab.animate().rotation(45f).setDuration(150).start();
+    }
+
+    private void closeFabMenu() {
+        if (!fabMenuOpen) {
+            return;
+        }
+        fabMenuOpen = false;
+        fabScrim.setVisibility(View.GONE);
+        fabMenu.setVisibility(View.GONE);
+        fab.animate().rotation(0f).setDuration(150).start();
     }
 
     private void confirmDeleteSelected() {

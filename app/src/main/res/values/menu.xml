@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Dims the list while the add menu is open. -->
+    <color name="menu_scrim">#52000000</color>
+
+    <style name="FabMenuRow">
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">24dp</item>
+    </style>
+
+    <style name="FabMenuLabel">
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:textAppearance">?attr/textAppearanceBodyLarge</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+</resources>
