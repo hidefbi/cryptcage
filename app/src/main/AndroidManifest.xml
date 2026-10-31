@@ -37,10 +37,6 @@
         <activity
             android:name="com.cryptcage.ui.SettingsActivity"
             android:exported="false" />
-        <receiver
-            android:name="com.cryptcage.ui.ClipboardCleanReceiver"
-            android:exported="false" />
-
         <activity
             android:name="com.cryptcage.ui.FileViewActivity"
             android:exported="false" />

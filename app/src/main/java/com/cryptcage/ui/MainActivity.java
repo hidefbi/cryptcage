@@ -240,7 +240,6 @@ public class MainActivity extends SecureActivity
             return;
         }
         screenshotBar.setVisibility(App.allowsScreenshots(this) ? View.VISIBLE : View.GONE);
-        ClipboardTimer.clearIfExpired(this);
         refresh();
     }
 

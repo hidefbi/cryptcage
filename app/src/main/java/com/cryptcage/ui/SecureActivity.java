@@ -94,6 +94,7 @@ public abstract class SecureActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         applyScreenshotPolicy(this);
+        ClipboardTimer.clearIfExpired(this);
         // The colour palette may have been changed on another screen while this one was in the back.
         if (paletteAtCreate != App.usesSandPalette(this)) {
             recreate();
