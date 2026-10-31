@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">Sormenjälkeä ei ole lisätty. Lisää se ensin järjestelmäasetuksissa.</string>
     <string name="bio_reason_weak_only">Laitteessa on vain kasvojentunnistus, joka ei ole tähän riittävän vahva.</string>
     <string name="bio_reason_no_hardware">Laitteessa ei ole vahvaa biometrista lukitusta.</string>
+    <string name="bio_enroll_title">Biometrinen lukitus</string>
+    <string name="bio_enroll_action">Avaa asetukset</string>
 </resources>

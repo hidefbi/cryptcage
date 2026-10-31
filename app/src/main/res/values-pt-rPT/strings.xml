@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">Não há nenhuma impressão digital configurada. Adicione uma nas definições do sistema primeiro.</string>
     <string name="bio_reason_weak_only">O dispositivo só tem desbloqueio facial, que não é suficientemente forte para esta função.</string>
     <string name="bio_reason_no_hardware">O dispositivo não tem desbloqueio biométrico forte.</string>
+    <string name="bio_enroll_title">Desbloqueio biométrico</string>
+    <string name="bio_enroll_action">Abrir definições</string>
 </resources>

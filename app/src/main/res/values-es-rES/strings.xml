@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">No hay ninguna huella configurada. Añádela primero en los ajustes del sistema.</string>
     <string name="bio_reason_weak_only">El dispositivo solo tiene desbloqueo facial, que no es lo bastante seguro para esta función.</string>
     <string name="bio_reason_no_hardware">El dispositivo no tiene desbloqueo biométrico seguro.</string>
+    <string name="bio_enroll_title">Desbloqueo biométrico</string>
+    <string name="bio_enroll_action">Abrir ajustes</string>
 </resources>

@@ -223,6 +223,16 @@ public class SettingsActivity extends SecureActivity
         private void onBiometricClicked() {
             final Context context = requireContext();
             final int reason = BiometricVault.unavailableReason(context);
+            if (reason == R.string.bio_reason_none_enrolled) {
+                new AlertDialog.Builder(context)
+                        .setTitle(R.string.bio_enroll_title)
+                        .setMessage(reason)
+                        .setPositiveButton(R.string.bio_enroll_action,
+                                (dialog, which) -> BiometricVault.openEnrollment(context))
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .show();
+                return;
+            }
             if (reason != 0) {
                 Toast.makeText(context, reason, Toast.LENGTH_LONG).show();
                 return;
@@ -273,6 +283,13 @@ public class SettingsActivity extends SecureActivity
                     })
                     .setNegativeButton(android.R.string.cancel, null)
                     .show();
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
+            // The user may have added a fingerprint in the system settings, so the rows are read again.
+            refreshSecurityRows();
         }
 
         @Override

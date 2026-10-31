@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">Отпечаток пальца не добавлен. Сначала добавьте его в настройках системы.</string>
     <string name="bio_reason_weak_only">На устройстве есть только разблокировка по лицу, её недостаточно для этой функции.</string>
     <string name="bio_reason_no_hardware">На устройстве нет надёжной разблокировки по биометрии.</string>
+    <string name="bio_enroll_title">Разблокировка по биометрии</string>
+    <string name="bio_enroll_action">Открыть настройки</string>
 </resources>

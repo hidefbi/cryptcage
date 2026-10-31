@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">Δεν έχει ρυθμιστεί δακτυλικό αποτύπωμα. Προσθέστε ένα στις ρυθμίσεις του συστήματος.</string>
     <string name="bio_reason_weak_only">Η συσκευή διαθέτει μόνο ξεκλείδωμα προσώπου, το οποίο δεν είναι αρκετά ισχυρό για αυτή τη λειτουργία.</string>
     <string name="bio_reason_no_hardware">Η συσκευή δεν διαθέτει ισχυρό ξεκλείδωμα με βιομετρικά.</string>
+    <string name="bio_enroll_title">Ξεκλείδωμα με βιομετρικά</string>
+    <string name="bio_enroll_action">Άνοιγμα ρυθμίσεων</string>
 </resources>

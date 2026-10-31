@@ -193,4 +193,6 @@
     <string name="bio_reason_none_enrolled">No fingerprint is set up. Add one in the system settings first.</string>
     <string name="bio_reason_weak_only">This device only has face unlock, which is not strong enough for this feature.</string>
     <string name="bio_reason_no_hardware">This device has no strong biometric unlock.</string>
+    <string name="bio_enroll_title">Biometric unlock</string>
+    <string name="bio_enroll_action">Open settings</string>
 </resources>

@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">Відбиток пальця не додано. Спочатку додайте його в налаштуваннях системи.</string>
     <string name="bio_reason_weak_only">На пристрої є лише розблокування обличчям, його недостатньо для цієї функції.</string>
     <string name="bio_reason_no_hardware">На пристрої немає надійного біометричного розблокування.</string>
+    <string name="bio_enroll_title">Розблокування біометрією</string>
+    <string name="bio_enroll_action">Відкрити налаштування</string>
 </resources>

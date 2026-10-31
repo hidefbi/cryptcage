@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">Chưa thiết lập vân tay. Hãy thêm vân tay trong cài đặt hệ thống trước.</string>
     <string name="bio_reason_weak_only">Thiết bị chỉ có mở khóa bằng khuôn mặt, không đủ mạnh cho tính năng này.</string>
     <string name="bio_reason_no_hardware">Thiết bị không có mở khóa sinh trắc học mạnh.</string>
+    <string name="bio_enroll_title">Mở khóa sinh trắc học</string>
+    <string name="bio_enroll_action">Mở cài đặt</string>
 </resources>

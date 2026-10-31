@@ -21,6 +21,7 @@ import javax.crypto.spec.GCMParameterSpec;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
@@ -28,31 +29,38 @@ import android.util.Base64;
 
 import androidx.annotation.RequiresApi;
 
+import com.cryptcage.utils.PinEnvelope;
 import com.cryptcage.utils.PinRules;
 
 /**
  * The PIN and the master passwords it can unlock.
  *
- * One PIN is shared by all vaults. Each vault that uses it has its own copy of the master
- * password, wrapped with a key that lives in the Android Keystore and cannot be exported. The
- * vault name is bound to that copy, so a copy cannot be moved to another vault. The PIN is
- * checked against a salted hash; the password copies are only opened after the PIN is right.
+ * A saved password goes through two layers. The inner layer is AES-GCM with a device key from the
+ * Android Keystore, which cannot be exported and can only be used while the device is unlocked
+ * (Android 9 and later). The outer layer is AES-GCM with a key derived from the PIN. Both layers
+ * are bound to the vault name, so a copy cannot be moved to another vault. The device key alone
+ * cannot open a copy, and the PIN alone cannot either.
  *
- * PIN unlock needs Android 6.0 or later. On older versions {@link #supported()} is false and
- * the app asks for the master password as before.
+ * One PIN is shared by all vaults. Wrong PINs are counted, and after {@link PinRules#MAX_FAILURES}
+ * of them the PIN and every saved copy are removed. The databases are not changed.
+ *
+ * PIN unlock needs Android 6.0 or later. On older versions {@link #supported()} is false.
  */
 public final class PinStore {
 
-    /** Result of checking a PIN. */
+    /** Result of checking a PIN key against the verifier. */
     public enum Check { OK, WRONG, WIPED, NOT_SET }
 
-    private static final String PREFS = "pin_lock";
+    private static final String PREFS = "pin_lock_v2";
     private static final String KEY_SALT = "salt";
-    private static final String KEY_HASH = "hash";
+    private static final String KEY_VERIFIER = "verifier";
     private static final String KEY_FAILURES = "failures";
-    private static final String CREDENTIAL_PREFIX = "cred_";
-    private static final String ALIAS = "cryptcage_pin_wrap";
+    private static final String VAULT_PREFIX = "vault_";
+    private static final String DEVICE_ALIAS = "cryptcage_pin_device_key";
+    private static final String OLD_ALIAS = "cryptcage_pin_wrap";
+    private static final String OLD_PREFS = "pin_lock";
     private static final String KEYSTORE = "AndroidKeyStore";
+    private static final String DEVICE_AAD_PREFIX = "cryptcage-device:";
     private static final int IV_BYTES = 12;
     private static final int TAG_BITS = 128;
     private static final int SALT_BYTES = 32;
@@ -69,44 +77,63 @@ public final class PinStore {
     }
 
     public static boolean isEnabled(final Context context) {
-        return prefs(context).contains(KEY_HASH);
+        return prefs(context).contains(KEY_VERIFIER);
     }
 
     /** True when this vault has a saved copy of its password. */
     public static boolean hasCredential(final Context context, final String vault) {
-        return isEnabled(context) && prefs(context).contains(credentialKey(vault));
+        return isEnabled(context) && prefs(context).contains(vaultKey(vault));
     }
 
-    public static int failures(final Context context) {
-        return prefs(context).getInt(KEY_FAILURES, 0);
-    }
-
-    /** Sets the PIN. The caller has checked it with {@link PinRules#isValid(String)}. */
-    @RequiresApi(Build.VERSION_CODES.M)
-    public static void enable(final Context context, final char[] pin) throws GeneralSecurityException {
-        final byte[] salt = new byte[SALT_BYTES];
-        RANDOM.nextBytes(salt);
-        final byte[] hash = PinRules.hash(pin, salt);
-        key();
-        prefs(context).edit()
-                .putString(KEY_SALT, encode(salt))
-                .putString(KEY_HASH, encode(hash))
-                .putInt(KEY_FAILURES, 0)
-                .apply();
+    public static int attemptsLeft(final Context context) {
+        return PinRules.attemptsLeft(prefs(context).getInt(KEY_FAILURES, 0));
     }
 
     /**
-     * Checks the PIN. A wrong PIN counts as a failure. When the failures reach the limit, the PIN
-     * and every saved password copy are removed. The databases are not touched.
+     * Sets the PIN. Returns its key so the caller can save the first copy without deriving it again.
+     * The caller wipes the key.
      */
-    public static Check check(final Context context, final char[] pin) throws GeneralSecurityException {
+    @RequiresApi(Build.VERSION_CODES.M)
+    public static byte[] enable(final Context context, final char[] pin) throws GeneralSecurityException {
+        final byte[] salt = new byte[SALT_BYTES];
+        RANDOM.nextBytes(salt);
+        final byte[] key = PinEnvelope.deriveKey(pin, salt);
+        try {
+            final byte[] verifier = PinEnvelope.verifier(key);
+            deviceKey(context, true);
+            prefs(context).edit().clear().apply();
+            prefs(context).edit()
+                    .putString(KEY_SALT, encode(salt))
+                    .putString(KEY_VERIFIER, encode(verifier))
+                    .putInt(KEY_FAILURES, 0)
+                    .apply();
+            deleteLegacy(context);
+            return Arrays.copyOf(key, key.length);
+        } finally {
+            Arrays.fill(key, (byte) 0);
+        }
+    }
+
+    /** The PIN key for a PIN, from the stored salt. Null when no PIN is set. The caller wipes it. */
+    public static byte[] deriveKey(final Context context, final char[] pin) throws GeneralSecurityException {
+        final byte[] salt = decode(prefs(context).getString(KEY_SALT, null));
+        if (salt == null) {
+            return null;
+        }
+        return PinEnvelope.deriveKey(pin, salt);
+    }
+
+    /**
+     * Checks a PIN key against the verifier. A wrong key counts as a failure, and the limit removes
+     * the PIN and every saved copy.
+     */
+    public static Check verify(final Context context, final byte[] key) {
         final SharedPreferences prefs = prefs(context);
-        final byte[] salt = decode(prefs.getString(KEY_SALT, null));
-        final byte[] stored = decode(prefs.getString(KEY_HASH, null));
-        if (salt == null || stored == null) {
+        final byte[] verifier = decode(prefs.getString(KEY_VERIFIER, null));
+        if (verifier == null) {
             return Check.NOT_SET;
         }
-        if (PinRules.matches(stored, PinRules.hash(pin, salt))) {
+        if (PinEnvelope.verifies(key, verifier)) {
             prefs.edit().putInt(KEY_FAILURES, 0).apply();
             return Check.OK;
         }
@@ -119,58 +146,51 @@ public final class PinStore {
         return Check.WRONG;
     }
 
-    public static int attemptsLeft(final Context context) {
-        return PinRules.attemptsLeft(failures(context));
-    }
-
-    /** Saves a copy of the vault's master password. Call only after the PIN has been checked. */
+    /** Saves a copy of the vault's password. The PIN key must already be checked. */
     @RequiresApi(Build.VERSION_CODES.M)
-    public static void saveCredential(final Context context, final String vault, final char[] password)
-            throws GeneralSecurityException {
+    public static void saveCredential(final Context context, final String vault, final byte[] key,
+                                      final char[] password) throws GeneralSecurityException {
         final byte[] plain = new String(password).getBytes(StandardCharsets.UTF_8);
+        final byte[] inner;
         try {
-            prefs(context).edit().putString(credentialKey(vault), encode(wrap(plain, vault))).apply();
+            inner = deviceWrap(context, vault, plain);
         } finally {
             Arrays.fill(plain, (byte) 0);
         }
+        final byte[] outer = PinEnvelope.wrapForVault(key, vault, inner);
+        prefs(context).edit().putString(vaultKey(vault), encode(outer)).apply();
     }
 
-    /** Returns the saved password of the vault, or null when there is none or it cannot be read. */
+    /** Returns the saved password of the vault, or null when there is none or it cannot be opened. */
     @RequiresApi(Build.VERSION_CODES.M)
-    public static char[] loadCredential(final Context context, final String vault) {
-        final byte[] blob = decode(prefs(context).getString(credentialKey(vault), null));
-        if (blob == null) {
+    public static char[] loadCredential(final Context context, final String vault, final byte[] key) {
+        final byte[] stored = decode(prefs(context).getString(vaultKey(vault), null));
+        if (stored == null) {
             return null;
         }
         try {
-            final byte[] plain = unwrap(blob, vault);
+            final byte[] inner = PinEnvelope.unwrapForVault(key, vault, stored);
+            final byte[] plain = deviceUnwrap(context, vault, inner);
             try {
                 return new String(plain, StandardCharsets.UTF_8).toCharArray();
             } finally {
                 Arrays.fill(plain, (byte) 0);
             }
-        } catch (GeneralSecurityException e) {
+        } catch (GeneralSecurityException | RuntimeException e) {
             return null;
         }
     }
 
     /** Deletes the saved password of one vault, for example when the vault is deleted. */
     public static void removeCredential(final Context context, final String vault) {
-        prefs(context).edit().remove(credentialKey(vault)).apply();
+        prefs(context).edit().remove(vaultKey(vault)).apply();
     }
 
-    /** Turns PIN unlock off: removes the PIN, every saved password copy and the Keystore key. */
+    /** Turns PIN unlock off: removes the PIN, every saved copy and the device key. */
     public static void disable(final Context context) {
         prefs(context).edit().clear().apply();
-        try {
-            if (supported()) {
-                final KeyStore store = KeyStore.getInstance(KEYSTORE);
-                store.load(null);
-                store.deleteEntry(ALIAS);
-            }
-        } catch (GeneralSecurityException | IOException e) {
-            // The entry is gone or the store is unavailable. Without the PIN hash the copies are unusable anyway.
-        }
+        deleteLegacy(context);
+        deleteDeviceKey();
     }
 
     /** Holds a copy of the password until the PIN dialog finishes. The caller keeps its own array. */
@@ -194,8 +214,8 @@ public final class PinStore {
         heldPassword = null;
     }
 
-    private static String credentialKey(final String vault) {
-        return CREDENTIAL_PREFIX + vault;
+    private static String vaultKey(final String vault) {
+        return VAULT_PREFIX + vault;
     }
 
     private static SharedPreferences prefs(final Context context) {
@@ -210,12 +230,13 @@ public final class PinStore {
         return text == null ? null : Base64.decode(text, Base64.NO_WRAP);
     }
 
-    /** Returns the IV followed by the ciphertext. The vault name is authenticated, not stored in the blob. */
+    /** Inner layer: IV followed by the AES-GCM ciphertext, bound to the vault name. */
     @RequiresApi(Build.VERSION_CODES.M)
-    private static byte[] wrap(final byte[] plain, final String vault) throws GeneralSecurityException {
+    private static byte[] deviceWrap(final Context context, final String vault, final byte[] plain)
+            throws GeneralSecurityException {
         final Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
-        cipher.init(Cipher.ENCRYPT_MODE, key());
-        cipher.updateAAD(vault.getBytes(StandardCharsets.UTF_8));
+        cipher.init(Cipher.ENCRYPT_MODE, deviceKey(context, true));
+        cipher.updateAAD(deviceAad(vault));
         final byte[] iv = cipher.getIV();
         final byte[] body = cipher.doFinal(plain);
         final byte[] out = new byte[iv.length + body.length];
@@ -225,38 +246,87 @@ public final class PinStore {
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
-    private static byte[] unwrap(final byte[] blob, final String vault) throws GeneralSecurityException {
-        if (blob.length <= IV_BYTES) {
-            throw new GeneralSecurityException("short blob");
+    private static byte[] deviceUnwrap(final Context context, final String vault, final byte[] inner)
+            throws GeneralSecurityException {
+        if (inner.length <= IV_BYTES) {
+            throw new GeneralSecurityException("short inner copy");
         }
-        final byte[] iv = Arrays.copyOfRange(blob, 0, IV_BYTES);
-        final byte[] body = Arrays.copyOfRange(blob, IV_BYTES, blob.length);
         final Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
-        cipher.init(Cipher.DECRYPT_MODE, key(), new GCMParameterSpec(TAG_BITS, iv));
-        cipher.updateAAD(vault.getBytes(StandardCharsets.UTF_8));
-        return cipher.doFinal(body);
+        cipher.init(Cipher.DECRYPT_MODE, deviceKey(context, false),
+                new GCMParameterSpec(TAG_BITS, Arrays.copyOfRange(inner, 0, IV_BYTES)));
+        cipher.updateAAD(deviceAad(vault));
+        return cipher.doFinal(Arrays.copyOfRange(inner, IV_BYTES, inner.length));
     }
 
-    /** The Keystore key, created on first use. It cannot be exported. */
+    private static byte[] deviceAad(final String vault) {
+        return (DEVICE_AAD_PREFIX + vault).getBytes(StandardCharsets.UTF_8);
+    }
+
+    /**
+     * The device key. Usable only while the device is unlocked (Android 9 and later), and kept in
+     * StrongBox when the hardware has it. Created on first use when create is true.
+     */
     @RequiresApi(Build.VERSION_CODES.M)
-    private static SecretKey key() throws GeneralSecurityException {
+    private static SecretKey deviceKey(final Context context, final boolean create) throws GeneralSecurityException {
         try {
             final KeyStore store = KeyStore.getInstance(KEYSTORE);
             store.load(null);
-            final Key existing = store.getKey(ALIAS, null);
+            final Key existing = store.getKey(DEVICE_ALIAS, null);
             if (existing instanceof SecretKey) {
                 return (SecretKey) existing;
             }
+            if (!create) {
+                throw new GeneralSecurityException("no device key");
+            }
             final KeyGenerator generator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, KEYSTORE);
-            generator.init(new KeyGenParameterSpec.Builder(ALIAS,
-                    KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
-                    .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
-                    .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
-                    .setKeySize(256)
-                    .build());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
+                    && context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_STRONGBOX_KEYSTORE)) {
+                try {
+                    generator.init(deviceKeySpec(true));
+                    return generator.generateKey();
+                } catch (GeneralSecurityException | RuntimeException e) {
+                    // StrongBox refused the key (it throws a runtime exception). The normal Keystore is used instead.
+                }
+            }
+            generator.init(deviceKeySpec(false));
             return generator.generateKey();
         } catch (IOException e) {
             throw new GeneralSecurityException(e);
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    private static KeyGenParameterSpec deviceKeySpec(final boolean strongBox) {
+        final KeyGenParameterSpec.Builder spec = new KeyGenParameterSpec.Builder(DEVICE_ALIAS,
+                KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
+                .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
+                .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
+                .setKeySize(256);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            spec.setUnlockedDeviceRequired(true);
+            if (strongBox) {
+                spec.setIsStrongBoxBacked(true);
+            }
+        }
+        return spec.build();
+    }
+
+    private static void deleteDeviceKey() {
+        deleteAlias(DEVICE_ALIAS);
+    }
+
+    private static void deleteLegacy(final Context context) {
+        context.getApplicationContext().getSharedPreferences(OLD_PREFS, Context.MODE_PRIVATE).edit().clear().apply();
+        deleteAlias(OLD_ALIAS);
+    }
+
+    private static void deleteAlias(final String alias) {
+        try {
+            final KeyStore store = KeyStore.getInstance(KEYSTORE);
+            store.load(null);
+            store.deleteEntry(alias);
+        } catch (GeneralSecurityException | IOException e) {
+            // Already gone, or the store is unavailable. Nothing else to clean up.
         }
     }
 }

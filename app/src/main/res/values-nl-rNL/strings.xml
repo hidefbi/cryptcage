@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">Er is nog geen vingerafdruk ingesteld. Voeg er eerst een toe in de systeeminstellingen.</string>
     <string name="bio_reason_weak_only">Op dit toestel is alleen gezichtsontgrendeling beschikbaar, die hier niet sterk genoeg is.</string>
     <string name="bio_reason_no_hardware">Dit toestel heeft geen sterke biometrische ontgrendeling.</string>
+    <string name="bio_enroll_title">Ontgrendelen met biometrie</string>
+    <string name="bio_enroll_action">Instellingen openen</string>
 </resources>

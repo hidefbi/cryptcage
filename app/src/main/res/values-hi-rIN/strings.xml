@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">कोई फिंगरप्रिंट सेट नहीं है। पहले सिस्टम सेटिंग्स में जोड़ें।</string>
     <string name="bio_reason_weak_only">इस डिवाइस में केवल चेहरा अनलॉक है, जो इस सुविधा के लिए पर्याप्त सुरक्षित नहीं है।</string>
     <string name="bio_reason_no_hardware">इस डिवाइस में मज़बूत बायोमेट्रिक अनलॉक नहीं है।</string>
+    <string name="bio_enroll_title">बायोमेट्रिक अनलॉक</string>
+    <string name="bio_enroll_action">सेटिंग्स खोलें</string>
 </resources>

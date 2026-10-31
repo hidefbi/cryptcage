@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">Es ist noch kein Fingerabdruck eingerichtet. Bitte zuerst in den Systemeinstellungen hinzufügen.</string>
     <string name="bio_reason_weak_only">Auf diesem Gerät ist nur Gesichtsentsperrung verfügbar, sie ist für diese Funktion nicht stark genug.</string>
     <string name="bio_reason_no_hardware">Dieses Gerät hat keine starke biometrische Entsperrung.</string>
+    <string name="bio_enroll_title">Entsperren per Biometrie</string>
+    <string name="bio_enroll_action">Einstellungen öffnen</string>
 </resources>

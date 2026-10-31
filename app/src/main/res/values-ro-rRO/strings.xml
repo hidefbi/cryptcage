@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">Nu este configurată nicio amprentă. Adăugați una mai întâi în setările sistemului.</string>
     <string name="bio_reason_weak_only">Dispozitivul are doar deblocare facială, care nu este suficient de puternică pentru această funcție.</string>
     <string name="bio_reason_no_hardware">Dispozitivul nu are deblocare biometrică puternică.</string>
+    <string name="bio_enroll_title">Deblocare biometrică</string>
+    <string name="bio_enroll_action">Deschideți setările</string>
 </resources>

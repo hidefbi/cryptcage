@@ -143,7 +143,7 @@ public class PinDialogFragment extends DialogFragment {
         });
     }
 
-    /** Runs on the background thread: the PIN check is slow on purpose. */
+    /** Runs on the background thread: the PIN key is slow to derive on purpose. */
     private static Outcome run(final Context app, final int mode, final String vault, final char[] pin) {
         try {
             if (mode == MODE_SETUP) {
@@ -152,37 +152,49 @@ public class PinDialogFragment extends DialogFragment {
                     return Outcome.of(Result.FAILED, null, 0);
                 }
                 try {
-                    PinStore.enable(app, pin);
-                    PinStore.saveCredential(app, vault, password);
+                    final byte[] key = PinStore.enable(app, pin);
+                    try {
+                        PinStore.saveCredential(app, vault, key, password);
+                    } finally {
+                        Arrays.fill(key, (byte) 0);
+                    }
                 } finally {
                     Arrays.fill(password, '\0');
                 }
                 return Outcome.of(Result.DONE, null, 0);
             }
-            switch (PinStore.check(app, pin)) {
-                case WRONG:
-                    return Outcome.of(Result.WRONG, null, PinStore.attemptsLeft(app));
-                case WIPED:
-                    return Outcome.of(Result.WIPED, null, 0);
-                case NOT_SET:
-                    return Outcome.of(Result.FAILED, null, 0);
-                default:
-                    break;
+            final byte[] key = PinStore.deriveKey(app, pin);
+            if (key == null) {
+                return Outcome.of(Result.FAILED, null, 0);
             }
-            if (mode == MODE_REGISTER) {
-                final char[] password = PinStore.takePassword();
-                if (password == null) {
-                    return Outcome.of(Result.FAILED, null, 0);
+            try {
+                switch (PinStore.verify(app, key)) {
+                    case WRONG:
+                        return Outcome.of(Result.WRONG, null, PinStore.attemptsLeft(app));
+                    case WIPED:
+                        return Outcome.of(Result.WIPED, null, 0);
+                    case NOT_SET:
+                        return Outcome.of(Result.FAILED, null, 0);
+                    default:
+                        break;
                 }
-                try {
-                    PinStore.saveCredential(app, vault, password);
-                } finally {
-                    Arrays.fill(password, '\0');
+                if (mode == MODE_REGISTER) {
+                    final char[] password = PinStore.takePassword();
+                    if (password == null) {
+                        return Outcome.of(Result.FAILED, null, 0);
+                    }
+                    try {
+                        PinStore.saveCredential(app, vault, key, password);
+                    } finally {
+                        Arrays.fill(password, '\0');
+                    }
+                    return Outcome.of(Result.DONE, null, 0);
                 }
-                return Outcome.of(Result.DONE, null, 0);
+                final char[] password = PinStore.loadCredential(app, vault, key);
+                return password == null ? Outcome.of(Result.FAILED, null, 0) : Outcome.of(Result.DONE, password, 0);
+            } finally {
+                Arrays.fill(key, (byte) 0);
             }
-            final char[] password = PinStore.loadCredential(app, vault);
-            return password == null ? Outcome.of(Result.FAILED, null, 0) : Outcome.of(Result.DONE, password, 0);
         } catch (GeneralSecurityException e) {
             return Outcome.of(Result.FAILED, null, 0);
         }

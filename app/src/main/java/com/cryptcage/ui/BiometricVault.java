@@ -19,7 +19,10 @@ import javax.crypto.spec.GCMParameterSpec;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.os.Build;
+import android.provider.Settings;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
@@ -88,6 +91,23 @@ public final class BiometricVault {
             return R.string.bio_reason_weak_only;
         }
         return R.string.bio_reason_no_hardware;
+    }
+
+    /**
+     * Opens the system page for adding a fingerprint, and falls back to the security settings when
+     * the device does not have that page. The user does it themselves; nothing is forced.
+     */
+    public static void openEnrollment(final Context context) {
+        final Intent enroll = new Intent(Settings.ACTION_BIOMETRIC_ENROLL);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            enroll.putExtra(Settings.EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED,
+                    BiometricManager.Authenticators.BIOMETRIC_STRONG);
+        }
+        try {
+            context.startActivity(enroll);
+        } catch (ActivityNotFoundException e) {
+            context.startActivity(new Intent(Settings.ACTION_SECURITY_SETTINGS));
+        }
     }
 
     public static boolean isEnabled(final Context context) {

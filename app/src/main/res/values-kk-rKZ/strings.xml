@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">Саусақ ізі орнатылмаған. Алдымен жүйе параметрлерінде қосыңыз.</string>
     <string name="bio_reason_weak_only">Құрылғыда тек бет арқылы ашу бар, бұл функция үшін жеткіліксіз.</string>
     <string name="bio_reason_no_hardware">Құрылғыда күшті биометриялық ашу жоқ.</string>
+    <string name="bio_enroll_title">Биометриямен ашу</string>
+    <string name="bio_enroll_action">Параметрлерді ашу</string>
 </resources>

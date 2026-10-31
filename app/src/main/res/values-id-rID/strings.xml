@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">Belum ada sidik jari yang disiapkan. Tambahkan dulu di pengaturan sistem.</string>
     <string name="bio_reason_weak_only">Perangkat hanya punya buka kunci wajah, yang belum cukup kuat untuk fitur ini.</string>
     <string name="bio_reason_no_hardware">Perangkat ini tidak punya buka kunci biometrik yang kuat.</string>
+    <string name="bio_enroll_title">Buka kunci biometrik</string>
+    <string name="bio_enroll_action">Buka pengaturan</string>
 </resources>

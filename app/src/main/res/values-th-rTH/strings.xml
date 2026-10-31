@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">ยังไม่ได้ตั้งค่าลายนิ้วมือ กรุณาเพิ่มในการตั้งค่าระบบก่อน</string>
     <string name="bio_reason_weak_only">เครื่องนี้มีเฉพาะการปลดล็อกด้วยใบหน้า ซึ่งไม่แข็งแรงพอสำหรับฟังก์ชันนี้</string>
     <string name="bio_reason_no_hardware">เครื่องนี้ไม่มีการปลดล็อกด้วยไบโอเมตริกที่แข็งแรง</string>
+    <string name="bio_enroll_title">ปลดล็อกด้วยไบโอเมตริก</string>
+    <string name="bio_enroll_action">เปิดการตั้งค่า</string>
 </resources>

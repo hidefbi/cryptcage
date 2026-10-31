@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">Piršto atspaudas nenustatytas. Pirmiausia pridėkite sistemos nustatymuose.</string>
     <string name="bio_reason_weak_only">Įrenginyje yra tik veido atrakinimas, kuris šiai funkcijai nepakankamai saugus.</string>
     <string name="bio_reason_no_hardware">Įrenginyje nėra stipraus biometrinio atrakinimo.</string>
+    <string name="bio_enroll_title">Atrakinimas biometrija</string>
+    <string name="bio_enroll_action">Atidaryti nustatymus</string>
 </resources>

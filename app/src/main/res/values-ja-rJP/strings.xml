@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">指紋が登録されていません。先にシステム設定で追加してください。</string>
     <string name="bio_reason_weak_only">この端末は顔認証のみで、この機能には強度が足りません。</string>
     <string name="bio_reason_no_hardware">この端末には強力な生体認証がありません。</string>
+    <string name="bio_enroll_title">生体認証でロック解除</string>
+    <string name="bio_enroll_action">設定を開く</string>
 </resources>

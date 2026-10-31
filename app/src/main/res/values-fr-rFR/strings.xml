@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">Aucune empreinte enregistrée. Ajoutez-en une dans les paramètres du système.</string>
     <string name="bio_reason_weak_only">Seul le déverrouillage facial est disponible, ce qui est trop faible pour cette fonction.</string>
     <string name="bio_reason_no_hardware">Cet appareil ne dispose pas de déverrouillage biométrique fiable.</string>
+    <string name="bio_enroll_title">Déverrouillage biométrique</string>
+    <string name="bio_enroll_action">Ouvrir les paramètres</string>
 </resources>

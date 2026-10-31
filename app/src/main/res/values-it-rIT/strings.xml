@@ -145,4 +145,6 @@
     <string name="bio_reason_none_enrolled">Nessuna impronta configurata. Aggiungila prima nelle impostazioni di sistema.</string>
     <string name="bio_reason_weak_only">Il dispositivo ha solo lo sblocco con il viso, troppo debole per questa funzione.</string>
     <string name="bio_reason_no_hardware">Il dispositivo non ha uno sblocco biometrico sicuro.</string>
+    <string name="bio_enroll_title">Sblocco biometrico</string>
+    <string name="bio_enroll_action">Apri impostazioni</string>
 </resources>

@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">Nie skonfigurowano odcisku palca. Najpierw dodaj go w ustawieniach systemu.</string>
     <string name="bio_reason_weak_only">Urządzenie ma tylko odblokowanie twarzą, które nie jest wystarczająco mocne dla tej funkcji.</string>
     <string name="bio_reason_no_hardware">Urządzenie nie ma silnego odblokowania biometrycznego.</string>
+    <string name="bio_enroll_title">Odblokowanie biometrią</string>
+    <string name="bio_enroll_action">Otwórz ustawienia</string>
 </resources>

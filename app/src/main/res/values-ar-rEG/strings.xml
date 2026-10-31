@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">لم تُضف أي بصمة بعد. أضفها من إعدادات النظام أولاً.</string>
     <string name="bio_reason_weak_only">الجهاز يدعم فك القفل بالوجه فقط، وهو غير كافٍ لهذه الميزة.</string>
     <string name="bio_reason_no_hardware">لا يوجد على الجهاز فك قفل بيومتري قوي.</string>
+    <string name="bio_enroll_title">فك القفل بالبصمة</string>
+    <string name="bio_enroll_action">فتح الإعدادات</string>
 </resources>

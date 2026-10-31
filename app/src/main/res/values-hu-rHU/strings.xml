@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">Nincs ujjlenyomat beállítva. Először adja hozzá a rendszerbeállításokban.</string>
     <string name="bio_reason_weak_only">Az eszközön csak arcfelismerés van, ez erre a funkcióra nem elég erős.</string>
     <string name="bio_reason_no_hardware">Az eszközön nincs erős biometrikus feloldás.</string>
+    <string name="bio_enroll_title">Feloldás biometriával</string>
+    <string name="bio_enroll_action">Beállítások megnyitása</string>
 </resources>

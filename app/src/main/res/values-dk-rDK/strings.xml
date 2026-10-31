@@ -144,4 +144,6 @@
     <string name="bio_reason_none_enrolled">Der er ingen fingeraftryk oprettet. Tilføj et i systemindstillingerne først.</string>
     <string name="bio_reason_weak_only">Enheden har kun ansigtsoplåsning, som ikke er stærk nok til denne funktion.</string>
     <string name="bio_reason_no_hardware">Enheden har ingen stærk biometrisk oplåsning.</string>
+    <string name="bio_enroll_title">Oplåsning med biometri</string>
+    <string name="bio_enroll_action">Åbn indstillinger</string>
 </resources>

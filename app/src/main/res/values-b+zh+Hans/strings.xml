@@ -189,4 +189,6 @@
     <string name="bio_reason_none_enrolled">尚未录入指纹，请先在系统设置中添加。</string>
     <string name="bio_reason_weak_only">本机只有人脸解锁，强度不足以用于此功能。</string>
     <string name="bio_reason_no_hardware">本机没有可用于此功能的强生物识别。</string>
+    <string name="bio_enroll_title">生物识别解锁</string>
+    <string name="bio_enroll_action">前往设置</string>
 </resources>
