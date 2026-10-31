@@ -99,6 +99,7 @@ public class NoteFragment extends Fragment {
     private MaterialToolbar toolbar;
     private View readGroup;
     private View editGroup;
+    private View loadingView;
     private TextView titleView;
     private TextView tagsView;
     private TextView bodyView;
@@ -130,6 +131,7 @@ public class NoteFragment extends Fragment {
         toolbar = view.findViewById(R.id.toolbar);
         readGroup = view.findViewById(R.id.read_group);
         editGroup = view.findViewById(R.id.edit_group);
+        loadingView = view.findViewById(R.id.note_loading);
         titleView = view.findViewById(R.id.note_title);
         tagsView = view.findViewById(R.id.note_tags);
         bodyView = view.findViewById(R.id.note_body);
@@ -167,6 +169,7 @@ public class NoteFragment extends Fragment {
             }
         } else {
             pendingRestore = restoring ? savedInstanceState : null;
+            showLoading();
             load();
         }
     }
@@ -205,8 +208,16 @@ public class NoteFragment extends Fragment {
         });
     }
 
+    /** Shows a spinner in place of the note until the first read is done. */
+    private void showLoading() {
+        loadingView.setVisibility(View.VISIBLE);
+        readGroup.setVisibility(View.GONE);
+        editGroup.setVisibility(View.GONE);
+    }
+
     /** Shows what {@link #readNote} read. If an edit was being restored, the screen goes back into it. */
     private void apply(final Loaded in) {
+        loadingView.setVisibility(View.GONE);
         loaded = true;
         fileMode = in.fileMode;
         canEdit = in.canEdit;
