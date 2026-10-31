@@ -132,6 +132,7 @@ public class PinDialogFragment extends DialogFragment {
         final Context app = requireContext().getApplicationContext();
         final int mode = mode();
         final String vault = vault();
+        setBusy(true);
         Tasks.io(() -> {
             try {
                 final Outcome outcome = run(app, mode, vault, pin);
@@ -187,7 +188,19 @@ public class PinDialogFragment extends DialogFragment {
         }
     }
 
+    /** Disables the buttons while the PIN is checked, so a second tap does not start another check. */
+    private void setBusy(final boolean busy) {
+        final AlertDialog dialog = (AlertDialog) getDialog();
+        if (dialog != null) {
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(!busy);
+            if (dialog.getButton(AlertDialog.BUTTON_NEUTRAL) != null) {
+                dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setEnabled(!busy);
+            }
+        }
+    }
+
     private void apply(final Outcome outcome) {
+        setBusy(false);
         switch (outcome.result) {
             case DONE:
                 resolved = true;
