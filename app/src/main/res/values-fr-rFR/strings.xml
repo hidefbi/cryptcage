@@ -83,8 +83,8 @@
     <string name="hint_importFile">Ouvrir la base</string>
     <string name="toast_selectDatabase">Sélectionnez d\'abord une base</string>
     <string name="pref_palette">Thème de couleur</string>
-    <string name="pref_screenshot">Mode capture d'écran</string>
-    <string name="pref_screenshot_summary">Autoriser les captures d'écran et l'aperçu des notes dans les applis récentes. Désactivé, elles restent masquées.</string>
+    <string name="pref_screenshot">Mode capture d\'écran</string>
+    <string name="pref_screenshot_summary">Autoriser les captures d\'écran et l\'aperçu des notes dans les applis récentes. Désactivé, elles restent masquées.</string>
     <string-array name="pref_palette_entries">
         <item>Bleu</item>
         <item>Sable</item>
