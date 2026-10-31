@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Trace;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -27,6 +28,7 @@ import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
 import com.cryptcage.app.App;
+import com.cryptcage.app.Tasks;
 import com.cryptcage.utils.FileKinds;
 import com.cryptcage.utils.FileTypes;
 import com.cryptcage.utils.VaultException;
@@ -71,6 +73,25 @@ public class NoteFragment extends Fragment {
     private String originalTitle = "";
     private String originalTags = "";
     private String originalBody = "";
+    /** True once the note has been shown, so returning to the screen re-reads it. */
+    private boolean loaded;
+    /** True while a read runs on the worker thread. */
+    private boolean loading;
+    /** Saved state to restore once the note is read, when an edit was in progress. */
+    private Bundle pendingRestore;
+
+    /** What is read from the vault for one note. It is built on the worker thread. */
+    private static final class Loaded {
+        boolean fileMode;
+        boolean canEdit;
+        boolean canView;
+        boolean starred;
+        byte[] data;
+        String title;
+        String tags;
+        String body;
+        ArrayList<String> knownTags;
+    }
 
     private MaterialToolbar toolbar;
     private View readGroup;
@@ -124,9 +145,6 @@ public class NoteFragment extends Fragment {
             removedLater();
             return;
         }
-        final ArrayList<String> knownTags = new ArrayList<>(session.vault.tagCounts().keySet());
-        tagsField.setAdapter(new ArrayAdapter<>(requireContext(),
-                android.R.layout.simple_dropdown_item_1line, knownTags));
         tagsField.setTokenizer(new TagTokenizer());
 
         toolbar.inflateMenu(R.menu.note);
@@ -139,33 +157,93 @@ public class NoteFragment extends Fragment {
             fileMode = false;
             canEdit = true;
             canView = true;
-        } else if (!loadOriginals()) {
-            removedLater();
-            return;
-        }
-        if (noteId < 0 || (restoring && canEdit)) {
+            loadTags();
             enterEdit();
             if (restoring) {
-                titleField.setText(savedInstanceState.getString(STATE_TITLE, ""));
-                tagsField.setText(savedInstanceState.getString(STATE_TAGS, ""));
-                bodyField.setText(savedInstanceState.getString(STATE_BODY, ""));
+                restoreFields(savedInstanceState);
             }
         } else {
-            showRead();
+            pendingRestore = restoring ? savedInstanceState : null;
+            load();
         }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (toolbar == null || editing || noteId < 0) {
+        // The first read is started by onViewCreated. Returning to a screen that is not being
+        // edited reads the note again, since it may have changed elsewhere.
+        if (toolbar == null || editing || noteId < 0 || !loaded) {
             return;
         }
-        if (!loadOriginals()) {
-            removedLater();
+        load();
+    }
+
+    /** Reads the note on the worker thread, then shows it on the UI thread. */
+    private void load() {
+        if (loading) {
             return;
         }
-        showRead();
+        loading = true;
+        final long id = noteId;
+        Tasks.io(() -> {
+            final Loaded in = readNote(id);
+            Tasks.ui(() -> {
+                loading = false;
+                if (!isAdded()) {
+                    return;
+                }
+                if (in == null) {
+                    removedLater();
+                    return;
+                }
+                apply(in);
+            });
+        });
+    }
+
+    /** Shows what {@link #readNote} read. If an edit was being restored, the screen goes back into it. */
+    private void apply(final Loaded in) {
+        loaded = true;
+        fileMode = in.fileMode;
+        canEdit = in.canEdit;
+        canView = in.canView;
+        starred = in.starred;
+        originalData = in.data;
+        originalTitle = in.title;
+        originalTags = in.tags;
+        originalBody = in.body;
+        tagsField.setAdapter(new ArrayAdapter<>(requireContext(),
+                android.R.layout.simple_dropdown_item_1line, in.knownTags));
+        final Bundle restore = pendingRestore;
+        pendingRestore = null;
+        if (restore != null && canEdit) {
+            enterEdit();
+            restoreFields(restore);
+        } else if (!editing) {
+            showRead();
+        }
+    }
+
+    /** For a new note only the list of known tags is needed. */
+    private void loadTags() {
+        Tasks.io(() -> {
+            final App.Session session = App.session();
+            final ArrayList<String> known = session == null
+                    ? new ArrayList<>() : new ArrayList<>(session.vault.tagCounts().keySet());
+            Tasks.ui(() -> {
+                if (isAdded() && tagsField != null) {
+                    tagsField.setAdapter(new ArrayAdapter<>(requireContext(),
+                            android.R.layout.simple_dropdown_item_1line, known));
+                }
+            });
+        });
+    }
+
+    private void restoreFields(final Bundle state) {
+        titleField.setText(state.getString(STATE_TITLE, ""));
+        tagsField.setText(state.getString(STATE_TAGS, ""));
+        bodyField.setText(state.getString(STATE_BODY, ""));
     }
 
     @Override
@@ -204,39 +282,47 @@ public class NoteFragment extends Fragment {
         }
     }
 
-    /** Copies the stored note or file into the originals. Returns false if it no longer exists. */
-    private boolean loadOriginals() {
+    /**
+     * Reads the stored note or file. Runs on the worker thread, never on the UI thread.
+     * Returns null if the note no longer exists.
+     */
+    private static Loaded readNote(final long id) {
         final App.Session session = App.session();
         if (session == null) {
-            return false;
+            return null;
         }
+        Trace.beginSection("cc.readNote");
         try {
-            final VaultSession.Summary note = session.vault.summary(noteId);
+            final Loaded in = new Loaded();
+            final VaultSession.Summary note = session.vault.summary(id);
             if (note.file) {
-                final byte[] stored = session.vault.fileData(noteId);
+                final byte[] stored = session.vault.fileData(id);
                 final FileTypes.Check check = FileTypes.check(note.fileName, stored);
-                fileMode = true;
-                canEdit = check.editable();
-                canView = check.text();
-                starred = false;
-                originalData = stored.clone();
-                originalTitle = nullToEmpty(note.fileName);
-                originalTags = "";
-                originalBody = canView ? new String(stored, StandardCharsets.UTF_8) : "";
+                in.fileMode = true;
+                in.canEdit = check.editable();
+                in.canView = check.text();
+                in.starred = false;
+                in.data = stored;
+                in.title = nullToEmpty(note.fileName);
+                in.tags = "";
+                in.body = in.canView ? new String(stored, StandardCharsets.UTF_8) : "";
             } else {
-                fileMode = false;
-                canEdit = true;
-                canView = true;
-                starred = note.starred;
-                originalData = null;
-                originalTitle = nullToEmpty(note.title);
-                originalTags = nullToEmpty(note.tags);
-                originalBody = session.vault.body(noteId);
+                in.fileMode = false;
+                in.canEdit = true;
+                in.canView = true;
+                in.starred = note.starred;
+                in.data = null;
+                in.title = nullToEmpty(note.title);
+                in.tags = nullToEmpty(note.tags);
+                in.body = session.vault.body(id);
             }
+            in.knownTags = new ArrayList<>(session.vault.tagCounts().keySet());
+            return in;
         } catch (VaultException e) {
-            return false;
+            return null;
+        } finally {
+            Trace.endSection();
         }
-        return true;
     }
 
     private void showRead() {
