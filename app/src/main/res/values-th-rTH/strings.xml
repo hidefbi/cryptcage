@@ -114,4 +114,20 @@
     <string name="pw_strength_strong">แข็งแรง</string>
     <string name="pw_hint_short">เพิ่มอีก %1$d ตัวอักษร</string>
     <string name="pw_hint_longer">ใช้ 16 ตัวอักษรขึ้นไปก็ไม่ต้องผสมชนิดอักขระ</string>
+    <string name="pref_pin">ปลดล็อกด้วย PIN</string>
+    <string name="pref_pin_off">ปิด</string>
+    <string name="pref_pin_on">เปิดอยู่ PIN ไม่มีวันหมดอายุ</string>
+    <string name="pin_title_setup">ตั้ง PIN</string>
+    <string name="pin_title_unlock">กรอก PIN</string>
+    <string name="pin_hint">PIN 4 ถึง 8 หลัก</string>
+    <string name="pin_hint_repeat">กรอก PIN อีกครั้ง</string>
+    <string name="pin_invalid">ใช้ตัวเลข 4 ถึง 8 หลัก</string>
+    <string name="pin_mismatch">PIN ทั้งสองครั้งไม่ตรงกัน</string>
+    <string name="pin_wrong">PIN ไม่ถูกต้อง เหลือ %1$d ครั้ง</string>
+    <string name="pin_wiped">ผิดพลาดมากเกินไป ลบ PIN แล้ว กรุณาใช้รหัสผ่าน</string>
+    <string name="pin_unavailable">ปลดล็อกด้วย PIN ใช้ไม่ได้ กรุณาใช้รหัสผ่าน</string>
+    <string name="pin_use_password">ใช้รหัสผ่าน</string>
+    <string name="pin_saved">เปิดการปลดล็อกด้วย PIN แล้ว</string>
+    <string name="pin_disable_title">ปิดการปลดล็อกด้วย PIN ใช่ไหม</string>
+    <string name="pin_disable_message">PIN และรหัสผ่านที่บันทึกไว้สำหรับการปลดล็อกจะถูกลบ ฐานข้อมูลจะไม่เปลี่ยนแปลง</string>
 </resources>

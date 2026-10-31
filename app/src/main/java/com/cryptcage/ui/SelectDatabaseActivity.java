@@ -53,7 +53,8 @@ import com.google.android.material.card.MaterialCardView;
  * a field to create a new one, and an import for a file. Vaults are never read from shared storage.
  */
 public class SelectDatabaseActivity extends SecureActivity
-        implements InsertPasswordDialogFragment.Callback, ChoosePasswordDialogFragment.Callback {
+        implements InsertPasswordDialogFragment.Callback, ChoosePasswordDialogFragment.Callback,
+        PinDialogFragment.Callback {
 
     private static final String VAULT_DIR = "vaults";
 
@@ -72,6 +73,9 @@ public class SelectDatabaseActivity extends SecureActivity
     private ActivityResultLauncher<String[]> importLauncher;
     private String pendingCreateName;
     private PendingImport pendingImport;
+    /** A vault that is open while the PIN dialog asks whether to save its password. */
+    private File pendingRegisterFile;
+    private VaultSession pendingRegisterVault;
 
     /** Names of the saved databases, newest first. */
     private final List<String> names = new ArrayList<>();
@@ -293,7 +297,17 @@ public class SelectDatabaseActivity extends SecureActivity
                 .show(getSupportFragmentManager(), "create_password");
     }
 
+    /** Asks for the PIN when this database has a saved password, and the master password otherwise. */
     private void askPassword(final String name) {
+        if (PinStore.supported() && PinStore.hasCredential(this, name)) {
+            PinDialogFragment.newInstance(PinDialogFragment.MODE_UNLOCK, name)
+                    .show(getSupportFragmentManager(), "pin_unlock");
+        } else {
+            askMasterPassword(name);
+        }
+    }
+
+    private void askMasterPassword(final String name) {
         InsertPasswordDialogFragment.newInstance(name).show(getSupportFragmentManager(), "insert_password");
     }
 
@@ -303,6 +317,7 @@ public class SelectDatabaseActivity extends SecureActivity
                 .setMessage(R.string.deleteRecent_message)
                 .setPositiveButton(R.string.action_delete, (dialog, which) -> {
                     if (fileFor(name).delete()) {
+                        PinStore.removeCredential(this, name);
                         toast(R.string.toast_success_deleteNote);
                     }
                     refreshList();
@@ -318,10 +333,23 @@ public class SelectDatabaseActivity extends SecureActivity
         Tasks.io(() -> {
             try {
                 final VaultSession vault = VaultSession.open(file, password);
+                // With a PIN set, a vault without a saved password is offered one. The copy is held
+                // here, because the caller wipes its array as soon as this method returns.
+                final boolean offerRegister = PinStore.supported() && PinStore.isEnabled(this)
+                        && !PinStore.hasCredential(this, fileName);
+                if (offerRegister) {
+                    PinStore.holdPassword(password);
+                }
                 Tasks.ui(() -> {
                     setBusy(false);
-                    App.setSession(new App.Session(file, vault));
-                    startActivity(new Intent(this, MainActivity.class));
+                    if (offerRegister) {
+                        pendingRegisterFile = file;
+                        pendingRegisterVault = vault;
+                        PinDialogFragment.newInstance(PinDialogFragment.MODE_REGISTER, fileName)
+                                .show(getSupportFragmentManager(), "pin_register");
+                    } else {
+                        openVault(file, vault);
+                    }
                 });
             } catch (VaultException e) {
                 final int message = VaultMessages.messageFor(e.getReason());
@@ -333,6 +361,38 @@ public class SelectDatabaseActivity extends SecureActivity
                 Arrays.fill(password, '\0');
             }
         });
+    }
+
+    private void openVault(final File file, final VaultSession vault) {
+        App.setSession(new App.Session(file, vault));
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
+    /** Finishes opening the vault that was waiting for the PIN dialog. */
+    private void continueRegisteredOpen() {
+        if (pendingRegisterVault != null) {
+            openVault(pendingRegisterFile, pendingRegisterVault);
+        }
+        pendingRegisterFile = null;
+        pendingRegisterVault = null;
+    }
+
+    @Override
+    public void onPinFinished(final int mode, final String vault, final char[] password) {
+        if (mode == PinDialogFragment.MODE_UNLOCK && password != null) {
+            onPasswordEntered(vault, password);
+        } else if (mode == PinDialogFragment.MODE_REGISTER) {
+            continueRegisteredOpen();
+        }
+    }
+
+    @Override
+    public void onPinDismissed(final int mode, final String vault, final boolean usePassword) {
+        if (mode == PinDialogFragment.MODE_REGISTER) {
+            continueRegisteredOpen();
+        } else if (mode == PinDialogFragment.MODE_UNLOCK && usePassword) {
+            askMasterPassword(vault);
+        }
     }
 
     @Override

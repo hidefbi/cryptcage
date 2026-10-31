@@ -115,4 +115,20 @@
     <string name="pw_strength_strong">Forte</string>
     <string name="pw_hint_short">Aggiungi ancora %1$d caratteri.</string>
     <string name="pw_hint_longer">Con 16 caratteri non serve mescolare i tipi.</string>
+    <string name="pref_pin">Sblocco con PIN</string>
+    <string name="pref_pin_off">Disattivato</string>
+    <string name="pref_pin_on">Attivo. Il PIN non scade mai.</string>
+    <string name="pin_title_setup">Imposta un PIN</string>
+    <string name="pin_title_unlock">Inserisci il PIN</string>
+    <string name="pin_hint">PIN, da 4 a 8 cifre</string>
+    <string name="pin_hint_repeat">Ripeti il PIN</string>
+    <string name="pin_invalid">Usa da 4 a 8 cifre.</string>
+    <string name="pin_mismatch">I due PIN non coincidono.</string>
+    <string name="pin_wrong">PIN errato. Restano %1$d tentativi.</string>
+    <string name="pin_wiped">Troppi tentativi errati. Il PIN è stato rimosso. Usa la password.</string>
+    <string name="pin_unavailable">Lo sblocco con PIN non è disponibile. Usa la password.</string>
+    <string name="pin_use_password">Usa la password</string>
+    <string name="pin_saved">Sblocco con PIN attivato.</string>
+    <string name="pin_disable_title">Disattivare lo sblocco con PIN?</string>
+    <string name="pin_disable_message">Il PIN e le password salvate per lo sblocco verranno eliminati. I database non cambiano.</string>
 </resources>

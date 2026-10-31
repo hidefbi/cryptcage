@@ -114,4 +114,20 @@
     <string name="pw_strength_strong">Mạnh</string>
     <string name="pw_hint_short">Thêm %1$d ký tự nữa.</string>
     <string name="pw_hint_longer">Dùng 16 ký tự trở lên thì không cần trộn loại ký tự.</string>
+    <string name="pref_pin">Mở khóa bằng PIN</string>
+    <string name="pref_pin_off">Tắt</string>
+    <string name="pref_pin_on">Bật. PIN không bao giờ hết hạn.</string>
+    <string name="pin_title_setup">Đặt PIN</string>
+    <string name="pin_title_unlock">Nhập PIN</string>
+    <string name="pin_hint">PIN, từ 4 đến 8 chữ số</string>
+    <string name="pin_hint_repeat">Nhập lại PIN</string>
+    <string name="pin_invalid">Dùng từ 4 đến 8 chữ số.</string>
+    <string name="pin_mismatch">Hai PIN không khớp.</string>
+    <string name="pin_wrong">PIN sai. Còn %1$d lần thử.</string>
+    <string name="pin_wiped">Nhập sai quá nhiều lần. PIN đã bị xóa. Hãy nhập mật khẩu.</string>
+    <string name="pin_unavailable">Không dùng được mở khóa bằng PIN. Hãy dùng mật khẩu.</string>
+    <string name="pin_use_password">Dùng mật khẩu</string>
+    <string name="pin_saved">Đã bật mở khóa bằng PIN.</string>
+    <string name="pin_disable_title">Tắt mở khóa bằng PIN?</string>
+    <string name="pin_disable_message">PIN và mật khẩu đã lưu để mở khóa sẽ bị xóa. Cơ sở dữ liệu không thay đổi.</string>
 </resources>

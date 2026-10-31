@@ -114,4 +114,20 @@
     <string name="pw_strength_strong">Stiprus</string>
     <string name="pw_hint_short">Pridėkite dar %1$d simbolių.</string>
     <string name="pw_hint_longer">Su 16 simbolių nereikia maišyti simbolių tipų.</string>
+    <string name="pref_pin">Atrakinimas PIN kodu</string>
+    <string name="pref_pin_off">Išjungta</string>
+    <string name="pref_pin_on">Įjungta. PIN kodas niekada nebegalioja.</string>
+    <string name="pin_title_setup">Nustatyti PIN kodą</string>
+    <string name="pin_title_unlock">Įveskite PIN kodą</string>
+    <string name="pin_hint">PIN kodas, 4-8 skaitmenys</string>
+    <string name="pin_hint_repeat">Pakartokite PIN kodą</string>
+    <string name="pin_invalid">Naudokite 4-8 skaitmenis.</string>
+    <string name="pin_mismatch">PIN kodai nesutampa.</string>
+    <string name="pin_wrong">Neteisingas PIN kodas. Liko bandymų: %1$d.</string>
+    <string name="pin_wiped">Per daug klaidingų bandymų. PIN kodas pašalintas. Įveskite slaptažodį.</string>
+    <string name="pin_unavailable">Atrakinimas PIN kodu nepasiekiamas. Naudokite slaptažodį.</string>
+    <string name="pin_use_password">Naudoti slaptažodį</string>
+    <string name="pin_saved">Atrakinimas PIN kodu įjungtas.</string>
+    <string name="pin_disable_title">Išjungti atrakinimą PIN kodu?</string>
+    <string name="pin_disable_message">PIN kodas ir atrakinimui išsaugoti slaptažodžiai bus ištrinti. Duomenų bazės nepakis.</string>
 </resources>

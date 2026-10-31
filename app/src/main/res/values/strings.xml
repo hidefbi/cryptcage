@@ -163,4 +163,20 @@
     <string name="pw_strength_strong">Strong</string>
     <string name="pw_hint_short">Add %1$d more characters.</string>
     <string name="pw_hint_longer">Reach 16 characters to skip the mix rule.</string>
+    <string name="pref_pin">PIN unlock</string>
+    <string name="pref_pin_off">Off</string>
+    <string name="pref_pin_on">On. The PIN never expires.</string>
+    <string name="pin_title_setup">Set a PIN</string>
+    <string name="pin_title_unlock">Enter your PIN</string>
+    <string name="pin_hint">PIN, 4 to 8 digits</string>
+    <string name="pin_hint_repeat">Repeat the PIN</string>
+    <string name="pin_invalid">Use 4 to 8 digits.</string>
+    <string name="pin_mismatch">The two PINs do not match.</string>
+    <string name="pin_wrong">Wrong PIN. %1$d tries left.</string>
+    <string name="pin_wiped">Too many wrong tries. The PIN was removed. Use your password.</string>
+    <string name="pin_unavailable">PIN unlock is not available. Use your password.</string>
+    <string name="pin_use_password">Use password</string>
+    <string name="pin_saved">PIN unlock is on.</string>
+    <string name="pin_disable_title">Turn off PIN unlock?</string>
+    <string name="pin_disable_message">The PIN and the saved passwords for PIN unlock are deleted. Your databases are not changed.</string>
 </resources>

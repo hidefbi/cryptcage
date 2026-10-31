@@ -114,4 +114,20 @@
     <string name="pw_strength_strong">Silné</string>
     <string name="pw_hint_short">Přidejte ještě %1$d znaků.</string>
     <string name="pw_hint_longer">Při 16 znacích není nutné míchat znaky.</string>
+    <string name="pref_pin">Odemknutí PINem</string>
+    <string name="pref_pin_off">Vypnuto</string>
+    <string name="pref_pin_on">Zapnuto. PIN nevyprší.</string>
+    <string name="pin_title_setup">Nastavit PIN</string>
+    <string name="pin_title_unlock">Zadejte PIN</string>
+    <string name="pin_hint">PIN, 4 až 8 číslic</string>
+    <string name="pin_hint_repeat">Zadejte PIN znovu</string>
+    <string name="pin_invalid">Použijte 4 až 8 číslic.</string>
+    <string name="pin_mismatch">Zadané PINy se neshodují.</string>
+    <string name="pin_wrong">Špatný PIN. Zbývá %1$d pokusů.</string>
+    <string name="pin_wiped">Příliš mnoho chybných pokusů. PIN byl odstraněn. Zadejte heslo.</string>
+    <string name="pin_unavailable">Odemknutí PINem není k dispozici. Zadejte heslo.</string>
+    <string name="pin_use_password">Použít heslo</string>
+    <string name="pin_saved">Odemknutí PINem je zapnuto.</string>
+    <string name="pin_disable_title">Vypnout odemknutí PINem?</string>
+    <string name="pin_disable_message">PIN a uložená hesla pro odemknutí se smažou. Databáze se nezmění.</string>
 </resources>

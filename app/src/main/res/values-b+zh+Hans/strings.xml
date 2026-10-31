@@ -159,4 +159,20 @@
     <string name="pw_strength_strong">强</string>
     <string name="pw_hint_short">还需输入 %1$d 个字符。</string>
     <string name="pw_hint_longer">输入 16 个字符即可跳过字符种类要求。</string>
+    <string name="pref_pin">PIN 解锁</string>
+    <string name="pref_pin_off">关闭</string>
+    <string name="pref_pin_on">已开启，PIN 永不过期。</string>
+    <string name="pin_title_setup">设置 PIN</string>
+    <string name="pin_title_unlock">输入 PIN</string>
+    <string name="pin_hint">PIN，4 到 8 位数字</string>
+    <string name="pin_hint_repeat">再次输入 PIN</string>
+    <string name="pin_invalid">请输入 4 到 8 位数字。</string>
+    <string name="pin_mismatch">两次输入的 PIN 不一致。</string>
+    <string name="pin_wrong">PIN 错误，还可以尝试 %1$d 次。</string>
+    <string name="pin_wiped">错误次数过多，PIN 已删除，请输入密码。</string>
+    <string name="pin_unavailable">PIN 解锁不可用，请输入密码。</string>
+    <string name="pin_use_password">使用密码</string>
+    <string name="pin_saved">已开启 PIN 解锁。</string>
+    <string name="pin_disable_title">关闭 PIN 解锁？</string>
+    <string name="pin_disable_message">PIN 和为解锁保存的密码都会删除，数据库不会改变。</string>
 </resources>

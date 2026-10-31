@@ -6,6 +6,7 @@
  */
 package com.cryptcage.ui;
 
+import java.io.File;
 import java.util.Arrays;
 
 import android.content.Context;
@@ -15,15 +16,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.cryptcage.R;
 import com.cryptcage.app.App;
+import com.cryptcage.app.Tasks;
+import com.cryptcage.utils.StringMethods;
+import com.cryptcage.utils.VaultException;
+import com.cryptcage.utils.VaultSession;
 
-public class SettingsActivity extends SecureActivity implements ChoosePasswordDialogFragment.Callback {
+public class SettingsActivity extends SecureActivity
+        implements ChoosePasswordDialogFragment.Callback, InsertPasswordDialogFragment.Callback,
+        PinDialogFragment.Callback {
 
     @Override
     protected boolean needsVault() {
@@ -62,7 +71,87 @@ public class SettingsActivity extends SecureActivity implements ChoosePasswordDi
         PasswordChange.apply(this, password);
     }
 
+    /** The password of the open vault, checked before the PIN is set up with it. */
+    @Override
+    public void onPasswordEntered(final String fileName, final char[] password) {
+        final App.Session session = App.session();
+        if (session == null) {
+            Arrays.fill(password, '\0');
+            return;
+        }
+        final File file = session.file;
+        Tasks.io(() -> {
+            try {
+                VaultSession.open(file, password).close();
+                PinStore.holdPassword(password);
+                final String name = vaultName(file);
+                Tasks.ui(() -> PinDialogFragment.newInstance(PinDialogFragment.MODE_SETUP, name)
+                        .show(getSupportFragmentManager(), "pin_setup"));
+            } catch (VaultException e) {
+                final int message = VaultMessages.messageFor(e.getReason());
+                Tasks.ui(() -> Toast.makeText(this, message, Toast.LENGTH_LONG).show());
+            } finally {
+                Arrays.fill(password, '\0');
+            }
+        });
+    }
+
+    @Override
+    public void onPinFinished(final int mode, final String vault, final char[] password) {
+        if (mode == PinDialogFragment.MODE_SETUP) {
+            Toast.makeText(this, R.string.pin_saved, Toast.LENGTH_LONG).show();
+            final Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.settings_container);
+            if (fragment instanceof SettingsFragment) {
+                ((SettingsFragment) fragment).refreshPin();
+            }
+        }
+    }
+
+    @Override
+    public void onPinDismissed(final int mode, final String vault, final boolean usePassword) {
+        // Nothing to do: the PIN is not set up, and the password stays as it was.
+    }
+
+    /** The name the vault is listed under, which is also the name the PIN store uses. */
+    private static String vaultName(final File file) {
+        final String name = file.getName();
+        return name.endsWith(StringMethods.EXTENSION)
+                ? name.substring(0, name.length() - StringMethods.EXTENSION.length())
+                : name;
+    }
+
     public static class SettingsFragment extends PreferenceFragmentCompat {
+
+        /** Shows whether PIN unlock is on. */
+        void refreshPin() {
+            final Preference pin = findPreference("pref_pin");
+            if (pin != null) {
+                pin.setSummary(PinStore.isEnabled(requireContext()) ? R.string.pref_pin_on : R.string.pref_pin_off);
+            }
+        }
+
+        private void onPinClicked() {
+            final Context context = requireContext();
+            if (PinStore.isEnabled(context)) {
+                new AlertDialog.Builder(context)
+                        .setTitle(R.string.pin_disable_title)
+                        .setMessage(R.string.pin_disable_message)
+                        .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                            PinStore.disable(context);
+                            refreshPin();
+                        })
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .show();
+                return;
+            }
+            // Setting a PIN saves the password of the open vault, so the password is asked first.
+            final App.Session session = App.session();
+            if (session != null) {
+                InsertPasswordDialogFragment.newInstance(vaultName(session.file))
+                        .show(getParentFragmentManager(), "pin_password");
+            }
+        }
+
 
         private void showClipboardTimeout(final Preference preference) {
             final Context context = requireContext();
@@ -122,6 +211,15 @@ public class SettingsActivity extends SecureActivity implements ChoosePasswordDi
                             .show(getParentFragmentManager(), "change_password");
                     return true;
                 });
+            }
+            final Preference pin = findPreference("pref_pin");
+            if (pin != null) {
+                pin.setVisible(unlocked && PinStore.supported());
+                pin.setOnPreferenceClickListener(preference -> {
+                    onPinClicked();
+                    return true;
+                });
+                refreshPin();
             }
             final Preference about = findPreference("pref_about");
             if (about != null) {

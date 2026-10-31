@@ -114,4 +114,20 @@
     <string name="pw_strength_strong">Puternică</string>
     <string name="pw_hint_short">Adăugați încă %1$d caractere.</string>
     <string name="pw_hint_longer">Cu 16 caractere nu este nevoie de amestec de tipuri.</string>
+    <string name="pref_pin">Deblocare cu PIN</string>
+    <string name="pref_pin_off">Dezactivat</string>
+    <string name="pref_pin_on">Activat. PIN-ul nu expiră niciodată.</string>
+    <string name="pin_title_setup">Setați un PIN</string>
+    <string name="pin_title_unlock">Introduceți PIN-ul</string>
+    <string name="pin_hint">PIN, 4 până la 8 cifre</string>
+    <string name="pin_hint_repeat">Repetați PIN-ul</string>
+    <string name="pin_invalid">Folosiți 4 până la 8 cifre.</string>
+    <string name="pin_mismatch">Cele două PIN-uri nu coincid.</string>
+    <string name="pin_wrong">PIN greșit. Mai aveți %1$d încercări.</string>
+    <string name="pin_wiped">Prea multe încercări greșite. PIN-ul a fost șters. Introduceți parola.</string>
+    <string name="pin_unavailable">Deblocarea cu PIN nu este disponibilă. Folosiți parola.</string>
+    <string name="pin_use_password">Folosiți parola</string>
+    <string name="pin_saved">Deblocarea cu PIN este activată.</string>
+    <string name="pin_disable_title">Dezactivați deblocarea cu PIN?</string>
+    <string name="pin_disable_message">PIN-ul și parolele salvate pentru deblocare vor fi șterse. Bazele de date nu se schimbă.</string>
 </resources>

@@ -114,4 +114,20 @@
     <string name="pw_strength_strong">قوية</string>
     <string name="pw_hint_short">أضف %1$d حرفًا آخر.</string>
     <string name="pw_hint_longer">استخدم 16 حرفًا على الأقل لتجاوز قاعدة التنويع.</string>
+    <string name="pref_pin">فك القفل بالرمز PIN</string>
+    <string name="pref_pin_off">متوقف</string>
+    <string name="pref_pin_on">مفعّل. الرمز لا تنتهي صلاحيته.</string>
+    <string name="pin_title_setup">تعيين رمز PIN</string>
+    <string name="pin_title_unlock">أدخل رمز PIN</string>
+    <string name="pin_hint">رمز PIN، من 4 إلى 8 أرقام</string>
+    <string name="pin_hint_repeat">أعد كتابة رمز PIN</string>
+    <string name="pin_invalid">استخدم من 4 إلى 8 أرقام.</string>
+    <string name="pin_mismatch">الرمزان غير متطابقين.</string>
+    <string name="pin_wrong">رمز PIN خاطئ. تبقّت %1$d محاولات.</string>
+    <string name="pin_wiped">محاولات خاطئة كثيرة. تمت إزالة رمز PIN. استخدم كلمة المرور.</string>
+    <string name="pin_unavailable">فك القفل بـ PIN غير متاح. استخدم كلمة المرور.</string>
+    <string name="pin_use_password">استخدام كلمة المرور</string>
+    <string name="pin_saved">تم تفعيل فك القفل بـ PIN.</string>
+    <string name="pin_disable_title">إيقاف فك القفل بـ PIN؟</string>
+    <string name="pin_disable_message">سيتم حذف رمز PIN وكلمات المرور المحفوظة لفك القفل. قواعد البيانات لن تتغير.</string>
 </resources>

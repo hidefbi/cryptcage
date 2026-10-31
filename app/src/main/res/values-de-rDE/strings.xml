@@ -114,4 +114,20 @@
     <string name="pw_strength_strong">Stark</string>
     <string name="pw_hint_short">Noch %1$d Zeichen hinzufügen.</string>
     <string name="pw_hint_longer">Mit 16 Zeichen ist keine Mischung nötig.</string>
+    <string name="pref_pin">PIN-Entsperrung</string>
+    <string name="pref_pin_off">Aus</string>
+    <string name="pref_pin_on">An. Die PIN läuft nie ab.</string>
+    <string name="pin_title_setup">PIN festlegen</string>
+    <string name="pin_title_unlock">PIN eingeben</string>
+    <string name="pin_hint">PIN, 4 bis 8 Ziffern</string>
+    <string name="pin_hint_repeat">PIN wiederholen</string>
+    <string name="pin_invalid">Verwenden Sie 4 bis 8 Ziffern.</string>
+    <string name="pin_mismatch">Die beiden PINs stimmen nicht überein.</string>
+    <string name="pin_wrong">Falsche PIN. Noch %1$d Versuche.</string>
+    <string name="pin_wiped">Zu viele Fehlversuche. Die PIN wurde entfernt. Bitte Passwort eingeben.</string>
+    <string name="pin_unavailable">PIN-Entsperrung ist nicht verfügbar. Bitte Passwort verwenden.</string>
+    <string name="pin_use_password">Passwort verwenden</string>
+    <string name="pin_saved">PIN-Entsperrung ist aktiviert.</string>
+    <string name="pin_disable_title">PIN-Entsperrung ausschalten?</string>
+    <string name="pin_disable_message">Die PIN und die gespeicherten Passwörter für die Entsperrung werden gelöscht. Die Datenbanken bleiben unverändert.</string>
 </resources>

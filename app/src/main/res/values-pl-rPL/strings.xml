@@ -114,4 +114,20 @@
     <string name="pw_strength_strong">Silne</string>
     <string name="pw_hint_short">Dodaj jeszcze %1$d znaków.</string>
     <string name="pw_hint_longer">Przy 16 znakach nie trzeba mieszać rodzajów znaków.</string>
+    <string name="pref_pin">Odblokowanie kodem PIN</string>
+    <string name="pref_pin_off">Wyłączone</string>
+    <string name="pref_pin_on">Włączone. Kod PIN nie wygasa.</string>
+    <string name="pin_title_setup">Ustaw kod PIN</string>
+    <string name="pin_title_unlock">Wpisz kod PIN</string>
+    <string name="pin_hint">Kod PIN, 4 do 8 cyfr</string>
+    <string name="pin_hint_repeat">Powtórz kod PIN</string>
+    <string name="pin_invalid">Użyj od 4 do 8 cyfr.</string>
+    <string name="pin_mismatch">Kody PIN nie są zgodne.</string>
+    <string name="pin_wrong">Błędny kod PIN. Pozostało prób: %1$d.</string>
+    <string name="pin_wiped">Zbyt wiele błędnych prób. Kod PIN został usunięty. Wpisz hasło.</string>
+    <string name="pin_unavailable">Odblokowanie kodem PIN jest niedostępne. Użyj hasła.</string>
+    <string name="pin_use_password">Użyj hasła</string>
+    <string name="pin_saved">Odblokowanie kodem PIN jest włączone.</string>
+    <string name="pin_disable_title">Wyłączyć odblokowanie kodem PIN?</string>
+    <string name="pin_disable_message">Kod PIN i zapisane hasła do odblokowania zostaną usunięte. Bazy danych się nie zmienią.</string>
 </resources>

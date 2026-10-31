@@ -114,4 +114,20 @@
     <string name="pw_strength_strong">Надійний</string>
     <string name="pw_hint_short">Додайте ще %1$d символів.</string>
     <string name="pw_hint_longer">За 16 символів змішувати типи не потрібно.</string>
+    <string name="pref_pin">Розблокування PIN-кодом</string>
+    <string name="pref_pin_off">Вимкнено</string>
+    <string name="pref_pin_on">Увімкнено. PIN-код не спливає.</string>
+    <string name="pin_title_setup">Задайте PIN-код</string>
+    <string name="pin_title_unlock">Введіть PIN-код</string>
+    <string name="pin_hint">PIN-код, від 4 до 8 цифр</string>
+    <string name="pin_hint_repeat">Повторіть PIN-код</string>
+    <string name="pin_invalid">Використовуйте від 4 до 8 цифр.</string>
+    <string name="pin_mismatch">PIN-коди не збігаються.</string>
+    <string name="pin_wrong">Невірний PIN-код. Залишилось спроб: %1$d.</string>
+    <string name="pin_wiped">Забагато невірних спроб. PIN-код видалено. Введіть пароль.</string>
+    <string name="pin_unavailable">Розблокування PIN-кодом недоступне. Використайте пароль.</string>
+    <string name="pin_use_password">Використати пароль</string>
+    <string name="pin_saved">Розблокування PIN-кодом увімкнено.</string>
+    <string name="pin_disable_title">Вимкнути розблокування PIN-кодом?</string>
+    <string name="pin_disable_message">PIN-код і збережені для розблокування паролі буде видалено. Бази даних не зміняться.</string>
 </resources>

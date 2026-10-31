@@ -25,6 +25,7 @@ This list covers the changes made by hidefbi on 2026-10-31 and the earlier chang
 - The note editor has undo and redo. Unsaved text is kept as a draft sealed with the vault key, and it is offered again when the note is opened. A note body can be at most 8 MB when it is written. KeePass databases (.kdbx) can be stored as files.
 - Settings are grouped into appearance, security and about. The clipboard timeout is set as hours, minutes and seconds, and copied note text is cleared from the clipboard after that time. The master password can be changed from the settings.
 - The password dialog shows a strength meter while the password is typed. The accept or reject rule did not change.
+- A PIN of 4 to 8 digits can unlock a database in place of its master password, on Android 6.0 and later. Each database keeps its own copy of the master password, wrapped with a non-exportable Keystore key. Five wrong PINs remove the PIN and the copies, not the databases.
 - Test coverage was added for the storage format, compaction, password change and the vault session.
 
 ## Dates

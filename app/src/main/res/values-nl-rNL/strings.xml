@@ -114,4 +114,20 @@
     <string name="pw_strength_strong">Sterk</string>
     <string name="pw_hint_short">Voeg nog %1$d tekens toe.</string>
     <string name="pw_hint_longer">Met 16 tekens hoef je geen tekensoorten te mengen.</string>
+    <string name="pref_pin">Ontgrendelen met pincode</string>
+    <string name="pref_pin_off">Uit</string>
+    <string name="pref_pin_on">Aan. De pincode verloopt nooit.</string>
+    <string name="pin_title_setup">Pincode instellen</string>
+    <string name="pin_title_unlock">Voer de pincode in</string>
+    <string name="pin_hint">Pincode, 4 tot 8 cijfers</string>
+    <string name="pin_hint_repeat">Herhaal de pincode</string>
+    <string name="pin_invalid">Gebruik 4 tot 8 cijfers.</string>
+    <string name="pin_mismatch">De twee pincodes komen niet overeen.</string>
+    <string name="pin_wrong">Verkeerde pincode. Nog %1$d pogingen.</string>
+    <string name="pin_wiped">Te veel foute pogingen. De pincode is verwijderd. Voer het wachtwoord in.</string>
+    <string name="pin_unavailable">Ontgrendelen met pincode is niet beschikbaar. Gebruik het wachtwoord.</string>
+    <string name="pin_use_password">Wachtwoord gebruiken</string>
+    <string name="pin_saved">Ontgrendelen met pincode staat aan.</string>
+    <string name="pin_disable_title">Ontgrendelen met pincode uitzetten?</string>
+    <string name="pin_disable_message">De pincode en de opgeslagen wachtwoorden voor ontgrendelen worden verwijderd. De databases blijven gelijk.</string>
 </resources>

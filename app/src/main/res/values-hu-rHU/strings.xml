@@ -114,4 +114,20 @@
     <string name="pw_strength_strong">Erős</string>
     <string name="pw_hint_short">Még %1$d karaktert adjon hozzá.</string>
     <string name="pw_hint_longer">16 karakternél nem kell vegyes karaktereket használni.</string>
+    <string name="pref_pin">Feloldás PIN-kóddal</string>
+    <string name="pref_pin_off">Ki</string>
+    <string name="pref_pin_on">Be. A PIN-kód nem jár le.</string>
+    <string name="pin_title_setup">PIN-kód beállítása</string>
+    <string name="pin_title_unlock">PIN-kód megadása</string>
+    <string name="pin_hint">PIN-kód, 4-8 számjegy</string>
+    <string name="pin_hint_repeat">PIN-kód megismétlése</string>
+    <string name="pin_invalid">Adjon meg 4-8 számjegyet.</string>
+    <string name="pin_mismatch">A két PIN-kód nem egyezik.</string>
+    <string name="pin_wrong">Hibás PIN-kód. %1$d próbálkozás maradt.</string>
+    <string name="pin_wiped">Túl sok hibás próbálkozás. A PIN-kód törölve lett. Adja meg a jelszót.</string>
+    <string name="pin_unavailable">A PIN-kódos feloldás nem elérhető. Használja a jelszót.</string>
+    <string name="pin_use_password">Jelszó használata</string>
+    <string name="pin_saved">A PIN-kódos feloldás be van kapcsolva.</string>
+    <string name="pin_disable_title">Kikapcsolja a PIN-kódos feloldást?</string>
+    <string name="pin_disable_message">A PIN-kód és a feloldáshoz mentett jelszavak törlődnek. Az adatbázisok nem változnak.</string>
 </resources>

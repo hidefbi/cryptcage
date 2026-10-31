@@ -114,4 +114,20 @@
     <string name="pw_strength_strong">Ισχυρός</string>
     <string name="pw_hint_short">Προσθέστε ακόμη %1$d χαρακτήρες.</string>
     <string name="pw_hint_longer">Με 16 χαρακτήρες δεν χρειάζεται ανάμειξη.</string>
+    <string name="pref_pin">Ξεκλείδωμα με PIN</string>
+    <string name="pref_pin_off">Απενεργοποιημένο</string>
+    <string name="pref_pin_on">Ενεργοποιημένο. Το PIN δεν λήγει ποτέ.</string>
+    <string name="pin_title_setup">Ορισμός PIN</string>
+    <string name="pin_title_unlock">Εισαγάγετε το PIN</string>
+    <string name="pin_hint">PIN, 4 έως 8 ψηφία</string>
+    <string name="pin_hint_repeat">Επαναλάβετε το PIN</string>
+    <string name="pin_invalid">Χρησιμοποιήστε 4 έως 8 ψηφία.</string>
+    <string name="pin_mismatch">Τα δύο PIN δεν ταιριάζουν.</string>
+    <string name="pin_wrong">Λάθος PIN. Απομένουν %1$d προσπάθειες.</string>
+    <string name="pin_wiped">Πολλές λανθασμένες προσπάθειες. Το PIN αφαιρέθηκε. Χρησιμοποιήστε τον κωδικό.</string>
+    <string name="pin_unavailable">Το ξεκλείδωμα με PIN δεν είναι διαθέσιμο. Χρησιμοποιήστε τον κωδικό.</string>
+    <string name="pin_use_password">Χρήση κωδικού</string>
+    <string name="pin_saved">Το ξεκλείδωμα με PIN είναι ενεργό.</string>
+    <string name="pin_disable_title">Απενεργοποίηση ξεκλειδώματος με PIN;</string>
+    <string name="pin_disable_message">Το PIN και οι αποθηκευμένοι κωδικοί ξεκλειδώματος θα διαγραφούν. Οι βάσεις δεν αλλάζουν.</string>
 </resources>

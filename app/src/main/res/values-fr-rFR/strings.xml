@@ -114,4 +114,20 @@
     <string name="pw_strength_strong">Fort</string>
     <string name="pw_hint_short">Ajoutez encore %1$d caractères.</string>
     <string name="pw_hint_longer">16 caractères suffisent sans mélange de types.</string>
+    <string name="pref_pin">Déverrouillage par code PIN</string>
+    <string name="pref_pin_off">Désactivé</string>
+    <string name="pref_pin_on">Activé, sans expiration du code PIN.</string>
+    <string name="pin_title_setup">Définir le code PIN</string>
+    <string name="pin_title_unlock">Saisissez le code PIN</string>
+    <string name="pin_hint">Code PIN, 4 à 8 chiffres</string>
+    <string name="pin_hint_repeat">Répétez le code PIN</string>
+    <string name="pin_invalid">Utilisez de 4 à 8 chiffres.</string>
+    <string name="pin_mismatch">Les deux codes PIN ne correspondent pas.</string>
+    <string name="pin_wrong">Code PIN incorrect. Il reste %1$d essais.</string>
+    <string name="pin_wiped">Trop de tentatives échouées. Le code PIN a été supprimé. Saisissez le mot de passe.</string>
+    <string name="pin_unavailable">Le déverrouillage par code PIN est indisponible. Utilisez le mot de passe.</string>
+    <string name="pin_use_password">Utiliser le mot de passe</string>
+    <string name="pin_saved">Déverrouillage par code PIN activé.</string>
+    <string name="pin_disable_title">Désactiver le déverrouillage par code PIN ?</string>
+    <string name="pin_disable_message">Le code PIN et les mots de passe enregistrés pour le déverrouillage seront supprimés. Les bases ne changent pas.</string>
 </resources>

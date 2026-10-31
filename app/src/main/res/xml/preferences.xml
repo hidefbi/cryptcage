@@ -33,6 +33,10 @@
             android:title="@string/pref_screenshot" />
 
         <androidx.preference.Preference
+            android:key="pref_pin"
+            android:title="@string/pref_pin" />
+
+        <androidx.preference.Preference
             android:key="pref_clipboardTimeout"
             android:title="@string/pref_clipboardTimeout" />
 

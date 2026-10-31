@@ -114,4 +114,20 @@
     <string name="pw_strength_strong">Forte</string>
     <string name="pw_hint_short">Adicione mais %1$d caracteres.</string>
     <string name="pw_hint_longer">Com 16 caracteres não é preciso misturar tipos.</string>
+    <string name="pref_pin">Desbloqueio com PIN</string>
+    <string name="pref_pin_off">Desativado</string>
+    <string name="pref_pin_on">Ativado. O PIN nunca expira.</string>
+    <string name="pin_title_setup">Definir PIN</string>
+    <string name="pin_title_unlock">Introduza o PIN</string>
+    <string name="pin_hint">PIN, de 4 a 8 dígitos</string>
+    <string name="pin_hint_repeat">Repita o PIN</string>
+    <string name="pin_invalid">Use de 4 a 8 dígitos.</string>
+    <string name="pin_mismatch">Os dois PIN não coincidem.</string>
+    <string name="pin_wrong">PIN incorreto. Restam %1$d tentativas.</string>
+    <string name="pin_wiped">Demasiadas tentativas erradas. O PIN foi removido. Use a palavra-passe.</string>
+    <string name="pin_unavailable">O desbloqueio com PIN não está disponível. Use a palavra-passe.</string>
+    <string name="pin_use_password">Usar palavra-passe</string>
+    <string name="pin_saved">Desbloqueio com PIN ativado.</string>
+    <string name="pin_disable_title">Desativar o desbloqueio com PIN?</string>
+    <string name="pin_disable_message">O PIN e as palavras-passe guardadas para o desbloqueio serão apagados. As bases de dados não mudam.</string>
 </resources>

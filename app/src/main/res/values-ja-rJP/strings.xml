@@ -114,4 +114,20 @@
     <string name="pw_strength_strong">強い</string>
     <string name="pw_hint_short">あと %1$d 文字追加してください。</string>
     <string name="pw_hint_longer">16 文字以上にすると文字の種類の条件は不要です。</string>
+    <string name="pref_pin">PIN でロック解除</string>
+    <string name="pref_pin_off">オフ</string>
+    <string name="pref_pin_on">オン。PIN は期限切れになりません。</string>
+    <string name="pin_title_setup">PIN を設定</string>
+    <string name="pin_title_unlock">PIN を入力</string>
+    <string name="pin_hint">PIN（4〜8 桁）</string>
+    <string name="pin_hint_repeat">PIN をもう一度入力</string>
+    <string name="pin_invalid">4〜8 桁の数字を入力してください。</string>
+    <string name="pin_mismatch">2 つの PIN が一致しません。</string>
+    <string name="pin_wrong">PIN が違います。残り %1$d 回です。</string>
+    <string name="pin_wiped">間違いが多すぎるため PIN を削除しました。パスワードを入力してください。</string>
+    <string name="pin_unavailable">PIN でのロック解除は利用できません。パスワードを使用してください。</string>
+    <string name="pin_use_password">パスワードを使用</string>
+    <string name="pin_saved">PIN によるロック解除をオンにしました。</string>
+    <string name="pin_disable_title">PIN によるロック解除をオフにしますか？</string>
+    <string name="pin_disable_message">PIN とロック解除用に保存したパスワードを削除します。データベースは変更されません。</string>
 </resources>

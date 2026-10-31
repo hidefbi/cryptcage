@@ -114,4 +114,20 @@
     <string name="pw_strength_strong">Күшті</string>
     <string name="pw_hint_short">Тағы %1$d таңба қосыңыз.</string>
     <string name="pw_hint_longer">16 таңба болса, әртүрлі таңба қажет емес.</string>
+    <string name="pref_pin">PIN арқылы ашу</string>
+    <string name="pref_pin_off">Өшірулі</string>
+    <string name="pref_pin_on">Қосулы. PIN мерзімі өтпейді.</string>
+    <string name="pin_title_setup">PIN орнату</string>
+    <string name="pin_title_unlock">PIN енгізіңіз</string>
+    <string name="pin_hint">PIN, 4-тен 8-ге дейін цифр</string>
+    <string name="pin_hint_repeat">PIN-ді қайта енгізіңіз</string>
+    <string name="pin_invalid">4-тен 8-ге дейінгі цифр енгізіңіз.</string>
+    <string name="pin_mismatch">Екі PIN сәйкес келмейді.</string>
+    <string name="pin_wrong">PIN қате. %1$d әрекет қалды.</string>
+    <string name="pin_wiped">Тым көп қате әрекет. PIN жойылды. Құпия сөзді енгізіңіз.</string>
+    <string name="pin_unavailable">PIN арқылы ашу қолжетімсіз. Құпия сөзді пайдаланыңыз.</string>
+    <string name="pin_use_password">Құпия сөзді пайдалану</string>
+    <string name="pin_saved">PIN арқылы ашу қосылды.</string>
+    <string name="pin_disable_title">PIN арқылы ашуды өшіру керек пе?</string>
+    <string name="pin_disable_message">PIN және ашу үшін сақталған құпия сөздер жойылады. Деректер қорлары өзгермейді.</string>
 </resources>

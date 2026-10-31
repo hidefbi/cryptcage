@@ -114,4 +114,20 @@
     <string name="pw_strength_strong">मजबूत</string>
     <string name="pw_hint_short">%1$d अक्षर और जोड़ें।</string>
     <string name="pw_hint_longer">16 अक्षर होने पर मिश्रण की ज़रूरत नहीं है।</string>
+    <string name="pref_pin">PIN से अनलॉक</string>
+    <string name="pref_pin_off">बंद</string>
+    <string name="pref_pin_on">चालू। PIN की समय-सीमा नहीं है।</string>
+    <string name="pin_title_setup">PIN सेट करें</string>
+    <string name="pin_title_unlock">PIN दर्ज करें</string>
+    <string name="pin_hint">PIN, 4 से 8 अंक</string>
+    <string name="pin_hint_repeat">PIN दोबारा दर्ज करें</string>
+    <string name="pin_invalid">4 से 8 अंक इस्तेमाल करें।</string>
+    <string name="pin_mismatch">दोनों PIN मेल नहीं खाते।</string>
+    <string name="pin_wrong">गलत PIN। %1$d प्रयास बाकी हैं।</string>
+    <string name="pin_wiped">बहुत अधिक गलत प्रयास। PIN हटा दिया गया। पासवर्ड दर्ज करें।</string>
+    <string name="pin_unavailable">PIN से अनलॉक उपलब्ध नहीं है। पासवर्ड इस्तेमाल करें।</string>
+    <string name="pin_use_password">पासवर्ड इस्तेमाल करें</string>
+    <string name="pin_saved">PIN से अनलॉक चालू है।</string>
+    <string name="pin_disable_title">PIN से अनलॉक बंद करें?</string>
+    <string name="pin_disable_message">PIN और अनलॉक के लिए सहेजे गए पासवर्ड हटा दिए जाएँगे। डेटाबेस नहीं बदलेंगे।</string>
 </resources>
