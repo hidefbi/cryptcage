@@ -46,6 +46,7 @@ public abstract class SecureActivity extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         applyScreenshotPolicy(this);
+        ClipboardTimer.install(this);
         paletteAtCreate = App.usesSandPalette(this);
         if (paletteAtCreate) {
             getTheme().applyStyle(R.style.PaletteSand, true);
@@ -91,9 +92,16 @@ public abstract class SecureActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onPause() {
+        ClipboardTimer.setForeground(false);
+        super.onPause();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         applyScreenshotPolicy(this);
+        ClipboardTimer.setForeground(true);
         ClipboardTimer.clearIfExpired(this);
         // The colour palette may have been changed on another screen while this one was in the back.
         if (paletteAtCreate != App.usesSandPalette(this)) {
