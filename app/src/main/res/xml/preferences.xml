@@ -32,9 +32,7 @@
             android:summary="@string/pref_screenshot_summary"
             android:title="@string/pref_screenshot" />
 
-        <com.cryptcage.ui.DurationPreference
-            android:defaultValue="20"
-            android:dialogMessage="@string/pref_clipboardTimeout_summary"
+        <androidx.preference.Preference
             android:key="pref_clipboardTimeout"
             android:title="@string/pref_clipboardTimeout" />
 

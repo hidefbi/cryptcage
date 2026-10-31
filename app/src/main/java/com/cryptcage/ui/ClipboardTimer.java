@@ -6,6 +6,7 @@
  */
 package com.cryptcage.ui;
 
+import java.util.Locale;
 import java.util.UUID;
 
 import android.app.AlarmManager;
@@ -43,6 +44,17 @@ final class ClipboardTimer {
         final int value = PreferenceManager.getDefaultSharedPreferences(context)
                 .getInt(KEY_SECONDS, DEFAULT_SECONDS);
         return Math.max(0, Math.min(value, MAX_SECONDS));
+    }
+
+    /** Saves the timeout in seconds, capped at the maximum. */
+    static void save(final Context context, final int total) {
+        PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext())
+                .edit().putInt(KEY_SECONDS, Math.max(0, Math.min(total, MAX_SECONDS))).apply();
+    }
+
+    /** Shows a time as hours:minutes:seconds. */
+    static String format(final int total) {
+        return String.format(Locale.ROOT, "%d:%02d:%02d", total / 3600, total % 3600 / 60, total % 60);
     }
 
     static void copy(final Context context, final String text) {

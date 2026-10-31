@@ -3,43 +3,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:paddingStart="24dp"
     android:paddingEnd="24dp"
     android:paddingTop="8dp"
     android:paddingBottom="8dp">
 
-    <NumberPicker
-        android:id="@+id/picker_hours"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/text_hint"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        android:text=":"
-        android:textAppearance="?attr/textAppearanceTitleLarge"
-        tools:ignore="HardcodedText" />
+        android:paddingBottom="8dp"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="?attr/colorOnSurfaceVariant" />
 
-    <NumberPicker
-        android:id="@+id/picker_minutes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        android:text=":"
-        android:textAppearance="?attr/textAppearanceTitleLarge"
-        tools:ignore="HardcodedText" />
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <NumberPicker
-        android:id="@+id/picker_seconds"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <NumberPicker
+            android:id="@+id/picker_hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text=":"
+            android:textAppearance="?attr/textAppearanceTitleLarge"
+            tools:ignore="HardcodedText" />
+
+        <NumberPicker
+            android:id="@+id/picker_minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text=":"
+            android:textAppearance="?attr/textAppearanceTitleLarge"
+            tools:ignore="HardcodedText" />
+
+        <NumberPicker
+            android:id="@+id/picker_seconds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>
