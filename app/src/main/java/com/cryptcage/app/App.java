@@ -57,8 +57,8 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        AppCompatDelegate.setDefaultNightMode(themeMode(
-                PreferenceManager.getDefaultSharedPreferences(this).getString("pref_theme", "system")));
+        // Light or dark follows the system. The colour palette has its own night colours.
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(final Activity activity, final Bundle savedInstanceState) {
@@ -120,15 +120,10 @@ public class App extends Application {
         }, new IntentFilter(Intent.ACTION_SCREEN_OFF));
     }
 
-    /** Maps the saved preference value to an AppCompat night mode. */
-    public static int themeMode(final String value) {
-        if ("light".equals(value)) {
-            return AppCompatDelegate.MODE_NIGHT_NO;
-        }
-        if ("dark".equals(value)) {
-            return AppCompatDelegate.MODE_NIGHT_YES;
-        }
-        return AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+    /** True when the settings allow screenshots and the recent-apps preview of notes. Off by default. */
+    public static boolean allowsScreenshots(final Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean("pref_screenshot", false);
     }
 
     /** True when the settings choose the sand colour palette. The default is the blue palette. */

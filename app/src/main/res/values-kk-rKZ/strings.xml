@@ -83,6 +83,8 @@
     <string name="hint_importFile">Деректер қорын ашу</string>
     <string name="toast_selectDatabase">Алдымен деректер қорын таңдаңыз</string>
     <string name="pref_palette">Түс тақырыбы</string>
+    <string name="pref_screenshot">Скриншот режимі</string>
+    <string name="pref_screenshot_summary">Жазбаларға скриншот жасауға және соңғы қолданбаларда алдын ала қарауға рұқсат беру. Өшірулі кезде жасырылады.</string>
     <string-array name="pref_palette_entries">
         <item>Көк</item>
         <item>Құм</item>

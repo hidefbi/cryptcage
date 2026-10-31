@@ -83,6 +83,8 @@
     <string name="hint_importFile">Buka database</string>
     <string name="toast_selectDatabase">Pilih database terlebih dahulu</string>
     <string name="pref_palette">Tema warna</string>
+    <string name="pref_screenshot">Mode tangkapan layar</string>
+    <string name="pref_screenshot_summary">Izinkan tangkapan layar dan pratinjau catatan di aplikasi terbaru. Nonaktif akan menyembunyikan catatan.</string>
     <string-array name="pref_palette_entries">
         <item>Biru</item>
         <item>Pasir</item>

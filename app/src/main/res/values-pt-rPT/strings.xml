@@ -83,6 +83,8 @@
     <string name="hint_importFile">Abrir base de dados</string>
     <string name="toast_selectDatabase">Escolha primeiro uma base de dados</string>
     <string name="pref_palette">Tema de cores</string>
+    <string name="pref_screenshot">Modo de captura de ecrã</string>
+    <string name="pref_screenshot_summary">Permitir capturas de ecrã e a antevisão das notas nas aplicações recentes. Desativado mantém as notas ocultas.</string>
     <string-array name="pref_palette_entries">
         <item>Azul</item>
         <item>Areia</item>

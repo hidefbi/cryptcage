@@ -107,17 +107,6 @@
     <string name="toast_nothingSelected">Select at least one item first</string>
     <string name="selected_count">%1$d selected</string>
     <string name="dialog_deleteSelected">Delete %1$d selected items?</string>
-    <string name="pref_theme">Theme</string>
-    <string-array name="pref_theme_entries">
-        <item>System</item>
-        <item>Light</item>
-        <item>Dark</item>
-    </string-array>
-    <string-array name="pref_theme_values">
-        <item>system</item>
-        <item>light</item>
-        <item>dark</item>
-    </string-array>
     <string name="file_noPreview">This file cannot be shown or edited as text. Export it to keep a copy.</string>
     <string name="toast_secretFile">This is a key or certificate. Keep it private.</string>
     <string name="import_createTitle">Create a database?</string>
@@ -147,4 +136,6 @@
         <item>blue</item>
         <item>sand</item>
     </string-array>
+    <string name="pref_screenshot">Screenshot mode</string>
+    <string name="pref_screenshot_summary">Allow screenshots and the recent-apps preview of notes. Off keeps notes hidden.</string>
 </resources>

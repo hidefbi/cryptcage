@@ -83,6 +83,8 @@
     <string name="hint_importFile">Deschide baza de date</string>
     <string name="toast_selectDatabase">Alege mai întâi o bază de date</string>
     <string name="pref_palette">Temă de culoare</string>
+    <string name="pref_screenshot">Mod captură de ecran</string>
+    <string name="pref_screenshot_summary">Permite capturile de ecran și previzualizarea notițelor în aplicațiile recente. Dezactivat le ascunde.</string>
     <string-array name="pref_palette_entries">
         <item>Albastru</item>
         <item>Nisip</item>

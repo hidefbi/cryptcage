@@ -83,6 +83,8 @@
     <string name="hint_importFile">Відкрити базу даних</string>
     <string name="toast_selectDatabase">Спочатку виберіть базу даних</string>
     <string name="pref_palette">Колірна тема</string>
+    <string name="pref_screenshot">Режим знімків екрана</string>
+    <string name="pref_screenshot_summary">Дозволити знімки екрана та перегляд нотаток у списку останніх застосунків. Вимкнено — приховано.</string>
     <string-array name="pref_palette_entries">
         <item>Синя</item>
         <item>Піщана</item>

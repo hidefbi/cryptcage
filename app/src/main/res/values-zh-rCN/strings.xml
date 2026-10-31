@@ -107,17 +107,6 @@
     <string name="toast_nothingSelected">请先选择至少一项</string>
     <string name="selected_count">已选 %1$d 项</string>
     <string name="dialog_deleteSelected">删除所选的 %1$d 项？</string>
-    <string name="pref_theme">主题</string>
-    <string-array name="pref_theme_entries">
-        <item>跟随系统</item>
-        <item>浅色</item>
-        <item>深色</item>
-    </string-array>
-    <string-array name="pref_theme_values">
-        <item>system</item>
-        <item>light</item>
-        <item>dark</item>
-    </string-array>
     <string name="file_noPreview">该文件无法以文本形式显示或编辑。请导出以保留副本。</string>
     <string name="toast_secretFile">这是密钥或证书，请妥善保密。</string>
     <string name="import_createTitle">创建数据库？</string>
@@ -139,6 +128,8 @@
     <string name="hint_importFile">打开数据库</string>
     <string name="toast_selectDatabase">请先选择数据库</string>
     <string name="pref_palette">颜色主题</string>
+    <string name="pref_screenshot">截图模式</string>
+    <string name="pref_screenshot_summary">允许对笔记截图,并允许最近任务预览显示笔记内容。关闭时笔记保持隐藏。</string>
     <string-array name="pref_palette_entries">
         <item>蓝青</item>
         <item>米色</item>

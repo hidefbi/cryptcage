@@ -84,6 +84,8 @@
     <string name="hint_importFile">Apri database</string>
     <string name="toast_selectDatabase">Scegli prima un database</string>
     <string name="pref_palette">Tema colore</string>
+    <string name="pref_screenshot">Modalità screenshot</string>
+    <string name="pref_screenshot_summary">Consenti gli screenshot e l'anteprima delle note nelle app recenti. Disattivato le nasconde.</string>
     <string-array name="pref_palette_entries">
         <item>Blu</item>
         <item>Sabbia</item>

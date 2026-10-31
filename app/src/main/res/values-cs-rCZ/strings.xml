@@ -83,6 +83,8 @@
     <string name="hint_importFile">Otevřít databázi</string>
     <string name="toast_selectDatabase">Nejprve vyberte databázi</string>
     <string name="pref_palette">Barevný motiv</string>
+    <string name="pref_screenshot">Režim snímků obrazovky</string>
+    <string name="pref_screenshot_summary">Povolit snímky obrazovky a náhled poznámek v nedávných aplikacích. Vypnuto je skryje.</string>
     <string-array name="pref_palette_entries">
         <item>Modrý</item>
         <item>Písková</item>

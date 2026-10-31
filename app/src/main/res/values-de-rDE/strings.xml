@@ -83,6 +83,8 @@
     <string name="hint_importFile">Datenbank öffnen</string>
     <string name="toast_selectDatabase">Bitte zuerst eine Datenbank auswählen</string>
     <string name="pref_palette">Farbthema</string>
+    <string name="pref_screenshot">Screenshot-Modus</string>
+    <string name="pref_screenshot_summary">Screenshots und die Vorschau von Notizen in den letzten Apps erlauben. Aus hält Notizen verborgen.</string>
     <string-array name="pref_palette_entries">
         <item>Blau</item>
         <item>Sand</item>

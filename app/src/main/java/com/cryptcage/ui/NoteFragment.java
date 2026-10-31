@@ -49,6 +49,9 @@ public class NoteFragment extends Fragment {
     public interface Listener {
         void onNoteChanged(long noteId);
 
+        /** A save finished. A phone screen for one note closes here and returns to the list. */
+        void onNoteSaved(long noteId);
+
         void onNoteRemoved();
 
         /** Export runs in the host, which registers its file picker before the screen starts. */
@@ -511,7 +514,7 @@ public class NoteFragment extends Fragment {
         toast(R.string.toast_success_newNote);
         editing = false;
         showRead();
-        listener().onNoteChanged(id);
+        listener().onNoteSaved(id);
     }
 
     private void toggleStar() {

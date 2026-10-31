@@ -83,6 +83,8 @@
     <string name="hint_importFile">Otwórz bazę danych</string>
     <string name="toast_selectDatabase">Najpierw wybierz bazę danych</string>
     <string name="pref_palette">Motyw kolorów</string>
+    <string name="pref_screenshot">Tryb zrzutów ekranu</string>
+    <string name="pref_screenshot_summary">Zezwalaj na zrzuty ekranu i podgląd notatek w ostatnich aplikacjach. Wyłączenie ukrywa notatki.</string>
     <string-array name="pref_palette_entries">
         <item>Niebieski</item>
         <item>Piaskowy</item>

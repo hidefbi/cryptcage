@@ -83,6 +83,8 @@
     <string name="hint_importFile">Avaa tietokanta</string>
     <string name="toast_selectDatabase">Valitse ensin tietokanta</string>
     <string name="pref_palette">Väriteema</string>
+    <string name="pref_screenshot">Kuvakaappaustila</string>
+    <string name="pref_screenshot_summary">Salli muistiinpanojen kuvakaappaukset ja esikatselu viimeisimmissä sovelluksissa. Pois päältä piilottaa ne.</string>
     <string-array name="pref_palette_entries">
         <item>Sininen</item>
         <item>Hiekka</item>

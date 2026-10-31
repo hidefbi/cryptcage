@@ -83,6 +83,8 @@
     <string name="hint_importFile">Открыть базу данных</string>
     <string name="toast_selectDatabase">Сначала выберите базу данных</string>
     <string name="pref_palette">Цветовая тема</string>
+    <string name="pref_screenshot">Режим скриншотов</string>
+    <string name="pref_screenshot_summary">Разрешить скриншоты и предпросмотр заметок в списке недавних приложений. Выключено — заметки скрыты.</string>
     <string-array name="pref_palette_entries">
         <item>Синяя</item>
         <item>Песочная</item>

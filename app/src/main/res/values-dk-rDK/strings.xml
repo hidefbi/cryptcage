@@ -83,6 +83,8 @@
     <string name="hint_importFile">Åbn database</string>
     <string name="toast_selectDatabase">Vælg først en database</string>
     <string name="pref_palette">Farvetema</string>
+    <string name="pref_screenshot">Skærmbilledtilstand</string>
+    <string name="pref_screenshot_summary">Tillad skærmbilleder og forhåndsvisning af noter i seneste apps. Fra skjuler noterne.</string>
     <string-array name="pref_palette_entries">
         <item>Blå</item>
         <item>Sand</item>

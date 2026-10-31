@@ -83,6 +83,8 @@
     <string name="hint_importFile">เปิดฐานข้อมูล</string>
     <string name="toast_selectDatabase">เลือกฐานข้อมูลก่อน</string>
     <string name="pref_palette">ธีมสี</string>
+    <string name="pref_screenshot">โหมดแคปภาพหน้าจอ</string>
+    <string name="pref_screenshot_summary">อนุญาตให้แคปภาพหน้าจอและดูตัวอย่างโน้ตในแอปล่าสุด เมื่อปิดไว้ โน้ตจะถูกซ่อน</string>
     <string-array name="pref_palette_entries">
         <item>น้ำเงิน</item>
         <item>ทราย</item>

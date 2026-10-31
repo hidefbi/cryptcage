@@ -83,6 +83,8 @@
     <string name="hint_importFile">डेटाबेस खोलें</string>
     <string name="toast_selectDatabase">पहले एक डेटाबेस चुनें</string>
     <string name="pref_palette">रंग थीम</string>
+    <string name="pref_screenshot">स्क्रीनशॉट मोड</string>
+    <string name="pref_screenshot_summary">नोट्स के स्क्रीनशॉट और हाल के ऐप्स में उनकी झलक की अनुमति दें। बंद होने पर नोट्स छिपे रहते हैं।</string>
     <string-array name="pref_palette_entries">
         <item>नीला</item>
         <item>रेत</item>

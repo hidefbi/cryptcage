@@ -65,6 +65,16 @@ final class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.Holder> {
         notifyDataSetChanged();
     }
 
+    /** The file type of the shown row with this id, or null for a note. Reads no vault data. */
+    FileKinds.Type typeOf(final long id) {
+        for (final Item item : items) {
+            if (item.id == id) {
+                return item.type;
+            }
+        }
+        return null;
+    }
+
     @NonNull
     @Override
     public Holder onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType) {

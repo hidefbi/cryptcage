@@ -83,6 +83,8 @@
     <string name="hint_importFile">Database openen</string>
     <string name="toast_selectDatabase">Kies eerst een database</string>
     <string name="pref_palette">Kleurthema</string>
+    <string name="pref_screenshot">Schermafbeeldingmodus</string>
+    <string name="pref_screenshot_summary">Schermafbeeldingen en het voorbeeld van notities in recente apps toestaan. Uit houdt ze verborgen.</string>
     <string-array name="pref_palette_entries">
         <item>Blauw</item>
         <item>Zand</item>

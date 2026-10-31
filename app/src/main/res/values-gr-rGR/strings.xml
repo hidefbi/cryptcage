@@ -83,6 +83,8 @@
     <string name="hint_importFile">Άνοιγμα βάσης</string>
     <string name="toast_selectDatabase">Επιλέξτε πρώτα μια βάση</string>
     <string name="pref_palette">Θέμα χρωμάτων</string>
+    <string name="pref_screenshot">Λειτουργία στιγμιότυπου οθόνης</string>
+    <string name="pref_screenshot_summary">Να επιτρέπονται τα στιγμιότυπα οθόνης και η προεπισκόπηση των σημειώσεων στις πρόσφατες εφαρμογές. Όταν είναι απενεργοποιημένη, οι σημειώσεις παραμένουν κρυφές.</string>
     <string-array name="pref_palette_entries">
         <item>Μπλε</item>
         <item>Άμμος</item>

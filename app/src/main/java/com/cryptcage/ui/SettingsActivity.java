@@ -9,11 +9,9 @@ package com.cryptcage.ui;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-import com.cryptcage.app.App;
 import com.cryptcage.R;
 
 public class SettingsActivity extends SecureActivity {
@@ -50,19 +48,19 @@ public class SettingsActivity extends SecureActivity {
         @Override
         public void onCreatePreferences(final Bundle savedInstanceState, final String rootKey) {
             setPreferencesFromResource(R.xml.preferences, rootKey);
-            final Preference theme = findPreference("pref_theme");
-            if (theme != null) {
-                theme.setOnPreferenceChangeListener((preference, value) -> {
-                    AppCompatDelegate.setDefaultNightMode(App.themeMode(String.valueOf(value)));
+            // The new value is stored after these listeners return, so the change is applied
+            // on the next pass of the event loop.
+            final Preference palette = findPreference("pref_palette");
+            if (palette != null) {
+                palette.setOnPreferenceChangeListener((preference, value) -> {
+                    requireView().post(() -> requireActivity().recreate());
                     return true;
                 });
             }
-            final Preference palette = findPreference("pref_palette");
-            if (palette != null) {
-                // The new value is stored after this listener returns, so the screen is rebuilt
-                // on the next pass of the event loop.
-                palette.setOnPreferenceChangeListener((preference, value) -> {
-                    requireView().post(() -> requireActivity().recreate());
+            final Preference screenshot = findPreference("pref_screenshot");
+            if (screenshot != null) {
+                screenshot.setOnPreferenceChangeListener((preference, value) -> {
+                    requireView().post(() -> SecureActivity.applyScreenshotPolicy(requireActivity()));
                     return true;
                 });
             }

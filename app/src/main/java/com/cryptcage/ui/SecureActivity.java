@@ -6,6 +6,7 @@
  */
 package com.cryptcage.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -44,7 +45,7 @@ public abstract class SecureActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+        applyScreenshotPolicy(this);
         paletteAtCreate = App.usesSandPalette(this);
         if (paletteAtCreate) {
             getTheme().applyStyle(R.style.PaletteSand, true);
@@ -52,6 +53,16 @@ public abstract class SecureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setBackgroundColor(themeBackground());
         applySystemBars();
+    }
+
+    /** Blocks screenshots and the recent-apps preview unless the screenshot mode is on. */
+    static void applyScreenshotPolicy(final Activity activity) {
+        final Window window = activity.getWindow();
+        if (App.allowsScreenshots(activity)) {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        } else {
+            window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        }
     }
 
     /**
@@ -82,6 +93,7 @@ public abstract class SecureActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        applyScreenshotPolicy(this);
         // The colour palette may have been changed on another screen while this one was in the back.
         if (paletteAtCreate != App.usesSandPalette(this)) {
             recreate();

@@ -83,6 +83,8 @@
     <string name="hint_importFile">فتح قاعدة بيانات</string>
     <string name="toast_selectDatabase">اختر قاعدة بيانات أولاً</string>
     <string name="pref_palette">نظام الألوان</string>
+    <string name="pref_screenshot">وضع لقطة الشاشة</string>
+    <string name="pref_screenshot_summary">السماح بلقطات الشاشة ومعاينة الملاحظات في التطبيقات الأخيرة. عند الإيقاف تبقى الملاحظات مخفية.</string>
     <string-array name="pref_palette_entries">
         <item>الأزرق</item>
         <item>الرملي</item>

@@ -83,6 +83,8 @@
     <string name="hint_importFile">Atidaryti duomenų bazę</string>
     <string name="toast_selectDatabase">Pirmiausia pasirinkite duomenų bazę</string>
     <string name="pref_palette">Spalvų tema</string>
+    <string name="pref_screenshot">Ekrano kopijos režimas</string>
+    <string name="pref_screenshot_summary">Leisti užrašų ekrano kopijas ir peržiūrą neseniai naudotose programose. Išjungus užrašai paslepiami.</string>
     <string-array name="pref_palette_entries">
         <item>Mėlyna</item>
         <item>Smėlio</item>

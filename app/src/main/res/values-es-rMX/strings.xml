@@ -83,6 +83,8 @@
     <string name="hint_importFile">Abrir base de datos</string>
     <string name="toast_selectDatabase">Primero elige una base de datos</string>
     <string name="pref_palette">Tema de color</string>
+    <string name="pref_screenshot">Modo de captura de pantalla</string>
+    <string name="pref_screenshot_summary">Permitir capturas de pantalla y la vista previa de notas en las apps recientes. Desactivado las oculta.</string>
     <string-array name="pref_palette_entries">
         <item>Azul</item>
         <item>Arena</item>

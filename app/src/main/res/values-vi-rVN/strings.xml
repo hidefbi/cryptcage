@@ -83,6 +83,8 @@
     <string name="hint_importFile">Mở cơ sở dữ liệu</string>
     <string name="toast_selectDatabase">Hãy chọn cơ sở dữ liệu trước</string>
     <string name="pref_palette">Chủ đề màu</string>
+    <string name="pref_screenshot">Chế độ chụp màn hình</string>
+    <string name="pref_screenshot_summary">Cho phép chụp màn hình và xem trước ghi chú trong ứng dụng gần đây. Tắt để ẩn ghi chú.</string>
     <string-array name="pref_palette_entries">
         <item>Xanh dương</item>
         <item>Cát</item>

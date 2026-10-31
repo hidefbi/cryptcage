@@ -83,6 +83,8 @@
     <string name="hint_importFile">Adatbázis megnyitása</string>
     <string name="toast_selectDatabase">Előbb válasszon adatbázist</string>
     <string name="pref_palette">Színtéma</string>
+    <string name="pref_screenshot">Képernyőkép mód</string>
+    <string name="pref_screenshot_summary">Jegyzetek képernyőképének és előnézetének engedélyezése a legutóbbi alkalmazásokban. Kikapcsolva elrejti őket.</string>
     <string-array name="pref_palette_entries">
         <item>Kék</item>
         <item>Homok</item>

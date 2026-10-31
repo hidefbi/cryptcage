@@ -237,6 +237,11 @@ public class MainActivity extends SecureActivity
     }
 
     @Override
+    public void onNoteSaved(final long noteId) {
+        onNoteChanged(noteId);
+    }
+
+    @Override
     public void onNoteRemoved() {
         if (twoPane) {
             clearDetail();
@@ -291,18 +296,11 @@ public class MainActivity extends SecureActivity
     }
 
     private void openNote(final long id) {
-        final App.Session session = App.session();
-        if (session == null) {
+        if (App.session() == null) {
             return;
         }
-        final boolean pdf;
-        try {
-            final VaultSession.Summary note = session.vault.summary(id);
-            pdf = note.file && FileKinds.typeOf(note.fileName) == FileKinds.Type.PDF;
-        } catch (VaultException e) {
-            toast(VaultMessages.messageFor(e.getReason()));
-            return;
-        }
+        // The row already knows its file type, so the vault is not read on the UI thread here.
+        final boolean pdf = adapter.typeOf(id) == FileKinds.Type.PDF;
         if (pdf) {
             startActivity(new Intent(this, FileViewActivity.class)
                     .putExtra(SecureActivity.EXTRA_NOTE_ID, id));

@@ -56,6 +56,11 @@ public class NoteActivity extends SecureActivity implements NoteFragment.Listene
     }
 
     @Override
+    public void onNoteSaved(final long noteId) {
+        finish();
+    }
+
+    @Override
     public void onNoteRemoved() {
         finish();
     }

@@ -83,6 +83,8 @@
     <string name="hint_importFile">データベースとして開く</string>
     <string name="toast_selectDatabase">先にデータベースを選択してください</string>
     <string name="pref_palette">カラーテーマ</string>
+    <string name="pref_screenshot">スクリーンショットモード</string>
+    <string name="pref_screenshot_summary">メモのスクリーンショットと最近使ったアプリでのプレビューを許可します。オフのときはメモを隠します。</string>
     <string-array name="pref_palette_entries">
         <item>ブルー</item>
         <item>サンド</item>
