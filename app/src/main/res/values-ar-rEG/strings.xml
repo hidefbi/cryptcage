@@ -8,9 +8,7 @@
     <string name="hint_field_new_password">كلمة سر جديدة</string>
     <string name="hint_field_conf_password">أكد كلمة السر</string>
     <string name="title_changeMasterPass">ادخل كلمة سر رئيسية جديدة</string>
-    <string name="title_databaseLocation">ادخل اسم ملف قاعدة البيانات:</string>
     <string name="butt_open">افتح</string>
-    <string name="butt_create">انشئ</string>
     <string name="hint_field_password">كلمة سر</string>
     <string name="note_note">ملحوظة:</string>
     <string name="hint_field_title">العنوان</string>
@@ -24,7 +22,6 @@
     <string name="title_password">ادخل كلمة السر</string>
     <string name="toast_emptyPassword">كلمة السر الفارغة غير مسموح بها</string>
     <string name="toast_wrongPassword">خطأ في كلمة السر او قاعدة البيانات تالفة</string>
-    <string name="toast_wrongPath">خطأ في قرائة قاعدة البيانات.\n تحقق من صحة المسار</string>
     <string name="toast_errorCreatingDB">خطأ في انشاء قاعدة البيانات.\n تحقق من صحة المسار</string>
     <string name="toast_wrongNewPassword">كلمات السر غير متطابقة</string>
     <string name="dialog_backNoSave">لن يتم حفظ تعديلاتك.\n هل انت متأكد من الخروج ؟</string>
@@ -45,7 +42,6 @@
     <string name="no_notes">لا توجد ملحوظات هنا.\n اضغط على الـ+ لاضافة ملحوظة جديدة</string>
     <string name="no_textNote">ملحوظة فارغة .</string>
     <string name="action_settings">الاعدادات</string>
-    <string name="title_recentDB"> قاعدة البينات في المكان الافتراضي والاخير اضغط للفتح </string>
     <string name="deleteRecent_message">حذف قاعدة البيانات ؟\nلا يمكن الرجوع في هذه العملية.</string>
     <string name="pref_textSize">تغير حجم الخط في الملحوظات</string>
     <string-array name="pref_textSize_entries">
@@ -72,4 +68,23 @@
     <string name="import_createMessage">سيتم إنشاء قاعدة بيانات جديدة وتخزين هذا الملف فيها. ستحدد كلمة مرورها بعد ذلك.</string>
     <string name="select_note_hint">اختر ملاحظة لعرضها أو تعديلها</string>
     <string name="action_cancelEdit">إلغاء التعديل</string>
+    <string name="title_databases">قواعد البيانات</string>
+    <string name="title_recent">الأخيرة</string>
+    <string name="recent_folder">المجلد الافتراضي</string>
+    <string name="title_openExisting">فتح قاعدة بيانات موجودة</string>
+    <string name="hint_openExisting">انقر لعرض قواعد البيانات واختر واحدة ثم انقر فتح</string>
+    <string name="hint_chooseDatabase">اختر قاعدة بيانات</string>
+    <string name="list_empty">لا توجد قواعد بيانات بعد</string>
+    <string name="title_newDatabase">قاعدة بيانات جديدة</string>
+    <string name="hint_newDatabase">أدخل أي اسم لإنشاء قاعدة بيانات</string>
+    <string name="hint_databaseName">مثال Work-Ideas</string>
+    <string name="butt_new">جديد</string>
+    <string name="title_importFile">استيراد ملف</string>
+    <string name="hint_importFile">فتح قاعدة بيانات</string>
+    <string name="toast_selectDatabase">اختر قاعدة بيانات أولاً</string>
+    <string name="pref_palette">نظام الألوان</string>
+    <string-array name="pref_palette_entries">
+        <item>الأزرق</item>
+        <item>الرملي</item>
+    </string-array>
 </resources>

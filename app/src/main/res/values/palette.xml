@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+        The sand palette. It is applied on top of the theme chosen in the settings
+        (light, dark or system), so the day and night colours come from the sand_* resources.
+    -->
+    <style name="PaletteSand">
+        <item name="colorPrimary">@color/sand_primary</item>
+        <item name="colorOnPrimary">@color/sand_on_primary</item>
+        <item name="colorPrimaryContainer">@color/sand_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/sand_on_primary_container</item>
+        <item name="colorSecondaryContainer">@color/sand_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/sand_on_secondary_container</item>
+        <item name="colorSurface">@color/sand_surface</item>
+        <item name="colorOnSurface">@color/sand_on_surface</item>
+        <item name="colorSurfaceVariant">@color/sand_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/sand_on_surface_variant</item>
+        <item name="colorOutline">@color/sand_outline</item>
+        <item name="android:colorBackground">@color/sand_background</item>
+    </style>
+
+</resources>

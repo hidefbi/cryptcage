@@ -8,9 +8,7 @@
     <string name="hint_field_new_password">Uusi salasana</string>
     <string name="hint_field_conf_password">Vahvista salasana</string>
     <string name="title_changeMasterPass">Uusi pääsalasana</string>
-    <string name="title_databaseLocation">Syötä tietokannan tiedostonimi:</string>
     <string name="butt_open">Avaa</string>
-    <string name="butt_create">Luo</string>
     <string name="hint_field_password">Salasana</string>
     <string name="note_note">Muistiinpano:</string>
     <string name="hint_field_title">Otsikko</string>
@@ -24,7 +22,6 @@
     <string name="title_password">Syötä salasana</string>
     <string name="toast_emptyPassword">Tyhjä salasana ei ole sallittu</string>
     <string name="toast_wrongPassword">Väärä salasana tai korruptoitunut tietokanta</string>
-    <string name="toast_wrongPath">Virhe lukiessa tietokantaa.\nTarkista syötetty tiedostopolku</string>
     <string name="toast_errorCreatingDB">Virhe tietokannan luonnissa.\nTarkista syötetty tiedostopolku</string>
     <string name="toast_wrongNewPassword">Salasana ei täsmää</string>
     <string name="dialog_backNoSave">Tekemiäsi muutoksia ei tallenneta.\nHaluatko varmasti poistua?</string>
@@ -45,7 +42,6 @@
     <string name="no_notes">Täällä ei ole vielä muistiinpanoja.\nPaina + painiketta lisätäksesi muistiinpanon.</string>
     <string name="no_textNote">Tyhjä muistiinpanon sisältö.</string>
     <string name="action_settings">Asetukset</string>
-    <string name="title_recentDB">Tietokanta oletushakemistossa (klikkaa avataksesi):</string>
     <string name="deleteRecent_message">Poista tietokanta?\nTätä toimintoa ei voi peruuttaa.</string>
     <string name="pref_textSize">Muuta muistiinpanojen fonttikokoa</string>
     <string-array name="pref_textSize_entries">
@@ -72,4 +68,23 @@
     <string name="import_createMessage">Uusi tietokanta luodaan ja tiedosto tallennetaan siihen. Seuraavaksi asetat sille salasanan.</string>
     <string name="select_note_hint">Valitse muistio nähdäksesi tai muokataksesi sitä</string>
     <string name="action_cancelEdit">Peruuta muokkaus</string>
+    <string name="title_databases">Tietokannat</string>
+    <string name="title_recent">Viimeksi avatut</string>
+    <string name="recent_folder">Oletuskansio</string>
+    <string name="title_openExisting">Avaa olemassa oleva tietokanta</string>
+    <string name="hint_openExisting">Napauta nähdäksesi tietokannat, valitse yksi ja napauta Avaa</string>
+    <string name="hint_chooseDatabase">Valitse tietokanta</string>
+    <string name="list_empty">Ei vielä tietokantoja</string>
+    <string name="title_newDatabase">Uusi tietokanta</string>
+    <string name="hint_newDatabase">Anna mikä tahansa nimi luodaksesi tietokannan</string>
+    <string name="hint_databaseName">esim. Work-Ideas</string>
+    <string name="butt_new">Uusi</string>
+    <string name="title_importFile">Tuo tiedosto</string>
+    <string name="hint_importFile">Avaa tietokanta</string>
+    <string name="toast_selectDatabase">Valitse ensin tietokanta</string>
+    <string name="pref_palette">Väriteema</string>
+    <string-array name="pref_palette_entries">
+        <item>Sininen</item>
+        <item>Hiekka</item>
+    </string-array>
 </resources>

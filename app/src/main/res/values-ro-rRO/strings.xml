@@ -8,9 +8,7 @@
     <string name="hint_field_new_password">Parola Noua</string>
     <string name="hint_field_conf_password">Confirma Parola</string>
     <string name="title_changeMasterPass">Introduceti Parola Principala</string>
-    <string name="title_databaseLocation">Introduceti Locatia Bazei de Date:</string>
     <string name="butt_open">Deschide</string>
-    <string name="butt_create">Creeaza</string>
     <string name="hint_field_password">Parola</string>
     <string name="note_note">Notita:</string>
     <string name="hint_field_title">Titlu</string>
@@ -24,7 +22,6 @@
     <string name="title_password">Introduceti Parola</string>
     <string name="toast_emptyPassword">Nu este permisa parola goala</string>
     <string name="toast_wrongPassword">Parola este gresita sau baza de date este corupta</string>
-    <string name="toast_wrongPath">Eroare de citire a bazei de date.\nVerifica corectitudinea locatiei</string>
     <string name="toast_errorCreatingDB">Eroare la creearea bazei de date.\nVerifica corectitudinea locatiei</string>
     <string name="toast_wrongNewPassword">Parolele sunt diferite</string>
     <string name="dialog_backNoSave">Schimbarile nu vor fi salvate.\nSigur vrei sa iesi?</string>
@@ -45,7 +42,6 @@
     <string name="no_notes">Nu exista nici o notita.\nApasa butonu + pentru adaugare.</string>
     <string name="no_textNote">Notita goala.</string>
     <string name="action_settings">Setari</string>
-    <string name="title_recentDB">Baze de date recente sau in locatia prestabilita (click pentru deschidere):</string>
     <string name="deleteRecent_message">Sterge baza de date?\nAceasta actiune este ireversibila.</string>
     <string name="pref_textSize">Schimba dimensiunea textului pentru notite</string>
     <string-array name="pref_textSize_entries">
@@ -72,4 +68,23 @@
     <string name="import_createMessage">Se va crea o bază de date nouă, în care va fi salvat acest fișier. Apoi îi veți seta parola.</string>
     <string name="select_note_hint">Selectați o notiță pentru a o vedea sau edita</string>
     <string name="action_cancelEdit">Anulați editarea</string>
+    <string name="title_databases">Baze de date</string>
+    <string name="title_recent">Recente</string>
+    <string name="recent_folder">Dosar implicit</string>
+    <string name="title_openExisting">Deschide o bază de date existentă</string>
+    <string name="hint_openExisting">Atinge pentru a vedea bazele de date, alege una și apasă Deschide</string>
+    <string name="hint_chooseDatabase">Alege o bază de date</string>
+    <string name="list_empty">Încă nu există baze de date</string>
+    <string name="title_newDatabase">Bază de date nouă</string>
+    <string name="hint_newDatabase">Introdu un nume pentru a crea o bază de date</string>
+    <string name="hint_databaseName">de ex. Work-Ideas</string>
+    <string name="butt_new">Nouă</string>
+    <string name="title_importFile">Importă fișier</string>
+    <string name="hint_importFile">Deschide baza de date</string>
+    <string name="toast_selectDatabase">Alege mai întâi o bază de date</string>
+    <string name="pref_palette">Temă de culoare</string>
+    <string-array name="pref_palette_entries">
+        <item>Albastru</item>
+        <item>Nisip</item>
+    </string-array>
 </resources>

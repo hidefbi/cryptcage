@@ -8,9 +8,7 @@
     <string name="hint_field_new_password">Nyt Kodeord</string>
     <string name="hint_field_conf_password">Bekræft Kodeord</string>
     <string name="title_changeMasterPass">Indtast Nyt Master Kodeord</string>
-    <string name="title_databaseLocation">Indtast database filnavn:</string>
     <string name="butt_open">Åben</string>
-    <string name="butt_create">Opret</string>
     <string name="hint_field_password">Kodeord</string>
     <string name="note_note">Note:</string>
     <string name="hint_field_title">Titel</string>
@@ -24,7 +22,6 @@
     <string name="title_password">Indtast kodeord</string>
     <string name="toast_emptyPassword">Tomt Kodeord ikke tilladt</string>
     <string name="toast_wrongPassword">Forkert Kodeord eller corrupted database</string>
-    <string name="toast_wrongPath">Fejl ved læsning af databasen.\nCheck om stien er korrekt</string>
     <string name="toast_errorCreatingDB">Fejl ved oprettelsen af db.\nCheck om stien er korrekt</string>
     <string name="toast_wrongNewPassword">Kodeordene er ikke ens</string>
     <string name="dialog_backNoSave">Dine ændringer vil ikke blive gemt.\nEr du sikker på du vil lukke?</string>
@@ -45,7 +42,6 @@
     <string name="no_notes">Ingen noter her.\nTryk på + knappen for at tilføje en note.</string>
     <string name="no_textNote">Tom Note Tekst.</string>
     <string name="action_settings">Indstillinger</string>
-    <string name="title_recentDB">Database standard mappen og nylige (klik for at åbne):</string>
     <string name="deleteRecent_message">Slet databasen?\nDenne handling kan ikke fortrydes.</string>
     <string name="pref_textSize">Ændr skriftstørrelsen for notes</string>
     <string-array name="pref_textSize_entries">
@@ -72,4 +68,23 @@
     <string name="import_createMessage">En ny database oprettes, og filen gemmes i den. Derefter angiver du adgangskoden.</string>
     <string name="select_note_hint">Vælg en note for at se eller redigere den</string>
     <string name="action_cancelEdit">Annuller redigering</string>
+    <string name="title_databases">Databaser</string>
+    <string name="title_recent">Senest åbnet</string>
+    <string name="recent_folder">Standardmappe</string>
+    <string name="title_openExisting">Åbn en eksisterende database</string>
+    <string name="hint_openExisting">Tryk for at vise dine databaser, vælg en, og tryk derefter på Åbn</string>
+    <string name="hint_chooseDatabase">Vælg en database</string>
+    <string name="list_empty">Ingen databaser endnu</string>
+    <string name="title_newDatabase">Ny database</string>
+    <string name="hint_newDatabase">Indtast et vilkårligt navn for at oprette en database</string>
+    <string name="hint_databaseName">f.eks. Work-Ideas</string>
+    <string name="butt_new">Ny</string>
+    <string name="title_importFile">Importer fil</string>
+    <string name="hint_importFile">Åbn database</string>
+    <string name="toast_selectDatabase">Vælg først en database</string>
+    <string name="pref_palette">Farvetema</string>
+    <string-array name="pref_palette_entries">
+        <item>Blå</item>
+        <item>Sand</item>
+    </string-array>
 </resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sand_background">#151A18</color>
+    <color name="sand_surface">#1E2623</color>
+    <color name="sand_on_surface">#E6EDEA</color>
+    <color name="sand_surface_variant">#26302D</color>
+    <color name="sand_on_surface_variant">#A9B7B2</color>
+    <color name="sand_outline">#44524E</color>
+    <color name="sand_primary">#7FC4B9</color>
+    <color name="sand_on_primary">#053A34</color>
+    <color name="sand_primary_container">#1D4D46</color>
+    <color name="sand_on_primary_container">#C5EDE6</color>
+    <color name="sand_secondary_container">#3D3620</color>
+    <color name="sand_on_secondary_container">#F0E2BC</color>
+    <color name="sand_selected">#24423D</color>
+</resources>

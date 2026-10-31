@@ -131,6 +131,12 @@ public class App extends Application {
         return AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
     }
 
+    /** True when the settings choose the sand colour palette. The default is the blue palette. */
+    public static boolean usesSandPalette(final Context context) {
+        return "sand".equals(PreferenceManager.getDefaultSharedPreferences(context)
+                .getString("pref_palette", "blue"));
+    }
+
     public static synchronized Session session() {
         return session;
     }

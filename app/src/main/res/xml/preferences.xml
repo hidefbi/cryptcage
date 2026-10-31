@@ -10,6 +10,14 @@
         android:title="@string/pref_theme" />
 
     <androidx.preference.ListPreference
+        android:defaultValue="blue"
+        android:dialogTitle="@string/pref_palette"
+        android:entries="@array/pref_palette_entries"
+        android:entryValues="@array/pref_palette_values"
+        android:key="pref_palette"
+        android:title="@string/pref_palette" />
+
+    <androidx.preference.ListPreference
         android:defaultValue="@string/pref_textSize_default"
         android:dialogTitle="@string/pref_textSize"
         android:entries="@array/pref_textSize_entries"

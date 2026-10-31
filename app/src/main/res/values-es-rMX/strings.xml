@@ -8,9 +8,7 @@
     <string name="hint_field_new_password">Nueva contraseña</string>
     <string name="hint_field_conf_password">Confirmar Constraseña</string>
     <string name="title_changeMasterPass">Ingresa  nueva Contraseña Maestra</string>
-    <string name="title_databaseLocation">Ingresa nombre de la base de datos:</string>
     <string name="butt_open">Abrir</string>
-    <string name="butt_create">Crear</string>
     <string name="hint_field_password">Contraseña</string>
     <string name="note_note">Nota:</string>
     <string name="hint_field_title">Titulo</string>
@@ -24,7 +22,6 @@
     <string name="title_password">Ingrese contraseña</string>
     <string name="toast_emptyPassword">Contraseña vacia no permitida</string>
     <string name="toast_wrongPassword">Contraseña erronea o base de datos corrompida</string>
-    <string name="toast_wrongPath">Error leyendo la base de datos.\nCheca el camino correctamente</string>
     <string name="toast_errorCreatingDB">Error creando bd.\nCheca el camino correctamente</string>
     <string name="toast_wrongNewPassword">Las contraseñas no son iguales</string>
     <string name="dialog_backNoSave">Tu edición no será guardada.\nEsta seguro que desea salir?</string>
@@ -45,7 +42,6 @@
     <string name="no_notes">No hay notas aqui.\nPresiona el botón de  + para añadir una nota.</string>
     <string name="no_textNote">Nota de texto vacia.</string>
     <string name="action_settings">Ajustes</string>
-    <string name="title_recentDB">Base de datos en folder predeterminado y reciente (click para abrir):</string>
     <string name="deleteRecent_message">Borrar base de datos?\nEsta acción es permanente.</string>
     <string name="pref_textSize">Cambiar el tamaño de la fuente para notas</string>
     <string-array name="pref_textSize_entries">
@@ -72,4 +68,23 @@
     <string name="import_createMessage">Se creará una base de datos nueva y este archivo se guardará en ella. A continuación, define su contraseña.</string>
     <string name="select_note_hint">Selecciona una nota para verla o editarla</string>
     <string name="action_cancelEdit">Cancelar edición</string>
+    <string name="title_databases">Bases de datos</string>
+    <string name="title_recent">Recientes</string>
+    <string name="recent_folder">Carpeta predeterminada</string>
+    <string name="title_openExisting">Abrir base de datos existente</string>
+    <string name="hint_openExisting">Toca para ver tus bases de datos, elige una y luego toca Abrir</string>
+    <string name="hint_chooseDatabase">Elige una base de datos</string>
+    <string name="list_empty">Todavía no hay bases de datos</string>
+    <string name="title_newDatabase">Nueva base de datos</string>
+    <string name="hint_newDatabase">Escribe un nombre para crear una base de datos</string>
+    <string name="hint_databaseName">p. ej. Work-Ideas</string>
+    <string name="butt_new">Nueva</string>
+    <string name="title_importFile">Importar archivo</string>
+    <string name="hint_importFile">Abrir base de datos</string>
+    <string name="toast_selectDatabase">Primero elige una base de datos</string>
+    <string name="pref_palette">Tema de color</string>
+    <string-array name="pref_palette_entries">
+        <item>Azul</item>
+        <item>Arena</item>
+    </string-array>
 </resources>

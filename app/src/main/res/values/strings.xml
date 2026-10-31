@@ -26,10 +26,7 @@
     <string name="pw_too_short">Use at least %1$d characters.</string>
     <string name="pw_too_simple">Mix letters, digits or symbols, or use 16 characters or more.</string>
 
-    <string name="title_databaseLocation">Database name:</string>
-    <string name="title_recentDB">Databases (tap to open, hold to delete):</string>
     <string name="butt_open">Open</string>
-    <string name="butt_create">Create</string>
     <string name="deleteRecent_message">Delete this database?\nThis cannot be undone.</string>
     <string name="imported_name">Imported</string>
 
@@ -59,7 +56,6 @@
     <string name="toast_locked">The database is locked</string>
     <string name="toast_emptyPassword">Password cannot be empty</string>
     <string name="toast_wrongPassword">Wrong password, or the database is damaged</string>
-    <string name="toast_wrongPath">No database with this name</string>
     <string name="toast_errorCreatingDB">Could not create the database</string>
     <string name="toast_wrongNewPassword">The two passwords do not match</string>
     <string name="toast_nameInvalid">Use letters, digits, spaces or dashes in the name</string>
@@ -128,4 +124,27 @@
     <string name="import_createMessage">A new database will be created and this file will be stored in it. You will set its password next.</string>
     <string name="select_note_hint">Select a note to view or edit it</string>
     <string name="action_cancelEdit">Cancel editing</string>
+    <string name="title_databases">Databases</string>
+    <string name="title_recent">Recent</string>
+    <string name="recent_folder">Default folder</string>
+    <string name="title_openExisting">Open existing database</string>
+    <string name="hint_openExisting">Tap to show your databases, pick one, then tap Open</string>
+    <string name="hint_chooseDatabase">Choose a database</string>
+    <string name="list_empty">No databases yet</string>
+    <string name="title_newDatabase">New database</string>
+    <string name="hint_newDatabase">Enter any name to create a database</string>
+    <string name="hint_databaseName">e.g. Work-Ideas</string>
+    <string name="butt_new">New</string>
+    <string name="title_importFile">Import file</string>
+    <string name="hint_importFile">Open database</string>
+    <string name="toast_selectDatabase">Select a database first</string>
+    <string name="pref_palette">Color theme</string>
+    <string-array name="pref_palette_entries">
+        <item>Blue</item>
+        <item>Sand</item>
+    </string-array>
+    <string-array name="pref_palette_values">
+        <item>blue</item>
+        <item>sand</item>
+    </string-array>
 </resources>

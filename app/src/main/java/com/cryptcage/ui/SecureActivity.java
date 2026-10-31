@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.cryptcage.app.App;
+import com.cryptcage.R;
 
 /**
  * Base for every screen. Blocks screenshots and the recent-apps preview, and returns to the
@@ -30,6 +31,9 @@ public abstract class SecureActivity extends AppCompatActivity {
     /** Extra key for the id of a note. */
     public static final String EXTRA_NOTE_ID = "note_id";
 
+    /** Whether the sand palette was applied when this screen was created. */
+    private boolean paletteAtCreate;
+
     /** Screens that show note data return true. The database picker returns false. */
     protected boolean needsVault() {
         return true;
@@ -38,8 +42,21 @@ public abstract class SecureActivity extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+        paletteAtCreate = App.usesSandPalette(this);
+        if (paletteAtCreate) {
+            getTheme().applyStyle(R.style.PaletteSand, true);
+        }
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setBackgroundColor(themeBackground());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // The colour palette may have been changed on another screen while this one was in the back.
+        if (paletteAtCreate != App.usesSandPalette(this)) {
+            recreate();
+        }
     }
 
     @Override

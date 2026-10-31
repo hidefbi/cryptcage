@@ -8,9 +8,7 @@
     <string name="hint_field_new_password">รหัสผ่าน</string>
     <string name="hint_field_conf_password">ยืนยันรหัสผ่าน</string>
     <string name="title_changeMasterPass">กรอกรหัสผ่านใหม่</string>
-    <string name="title_databaseLocation">เลือกฐานข้อมูล:</string>
     <string name="butt_open">เปิด</string>
-    <string name="butt_create">สร้าง</string>
     <string name="hint_field_password">รหัสผ่าน</string>
     <string name="note_note">ข้อความ:</string>
     <string name="hint_field_title">หัวข้อ</string>
@@ -24,7 +22,6 @@
     <string name="title_password">กรอกรหัสผ่าน</string>
     <string name="toast_emptyPassword">กรุณากรอกรหัสผ่าน</string>
     <string name="toast_wrongPassword">รหัสผ่านไม่ถูกต้อง หรือ ฐานข้อมูลมีปัญหา</string>
-    <string name="toast_wrongPath">มีข้อผิดพลาดเกี่ยวกับฐานข้อมูล\nกรุณาตรวจสอบที่อยู่ให้ถูกต้อง</string>
     <string name="toast_errorCreatingDB">มีปัญหาขณะกำลังสร้างฐานข้อมูล\nกรุณาตรวจสอบที่อยู่ให้ถูกต้อง</string>
     <string name="toast_wrongNewPassword">รหัสผ่านไม่ตรงกัน</string>
     <string name="dialog_backNoSave">การแก้ไขของคุณยังไม่ถูกบันทึก\nคุณแน่ใจใช่ไหมที่ต้องการจะออก</string>
@@ -45,7 +42,6 @@
     <string name="no_notes">ยังไม่มีบันทึก.\nกดปุ่ม + เพื่อเพิ่มบันทึกใหม่</string>
     <string name="no_textNote">ไม่มีข้อความ</string>
     <string name="action_settings">ตั้งค่า</string>
-    <string name="title_recentDB">ฐานข้อมูลในโฟลเดอร์หลัก และล่าสุด (คลิกเพื่อเปิด):</string>
     <string name="deleteRecent_message">ต้องการจะลบฐานข้อมูลนี้ใช่ไหม\nหากลบแล้วจะไม่สามารถย้อนกลับได้</string>
     <string name="pref_textSize">เปลี่ยนขนาดตัวอักษร</string>
     <string-array name="pref_textSize_entries">
@@ -72,4 +68,23 @@
     <string name="import_createMessage">ระบบจะสร้างฐานข้อมูลใหม่และบันทึกไฟล์นี้ลงไป จากนั้นคุณจะตั้งรหัสผ่านให้ฐานข้อมูล</string>
     <string name="select_note_hint">เลือกบันทึกเพื่อดูหรือแก้ไข</string>
     <string name="action_cancelEdit">ยกเลิกการแก้ไข</string>
+    <string name="title_databases">ฐานข้อมูล</string>
+    <string name="title_recent">ล่าสุด</string>
+    <string name="recent_folder">โฟลเดอร์เริ่มต้น</string>
+    <string name="title_openExisting">เปิดฐานข้อมูลที่มีอยู่</string>
+    <string name="hint_openExisting">แตะเพื่อดูฐานข้อมูล เลือกหนึ่งรายการ แล้วแตะเปิด</string>
+    <string name="hint_chooseDatabase">เลือกฐานข้อมูล</string>
+    <string name="list_empty">ยังไม่มีฐานข้อมูล</string>
+    <string name="title_newDatabase">ฐานข้อมูลใหม่</string>
+    <string name="hint_newDatabase">พิมพ์ชื่อใดก็ได้เพื่อสร้างฐานข้อมูล</string>
+    <string name="hint_databaseName">เช่น Work-Ideas</string>
+    <string name="butt_new">ใหม่</string>
+    <string name="title_importFile">นำเข้าไฟล์</string>
+    <string name="hint_importFile">เปิดฐานข้อมูล</string>
+    <string name="toast_selectDatabase">เลือกฐานข้อมูลก่อน</string>
+    <string name="pref_palette">ธีมสี</string>
+    <string-array name="pref_palette_entries">
+        <item>น้ำเงิน</item>
+        <item>ทราย</item>
+    </string-array>
 </resources>

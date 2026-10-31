@@ -8,9 +8,7 @@
     <string name="hint_field_new_password">Nové heslo</string>
     <string name="hint_field_conf_password">Potvrďte heslo</string>
     <string name="title_changeMasterPass">Zadejte Nové hlavní heslo</string>
-    <string name="title_databaseLocation">Zdejte jméno souboru databáze:</string>
     <string name="butt_open">Otevřít</string>
-    <string name="butt_create">Vytvořit</string>
     <string name="hint_field_password">Heslo</string>
     <string name="note_note">Poznámka:</string>
     <string name="hint_field_title">Název</string>
@@ -24,7 +22,6 @@
     <string name="title_password">Vložte heslo</string>
     <string name="toast_emptyPassword">Prázdné heslo není povoleno</string>
     <string name="toast_wrongPassword">Špatné heslo nebo poškozená databáze</string>
-    <string name="toast_wrongPath">Chyba při čtení databáze.\nZkontrolujte správnost cesty</string>
     <string name="toast_errorCreatingDB">Chyba při vytváření databáze.\nZkontrolujte správnost cesty</string>
     <string name="toast_wrongNewPassword">Hesla se neshodují</string>
     <string name="dialog_backNoSave">Vaše úpravy nebudou uloženy.\nChcete zkončit bez uložení?</string>
@@ -45,7 +42,6 @@
     <string name="no_notes">Nejsou zde žádné poznámky.\nKlikněte na + pro přidání nové poznámky.</string>
     <string name="no_textNote">Prázdný Text Poznámky.</string>
     <string name="action_settings">Nastavení</string>
-    <string name="title_recentDB">Databáze ve výchozí složce a poslední (kliněte pro otevření):</string>
     <string name="deleteRecent_message">Chcete smazat databázi?\nTato akce je nevratná.</string>
     <string name="pref_textSize">Změnit velikost fontu poznámek</string>
     <string-array name="pref_textSize_entries">
@@ -72,4 +68,23 @@
     <string name="import_createMessage">Vytvoří se nová databáze a tento soubor se do ní uloží. Dále nastavíte její heslo.</string>
     <string name="select_note_hint">Vyberte poznámku pro zobrazení nebo úpravu</string>
     <string name="action_cancelEdit">Zrušit úpravy</string>
+    <string name="title_databases">Databáze</string>
+    <string name="title_recent">Naposledy otevřené</string>
+    <string name="recent_folder">Výchozí složka</string>
+    <string name="title_openExisting">Otevřít existující databázi</string>
+    <string name="hint_openExisting">Klepnutím zobrazíte seznam databází, vyberte jednu a klepněte na Otevřít</string>
+    <string name="hint_chooseDatabase">Vyberte databázi</string>
+    <string name="list_empty">Zatím žádné databáze</string>
+    <string name="title_newDatabase">Nová databáze</string>
+    <string name="hint_newDatabase">Zadejte libovolný název a vytvořte databázi</string>
+    <string name="hint_databaseName">např. Work-Ideas</string>
+    <string name="butt_new">Nová</string>
+    <string name="title_importFile">Importovat soubor</string>
+    <string name="hint_importFile">Otevřít databázi</string>
+    <string name="toast_selectDatabase">Nejprve vyberte databázi</string>
+    <string name="pref_palette">Barevný motiv</string>
+    <string-array name="pref_palette_entries">
+        <item>Modrý</item>
+        <item>Písková</item>
+    </string-array>
 </resources>

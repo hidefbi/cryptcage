@@ -57,6 +57,15 @@ public class SettingsActivity extends SecureActivity {
                     return true;
                 });
             }
+            final Preference palette = findPreference("pref_palette");
+            if (palette != null) {
+                // The new value is stored after this listener returns, so the screen is rebuilt
+                // on the next pass of the event loop.
+                palette.setOnPreferenceChangeListener((preference, value) -> {
+                    requireView().post(() -> requireActivity().recreate());
+                    return true;
+                });
+            }
         }
     }
 }

@@ -8,9 +8,7 @@
     <string name="hint_field_new_password">Νέος Κωδικός Πρόσβασης</string>
     <string name="hint_field_conf_password">Επιβεβαίωση Κωδικού Πρόσβασης</string>
     <string name="title_changeMasterPass">Προσθήκη νέου Κύριου Κωδικού Πρόσβασης</string>
-    <string name="title_databaseLocation">Εισάγετε όνομα αρχείου βάσης δεδομένων:</string>
     <string name="butt_open">Άνοιγμα</string>
-    <string name="butt_create">Δημιουργία</string>
     <string name="hint_field_password">Κωδικός Πρόσβασης</string>
     <string name="note_note">Σημείωση:</string>
     <string name="hint_field_title">Τίτλος</string>
@@ -24,7 +22,6 @@
     <string name="title_password">Εισάγετε Κωδικό Πρόσβασης</string>
     <string name="toast_emptyPassword">Δεν επιτρέπεται Κενός Κωδικός Πρόσβασης</string>
     <string name="toast_wrongPassword">Λανθασμένος Κωδικός Πρόσβασης ή αλλοιωμένη βάση δεδομένων</string>
-    <string name="toast_wrongPath">Σφάλμα ανάγνωσης της βάσης δεδομένων.\nΕλέγξτε την ορθότητα της διαδρομής αρχείου</string>
     <string name="toast_errorCreatingDB">Σφάλμα δημιουργίας της βάσης δεδομένων.\nΕλέγξτε την ορθότητα της διαδρομής αρχείου</string>
     <string name="toast_wrongNewPassword">Οι Κωδικοί Πρόσβασης δεν ταιριάζουν</string>
     <string name="dialog_backNoSave">Η επεξεργασία σας δεν θα αποθηκευτεί.\nΕίστε σίγουροι ότι θέλετε να αποχωρήσετε;</string>
@@ -45,7 +42,6 @@
     <string name="no_notes">Καμία σημείωση εδώ.\nΠιέστε το + πλήκτρο για να προσθέτε σημείωση.</string>
     <string name="no_textNote">Κενό Κείμενο Σημείωσης.</string>
     <string name="action_settings">Ρυθμίσεις</string>
-    <string name="title_recentDB">Βάση δεδομένων στον προεπιλεγμένο φάκελο και ενημερωμένη(πατήστε για άνοιγμα)):</string>
     <string name="deleteRecent_message">Διαγραφή της βάσης?\nΜη αναστρέψιμη ενέργεια.</string>
     <string name="pref_textSize">Αλλαγή μεγέθους γραμματοσειράς για τις σημειώσεις</string>
     <string-array name="pref_textSize_entries">
@@ -72,4 +68,23 @@
     <string name="import_createMessage">Θα δημιουργηθεί μια νέα βάση δεδομένων και το αρχείο θα αποθηκευτεί σε αυτήν. Στη συνέχεια θα ορίσετε τον κωδικό της.</string>
     <string name="select_note_hint">Επιλέξτε μια σημείωση για προβολή ή επεξεργασία</string>
     <string name="action_cancelEdit">Ακύρωση επεξεργασίας</string>
+    <string name="title_databases">Βάσεις δεδομένων</string>
+    <string name="title_recent">Πρόσφατες</string>
+    <string name="recent_folder">Προεπιλεγμένος φάκελος</string>
+    <string name="title_openExisting">Άνοιγμα υπάρχουσας βάσης</string>
+    <string name="hint_openExisting">Πατήστε για να δείτε τις βάσεις σας, επιλέξτε μία και πατήστε Άνοιγμα</string>
+    <string name="hint_chooseDatabase">Επιλέξτε βάση</string>
+    <string name="list_empty">Δεν υπάρχουν βάσεις ακόμα</string>
+    <string name="title_newDatabase">Νέα βάση</string>
+    <string name="hint_newDatabase">Εισαγάγετε ένα όνομα για να δημιουργήσετε βάση</string>
+    <string name="hint_databaseName">π.χ. Work-Ideas</string>
+    <string name="butt_new">Νέα</string>
+    <string name="title_importFile">Εισαγωγή αρχείου</string>
+    <string name="hint_importFile">Άνοιγμα βάσης</string>
+    <string name="toast_selectDatabase">Επιλέξτε πρώτα μια βάση</string>
+    <string name="pref_palette">Θέμα χρωμάτων</string>
+    <string-array name="pref_palette_entries">
+        <item>Μπλε</item>
+        <item>Άμμος</item>
+    </string-array>
 </resources>

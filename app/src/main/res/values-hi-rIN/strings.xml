@@ -8,9 +8,7 @@
     <string name="hint_field_new_password">नया पासवर्ड</string>
     <string name="hint_field_conf_password">पासवर्ड की पुष्टि कीजिये</string>
     <string name="title_changeMasterPass">नया मास्टर पासवर्ड दर्ज करें</string>
-    <string name="title_databaseLocation">डेटाबेस फ़ाइल नाम दर्ज करें:</string>
     <string name="butt_open">खोलें</string>
-    <string name="butt_create">बनाए</string>
     <string name="hint_field_password">पासवर्ड</string>
     <string name="note_note">नोट:</string>
     <string name="hint_field_title">शीर्षक</string>
@@ -24,7 +22,6 @@
     <string name="title_password">पासवर्ड डालें</string>
     <string name="toast_emptyPassword">खाली पासवर्ड की अनुमति नहीं है</string>
     <string name="toast_wrongPassword">गलत पासवर्ड या दूषित डेटाबेस</string>
-    <string name="toast_wrongPath">डेटाबेस पढ़ने में त्रुटि।\nपथ की शुद्धता की जांच करें</string>
     <string name="toast_errorCreatingDB">डेटाबेस बनाने में त्रुटि।\nपथ की शुद्धता की जांच करें</string>
     <string name="toast_wrongNewPassword">पासवर्ड मेल नहीं खाते</string>
     <string name="dialog_backNoSave">आपके संपादन सहेज नहीं होंगे।\nक्या आप वाकई बाहर निकलना चाहते हैं?</string>
@@ -45,7 +42,6 @@
     <string name="no_notes">यहां कोई नोट नहीं है।\nनोट जुटाने के लिए + बटन दबाएं।</string>
     <string name="no_textNote">खाली नोट टेक्स्ट।</string>
     <string name="action_settings">सेटिंग्स</string>
-    <string name="title_recentDB">डिफॉल्ट फोल्डर और रीसेंट में डेटाबेस (खोलने के लिए क्लिक करें):</string>
     <string name="deleteRecent_message">डेटाबेस मिटाएं?\nयह क्रिया अपरिवर्तनीय है।</string>
     <string name="pref_textSize">नोट्स के लिए फ़ॉन्ट का आकार बदलें</string>
     <string-array name="pref_textSize_entries">
@@ -72,4 +68,23 @@
     <string name="import_createMessage">एक नया डेटाबेस बनाया जाएगा और यह फ़ाइल उसमें सहेजी जाएगी। इसके बाद आप इसका पासवर्ड सेट करेंगे।</string>
     <string name="select_note_hint">देखने या संपादित करने के लिए कोई नोट चुनें</string>
     <string name="action_cancelEdit">संपादन रद्द करें</string>
+    <string name="title_databases">डेटाबेस</string>
+    <string name="title_recent">हाल में खोले गए</string>
+    <string name="recent_folder">डिफ़ॉल्ट फ़ोल्डर</string>
+    <string name="title_openExisting">मौजूदा डेटाबेस खोलें</string>
+    <string name="hint_openExisting">अपने डेटाबेस देखने के लिए टैप करें, एक चुनें, फिर खोलें पर टैप करें</string>
+    <string name="hint_chooseDatabase">डेटाबेस चुनें</string>
+    <string name="list_empty">अभी कोई डेटाबेस नहीं है</string>
+    <string name="title_newDatabase">नया डेटाबेस</string>
+    <string name="hint_newDatabase">डेटाबेस बनाने के लिए कोई भी नाम लिखें</string>
+    <string name="hint_databaseName">जैसे Work-Ideas</string>
+    <string name="butt_new">नया</string>
+    <string name="title_importFile">फ़ाइल आयात करें</string>
+    <string name="hint_importFile">डेटाबेस खोलें</string>
+    <string name="toast_selectDatabase">पहले एक डेटाबेस चुनें</string>
+    <string name="pref_palette">रंग थीम</string>
+    <string-array name="pref_palette_entries">
+        <item>नीला</item>
+        <item>रेत</item>
+    </string-array>
 </resources>

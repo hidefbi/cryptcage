@@ -8,9 +8,7 @@
     <string name="hint_field_new_password">Nouveau mot de passe</string>
     <string name="hint_field_conf_password">Confirmer le mot de passe</string>
     <string name="title_changeMasterPass">Saisir un mot de passe principal</string>
-    <string name="title_databaseLocation">Nom de la base de données :</string>
     <string name="butt_open">Ouvrir</string>
-    <string name="butt_create">Créer</string>
     <string name="hint_field_password">Mot de passe</string>
     <string name="note_note">Note :</string>
     <string name="hint_field_title">Titre</string>
@@ -24,7 +22,6 @@
     <string name="title_password">Saisir un mot de passe</string>
     <string name="toast_emptyPassword">Les mots de passe vides sont invalides</string>
     <string name="toast_wrongPassword">Mauvais mot de passe ou base de données corrompue</string>
-    <string name="toast_wrongPath">Erreur de lecture de la base de données.\nVérifier le chemin.</string>
     <string name="toast_errorCreatingDB">Erreur lors de la création de la base de données.\nVérifier le chemin.</string>
     <string name="toast_wrongNewPassword">Mauvais mot de passe</string>
     <string name="dialog_backNoSave">Vos modifications ne seront pas sauvegardées.\nÊtes vous sûr de vouloir quitter ?</string>
@@ -45,7 +42,6 @@
     <string name="no_notes">Aucune note.\nUtilisez le bouton \'+\' pour en ajouter une.</string>
     <string name="no_textNote">Aucune note de type texte.</string>
     <string name="action_settings">Configurer</string>
-    <string name="title_recentDB">Bases de données récentes et par défaut (cliquer pour ouvrir) :</string>
     <string name="deleteRecent_message">Supprimer la base de données ?\nCette action est définitive.</string>
     <string name="pref_textSize">Changer la taille de police de caractères</string>
     <string-array name="pref_textSize_entries">
@@ -72,4 +68,23 @@
     <string name="import_createMessage">Une nouvelle base de données sera créée et ce fichier y sera enregistré. Vous définirez ensuite son mot de passe.</string>
     <string name="select_note_hint">Sélectionnez une note pour l\'afficher ou la modifier</string>
     <string name="action_cancelEdit">Annuler la modification</string>
+    <string name="title_databases">Bases de données</string>
+    <string name="title_recent">Récentes</string>
+    <string name="recent_folder">Dossier par défaut</string>
+    <string name="title_openExisting">Ouvrir une base existante</string>
+    <string name="hint_openExisting">Touchez pour afficher vos bases, choisissez-en une, puis touchez Ouvrir</string>
+    <string name="hint_chooseDatabase">Choisir une base</string>
+    <string name="list_empty">Aucune base pour l\'instant</string>
+    <string name="title_newDatabase">Nouvelle base</string>
+    <string name="hint_newDatabase">Saisissez un nom pour créer une base</string>
+    <string name="hint_databaseName">ex. Work-Ideas</string>
+    <string name="butt_new">Nouvelle</string>
+    <string name="title_importFile">Importer un fichier</string>
+    <string name="hint_importFile">Ouvrir la base</string>
+    <string name="toast_selectDatabase">Sélectionnez d\'abord une base</string>
+    <string name="pref_palette">Thème de couleur</string>
+    <string-array name="pref_palette_entries">
+        <item>Bleu</item>
+        <item>Sable</item>
+    </string-array>
 </resources>

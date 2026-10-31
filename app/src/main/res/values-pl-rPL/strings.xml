@@ -8,9 +8,7 @@
     <string name="hint_field_new_password">Nowe Hasło</string>
     <string name="hint_field_conf_password">Potwierdź Hasło</string>
     <string name="title_changeMasterPass">Wprowadź nowe Hasło Główne</string>
-    <string name="title_databaseLocation">Wprowadź plik bazy danych:</string>
     <string name="butt_open">Otwórz</string>
-    <string name="butt_create">Utwórz</string>
     <string name="hint_field_password">Hasło</string>
     <string name="note_note">Notatka:</string>
     <string name="hint_field_title">Tytuł</string>
@@ -24,7 +22,6 @@
     <string name="title_password">Wprowadź Hasło</string>
     <string name="toast_emptyPassword">Puste hasło jest niedozwolone</string>
     <string name="toast_wrongPassword">Złe hasło lub uszkodzona baza danych</string>
-    <string name="toast_wrongPath">Błąd odczytu bazy danych.\nSprawdź poprawność ścieżki</string>
     <string name="toast_errorCreatingDB">Błąd podczas tworzenia pliku bazy danych.\nSprawdź poprawność ścieżki</string>
     <string name="toast_wrongNewPassword">Hasła nie pasują do siebie</string>
     <string name="dialog_backNoSave">Twoje zmiany nie zostaną zapisane.\nCzy na pewno zakończyć?</string>
@@ -45,7 +42,6 @@
     <string name="no_notes">Brak notatek.\nNaciśnij przycisk +, aby dodać notatkę.</string>
     <string name="no_textNote">Pusty tekst notatki.</string>
     <string name="action_settings">Ustawienia</string>
-    <string name="title_recentDB">Baza danych w folderze domyślnym i ostatnio otwarta (kliknij, aby otworzyć):</string>
     <string name="deleteRecent_message">Usunąć bazę danych?\nTo działanie jest nieodwracalne.</string>
     <string name="pref_textSize">Zmień rozmiar czcionki dla notatek</string>
     <string-array name="pref_textSize_entries">
@@ -72,4 +68,23 @@
     <string name="import_createMessage">Zostanie utworzona nowa baza danych i ten plik zostanie w niej zapisany. Następnie ustawisz jej hasło.</string>
     <string name="select_note_hint">Wybierz notatkę, aby ją wyświetlić lub edytować</string>
     <string name="action_cancelEdit">Anuluj edycję</string>
+    <string name="title_databases">Bazy danych</string>
+    <string name="title_recent">Ostatnie</string>
+    <string name="recent_folder">Folder domyślny</string>
+    <string name="title_openExisting">Otwórz istniejącą bazę danych</string>
+    <string name="hint_openExisting">Dotknij, aby zobaczyć bazy, wybierz jedną i dotknij Otwórz</string>
+    <string name="hint_chooseDatabase">Wybierz bazę danych</string>
+    <string name="list_empty">Brak baz danych</string>
+    <string name="title_newDatabase">Nowa baza danych</string>
+    <string name="hint_newDatabase">Wpisz dowolną nazwę, aby utworzyć bazę danych</string>
+    <string name="hint_databaseName">np. Work-Ideas</string>
+    <string name="butt_new">Nowa</string>
+    <string name="title_importFile">Importuj plik</string>
+    <string name="hint_importFile">Otwórz bazę danych</string>
+    <string name="toast_selectDatabase">Najpierw wybierz bazę danych</string>
+    <string name="pref_palette">Motyw kolorów</string>
+    <string-array name="pref_palette_entries">
+        <item>Niebieski</item>
+        <item>Piaskowy</item>
+    </string-array>
 </resources>

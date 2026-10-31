@@ -8,9 +8,7 @@
     <string name="hint_field_new_password">Naujas slaptažodis</string>
     <string name="hint_field_conf_password">Pakartoti slaptažodį</string>
     <string name="title_changeMasterPass">Pridėti naują magistro slaptažodį</string>
-    <string name="title_databaseLocation">Įrašykite duomenų bazes pavadinimą:</string>
     <string name="butt_open">Atidaryti</string>
-    <string name="butt_create">Sukurti</string>
     <string name="hint_field_password">Slaptažodis</string>
     <string name="note_note">Lapas:</string>
     <string name="hint_field_title">Pavadinimas</string>
@@ -24,7 +22,6 @@
     <string name="title_password">Įrašykite slaptažodį</string>
     <string name="toast_emptyPassword">Tušti slaptažodžiai nera galimi</string>
     <string name="toast_wrongPassword">Klaidingas slaptažodis arba sugadintą duomenų bazę</string>
-    <string name="toast_wrongPath">Klaida skaitant duomenų bazę .\nPatikrinkite kelio teisingumą</string>
     <string name="toast_errorCreatingDB">Klaida sukuriant jūsų duomenų bazę.\nPatikrinkite kelio teisingumą</string>
     <string name="toast_wrongNewPassword">Slaptažodžiai nesutampa</string>
     <string name="dialog_backNoSave">Jūsų taisymas nebus išsaugotas.\nAr jus tikri kad norite išeiti?</string>
@@ -45,7 +42,6 @@
     <string name="no_notes">Nera jokių lapų čia.\n Spauskite + mygtuką kad pridėtumete lapą.</string>
     <string name="no_textNote">Tuščio lapo tekstas.</string>
     <string name="action_settings">Nustatymai</string>
-    <string name="title_recentDB">Duomenų bazė pagrindinime aplankale ir paskutinį kartą panaudoti (Spauskite kad atidaryti):</string>
     <string name="deleteRecent_message">Ištrinti duomenų bazę?\nŠitas veimas yra nepakeičiamas.</string>
     <string name="pref_textSize">Pakeisti šriftą jūsų lapų</string>
     <string-array name="pref_textSize_entries">
@@ -72,4 +68,23 @@
     <string name="import_createMessage">Bus sukurta nauja duomenų bazė ir šis failas bus joje išsaugotas. Toliau nustatysite jos slaptažodį.</string>
     <string name="select_note_hint">Pasirinkite užrašą, kad jį peržiūrėtumėte ar redaguotumėte</string>
     <string name="action_cancelEdit">Atšaukti redagavimą</string>
+    <string name="title_databases">Duomenų bazės</string>
+    <string name="title_recent">Neseniai atidarytos</string>
+    <string name="recent_folder">Numatytasis aplankas</string>
+    <string name="title_openExisting">Atidaryti esamą duomenų bazę</string>
+    <string name="hint_openExisting">Palieskite, kad pamatytumėte duomenų bazes, pasirinkite vieną ir palieskite Atidaryti</string>
+    <string name="hint_chooseDatabase">Pasirinkite duomenų bazę</string>
+    <string name="list_empty">Duomenų bazių dar nėra</string>
+    <string name="title_newDatabase">Nauja duomenų bazė</string>
+    <string name="hint_newDatabase">Įveskite bet kokį pavadinimą duomenų bazei sukurti</string>
+    <string name="hint_databaseName">pvz. Work-Ideas</string>
+    <string name="butt_new">Nauja</string>
+    <string name="title_importFile">Importuoti failą</string>
+    <string name="hint_importFile">Atidaryti duomenų bazę</string>
+    <string name="toast_selectDatabase">Pirmiausia pasirinkite duomenų bazę</string>
+    <string name="pref_palette">Spalvų tema</string>
+    <string-array name="pref_palette_entries">
+        <item>Mėlyna</item>
+        <item>Smėlio</item>
+    </string-array>
 </resources>

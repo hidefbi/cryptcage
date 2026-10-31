@@ -10,21 +10,28 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
+import android.text.format.DateUtils;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -38,22 +45,39 @@ import com.cryptcage.utils.StringMethods;
 import com.cryptcage.utils.VaultException;
 import com.cryptcage.utils.VaultSession;
 import com.cryptcage.R;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 
 /**
- * Lists the vaults stored in the app's private folder and lets the user
- * open, create, import or delete one. Vaults are never read from shared storage.
+ * The start screen. It shows the most recent database, a list of the saved databases to open,
+ * a field to create a new one, and an import for a file. Vaults are never read from shared storage.
  */
 public class SelectDatabaseActivity extends SecureActivity
         implements InsertPasswordDialogFragment.Callback, ChoosePasswordDialogFragment.Callback {
 
     private static final String VAULT_DIR = "vaults";
 
+    private View textRecentTitle;
+    private View cardRecent;
+    private TextView textRecentName;
+    private TextView textRecentInfo;
+    private View rowSelect;
+    private TextView textSelected;
+    private ImageView imageExpand;
+    private MaterialButton buttonOpen;
+    private MaterialCardView cardDatabaseList;
+    private LinearLayout listDatabases;
     private EditText nameField;
     private ProgressBar spinner;
-    private ArrayAdapter<String> adapter;
     private ActivityResultLauncher<String[]> importLauncher;
     private String pendingCreateName;
     private PendingImport pendingImport;
+
+    /** Names of the saved databases, newest first. */
+    private final List<String> names = new ArrayList<>();
+    /** The database picked from the list, or null when none is picked. */
+    private String selectedName;
+    private boolean listExpanded;
 
     /** A file picked on the start screen, to be stored in the database that is about to be created. */
     private static final class PendingImport {
@@ -89,21 +113,30 @@ public class SelectDatabaseActivity extends SecureActivity
                     }
                 });
 
-        nameField = findViewById(R.id.editTextPath);
+        textRecentTitle = findViewById(R.id.textRecentTitle);
+        cardRecent = findViewById(R.id.cardRecent);
+        textRecentName = findViewById(R.id.textRecentName);
+        textRecentInfo = findViewById(R.id.textRecentInfo);
+        rowSelect = findViewById(R.id.rowSelect);
+        textSelected = findViewById(R.id.textSelected);
+        imageExpand = findViewById(R.id.imageExpand);
+        buttonOpen = findViewById(R.id.buttonOpen);
+        cardDatabaseList = findViewById(R.id.cardDatabaseList);
+        listDatabases = findViewById(R.id.listDatabases);
+        nameField = findViewById(R.id.editTextName);
         spinner = findViewById(R.id.progressBar1);
-        final ListView listView = findViewById(android.R.id.list);
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener((parent, view, position, id) ->
-                askPassword(adapter.getItem(position)));
-        listView.setOnItemLongClickListener((parent, view, position, id) -> {
-            confirmDelete(adapter.getItem(position));
-            return true;
-        });
 
-        findViewById(R.id.buttonOpen).setOnClickListener(v -> onOpenClicked());
+        cardRecent.setOnClickListener(v -> {
+            if (!names.isEmpty()) {
+                askPassword(names.get(0));
+            }
+        });
+        rowSelect.setOnClickListener(v -> toggleList());
+        buttonOpen.setOnClickListener(v -> onOpenClicked());
         findViewById(R.id.buttonCreate).setOnClickListener(v -> onCreateClicked());
-        findViewById(R.id.buttonStorage).setOnClickListener(v -> importLauncher.launch(new String[]{"*/*"}));
+        findViewById(R.id.cardImport).setOnClickListener(v -> importLauncher.launch(new String[]{"*/*"}));
+        findViewById(R.id.buttonSettings).setOnClickListener(v ->
+                startActivity(new Intent(this, SettingsActivity.class)));
     }
 
     @Override
@@ -131,7 +164,6 @@ public class SelectDatabaseActivity extends SecureActivity
         return true;
     }
 
-
     private File vaultDir() {
         final File dir = new File(getFilesDir(), VAULT_DIR);
         if (!dir.isDirectory()) {
@@ -145,31 +177,102 @@ public class SelectDatabaseActivity extends SecureActivity
     }
 
     private void refreshList() {
-        adapter.clear();
-        final File[] files = vaultDir().listFiles();
+        final File[] files = vaultDir().listFiles(f -> f.isFile() && !f.getName().startsWith(".")
+                && f.getName().endsWith(StringMethods.EXTENSION));
+        names.clear();
         if (files != null) {
             Arrays.sort(files, (a, b) -> Long.compare(b.lastModified(), a.lastModified()));
             for (File f : files) {
-                final String n = f.getName();
-                if (f.isFile() && !n.startsWith(".") && n.endsWith(StringMethods.EXTENSION)) {
-                    adapter.add(StringMethods.getNameDB(n));
-                }
+                names.add(StringMethods.getNameDB(f.getName()));
             }
         }
-        adapter.notifyDataSetChanged();
+        if (selectedName != null && !names.contains(selectedName)) {
+            selectedName = null;
+        }
+        showRecent(files != null && files.length > 0 ? files[0] : null);
+        showList();
+        updateSelection();
+    }
+
+    private void showRecent(final File newest) {
+        final int visibility = newest == null ? View.GONE : View.VISIBLE;
+        textRecentTitle.setVisibility(visibility);
+        cardRecent.setVisibility(visibility);
+        if (newest != null) {
+            textRecentName.setText(StringMethods.getNameDB(newest.getName()));
+            final String when = DateUtils.formatDateTime(this, newest.lastModified(),
+                    DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_ABBREV_MONTH);
+            textRecentInfo.setText(getString(R.string.recent_folder) + " · " + when);
+        }
+    }
+
+    /** Fills the expandable list with one row per saved database. */
+    private void showList() {
+        listDatabases.removeAllViews();
+        if (names.isEmpty()) {
+            listDatabases.addView(listRow(getString(R.string.list_empty), null));
+            return;
+        }
+        for (String name : names) {
+            listDatabases.addView(listRow(name, name));
+        }
+    }
+
+    private TextView listRow(final String text, final String name) {
+        final TextView row = new TextView(this);
+        row.setText(text);
+        row.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+        row.setGravity(Gravity.CENTER_VERTICAL);
+        final int padH = dp(16);
+        final int padV = dp(14);
+        row.setPadding(padH, padV, padH, padV);
+        row.setMinHeight(dp(52));
+        row.setBackground(SecureActivity.themeDrawable(this, android.R.attr.selectableItemBackground));
+        if (name == null) {
+            row.setTextColor(themeColor(com.google.android.material.R.attr.colorOnSurfaceVariant));
+            return row;
+        }
+        row.setTextColor(themeColor(com.google.android.material.R.attr.colorOnSurface));
+        row.setTypeface(null, name.equals(selectedName) ? Typeface.BOLD : Typeface.NORMAL);
+        row.setOnClickListener(v -> choose(name));
+        row.setOnLongClickListener(v -> {
+            confirmDelete(name);
+            return true;
+        });
+        return row;
+    }
+
+    private void choose(final String name) {
+        selectedName = name;
+        listExpanded = false;
+        cardDatabaseList.setVisibility(View.GONE);
+        imageExpand.setRotation(0f);
+        showList();
+        updateSelection();
+    }
+
+    private void toggleList() {
+        listExpanded = !listExpanded;
+        cardDatabaseList.setVisibility(listExpanded ? View.VISIBLE : View.GONE);
+        imageExpand.animate().rotation(listExpanded ? 180f : 0f).setDuration(150).start();
+    }
+
+    private void updateSelection() {
+        if (selectedName == null) {
+            textSelected.setText(R.string.hint_chooseDatabase);
+            textSelected.setTextColor(themeColor(com.google.android.material.R.attr.colorOnSurfaceVariant));
+        } else {
+            textSelected.setText(selectedName);
+            textSelected.setTextColor(themeColor(com.google.android.material.R.attr.colorOnSurface));
+        }
     }
 
     private void onOpenClicked() {
-        final String name = StringMethods.sanitizeName(nameField.getText().toString());
-        if (name == null) {
-            toast(R.string.toast_nameInvalid);
+        if (selectedName == null) {
+            toast(R.string.toast_selectDatabase);
             return;
         }
-        if (!fileFor(name).isFile()) {
-            toast(R.string.toast_wrongPath);
-            return;
-        }
-        askPassword(name);
+        askPassword(selectedName);
     }
 
     private void onCreateClicked() {
@@ -446,6 +549,16 @@ public class SelectDatabaseActivity extends SecureActivity
             i++;
         }
         return candidate;
+    }
+
+    private int themeColor(final int attr) {
+        final TypedValue value = new TypedValue();
+        getTheme().resolveAttribute(attr, value, true);
+        return value.data;
+    }
+
+    private int dp(final int value) {
+        return Math.round(value * getResources().getDisplayMetrics().density);
     }
 
     private void setBusy(final boolean busy) {

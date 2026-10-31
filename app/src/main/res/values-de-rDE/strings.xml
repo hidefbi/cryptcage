@@ -8,9 +8,7 @@
     <string name="hint_field_new_password">Neues Passwort</string>
     <string name="hint_field_conf_password">Passwort bestätigen</string>
     <string name="title_changeMasterPass">Neues Master Password eingeben</string>
-    <string name="title_databaseLocation">Datenbank Dateinamen eingeben:</string>
     <string name="butt_open">Öffnen</string>
-    <string name="butt_create">Erstellen</string>
     <string name="hint_field_password">Passwort</string>
     <string name="note_note">Notiz:</string>
     <string name="hint_field_title">Titel</string>
@@ -24,7 +22,6 @@
     <string name="title_password">Passwort eingeben</string>
     <string name="toast_emptyPassword">Leeres Passwort ist nicht erlaubt</string>
     <string name="toast_wrongPassword">Falsches Passwort oder korrupierte Datenbank</string>
-    <string name="toast_wrongPath">Fehler beim lesen der Datenbank.\nÜberprüfe ob der Pfad korrekt ist</string>
     <string name="toast_errorCreatingDB">Fehler beim erstellen der Datenbank.\nÜberprüfe ob der Pfad korrekt ist</string>
     <string name="toast_wrongNewPassword">Passwörter stimmen nicht überein</string>
     <string name="dialog_backNoSave">Deine Änderungen werden nicht gespeichert.\nWillst du das Programm sicher schließen?</string>
@@ -45,7 +42,6 @@
     <string name="no_notes">Keine Notizen hier.\nDrücke den + Knopf um eine zu erstellen.</string>
     <string name="no_textNote">Leerer Notiz Text.</string>
     <string name="action_settings">Einstellungen</string>
-    <string name="title_recentDB">Datenbank im Standard Ordner:</string>
     <string name="deleteRecent_message">Datenbank löschen?\nDieser Vorgang ist nicht umkehrbar.</string>
     <string name="pref_textSize">Schriftgröße der Notizen ändern</string>
     <string-array name="pref_textSize_entries">
@@ -72,4 +68,23 @@
     <string name="import_createMessage">Es wird eine neue Datenbank erstellt und diese Datei darin gespeichert. Anschließend legen Sie ihr Passwort fest.</string>
     <string name="select_note_hint">Wähle eine Notiz zum Anzeigen oder Bearbeiten</string>
     <string name="action_cancelEdit">Bearbeitung abbrechen</string>
+    <string name="title_databases">Datenbanken</string>
+    <string name="title_recent">Zuletzt verwendet</string>
+    <string name="recent_folder">Standardordner</string>
+    <string name="title_openExisting">Vorhandene Datenbank öffnen</string>
+    <string name="hint_openExisting">Tippen, um die Datenbanken anzuzeigen, eine auswählen und dann Öffnen tippen</string>
+    <string name="hint_chooseDatabase">Datenbank auswählen</string>
+    <string name="list_empty">Noch keine Datenbanken</string>
+    <string name="title_newDatabase">Neue Datenbank</string>
+    <string name="hint_newDatabase">Beliebigen Namen eingeben, um eine Datenbank anzulegen</string>
+    <string name="hint_databaseName">z. B. Work-Ideas</string>
+    <string name="butt_new">Neu</string>
+    <string name="title_importFile">Datei importieren</string>
+    <string name="hint_importFile">Datenbank öffnen</string>
+    <string name="toast_selectDatabase">Bitte zuerst eine Datenbank auswählen</string>
+    <string name="pref_palette">Farbthema</string>
+    <string-array name="pref_palette_entries">
+        <item>Blau</item>
+        <item>Sand</item>
+    </string-array>
 </resources>

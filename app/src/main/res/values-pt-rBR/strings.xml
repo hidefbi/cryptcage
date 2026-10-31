@@ -8,9 +8,7 @@
     <string name="hint_field_new_password">Nova Senha</string>
     <string name="hint_field_conf_password">Confirmar Senha</string>
     <string name="title_changeMasterPass">Insira Uma Nova Senha Mestre</string>
-    <string name="title_databaseLocation">Insira Nome Do Banco De Dados:</string>
     <string name="butt_open">Abrir</string>
-    <string name="butt_create">Criar</string>
     <string name="hint_field_password">Senha</string>
     <string name="note_note">Notas:</string>
     <string name="hint_field_title">Título</string>
@@ -24,7 +22,6 @@
     <string name="title_password">Insira A Senha</string>
     <string name="toast_emptyPassword">Uma senha vazia não é permitida</string>
     <string name="toast_wrongPassword">Senha errada ou banco de dados corrompido</string>
-    <string name="toast_wrongPath">Erro de leitura no banco de dados.\nVerifique o caminho correto do diretório.</string>
     <string name="toast_errorCreatingDB">Erro ao criar o banco de dados.\nVerifique a exatidão do caminho</string>
     <string name="toast_wrongNewPassword">Senhas não coincidem</string>
     <string name="dialog_backNoSave">Sua edição não será salva.\nTem certeza que deseja sair?</string>
@@ -45,7 +42,6 @@
     <string name="no_notes">Sem notas aqui.\nAperte o botão + para adicionar uma nota.</string>
     <string name="no_textNote">Texto Com Nota Vazia.</string>
     <string name="action_settings">Configurações</string>
-    <string name="title_recentDB">Banco de dados no diretório recente e padrão (clique para abrir):</string>
     <string name="deleteRecent_message">Apagar o banco de dados?\nEssa ação é irreversível.</string>
     <string name="pref_textSize">Mudar o tamanho da fonte das notas</string>
     <string-array name="pref_textSize_entries">
@@ -72,4 +68,23 @@
     <string name="import_createMessage">Um novo banco de dados será criado e este arquivo será guardado nele. Em seguida, você define a senha.</string>
     <string name="select_note_hint">Selecione uma nota para visualizá-la ou editá-la</string>
     <string name="action_cancelEdit">Cancelar edição</string>
+    <string name="title_databases">Bancos de dados</string>
+    <string name="title_recent">Recentes</string>
+    <string name="recent_folder">Pasta padrão</string>
+    <string name="title_openExisting">Abrir banco de dados existente</string>
+    <string name="hint_openExisting">Toque para ver seus bancos, escolha um e toque em Abrir</string>
+    <string name="hint_chooseDatabase">Escolha um banco de dados</string>
+    <string name="list_empty">Nenhum banco de dados ainda</string>
+    <string name="title_newDatabase">Novo banco de dados</string>
+    <string name="hint_newDatabase">Digite qualquer nome para criar um banco de dados</string>
+    <string name="hint_databaseName">ex.: Work-Ideas</string>
+    <string name="butt_new">Novo</string>
+    <string name="title_importFile">Importar arquivo</string>
+    <string name="hint_importFile">Abrir banco de dados</string>
+    <string name="toast_selectDatabase">Escolha um banco de dados primeiro</string>
+    <string name="pref_palette">Tema de cores</string>
+    <string-array name="pref_palette_entries">
+        <item>Azul</item>
+        <item>Areia</item>
+    </string-array>
 </resources>

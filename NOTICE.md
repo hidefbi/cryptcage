@@ -14,6 +14,9 @@ This list covers the changes made by hidefbi on 2026-10-31 and the earlier chang
 - Saves write only the changed records. When enough space is unused, the file is compacted.
 - Changing the password rewrites the header of the file.
 - Screens were redesigned with Material 3 and layouts that adapt to the screen width.
+- The start screen was rebuilt as cards: the most recent database, an expandable list of the saved databases, the field for a new database, and file import.
+- A second colour palette, Sand, was added next to the blue one. It works with the light, dark and system modes.
+- A new launcher icon was made: a shield with a padlock. It has adaptive, monochrome and legacy versions.
 - Any supported file type can be imported, and files can be added from the start screen.
 - Unused code, contributor names and developer links were removed. The license and copyright notices were kept.
 - Test coverage was added for the storage format, compaction, password change and the vault session.

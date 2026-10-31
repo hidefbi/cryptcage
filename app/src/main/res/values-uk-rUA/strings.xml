@@ -8,9 +8,7 @@
     <string name="hint_field_new_password">Новий пароль</string>
     <string name="hint_field_conf_password">Підтвердити пароль</string>
     <string name="title_changeMasterPass">Введіть новий Майстер пароль</string>
-    <string name="title_databaseLocation">Введіть назву бази даних:</string>
     <string name="butt_open">Відкрити</string>
-    <string name="butt_create">Створити</string>
     <string name="hint_field_password">Пароль</string>
     <string name="note_note">Нотатка:</string>
     <string name="hint_field_title">Заголовок</string>
@@ -24,7 +22,6 @@
     <string name="title_password">Введіть пароль</string>
     <string name="toast_emptyPassword">Порожній пароль не дозволений</string>
     <string name="toast_wrongPassword">Неправильний пароль або пошкоджена база даних</string>
-    <string name="toast_wrongPath">Помилка при спробі прочитати базу даних.\nПеревірте коректність заданого шляху</string>
     <string name="toast_errorCreatingDB">Помилка при створенні бази даних.\nПеревірте коректність заданого шляху</string>
     <string name="toast_wrongNewPassword">Пароль не співпадає</string>
     <string name="dialog_backNoSave">Ваші зміни не будуть збережені.\nВи впевненні, що хочете закрити?</string>
@@ -45,7 +42,6 @@
     <string name="no_notes">Нотатки відсутні.\nНатисніть кнопку + щоб додати нотатку.</string>
     <string name="no_textNote">Порожня нотатка.</string>
     <string name="action_settings">Налаштування</string>
-    <string name="title_recentDB">База даних в папці за замовчуванням і нещодавна (натисніть щоб відкрити):</string>
     <string name="deleteRecent_message">Видалити базу даних?\nЦя дія незворотня.</string>
     <string name="pref_textSize">Змінити розмір шрифту для нотаток</string>
     <string-array name="pref_textSize_entries">
@@ -72,4 +68,23 @@
     <string name="import_createMessage">Буде створено нову базу даних, і цей файл буде збережено в ній. Далі ви задасте її пароль.</string>
     <string name="select_note_hint">Виберіть нотатку, щоб переглянути або змінити її</string>
     <string name="action_cancelEdit">Скасувати редагування</string>
+    <string name="title_databases">Бази даних</string>
+    <string name="title_recent">Нещодавні</string>
+    <string name="recent_folder">Папка за замовчуванням</string>
+    <string name="title_openExisting">Відкрити наявну базу</string>
+    <string name="hint_openExisting">Торкніться, щоб побачити бази, виберіть одну й торкніться «Відкрити»</string>
+    <string name="hint_chooseDatabase">Виберіть базу даних</string>
+    <string name="list_empty">Баз даних поки немає</string>
+    <string name="title_newDatabase">Нова база даних</string>
+    <string name="hint_newDatabase">Введіть будь-яку назву, щоб створити базу даних</string>
+    <string name="hint_databaseName">наприклад, Work-Ideas</string>
+    <string name="butt_new">Нова</string>
+    <string name="title_importFile">Імпорт файлу</string>
+    <string name="hint_importFile">Відкрити базу даних</string>
+    <string name="toast_selectDatabase">Спочатку виберіть базу даних</string>
+    <string name="pref_palette">Колірна тема</string>
+    <string-array name="pref_palette_entries">
+        <item>Синя</item>
+        <item>Піщана</item>
+    </string-array>
 </resources>

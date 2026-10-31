@@ -8,9 +8,7 @@
     <string name="hint_field_new_password">新しいパスワード</string>
     <string name="hint_field_conf_password">パスワードの確認</string>
     <string name="title_changeMasterPass">新しいマスターパスワードを入力</string>
-    <string name="title_databaseLocation">データベース ファイル名を入力:</string>
     <string name="butt_open">開く</string>
-    <string name="butt_create">作成</string>
     <string name="hint_field_password">パスワード</string>
     <string name="note_note">メモ:</string>
     <string name="hint_field_title">タイトル</string>
@@ -24,7 +22,6 @@
     <string name="title_password">パスワードを入力</string>
     <string name="toast_emptyPassword">空のパスワードは許可されていません</string>
     <string name="toast_wrongPassword">パスワードが間違っているか、データベースが破損しています</string>
-    <string name="toast_wrongPath">データベースの読み取り中にエラーが発生しました。\nパスが正しいか確認してください</string>
     <string name="toast_errorCreatingDB">DB の作成中にエラーが発生しました。\nパスが正しいか確認してください</string>
     <string name="toast_wrongNewPassword">パスワードが一致しません</string>
     <string name="dialog_backNoSave">編集内容は保存されません。\n終了してもよろしいですか?</string>
@@ -45,7 +42,6 @@
     <string name="no_notes">ここにメモはありません。\n+ ボタンを押してメモを追加してください。</string>
     <string name="no_textNote">メモは空です。</string>
     <string name="action_settings">設定</string>
-    <string name="title_recentDB">デフォルトのフォルダーと最近使用したデータベース (クリックして開きます):</string>
     <string name="deleteRecent_message">データベースを削除しますか?\nこの操作は元に戻せません。</string>
     <string name="pref_textSize">メモのフォントサイズを変更</string>
     <string-array name="pref_textSize_entries">
@@ -72,4 +68,23 @@
     <string name="import_createMessage">新しいデータベースを作成し、このファイルを保存します。次にパスワードを設定します。</string>
     <string name="select_note_hint">表示または編集するメモを選択してください</string>
     <string name="action_cancelEdit">編集を取り消す</string>
+    <string name="title_databases">データベース</string>
+    <string name="title_recent">最近使用</string>
+    <string name="recent_folder">標準フォルダ</string>
+    <string name="title_openExisting">既存のデータベースを開く</string>
+    <string name="hint_openExisting">タップして一覧を開き、選んで「開く」をタップします</string>
+    <string name="hint_chooseDatabase">データベースを選択</string>
+    <string name="list_empty">データベースはまだありません</string>
+    <string name="title_newDatabase">新しいデータベース</string>
+    <string name="hint_newDatabase">名前を入力して新規作成します</string>
+    <string name="hint_databaseName">例: Work-Ideas</string>
+    <string name="butt_new">新規</string>
+    <string name="title_importFile">ファイルをインポート</string>
+    <string name="hint_importFile">データベースとして開く</string>
+    <string name="toast_selectDatabase">先にデータベースを選択してください</string>
+    <string name="pref_palette">カラーテーマ</string>
+    <string-array name="pref_palette_entries">
+        <item>ブルー</item>
+        <item>サンド</item>
+    </string-array>
 </resources>

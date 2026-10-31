@@ -8,9 +8,7 @@
     <string name="hint_field_new_password">Kata Sandi Baru</string>
     <string name="hint_field_conf_password">Konfirmasi Kata Sandi</string>
     <string name="title_changeMasterPass">Masukkan Kata Sandi Utama baru</string>
-    <string name="title_databaseLocation">Masukkan nama file database:</string>
     <string name="butt_open">Buka</string>
-    <string name="butt_create">Buat</string>
     <string name="hint_field_password">Kata Sandi</string>
     <string name="note_note">Catatan:</string>
     <string name="hint_field_title">Judul</string>
@@ -24,7 +22,6 @@
     <string name="title_password">Masukkan Kata Sandi</string>
     <string name="toast_emptyPassword">Kata Sandi Kosong tidak diizinkan</string>
     <string name="toast_wrongPassword">Kata Sandi salah atau database rusak</string>
-    <string name="toast_wrongPath">Kesalahan saat membaca database.\nPeriksa kebenaran pathnya</string>
     <string name="toast_errorCreatingDB">Kesalahan saat membuat db.\nPeriksa kebenaran pathnya</string>
     <string name="toast_wrongNewPassword">Sandi tidak cocok</string>
     <string name="dialog_backNoSave">Hasil edit Anda tidak akan disimpan.\nApakah Anda yakin ingin keluar?</string>
@@ -45,7 +42,6 @@
     <string name="no_notes">Tidak ada catatan di sini.\nTekan tombol + untuk menambahkan catatan.</string>
     <string name="no_textNote">Teks Catatan Kosong.</string>
     <string name="action_settings">Pengaturan</string>
-    <string name="title_recentDB">Database di folder default dan baru-baru ini (klik untuk membuka):</string>
     <string name="deleteRecent_message">Hapus database?\nTindakan ini tidak dapat diubah.</string>
     <string name="pref_textSize">Ubah ukuran font untuk catatan</string>
     <string-array name="pref_textSize_entries">
@@ -72,4 +68,23 @@
     <string name="import_createMessage">Basis data baru akan dibuat dan file ini akan disimpan di dalamnya. Selanjutnya, atur kata sandinya.</string>
     <string name="select_note_hint">Pilih catatan untuk dilihat atau diedit</string>
     <string name="action_cancelEdit">Batalkan pengeditan</string>
+    <string name="title_databases">Database</string>
+    <string name="title_recent">Terakhir dibuka</string>
+    <string name="recent_folder">Folder default</string>
+    <string name="title_openExisting">Buka database yang ada</string>
+    <string name="hint_openExisting">Ketuk untuk melihat database, pilih satu, lalu ketuk Buka</string>
+    <string name="hint_chooseDatabase">Pilih database</string>
+    <string name="list_empty">Belum ada database</string>
+    <string name="title_newDatabase">Database baru</string>
+    <string name="hint_newDatabase">Masukkan nama apa saja untuk membuat database</string>
+    <string name="hint_databaseName">misalnya Work-Ideas</string>
+    <string name="butt_new">Baru</string>
+    <string name="title_importFile">Impor file</string>
+    <string name="hint_importFile">Buka database</string>
+    <string name="toast_selectDatabase">Pilih database terlebih dahulu</string>
+    <string name="pref_palette">Tema warna</string>
+    <string-array name="pref_palette_entries">
+        <item>Biru</item>
+        <item>Pasir</item>
+    </string-array>
 </resources>
