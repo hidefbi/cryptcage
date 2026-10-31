@@ -636,6 +636,38 @@ final class BlockStore implements AutoCloseable {
         return Arrays.copyOfRange(prologue, 0, OFF_WRAP);
     }
 
+    /** Encrypts data for storage outside the container, with a key derived from the data key. */
+    byte[] sealOutside(final String label, final byte[] plain) throws StoreException {
+        final byte[] key = outsideKey(label);
+        try {
+            return Cryptox.seal(key, label.getBytes(java.nio.charset.StandardCharsets.UTF_8), plain);
+        } catch (GeneralSecurityException e) {
+            throw new StoreException(Reason.INTERNAL, "seal failed");
+        } finally {
+            Arrays.fill(key, (byte) 0);
+        }
+    }
+
+    /** Decrypts data made by {@link #sealOutside}. Data sealed for another label or vault fails. */
+    byte[] openOutside(final String label, final byte[] sealed) throws StoreException {
+        final byte[] key = outsideKey(label);
+        try {
+            return Cryptox.open(key, label.getBytes(java.nio.charset.StandardCharsets.UTF_8), sealed);
+        } catch (GeneralSecurityException e) {
+            throw new StoreException(Reason.AUTH_FAILED, "outside data does not open");
+        } finally {
+            Arrays.fill(key, (byte) 0);
+        }
+    }
+
+    private byte[] outsideKey(final String label) throws StoreException {
+        try {
+            return deriveKey(dataKey, label);
+        } catch (GeneralSecurityException e) {
+            throw new StoreException(Reason.INTERNAL, "key setup failed");
+        }
+    }
+
     /** One HKDF-SHA256 step with a zero salt, enough for a 32-byte key. */
     private static byte[] deriveKey(final byte[] dataKey, final String label) throws GeneralSecurityException {
         final Mac extract = Mac.getInstance("HmacSHA256");

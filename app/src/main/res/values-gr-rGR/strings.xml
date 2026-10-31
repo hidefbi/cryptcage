@@ -95,4 +95,10 @@
     <string name="action_writable">Εγγράψιμο</string>
     <string name="title_copyName">%1$s (αντίγραφο)</string>
     <string name="toast_readOnlyKept">Διατηρήθηκαν %1$d στοιχεία μόνο για ανάγνωση, δεν διαγράφηκαν</string>
+    <string name="action_undo">Αναίρεση</string>
+    <string name="action_redo">Επανάληψη</string>
+    <string name="action_restoreDraft">Επαναφορά</string>
+    <string name="action_discardDraft">Απόρριψη</string>
+    <string name="dialog_restoreDraft">Αυτή η σημείωση έχει μη αποθηκευμένες αλλαγές από πριν. Να επαναφερθούν;</string>
+    <string name="toast_noteTooLarge">Η σημείωση είναι πολύ μεγάλη για αποθήκευση (όριο 8 MB)</string>
 </resources>

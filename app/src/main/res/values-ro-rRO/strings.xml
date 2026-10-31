@@ -95,4 +95,10 @@
     <string name="action_writable">Scriere permisă</string>
     <string name="title_copyName">%1$s (copie)</string>
     <string name="toast_readOnlyKept">%1$d elemente doar pentru citire păstrate, neșterse</string>
+    <string name="action_undo">Anulează</string>
+    <string name="action_redo">Refă</string>
+    <string name="action_restoreDraft">Restaurează</string>
+    <string name="action_discardDraft">Renunță</string>
+    <string name="dialog_restoreDraft">Această notiță are modificări nesalvate din urmă. Să fie restaurate?</string>
+    <string name="toast_noteTooLarge">Notița este prea mare pentru a fi salvată (limită 8 MB)</string>
 </resources>

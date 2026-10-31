@@ -95,4 +95,10 @@
     <string name="action_writable">編集可能</string>
     <string name="title_copyName">%1$s（コピー）</string>
     <string name="toast_readOnlyKept">読み取り専用の %1$d 件は削除されませんでした</string>
+    <string name="action_undo">元に戻す</string>
+    <string name="action_redo">やり直す</string>
+    <string name="action_restoreDraft">復元</string>
+    <string name="action_discardDraft">破棄</string>
+    <string name="dialog_restoreDraft">このメモには以前の未保存の変更があります。復元しますか？</string>
+    <string name="toast_noteTooLarge">メモが大きすぎて保存できません（上限 8 MB）</string>
 </resources>

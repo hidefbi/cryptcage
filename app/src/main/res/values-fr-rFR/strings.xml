@@ -95,4 +95,10 @@
     <string name="action_writable">Modifiable</string>
     <string name="title_copyName">%1$s (copie)</string>
     <string name="toast_readOnlyKept">%1$d élément(s) en lecture seule conservé(s), non supprimé(s)</string>
+    <string name="action_undo">Annuler</string>
+    <string name="action_redo">Rétablir</string>
+    <string name="action_restoreDraft">Restaurer</string>
+    <string name="action_discardDraft">Ignorer</string>
+    <string name="dialog_restoreDraft">Cette note contient des modifications non enregistrées. Les restaurer ?</string>
+    <string name="toast_noteTooLarge">La note est trop volumineuse pour être enregistrée (limite 8 Mo)</string>
 </resources>

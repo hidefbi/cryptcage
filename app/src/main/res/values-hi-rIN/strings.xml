@@ -95,4 +95,10 @@
     <string name="action_writable">लिखने योग्य</string>
     <string name="title_copyName">%1$s (कॉपी)</string>
     <string name="toast_readOnlyKept">%1$d केवल-पढ़ने वाले आइटम नहीं हटाए गए</string>
+    <string name="action_undo">पूर्ववत करें</string>
+    <string name="action_redo">फिर से करें</string>
+    <string name="action_restoreDraft">पुनर्स्थापित करें</string>
+    <string name="action_discardDraft">छोड़ें</string>
+    <string name="dialog_restoreDraft">इस नोट में पहले के बिना सहेजे गए बदलाव हैं। क्या उन्हें वापस लाएँ?</string>
+    <string name="toast_noteTooLarge">नोट सहेजने के लिए बहुत बड़ा है (सीमा 8 MB)</string>
 </resources>

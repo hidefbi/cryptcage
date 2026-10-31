@@ -95,4 +95,10 @@
     <string name="action_writable">Editável</string>
     <string name="title_copyName">%1$s (cópia)</string>
     <string name="toast_readOnlyKept">%1$d itens só de leitura mantidos, não eliminados</string>
+    <string name="action_undo">Anular</string>
+    <string name="action_redo">Refazer</string>
+    <string name="action_restoreDraft">Restaurar</string>
+    <string name="action_discardDraft">Descartar</string>
+    <string name="dialog_restoreDraft">Esta nota tem alterações não guardadas de antes. Restaurá-las?</string>
+    <string name="toast_noteTooLarge">A nota é demasiado grande para ser guardada (limite de 8 MB)</string>
 </resources>

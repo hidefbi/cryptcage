@@ -95,4 +95,10 @@
     <string name="action_writable">Szerkeszthető</string>
     <string name="title_copyName">%1$s (másolat)</string>
     <string name="toast_readOnlyKept">%1$d csak olvasható elem megmaradt, nem lett törölve</string>
+    <string name="action_undo">Visszavonás</string>
+    <string name="action_redo">Újra</string>
+    <string name="action_restoreDraft">Visszaállítás</string>
+    <string name="action_discardDraft">Elvetés</string>
+    <string name="dialog_restoreDraft">Ebben a jegyzetben korábbi, nem mentett változtatások vannak. Visszaállítja őket?</string>
+    <string name="toast_noteTooLarge">A jegyzet túl nagy a mentéshez (korlát 8 MB)</string>
 </resources>

@@ -42,6 +42,7 @@ final class NoteRepository implements AutoCloseable {
     private static final int INDEX_VERSION_WITHOUT_ORDER = 1;
     private static final int MAX_STRING_BYTES = 1 << 20;
     private static final int MAX_ENTRIES = 1_000_000;
+    private static final String DRAFT_LABEL = "cc3 draft key";
     private static final int FLAG_STARRED = 1;
     private static final int FLAG_READ_ONLY = 2;
 
@@ -81,6 +82,15 @@ final class NoteRepository implements AutoCloseable {
     private long nextEntry = 1;
     private long nextBlock = 1;
     private long limit = CONTENT_LIMIT;
+
+    /** Encrypts a draft so it can be kept on the device outside the vault. */
+    byte[] sealDraft(final byte[] plain) throws StoreException {
+        return store.sealOutside(DRAFT_LABEL, plain);
+    }
+
+    byte[] openDraft(final byte[] sealed) throws StoreException {
+        return store.openOutside(DRAFT_LABEL, sealed);
+    }
 
     private NoteRepository(final BlockStore store) {
         this.store = store;

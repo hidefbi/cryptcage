@@ -24,7 +24,8 @@ public final class FileTypes {
         OFFICE,
         ARCHIVE,
         PACKAGE,
-        SECRET
+        SECRET,
+        DATABASE
     }
 
     /** One supported extension. */
@@ -94,6 +95,7 @@ public final class FileTypes {
         for (String ext : new String[]{"aab", "apks", "jar", "aar", "dex", "so"}) {
             add(ext, Category.PACKAGE, false);
         }
+        add("kdbx", Category.DATABASE, false);
     }
 
     private FileTypes() {
@@ -160,6 +162,9 @@ public final class FileTypes {
             case OFFICE:
             case PACKAGE:
                 return startsWithPackage(kind.extension, data);
+            case DATABASE:
+                // KDBX 3 and KDBX 4 files both begin with these two signatures.
+                return startsWith(data, 0, "\u0003\u00D9\u00A2\u009A") && startsWith(data, 4, "\u0067\u00FB\u004B\u00B5");
             case ARCHIVE:
                 return archiveMatches(kind.extension, data);
             case SECRET:

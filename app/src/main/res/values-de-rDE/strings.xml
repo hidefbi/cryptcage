@@ -95,4 +95,10 @@
     <string name="action_writable">Beschreibbar</string>
     <string name="title_copyName">%1$s (Kopie)</string>
     <string name="toast_readOnlyKept">%1$d schreibgeschützte Einträge wurden nicht gelöscht</string>
+    <string name="action_undo">Rückgängig</string>
+    <string name="action_redo">Wiederholen</string>
+    <string name="action_restoreDraft">Wiederherstellen</string>
+    <string name="action_discardDraft">Verwerfen</string>
+    <string name="dialog_restoreDraft">Diese Notiz hat früher nicht gespeicherte Änderungen. Wiederherstellen?</string>
+    <string name="toast_noteTooLarge">Die Notiz ist zu groß zum Speichern (Limit 8 MB)</string>
 </resources>

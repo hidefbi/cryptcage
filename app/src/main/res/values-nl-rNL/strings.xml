@@ -95,4 +95,10 @@
     <string name="action_writable">Schrijfbaar</string>
     <string name="title_copyName">%1$s (kopie)</string>
     <string name="toast_readOnlyKept">%1$d alleen-lezen items bewaard, niet verwijderd</string>
+    <string name="action_undo">Ongedaan maken</string>
+    <string name="action_redo">Opnieuw</string>
+    <string name="action_restoreDraft">Herstellen</string>
+    <string name="action_discardDraft">Negeren</string>
+    <string name="dialog_restoreDraft">Deze notitie heeft eerder niet-opgeslagen wijzigingen. Herstellen?</string>
+    <string name="toast_noteTooLarge">De notitie is te groot om op te slaan (limiet 8 MB)</string>
 </resources>

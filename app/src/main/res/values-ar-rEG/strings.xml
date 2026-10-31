@@ -95,4 +95,10 @@
     <string name="action_writable">قابل للتعديل</string>
     <string name="title_copyName">%1$s (نسخة)</string>
     <string name="toast_readOnlyKept">تم الإبقاء على %1$d عنصر للقراءة فقط ولم يُحذف</string>
+    <string name="action_undo">تراجع</string>
+    <string name="action_redo">إعادة</string>
+    <string name="action_restoreDraft">استعادة</string>
+    <string name="action_discardDraft">تجاهل</string>
+    <string name="dialog_restoreDraft">لدى هذه الملاحظة تغييرات غير محفوظة من قبل. هل تريد استعادتها؟</string>
+    <string name="toast_noteTooLarge">الملاحظة كبيرة جدًا ولا يمكن حفظها (الحد 8 ميغابايت)</string>
 </resources>

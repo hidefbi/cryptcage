@@ -95,4 +95,10 @@
     <string name="action_writable">Có thể ghi</string>
     <string name="title_copyName">%1$s (bản sao)</string>
     <string name="toast_readOnlyKept">Đã giữ %1$d mục chỉ đọc, không xóa</string>
+    <string name="action_undo">Hoàn tác</string>
+    <string name="action_redo">Làm lại</string>
+    <string name="action_restoreDraft">Khôi phục</string>
+    <string name="action_discardDraft">Bỏ qua</string>
+    <string name="dialog_restoreDraft">Ghi chú này có thay đổi chưa lưu từ trước. Khôi phục các thay đổi đó?</string>
+    <string name="toast_noteTooLarge">Ghi chú quá lớn để lưu (giới hạn 8 MB)</string>
 </resources>

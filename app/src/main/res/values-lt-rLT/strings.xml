@@ -95,4 +95,10 @@
     <string name="action_writable">Redaguojama</string>
     <string name="title_copyName">%1$s (kopija)</string>
     <string name="toast_readOnlyKept">%1$d elementai tik skaitymui pasilikti, neištrinti</string>
+    <string name="action_undo">Atšaukti</string>
+    <string name="action_redo">Atkurti veiksmą</string>
+    <string name="action_restoreDraft">Atkurti</string>
+    <string name="action_discardDraft">Atmesti</string>
+    <string name="dialog_restoreDraft">Šiame užraše yra anksčiau neįrašytų pakeitimų. Atkurti juos?</string>
+    <string name="toast_noteTooLarge">Užrašas per didelis įrašyti (riba 8 MB)</string>
 </resources>

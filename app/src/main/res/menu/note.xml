@@ -13,6 +13,16 @@
         app:showAsAction="always"
         android:title="@string/action_edit"/>
     <item
+        android:id="@+id/action_undo"
+        android:icon="@drawable/icon_undo"
+        app:showAsAction="ifRoom"
+        android:title="@string/action_undo"/>
+    <item
+        android:id="@+id/action_redo"
+        android:icon="@drawable/icon_redo"
+        app:showAsAction="ifRoom"
+        android:title="@string/action_redo"/>
+    <item
         android:id="@+id/action_save"
         android:icon="@drawable/icon_save"
         app:showAsAction="always"

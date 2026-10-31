@@ -95,4 +95,10 @@
     <string name="action_writable">Upravitelné</string>
     <string name="title_copyName">%1$s (kopie)</string>
     <string name="toast_readOnlyKept">Ponecháno %1$d položek jen pro čtení, nesmazáno</string>
+    <string name="action_undo">Zpět</string>
+    <string name="action_redo">Znovu</string>
+    <string name="action_restoreDraft">Obnovit</string>
+    <string name="action_discardDraft">Zahodit</string>
+    <string name="dialog_restoreDraft">Tato poznámka obsahuje dříve neuložené změny. Obnovit je?</string>
+    <string name="toast_noteTooLarge">Poznámka je příliš velká na uložení (limit 8 MB)</string>
 </resources>

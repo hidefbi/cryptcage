@@ -95,4 +95,10 @@
     <string name="action_writable">Можно изменять</string>
     <string name="title_copyName">%1$s (копия)</string>
     <string name="toast_readOnlyKept">Не удалено %1$d элементов только для чтения</string>
+    <string name="action_undo">Отменить</string>
+    <string name="action_redo">Повторить</string>
+    <string name="action_restoreDraft">Восстановить</string>
+    <string name="action_discardDraft">Отбросить</string>
+    <string name="dialog_restoreDraft">В этой заметке есть несохранённые изменения. Восстановить их?</string>
+    <string name="toast_noteTooLarge">Заметка слишком большая для сохранения (лимит 8 МБ)</string>
 </resources>

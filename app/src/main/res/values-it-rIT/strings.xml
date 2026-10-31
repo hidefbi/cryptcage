@@ -96,4 +96,10 @@
     <string name="action_writable">Scrivibile</string>
     <string name="title_copyName">%1$s (copia)</string>
     <string name="toast_readOnlyKept">%1$d elementi in sola lettura conservati, non eliminati</string>
+    <string name="action_undo">Annulla</string>
+    <string name="action_redo">Ripeti</string>
+    <string name="action_restoreDraft">Ripristina</string>
+    <string name="action_discardDraft">Scarta</string>
+    <string name="dialog_restoreDraft">Questa nota ha modifiche non salvate di prima. Ripristinarle?</string>
+    <string name="toast_noteTooLarge">La nota è troppo grande per essere salvata (limite 8 MB)</string>
 </resources>

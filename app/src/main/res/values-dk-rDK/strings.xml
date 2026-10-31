@@ -95,4 +95,10 @@
     <string name="action_writable">Skrivbar</string>
     <string name="title_copyName">%1$s (kopi)</string>
     <string name="toast_readOnlyKept">%1$d skrivebeskyttede elementer blev ikke slettet</string>
+    <string name="action_undo">Fortryd</string>
+    <string name="action_redo">Gentag</string>
+    <string name="action_restoreDraft">Gendan</string>
+    <string name="action_discardDraft">Kassér</string>
+    <string name="dialog_restoreDraft">Denne note har ikke-gemte ændringer fra tidligere. Gendan dem?</string>
+    <string name="toast_noteTooLarge">Noten er for stor til at blive gemt (grænse 8 MB)</string>
 </resources>

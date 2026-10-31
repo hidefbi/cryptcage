@@ -95,4 +95,10 @@
     <string name="action_writable">Edytowalne</string>
     <string name="title_copyName">%1$s (kopia)</string>
     <string name="toast_readOnlyKept">Zachowano %1$d elementów tylko do odczytu, nie usunięto</string>
+    <string name="action_undo">Cofnij</string>
+    <string name="action_redo">Ponów</string>
+    <string name="action_restoreDraft">Przywróć</string>
+    <string name="action_discardDraft">Odrzuć</string>
+    <string name="dialog_restoreDraft">Ta notatka ma wcześniejsze niezapisane zmiany. Przywrócić je?</string>
+    <string name="toast_noteTooLarge">Notatka jest zbyt duża, aby ją zapisać (limit 8 MB)</string>
 </resources>

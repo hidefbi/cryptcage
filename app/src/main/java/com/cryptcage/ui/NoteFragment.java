@@ -6,12 +6,21 @@
  */
 package com.cryptcage.ui;
 
+import java.io.File;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.SystemClock;
 import android.os.Trace;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,6 +28,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +40,10 @@ import androidx.preference.PreferenceManager;
 import com.cryptcage.app.App;
 import com.cryptcage.app.Tasks;
 import com.cryptcage.utils.FileKinds;
+import com.cryptcage.utils.Draft;
+import com.cryptcage.utils.DraftStore;
 import com.cryptcage.utils.FileTypes;
+import com.cryptcage.utils.TextHistory;
 import com.cryptcage.utils.VaultException;
 import com.cryptcage.utils.VaultSession;
 import com.cryptcage.R;
@@ -84,6 +97,22 @@ public class NoteFragment extends Fragment {
     private boolean loading;
     /** Saved state to restore once the note is read, when an edit was in progress. */
     private Bundle pendingRestore;
+
+    private static final int FIELD_TITLE = 0;
+    private static final int FIELD_TAGS = 1;
+    private static final int FIELD_BODY = 2;
+    /** Typing stops for this long before the draft is written. */
+    private static final long DRAFT_DELAY_MS = 2000;
+    /** Draft files are written one at a time, in the order they were asked for. */
+    private static final ExecutorService DRAFTS = Executors.newSingleThreadExecutor();
+
+    private final Handler handler = new Handler(Looper.getMainLooper());
+    private final Runnable autosave = this::saveDraftNow;
+    /** Undo history of each field. Undo works on the field that was changed last. */
+    private TextHistory[] histories;
+    private int lastField = FIELD_BODY;
+    /** True while the screen sets the text itself, so that is not recorded as an edit. */
+    private boolean replaying;
 
     /** What is read from the vault for one note. It is built on the worker thread. */
     private static final class Loaded {
@@ -144,6 +173,10 @@ public class NoteFragment extends Fragment {
         titleField = view.findViewById(R.id.field_title);
         tagsField = view.findViewById(R.id.field_tags);
         bodyField = view.findViewById(R.id.field_body);
+        histories = new TextHistory[]{new TextHistory(""), new TextHistory(""), new TextHistory("")};
+        titleField.addTextChangedListener(fieldWatcher(FIELD_TITLE, titleField));
+        tagsField.addTextChangedListener(fieldWatcher(FIELD_TAGS, tagsField));
+        bodyField.addTextChangedListener(fieldWatcher(FIELD_BODY, bodyField));
 
         twoPane = requireArguments().getBoolean(ARG_TWO_PANE, false);
         noteId = requireArguments().getLong(ARG_NOTE, -1L);
@@ -374,14 +407,18 @@ public class NoteFragment extends Fragment {
             return;
         }
         editing = true;
+        replaying = true;
         titleField.setText(originalTitle);
         tagsField.setText(originalTags);
         bodyField.setText(originalBody);
+        replaying = false;
+        resetHistories();
         titleLayout.setHint(getString(fileMode ? R.string.file_hint_name : R.string.hint_field_title));
         tagsLayout.setVisibility(fileMode ? View.GONE : View.VISIBLE);
         readGroup.setVisibility(View.GONE);
         editGroup.setVisibility(View.VISIBLE);
         updateToolbar();
+        offerDraft();
     }
 
     /** Navigation icon: a close icon while editing, back on a phone, none in the two-pane layout. */
@@ -407,6 +444,9 @@ public class NoteFragment extends Fragment {
         menu.findItem(R.id.action_share).setVisible(!editing && !fileMode);
         menu.findItem(R.id.action_exportFile).setVisible(!editing);
         menu.findItem(R.id.action_delete).setVisible(!editing && !readOnly);
+        menu.findItem(R.id.action_undo).setVisible(editing);
+        menu.findItem(R.id.action_redo).setVisible(editing);
+        updateUndoItems();
     }
 
     private void onNavigation() {
@@ -421,6 +461,10 @@ public class NoteFragment extends Fragment {
         final int id = item.getItemId();
         if (id == R.id.action_starred) {
             toggleStar();
+        } else if (id == R.id.action_undo) {
+            undoEdit();
+        } else if (id == R.id.action_redo) {
+            redoEdit();
         } else if (id == R.id.action_edit) {
             enterEdit();
         } else if (id == R.id.action_save) {
@@ -451,6 +495,7 @@ public class NoteFragment extends Fragment {
     }
 
     private void discardEdit() {
+        discardDrafts(noteId);
         if (noteId < 0) {
             listener().onNoteRemoved();
         } else {
@@ -479,6 +524,11 @@ public class NoteFragment extends Fragment {
     }
 
     private void saveNote(final App.Session session, final String title, final String body, final String tags) {
+        if (body.getBytes(StandardCharsets.UTF_8).length > VaultSession.MAX_NOTE_BYTES) {
+            toast(R.string.toast_noteTooLarge);
+            return;
+        }
+        final long previous = noteId;
         final long id;
         try {
             if (noteId < 0) {
@@ -495,6 +545,7 @@ public class NoteFragment extends Fragment {
         originalTitle = title;
         originalTags = tags;
         originalBody = body;
+        discardDrafts(previous, id);
         finishSaved(id);
     }
 
@@ -566,6 +617,7 @@ public class NoteFragment extends Fragment {
                         }
                         App.persist(requireContext());
                     }
+                    discardDrafts(noteId);
                     toast(R.string.toast_success_deleteNote);
                     listener().onNoteRemoved();
                 })
@@ -598,6 +650,232 @@ public class NoteFragment extends Fragment {
         } catch (NumberFormatException e) {
             return 20f;
         }
+    }
+
+    @Override
+    public void onPause() {
+        if (editing && !fileMode) {
+            saveDraftNow();
+        }
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroyView() {
+        handler.removeCallbacks(autosave);
+        super.onDestroyView();
+    }
+
+    private TextWatcher fieldWatcher(final int index, final EditText field) {
+        return new TextWatcher() {
+            @Override
+            public void beforeTextChanged(final CharSequence s, final int start, final int count, final int after) {
+            }
+
+            @Override
+            public void onTextChanged(final CharSequence s, final int start, final int before, final int count) {
+            }
+
+            @Override
+            public void afterTextChanged(final Editable s) {
+                onFieldEdited(index, field);
+            }
+        };
+    }
+
+    private void onFieldEdited(final int index, final EditText field) {
+        if (replaying || !editing) {
+            return;
+        }
+        lastField = index;
+        histories[index].edited(field.getText().toString(), Math.max(0, field.getSelectionStart()),
+                Math.max(0, field.getSelectionEnd()), SystemClock.uptimeMillis());
+        updateUndoItems();
+        scheduleDraft();
+    }
+
+    private void resetHistories() {
+        histories[FIELD_TITLE].reset(titleField.getText().toString(), titleField.length(), titleField.length());
+        histories[FIELD_TAGS].reset(tagsField.getText().toString(), tagsField.length(), tagsField.length());
+        histories[FIELD_BODY].reset(bodyField.getText().toString(), bodyField.length(), bodyField.length());
+        lastField = FIELD_BODY;
+        updateUndoItems();
+    }
+
+    private void updateUndoItems() {
+        if (toolbar == null || histories == null) {
+            return;
+        }
+        final Menu menu = toolbar.getMenu();
+        final MenuItem undo = menu.findItem(R.id.action_undo);
+        final MenuItem redo = menu.findItem(R.id.action_redo);
+        if (undo != null) {
+            undo.setEnabled(histories[lastField].canUndo());
+        }
+        if (redo != null) {
+            redo.setEnabled(histories[lastField].canRedo());
+        }
+    }
+
+    private void undoEdit() {
+        if (histories != null) {
+            applyHistory(histories[lastField].undo());
+        }
+    }
+
+    private void redoEdit() {
+        if (histories != null) {
+            applyHistory(histories[lastField].redo());
+        }
+    }
+
+    private void applyHistory(final TextHistory.State state) {
+        if (state == null) {
+            return;
+        }
+        final EditText field = fieldAt(lastField);
+        replaying = true;
+        field.setText(state.text);
+        replaying = false;
+        final int length = state.text.length();
+        field.setSelection(clamp(state.selectionStart, length), clamp(state.selectionEnd, length));
+        updateUndoItems();
+        scheduleDraft();
+    }
+
+    private EditText fieldAt(final int index) {
+        switch (index) {
+            case FIELD_TITLE:
+                return titleField;
+            case FIELD_TAGS:
+                return tagsField;
+            default:
+                return bodyField;
+        }
+    }
+
+    private static int clamp(final int value, final int length) {
+        return Math.max(0, Math.min(value, length));
+    }
+
+    private void scheduleDraft() {
+        if (fileMode) {
+            return;
+        }
+        handler.removeCallbacks(autosave);
+        handler.postDelayed(autosave, DRAFT_DELAY_MS);
+    }
+
+    /**
+     * Writes the unsaved text as a sealed draft, or removes the draft when the text matches the saved
+     * note. Writes go through one queue, so an older write never replaces a newer one.
+     */
+    private void saveDraftNow() {
+        handler.removeCallbacks(autosave);
+        final App.Session session = App.session();
+        if (!editing || fileMode || session == null || getContext() == null) {
+            return;
+        }
+        final String title = titleField.getText().toString();
+        final String tags = tagsField.getText().toString();
+        final String body = bodyField.getText().toString();
+        final boolean changed = isChanged();
+        if (changed && body.getBytes(StandardCharsets.UTF_8).length > VaultSession.MAX_NOTE_BYTES) {
+            return;
+        }
+        final long id = noteId;
+        final String name = DraftStore.nameFor(session.file.getPath(), id);
+        final File dir = draftDir();
+        DRAFTS.execute(() -> {
+            final DraftStore store = new DraftStore(dir);
+            try {
+                if (changed) {
+                    store.save(name, session.vault.sealDraft(new Draft(id, title, tags, body).encode()));
+                } else {
+                    store.delete(name);
+                }
+            } catch (IOException | VaultException e) {
+                // A draft is only a copy. The text stays on screen, and the next change tries again.
+            }
+        });
+    }
+
+    /** Looks for a draft of this note and offers to restore it. Runs each time editing starts. */
+    private void offerDraft() {
+        final App.Session session = App.session();
+        if (fileMode || session == null || getContext() == null) {
+            return;
+        }
+        final long id = noteId;
+        final String name = DraftStore.nameFor(session.file.getPath(), id);
+        final File dir = draftDir();
+        DRAFTS.execute(() -> {
+            final DraftStore store = new DraftStore(dir);
+            Draft found = null;
+            try {
+                final byte[] sealed = store.load(name);
+                if (sealed != null) {
+                    found = Draft.decode(session.vault.openDraft(sealed));
+                }
+            } catch (IOException | VaultException e) {
+                store.delete(name);
+            }
+            final Draft result = found;
+            Tasks.ui(() -> {
+                if (isAdded() && editing && noteId == id && result != null) {
+                    showDraftDialog(result);
+                }
+            });
+        });
+    }
+
+    private void showDraftDialog(final Draft draft) {
+        if (draft.title.equals(titleField.getText().toString())
+                && draft.tags.equals(tagsField.getText().toString())
+                && draft.body.equals(bodyField.getText().toString())) {
+            return;
+        }
+        new AlertDialog.Builder(requireContext())
+                .setMessage(R.string.dialog_restoreDraft)
+                .setCancelable(false)
+                .setPositiveButton(R.string.action_restoreDraft, (dialog, which) -> applyDraft(draft))
+                .setNegativeButton(R.string.action_discardDraft, (dialog, which) -> discardDrafts(noteId))
+                .show();
+    }
+
+    /** Puts the draft's text in the fields as edits, so that undo can return to the saved note. */
+    private void applyDraft(final Draft draft) {
+        if (!editing) {
+            return;
+        }
+        titleField.setText(draft.title);
+        tagsField.setText(draft.tags);
+        bodyField.setText(draft.body);
+        scheduleDraft();
+    }
+
+    private void discardDrafts(final long... ids) {
+        final App.Session session = App.session();
+        if (session == null || getContext() == null) {
+            return;
+        }
+        handler.removeCallbacks(autosave);
+        final String[] names = new String[ids.length];
+        for (int i = 0; i < ids.length; i++) {
+            names[i] = DraftStore.nameFor(session.file.getPath(), ids[i]);
+        }
+        final File dir = draftDir();
+        DRAFTS.execute(() -> {
+            final DraftStore store = new DraftStore(dir);
+            for (String name : names) {
+                store.delete(name);
+            }
+        });
+    }
+
+    /** Drafts are kept in the no-backup folder, so they are not copied to a cloud backup. */
+    private File draftDir() {
+        return new File(requireContext().getNoBackupFilesDir(), "drafts");
     }
 
     private void toast(final int message) {

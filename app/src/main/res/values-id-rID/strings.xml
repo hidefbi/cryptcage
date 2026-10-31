@@ -95,4 +95,10 @@
     <string name="action_writable">Dapat ditulis</string>
     <string name="title_copyName">%1$s (salinan)</string>
     <string name="toast_readOnlyKept">%1$d item hanya-baca dibiarkan, tidak dihapus</string>
+    <string name="action_undo">Batalkan</string>
+    <string name="action_redo">Ulangi</string>
+    <string name="action_restoreDraft">Pulihkan</string>
+    <string name="action_discardDraft">Buang</string>
+    <string name="dialog_restoreDraft">Catatan ini memiliki perubahan belum disimpan dari sebelumnya. Pulihkan?</string>
+    <string name="toast_noteTooLarge">Catatan terlalu besar untuk disimpan (batas 8 MB)</string>
 </resources>

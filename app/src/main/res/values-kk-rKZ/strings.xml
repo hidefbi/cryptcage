@@ -95,4 +95,10 @@
     <string name="action_writable">Жазуға болады</string>
     <string name="title_copyName">%1$s (көшірме)</string>
     <string name="toast_readOnlyKept">Тек оқуға арналған %1$d элемент жойылмады</string>
+    <string name="action_undo">Қайтару</string>
+    <string name="action_redo">Қайта орындау</string>
+    <string name="action_restoreDraft">Қалпына келтіру</string>
+    <string name="action_discardDraft">Тастау</string>
+    <string name="dialog_restoreDraft">Бұл жазбада бұрын сақталмаған өзгерістер бар. Қалпына келтірілсін бе?</string>
+    <string name="toast_noteTooLarge">Жазба сақтау үшін тым үлкен (шегі 8 МБ)</string>
 </resources>

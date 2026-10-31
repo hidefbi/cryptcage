@@ -95,4 +95,10 @@
     <string name="action_writable">Muokattava</string>
     <string name="title_copyName">%1$s (kopio)</string>
     <string name="toast_readOnlyKept">%1$d vain luku -kohdetta säilytettiin, ei poistettu</string>
+    <string name="action_undo">Kumoa</string>
+    <string name="action_redo">Tee uudelleen</string>
+    <string name="action_restoreDraft">Palauta</string>
+    <string name="action_discardDraft">Hylkää</string>
+    <string name="dialog_restoreDraft">Tässä muistiinpanossa on aiemmin tallentamattomia muutoksia. Palautetaanko ne?</string>
+    <string name="toast_noteTooLarge">Muistiinpano on liian suuri tallennettavaksi (raja 8 Mt)</string>
 </resources>

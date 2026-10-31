@@ -33,6 +33,9 @@ public final class VaultSession implements AutoCloseable {
     /** Largest single file that can be attached. */
     public static final long MAX_FILE_BYTES = FileKinds.MAX_FILE_BYTES;
 
+    /** Largest note body that can be written. Notes already stored above it still open. */
+    public static final long MAX_NOTE_BYTES = 8L * 1024 * 1024;
+
     /** Largest container file that can be imported. Leaves room for unused records. */
     public static final long MAX_CONTAINER_BYTES = 2L * CONTENT_LIMIT;
 
@@ -138,6 +141,7 @@ public final class VaultSession implements AutoCloseable {
 
     public synchronized long addNote(final String title, final String body, final String tags)
             throws VaultException {
+        checkNoteSize(body);
         try {
             return live().addNote(title, body, tags);
         } catch (StoreException e) {
@@ -147,6 +151,7 @@ public final class VaultSession implements AutoCloseable {
 
     public synchronized void updateNote(final long id, final String title, final String body, final String tags)
             throws VaultException {
+        checkNoteSize(body);
         try {
             live().updateNote(id, title, body, tags);
         } catch (StoreException e) {
@@ -366,6 +371,30 @@ public final class VaultSession implements AutoCloseable {
 
     private static boolean contains(final String value, final String needle) {
         return value != null && value.toLowerCase(Locale.ROOT).contains(needle);
+    }
+
+    /** Encrypts a draft with a key that only this vault can derive. The result can be stored anywhere. */
+    public synchronized byte[] sealDraft(final byte[] plain) throws VaultException {
+        try {
+            return live().sealDraft(plain);
+        } catch (StoreException e) {
+            throw translate(e);
+        }
+    }
+
+    /** Decrypts a draft made by {@link #sealDraft}. Fails for a draft of another vault. */
+    public synchronized byte[] openDraft(final byte[] sealed) throws VaultException {
+        try {
+            return live().openDraft(sealed);
+        } catch (StoreException e) {
+            throw translate(e);
+        }
+    }
+
+    private static void checkNoteSize(final String body) throws VaultException {
+        if (body != null && body.getBytes(java.nio.charset.StandardCharsets.UTF_8).length > MAX_NOTE_BYTES) {
+            throw new VaultException(VaultException.Reason.TOO_LARGE, null);
+        }
     }
 
     private static void checkFileSize(final byte[] data) throws VaultException {

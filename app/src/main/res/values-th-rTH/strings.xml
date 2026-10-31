@@ -95,4 +95,10 @@
     <string name="action_writable">แก้ไขได้</string>
     <string name="title_copyName">%1$s (สำเนา)</string>
     <string name="toast_readOnlyKept">ไม่ได้ลบ %1$d รายการที่อ่านอย่างเดียว</string>
+    <string name="action_undo">เลิกทำ</string>
+    <string name="action_redo">ทำซ้ำ</string>
+    <string name="action_restoreDraft">กู้คืน</string>
+    <string name="action_discardDraft">ทิ้ง</string>
+    <string name="dialog_restoreDraft">บันทึกนี้มีการเปลี่ยนแปลงที่ยังไม่ได้บันทึกจากก่อนหน้า ต้องการกู้คืนหรือไม่</string>
+    <string name="toast_noteTooLarge">บันทึกใหญ่เกินไปที่จะบันทึก (จำกัด 8 MB)</string>
 </resources>
