@@ -7,7 +7,10 @@
 package com.cryptcage.ui;
 
 import java.io.File;
+import java.security.GeneralSecurityException;
 import java.util.Arrays;
+
+import javax.crypto.Cipher;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -33,6 +36,9 @@ import com.cryptcage.utils.VaultSession;
 public class SettingsActivity extends SecureActivity
         implements ChoosePasswordDialogFragment.Callback, InsertPasswordDialogFragment.Callback,
         PinDialogFragment.Callback {
+
+    /** True when the password being asked for sets up biometric unlock, false for the PIN. */
+    private boolean setupForBiometric;
 
     @Override
     protected boolean needsVault() {
@@ -71,7 +77,18 @@ public class SettingsActivity extends SecureActivity
         PasswordChange.apply(this, password);
     }
 
-    /** The password of the open vault, checked before the PIN is set up with it. */
+    /** Asks for the password of the open vault before the PIN or biometric unlock is set up. */
+    void startSetup(final boolean biometric) {
+        final App.Session session = App.session();
+        if (session == null) {
+            return;
+        }
+        setupForBiometric = biometric;
+        InsertPasswordDialogFragment.newInstance(vaultName(session.file))
+                .show(getSupportFragmentManager(), "setup_password");
+    }
+
+    /** The password of the open vault, checked before the PIN or biometric unlock is set up with it. */
     @Override
     public void onPasswordEntered(final String fileName, final char[] password) {
         final App.Session session = App.session();
@@ -80,19 +97,65 @@ public class SettingsActivity extends SecureActivity
             return;
         }
         final File file = session.file;
+        final boolean biometric = setupForBiometric;
         Tasks.io(() -> {
             try {
                 VaultSession.open(file, password).close();
                 PinStore.holdPassword(password);
                 final String name = vaultName(file);
-                Tasks.ui(() -> PinDialogFragment.newInstance(PinDialogFragment.MODE_SETUP, name)
-                        .show(getSupportFragmentManager(), "pin_setup"));
+                if (biometric) {
+                    final Cipher cipher = BiometricVault.encryptCipher();
+                    Tasks.ui(() -> promptBiometricSetup(name, cipher));
+                } else {
+                    Tasks.ui(() -> PinDialogFragment.newInstance(PinDialogFragment.MODE_SETUP, name)
+                            .show(getSupportFragmentManager(), "pin_setup"));
+                }
             } catch (VaultException e) {
+                PinStore.dropPassword();
                 final int message = VaultMessages.messageFor(e.getReason());
                 Tasks.ui(() -> Toast.makeText(this, message, Toast.LENGTH_LONG).show());
+            } catch (GeneralSecurityException e) {
+                PinStore.dropPassword();
+                Tasks.ui(() -> Toast.makeText(this, R.string.bio_unavailable, Toast.LENGTH_LONG).show());
             } finally {
                 Arrays.fill(password, '\0');
             }
+        });
+    }
+
+    private void promptBiometricSetup(final String name, final Cipher cipher) {
+        BiometricVault.authenticate(this, cipher, R.string.bio_prompt_setup, new BiometricVault.Listener() {
+            @Override
+            public void onAuthenticated(final Cipher authorized) {
+                saveBiometric(name, authorized);
+            }
+
+            @Override
+            public void onFailed() {
+                PinStore.dropPassword();
+            }
+        });
+    }
+
+    private void saveBiometric(final String name, final Cipher authorized) {
+        Tasks.io(() -> {
+            final char[] password = PinStore.takePassword();
+            boolean saved = false;
+            if (password != null) {
+                try {
+                    BiometricVault.saveCredential(this, name, authorized, password);
+                    saved = true;
+                } catch (GeneralSecurityException e) {
+                    saved = false;
+                } finally {
+                    Arrays.fill(password, '\0');
+                }
+            }
+            final int message = saved ? R.string.bio_saved : R.string.bio_unavailable;
+            Tasks.ui(() -> {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+                refreshSettingsRows();
+            });
         });
     }
 
@@ -100,10 +163,7 @@ public class SettingsActivity extends SecureActivity
     public void onPinFinished(final int mode, final String vault, final char[] password) {
         if (mode == PinDialogFragment.MODE_SETUP) {
             Toast.makeText(this, R.string.pin_saved, Toast.LENGTH_LONG).show();
-            final Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.settings_container);
-            if (fragment instanceof SettingsFragment) {
-                ((SettingsFragment) fragment).refreshPin();
-            }
+            refreshSettingsRows();
         }
     }
 
@@ -112,7 +172,14 @@ public class SettingsActivity extends SecureActivity
         // Nothing to do: the PIN is not set up, and the password stays as it was.
     }
 
-    /** The name the vault is listed under, which is also the name the PIN store uses. */
+    private void refreshSettingsRows() {
+        final Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.settings_container);
+        if (fragment instanceof SettingsFragment) {
+            ((SettingsFragment) fragment).refreshSecurityRows();
+        }
+    }
+
+    /** The name the vault is listed under, which is also the name the PIN and biometric stores use. */
     private static String vaultName(final File file) {
         final String name = file.getName();
         return name.endsWith(StringMethods.EXTENSION)
@@ -122,36 +189,52 @@ public class SettingsActivity extends SecureActivity
 
     public static class SettingsFragment extends PreferenceFragmentCompat {
 
-        /** Shows whether PIN unlock is on. */
-        void refreshPin() {
+        /** Shows whether the PIN and biometric unlock are on. */
+        void refreshSecurityRows() {
+            final Context context = requireContext();
             final Preference pin = findPreference("pref_pin");
             if (pin != null) {
-                pin.setSummary(PinStore.isEnabled(requireContext()) ? R.string.pref_pin_on : R.string.pref_pin_off);
+                pin.setSummary(PinStore.isEnabled(context) ? R.string.pref_pin_on : R.string.pref_pin_off);
+            }
+            final Preference biometric = findPreference("pref_biometric");
+            if (biometric != null) {
+                biometric.setSummary(BiometricVault.isEnabled(context)
+                        ? R.string.pref_biometric_on : R.string.pref_biometric_off);
             }
         }
 
         private void onPinClicked() {
             final Context context = requireContext();
             if (PinStore.isEnabled(context)) {
-                new AlertDialog.Builder(context)
-                        .setTitle(R.string.pin_disable_title)
-                        .setMessage(R.string.pin_disable_message)
-                        .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                            PinStore.disable(context);
-                            refreshPin();
-                        })
-                        .setNegativeButton(android.R.string.cancel, null)
-                        .show();
-                return;
-            }
-            // Setting a PIN saves the password of the open vault, so the password is asked first.
-            final App.Session session = App.session();
-            if (session != null) {
-                InsertPasswordDialogFragment.newInstance(vaultName(session.file))
-                        .show(getParentFragmentManager(), "pin_password");
+                confirmDisable(R.string.pin_disable_title, R.string.pin_disable_message, () -> {
+                    PinStore.disable(context);
+                    refreshSecurityRows();
+                });
+            } else {
+                ((SettingsActivity) requireActivity()).startSetup(false);
             }
         }
 
+        private void onBiometricClicked() {
+            final Context context = requireContext();
+            if (BiometricVault.isEnabled(context)) {
+                confirmDisable(R.string.bio_disable_title, R.string.bio_disable_message, () -> {
+                    BiometricVault.disable(context);
+                    refreshSecurityRows();
+                });
+            } else {
+                ((SettingsActivity) requireActivity()).startSetup(true);
+            }
+        }
+
+        private void confirmDisable(final int title, final int message, final Runnable action) {
+            new AlertDialog.Builder(requireContext())
+                    .setTitle(title)
+                    .setMessage(message)
+                    .setPositiveButton(android.R.string.ok, (dialog, which) -> action.run())
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .show();
+        }
 
         private void showClipboardTimeout(final Preference preference) {
             final Context context = requireContext();
@@ -181,6 +264,7 @@ public class SettingsActivity extends SecureActivity
                     .setNegativeButton(android.R.string.cancel, null)
                     .show();
         }
+
         @Override
         public void onCreatePreferences(final Bundle savedInstanceState, final String rootKey) {
             setPreferencesFromResource(R.xml.preferences, rootKey);
@@ -219,8 +303,16 @@ public class SettingsActivity extends SecureActivity
                     onPinClicked();
                     return true;
                 });
-                refreshPin();
             }
+            final Preference biometric = findPreference("pref_biometric");
+            if (biometric != null) {
+                biometric.setVisible(unlocked && BiometricVault.canUse(requireContext()));
+                biometric.setOnPreferenceClickListener(preference -> {
+                    onBiometricClicked();
+                    return true;
+                });
+            }
+            refreshSecurityRows();
             final Preference about = findPreference("pref_about");
             if (about != null) {
                 about.setOnPreferenceClickListener(preference -> {

@@ -179,4 +179,14 @@
     <string name="pin_saved">PIN unlock is on.</string>
     <string name="pin_disable_title">Turn off PIN unlock?</string>
     <string name="pin_disable_message">The PIN and the saved passwords for PIN unlock are deleted. Your databases are not changed.</string>
+    <string name="pref_biometric">Biometric unlock</string>
+    <string name="pref_biometric_off">Off</string>
+    <string name="pref_biometric_on">On</string>
+    <string name="bio_prompt_unlock">Unlock the database</string>
+    <string name="bio_prompt_setup">Confirm biometric unlock for this database</string>
+    <string name="bio_use_password">Use password</string>
+    <string name="bio_saved">Biometric unlock is on.</string>
+    <string name="bio_unavailable">Biometric unlock is not available. Use your password.</string>
+    <string name="bio_disable_title">Turn off biometric unlock?</string>
+    <string name="bio_disable_message">The saved passwords for biometric unlock are deleted. Your databases are not changed.</string>
 </resources>

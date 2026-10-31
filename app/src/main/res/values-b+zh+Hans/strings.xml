@@ -175,4 +175,14 @@
     <string name="pin_saved">已开启 PIN 解锁。</string>
     <string name="pin_disable_title">关闭 PIN 解锁？</string>
     <string name="pin_disable_message">PIN 和为解锁保存的密码都会删除，数据库不会改变。</string>
+    <string name="pref_biometric">生物识别解锁</string>
+    <string name="pref_biometric_off">关闭</string>
+    <string name="pref_biometric_on">开启</string>
+    <string name="bio_prompt_unlock">解锁数据库</string>
+    <string name="bio_prompt_setup">确认此数据库的生物识别解锁</string>
+    <string name="bio_use_password">使用密码</string>
+    <string name="bio_saved">已开启生物识别解锁。</string>
+    <string name="bio_unavailable">生物识别解锁不可用，请输入密码。</string>
+    <string name="bio_disable_title">关闭生物识别解锁？</string>
+    <string name="bio_disable_message">为生物识别解锁保存的密码会删除，数据库不会改变。</string>
 </resources>

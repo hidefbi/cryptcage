@@ -131,4 +131,14 @@
     <string name="pin_saved">Sblocco con PIN attivato.</string>
     <string name="pin_disable_title">Disattivare lo sblocco con PIN?</string>
     <string name="pin_disable_message">Il PIN e le password salvate per lo sblocco verranno eliminati. I database non cambiano.</string>
+    <string name="pref_biometric">Sblocco biometrico</string>
+    <string name="pref_biometric_off">Disattivato</string>
+    <string name="pref_biometric_on">Attivo</string>
+    <string name="bio_prompt_unlock">Sblocca il database</string>
+    <string name="bio_prompt_setup">Conferma lo sblocco biometrico per questo database</string>
+    <string name="bio_use_password">Usa la password</string>
+    <string name="bio_saved">Sblocco biometrico attivato.</string>
+    <string name="bio_unavailable">Lo sblocco biometrico non è disponibile. Usa la password.</string>
+    <string name="bio_disable_title">Disattivare lo sblocco biometrico?</string>
+    <string name="bio_disable_message">Le password salvate per lo sblocco biometrico verranno eliminate. I database non cambiano.</string>
 </resources>

@@ -130,4 +130,14 @@
     <string name="pin_saved">Deblocarea cu PIN este activată.</string>
     <string name="pin_disable_title">Dezactivați deblocarea cu PIN?</string>
     <string name="pin_disable_message">PIN-ul și parolele salvate pentru deblocare vor fi șterse. Bazele de date nu se schimbă.</string>
+    <string name="pref_biometric">Deblocare biometrică</string>
+    <string name="pref_biometric_off">Dezactivat</string>
+    <string name="pref_biometric_on">Activat</string>
+    <string name="bio_prompt_unlock">Deblocați baza de date</string>
+    <string name="bio_prompt_setup">Confirmați deblocarea biometrică pentru această bază de date</string>
+    <string name="bio_use_password">Folosiți parola</string>
+    <string name="bio_saved">Deblocarea biometrică este activată.</string>
+    <string name="bio_unavailable">Deblocarea biometrică nu este disponibilă. Folosiți parola.</string>
+    <string name="bio_disable_title">Dezactivați deblocarea biometrică?</string>
+    <string name="bio_disable_message">Parolele salvate pentru deblocarea biometrică vor fi șterse. Bazele de date nu se schimbă.</string>
 </resources>

@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.security.GeneralSecurityException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,6 +22,8 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
+
+import javax.crypto.Cipher;
 import android.text.format.DateUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -297,14 +300,105 @@ public class SelectDatabaseActivity extends SecureActivity
                 .show(getSupportFragmentManager(), "create_password");
     }
 
-    /** Asks for the PIN when this database has a saved password, and the master password otherwise. */
+    /** Asks for the fingerprint when this database has a saved password, and the other ways otherwise. */
     private void askPassword(final String name) {
+        if (BiometricVault.hasCredential(this, name)) {
+            unlockWithBiometric(name);
+        } else {
+            askWithoutBiometric(name);
+        }
+    }
+
+    /** The PIN when this database has a saved password, and the master password otherwise. */
+    private void askWithoutBiometric(final String name) {
         if (PinStore.supported() && PinStore.hasCredential(this, name)) {
             PinDialogFragment.newInstance(PinDialogFragment.MODE_UNLOCK, name)
                     .show(getSupportFragmentManager(), "pin_unlock");
         } else {
             askMasterPassword(name);
         }
+    }
+
+    private void unlockWithBiometric(final String name) {
+        Tasks.io(() -> {
+            Cipher cipher;
+            try {
+                cipher = BiometricVault.decryptCipher(this, name);
+            } catch (GeneralSecurityException e) {
+                cipher = null;
+            }
+            final Cipher ready = cipher;
+            Tasks.ui(() -> {
+                if (ready == null) {
+                    toast(R.string.bio_unavailable);
+                    askWithoutBiometric(name);
+                } else {
+                    BiometricVault.authenticate(this, ready, R.string.bio_prompt_unlock,
+                            new BiometricVault.Listener() {
+                                @Override
+                                public void onAuthenticated(final Cipher authorized) {
+                                    readBiometric(name, authorized);
+                                }
+
+                                @Override
+                                public void onFailed() {
+                                    askWithoutBiometric(name);
+                                }
+                            });
+                }
+            });
+        });
+    }
+
+    private void readBiometric(final String name, final Cipher authorized) {
+        Tasks.io(() -> {
+            char[] password;
+            try {
+                password = BiometricVault.loadCredential(this, name, authorized);
+            } catch (GeneralSecurityException e) {
+                password = null;
+            }
+            final char[] result = password;
+            Tasks.ui(() -> {
+                if (result == null) {
+                    toast(R.string.bio_unavailable);
+                    askWithoutBiometric(name);
+                } else {
+                    onPasswordEntered(name, result);
+                }
+            });
+        });
+    }
+
+    private void registerBiometric(final String name, final Cipher cipher) {
+        BiometricVault.authenticate(this, cipher, R.string.bio_prompt_setup, new BiometricVault.Listener() {
+            @Override
+            public void onAuthenticated(final Cipher authorized) {
+                saveBiometric(name, authorized);
+            }
+
+            @Override
+            public void onFailed() {
+                PinStore.dropPassword();
+                continueRegisteredOpen();
+            }
+        });
+    }
+
+    private void saveBiometric(final String name, final Cipher authorized) {
+        Tasks.io(() -> {
+            final char[] password = PinStore.takePassword();
+            if (password != null) {
+                try {
+                    BiometricVault.saveCredential(this, name, authorized, password);
+                } catch (GeneralSecurityException e) {
+                    // Not saved. The database still opens, and the next open offers it again.
+                } finally {
+                    Arrays.fill(password, '\0');
+                }
+            }
+            Tasks.ui(this::continueRegisteredOpen);
+        });
     }
 
     private void askMasterPassword(final String name) {
@@ -318,6 +412,7 @@ public class SelectDatabaseActivity extends SecureActivity
                 .setPositiveButton(R.string.action_delete, (dialog, which) -> {
                     if (fileFor(name).delete()) {
                         PinStore.removeCredential(this, name);
+                        BiometricVault.removeCredential(this, name);
                         toast(R.string.toast_success_deleteNote);
                     }
                     refreshList();
@@ -333,22 +428,37 @@ public class SelectDatabaseActivity extends SecureActivity
         Tasks.io(() -> {
             try {
                 final VaultSession vault = VaultSession.open(file, password);
-                // With a PIN set, a vault without a saved password is offered one. The copy is held
-                // here, because the caller wipes its array as soon as this method returns.
-                final boolean offerRegister = PinStore.supported() && PinStore.isEnabled(this)
-                        && !PinStore.hasCredential(this, fileName);
-                if (offerRegister) {
+                // With biometric or PIN unlock on, a vault without a saved password is offered one.
+                // The copy is held here, because the caller wipes its array as soon as this returns.
+                Cipher biometricCipher = null;
+                if (BiometricVault.isEnabled(this) && !BiometricVault.hasCredential(this, fileName)) {
+                    try {
+                        biometricCipher = BiometricVault.encryptCipher();
+                        PinStore.holdPassword(password);
+                    } catch (GeneralSecurityException e) {
+                        biometricCipher = null;
+                    }
+                }
+                final Cipher registerCipher = biometricCipher;
+                final boolean offerPin = registerCipher == null && PinStore.supported()
+                        && PinStore.isEnabled(this) && !PinStore.hasCredential(this, fileName);
+                if (offerPin) {
                     PinStore.holdPassword(password);
                 }
+                final boolean offerRegister = registerCipher != null || offerPin;
                 Tasks.ui(() -> {
                     setBusy(false);
-                    if (offerRegister) {
-                        pendingRegisterFile = file;
-                        pendingRegisterVault = vault;
+                    if (!offerRegister) {
+                        openVault(file, vault);
+                        return;
+                    }
+                    pendingRegisterFile = file;
+                    pendingRegisterVault = vault;
+                    if (registerCipher != null) {
+                        registerBiometric(fileName, registerCipher);
+                    } else {
                         PinDialogFragment.newInstance(PinDialogFragment.MODE_REGISTER, fileName)
                                 .show(getSupportFragmentManager(), "pin_register");
-                    } else {
-                        openVault(file, vault);
                     }
                 });
             } catch (VaultException e) {

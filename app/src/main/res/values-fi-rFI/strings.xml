@@ -130,4 +130,14 @@
     <string name="pin_saved">PIN-lukitus on päällä.</string>
     <string name="pin_disable_title">Sammutetaanko PIN-lukitus?</string>
     <string name="pin_disable_message">PIN ja lukituksen salasanat poistetaan. Tietokantoja ei muuteta.</string>
+    <string name="pref_biometric">Biometrinen lukitus</string>
+    <string name="pref_biometric_off">Pois</string>
+    <string name="pref_biometric_on">Päällä</string>
+    <string name="bio_prompt_unlock">Avaa tietokanta</string>
+    <string name="bio_prompt_setup">Vahvista biometrinen avaus tälle tietokannalle</string>
+    <string name="bio_use_password">Käytä salasanaa</string>
+    <string name="bio_saved">Biometrinen lukitus on päällä.</string>
+    <string name="bio_unavailable">Biometrinen lukitus ei ole käytettävissä. Käytä salasanaa.</string>
+    <string name="bio_disable_title">Sammutetaanko biometrinen lukitus?</string>
+    <string name="bio_disable_message">Biometrisen lukituksen tallennetut salasanat poistetaan. Tietokantoja ei muuteta.</string>
 </resources>

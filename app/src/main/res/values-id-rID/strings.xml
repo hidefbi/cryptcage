@@ -130,4 +130,14 @@
     <string name="pin_saved">Buka kunci PIN aktif.</string>
     <string name="pin_disable_title">Matikan buka kunci PIN?</string>
     <string name="pin_disable_message">PIN dan kata sandi tersimpan untuk buka kunci akan dihapus. Database tidak berubah.</string>
+    <string name="pref_biometric">Buka kunci biometrik</string>
+    <string name="pref_biometric_off">Mati</string>
+    <string name="pref_biometric_on">Aktif</string>
+    <string name="bio_prompt_unlock">Buka kunci database</string>
+    <string name="bio_prompt_setup">Konfirmasi buka kunci biometrik untuk database ini</string>
+    <string name="bio_use_password">Gunakan kata sandi</string>
+    <string name="bio_saved">Buka kunci biometrik aktif.</string>
+    <string name="bio_unavailable">Buka kunci biometrik tidak tersedia. Gunakan kata sandi.</string>
+    <string name="bio_disable_title">Matikan buka kunci biometrik?</string>
+    <string name="bio_disable_message">Kata sandi tersimpan untuk buka kunci biometrik akan dihapus. Database tidak berubah.</string>
 </resources>

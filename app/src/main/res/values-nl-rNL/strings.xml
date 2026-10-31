@@ -130,4 +130,14 @@
     <string name="pin_saved">Ontgrendelen met pincode staat aan.</string>
     <string name="pin_disable_title">Ontgrendelen met pincode uitzetten?</string>
     <string name="pin_disable_message">De pincode en de opgeslagen wachtwoorden voor ontgrendelen worden verwijderd. De databases blijven gelijk.</string>
+    <string name="pref_biometric">Ontgrendelen met biometrie</string>
+    <string name="pref_biometric_off">Uit</string>
+    <string name="pref_biometric_on">Aan</string>
+    <string name="bio_prompt_unlock">Database ontgrendelen</string>
+    <string name="bio_prompt_setup">Bevestig het ontgrendelen met biometrie voor deze database</string>
+    <string name="bio_use_password">Wachtwoord gebruiken</string>
+    <string name="bio_saved">Ontgrendelen met biometrie staat aan.</string>
+    <string name="bio_unavailable">Ontgrendelen met biometrie is niet beschikbaar. Gebruik het wachtwoord.</string>
+    <string name="bio_disable_title">Ontgrendelen met biometrie uitzetten?</string>
+    <string name="bio_disable_message">De opgeslagen wachtwoorden voor ontgrendelen met biometrie worden verwijderd. De databases blijven gelijk.</string>
 </resources>

@@ -130,4 +130,14 @@
     <string name="pin_saved">A PIN-kódos feloldás be van kapcsolva.</string>
     <string name="pin_disable_title">Kikapcsolja a PIN-kódos feloldást?</string>
     <string name="pin_disable_message">A PIN-kód és a feloldáshoz mentett jelszavak törlődnek. Az adatbázisok nem változnak.</string>
+    <string name="pref_biometric">Feloldás biometriával</string>
+    <string name="pref_biometric_off">Ki</string>
+    <string name="pref_biometric_on">Be</string>
+    <string name="bio_prompt_unlock">Adatbázis feloldása</string>
+    <string name="bio_prompt_setup">Erősítse meg a biometrikus feloldást ehhez az adatbázishoz</string>
+    <string name="bio_use_password">Jelszó használata</string>
+    <string name="bio_saved">A biometrikus feloldás be van kapcsolva.</string>
+    <string name="bio_unavailable">A biometrikus feloldás nem elérhető. Használja a jelszót.</string>
+    <string name="bio_disable_title">Kikapcsolja a biometrikus feloldást?</string>
+    <string name="bio_disable_message">A biometrikus feloldáshoz mentett jelszavak törlődnek. Az adatbázisok nem változnak.</string>
 </resources>

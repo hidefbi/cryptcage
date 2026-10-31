@@ -130,4 +130,14 @@
     <string name="pin_saved">PIN-Entsperrung ist aktiviert.</string>
     <string name="pin_disable_title">PIN-Entsperrung ausschalten?</string>
     <string name="pin_disable_message">Die PIN und die gespeicherten Passwörter für die Entsperrung werden gelöscht. Die Datenbanken bleiben unverändert.</string>
+    <string name="pref_biometric">Entsperren per Biometrie</string>
+    <string name="pref_biometric_off">Aus</string>
+    <string name="pref_biometric_on">An</string>
+    <string name="bio_prompt_unlock">Datenbank entsperren</string>
+    <string name="bio_prompt_setup">Biometrische Entsperrung für diese Datenbank bestätigen</string>
+    <string name="bio_use_password">Passwort verwenden</string>
+    <string name="bio_saved">Entsperren per Biometrie ist aktiviert.</string>
+    <string name="bio_unavailable">Entsperren per Biometrie ist nicht verfügbar. Bitte Passwort verwenden.</string>
+    <string name="bio_disable_title">Entsperren per Biometrie ausschalten?</string>
+    <string name="bio_disable_message">Die gespeicherten Passwörter für das Entsperren per Biometrie werden gelöscht. Die Datenbanken bleiben unverändert.</string>
 </resources>

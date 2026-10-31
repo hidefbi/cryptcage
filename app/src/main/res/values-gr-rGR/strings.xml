@@ -130,4 +130,14 @@
     <string name="pin_saved">Το ξεκλείδωμα με PIN είναι ενεργό.</string>
     <string name="pin_disable_title">Απενεργοποίηση ξεκλειδώματος με PIN;</string>
     <string name="pin_disable_message">Το PIN και οι αποθηκευμένοι κωδικοί ξεκλειδώματος θα διαγραφούν. Οι βάσεις δεν αλλάζουν.</string>
+    <string name="pref_biometric">Ξεκλείδωμα με βιομετρικά</string>
+    <string name="pref_biometric_off">Απενεργοποιημένο</string>
+    <string name="pref_biometric_on">Ενεργοποιημένο</string>
+    <string name="bio_prompt_unlock">Ξεκλείδωμα βάσης</string>
+    <string name="bio_prompt_setup">Επιβεβαιώστε το ξεκλείδωμα με βιομετρικά για αυτή τη βάση</string>
+    <string name="bio_use_password">Χρήση κωδικού</string>
+    <string name="bio_saved">Το ξεκλείδωμα με βιομετρικά είναι ενεργό.</string>
+    <string name="bio_unavailable">Το ξεκλείδωμα με βιομετρικά δεν είναι διαθέσιμο. Χρησιμοποιήστε τον κωδικό.</string>
+    <string name="bio_disable_title">Απενεργοποίηση ξεκλειδώματος με βιομετρικά;</string>
+    <string name="bio_disable_message">Οι αποθηκευμένοι κωδικοί για ξεκλείδωμα με βιομετρικά θα διαγραφούν. Οι βάσεις δεν αλλάζουν.</string>
 </resources>

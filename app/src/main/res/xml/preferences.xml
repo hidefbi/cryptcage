@@ -37,6 +37,10 @@
             android:title="@string/pref_pin" />
 
         <androidx.preference.Preference
+            android:key="pref_biometric"
+            android:title="@string/pref_biometric" />
+
+        <androidx.preference.Preference
             android:key="pref_clipboardTimeout"
             android:title="@string/pref_clipboardTimeout" />
 

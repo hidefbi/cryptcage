@@ -130,4 +130,14 @@
     <string name="pin_saved">PIN-oplåsning er slået til.</string>
     <string name="pin_disable_title">Slå PIN-oplåsning fra?</string>
     <string name="pin_disable_message">PIN og de gemte adgangskoder til oplåsning slettes. Databaserne ændres ikke.</string>
+    <string name="pref_biometric">Oplåsning med biometri</string>
+    <string name="pref_biometric_off">Fra</string>
+    <string name="pref_biometric_on">Til</string>
+    <string name="bio_prompt_unlock">Lås op for databasen</string>
+    <string name="bio_prompt_setup">Bekræft biometrisk oplåsning for denne database</string>
+    <string name="bio_use_password">Brug adgangskode</string>
+    <string name="bio_saved">Biometrisk oplåsning er slået til.</string>
+    <string name="bio_unavailable">Biometrisk oplåsning er ikke tilgængelig. Brug adgangskoden.</string>
+    <string name="bio_disable_title">Slå biometrisk oplåsning fra?</string>
+    <string name="bio_disable_message">De gemte adgangskoder til biometrisk oplåsning slettes. Databaserne ændres ikke.</string>
 </resources>

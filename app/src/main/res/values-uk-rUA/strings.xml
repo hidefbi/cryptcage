@@ -130,4 +130,14 @@
     <string name="pin_saved">Розблокування PIN-кодом увімкнено.</string>
     <string name="pin_disable_title">Вимкнути розблокування PIN-кодом?</string>
     <string name="pin_disable_message">PIN-код і збережені для розблокування паролі буде видалено. Бази даних не зміняться.</string>
+    <string name="pref_biometric">Розблокування біометрією</string>
+    <string name="pref_biometric_off">Вимкнено</string>
+    <string name="pref_biometric_on">Увімкнено</string>
+    <string name="bio_prompt_unlock">Розблокувати базу даних</string>
+    <string name="bio_prompt_setup">Підтвердьте розблокування біометрією для цієї бази</string>
+    <string name="bio_use_password">Використати пароль</string>
+    <string name="bio_saved">Розблокування біометрією увімкнено.</string>
+    <string name="bio_unavailable">Розблокування біометрією недоступне. Використайте пароль.</string>
+    <string name="bio_disable_title">Вимкнути розблокування біометрією?</string>
+    <string name="bio_disable_message">Збережені для розблокування біометрією паролі буде видалено. Бази даних не зміняться.</string>
 </resources>

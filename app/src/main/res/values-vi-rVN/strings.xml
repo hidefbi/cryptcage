@@ -130,4 +130,14 @@
     <string name="pin_saved">Đã bật mở khóa bằng PIN.</string>
     <string name="pin_disable_title">Tắt mở khóa bằng PIN?</string>
     <string name="pin_disable_message">PIN và mật khẩu đã lưu để mở khóa sẽ bị xóa. Cơ sở dữ liệu không thay đổi.</string>
+    <string name="pref_biometric">Mở khóa bằng sinh trắc học</string>
+    <string name="pref_biometric_off">Tắt</string>
+    <string name="pref_biometric_on">Bật</string>
+    <string name="bio_prompt_unlock">Mở khóa cơ sở dữ liệu</string>
+    <string name="bio_prompt_setup">Xác nhận mở khóa sinh trắc học cho cơ sở dữ liệu này</string>
+    <string name="bio_use_password">Dùng mật khẩu</string>
+    <string name="bio_saved">Đã bật mở khóa bằng sinh trắc học.</string>
+    <string name="bio_unavailable">Không dùng được mở khóa sinh trắc học. Hãy dùng mật khẩu.</string>
+    <string name="bio_disable_title">Tắt mở khóa bằng sinh trắc học?</string>
+    <string name="bio_disable_message">Mật khẩu đã lưu để mở khóa bằng sinh trắc học sẽ bị xóa. Cơ sở dữ liệu không thay đổi.</string>
 </resources>

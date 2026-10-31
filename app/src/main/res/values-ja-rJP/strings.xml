@@ -130,4 +130,14 @@
     <string name="pin_saved">PIN によるロック解除をオンにしました。</string>
     <string name="pin_disable_title">PIN によるロック解除をオフにしますか？</string>
     <string name="pin_disable_message">PIN とロック解除用に保存したパスワードを削除します。データベースは変更されません。</string>
+    <string name="pref_biometric">生体認証でロック解除</string>
+    <string name="pref_biometric_off">オフ</string>
+    <string name="pref_biometric_on">オン</string>
+    <string name="bio_prompt_unlock">データベースのロックを解除</string>
+    <string name="bio_prompt_setup">このデータベースの生体認証によるロック解除を確認</string>
+    <string name="bio_use_password">パスワードを使用</string>
+    <string name="bio_saved">生体認証によるロック解除をオンにしました。</string>
+    <string name="bio_unavailable">生体認証でのロック解除は利用できません。パスワードを使用してください。</string>
+    <string name="bio_disable_title">生体認証によるロック解除をオフにしますか？</string>
+    <string name="bio_disable_message">生体認証用に保存したパスワードを削除します。データベースは変更されません。</string>
 </resources>

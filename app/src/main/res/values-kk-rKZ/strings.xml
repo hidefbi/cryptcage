@@ -130,4 +130,14 @@
     <string name="pin_saved">PIN арқылы ашу қосылды.</string>
     <string name="pin_disable_title">PIN арқылы ашуды өшіру керек пе?</string>
     <string name="pin_disable_message">PIN және ашу үшін сақталған құпия сөздер жойылады. Деректер қорлары өзгермейді.</string>
+    <string name="pref_biometric">Биометриямен ашу</string>
+    <string name="pref_biometric_off">Өшірулі</string>
+    <string name="pref_biometric_on">Қосулы</string>
+    <string name="bio_prompt_unlock">Деректер қорын ашу</string>
+    <string name="bio_prompt_setup">Осы деректер қорын биометриямен ашуды растаңыз</string>
+    <string name="bio_use_password">Құпия сөзді пайдалану</string>
+    <string name="bio_saved">Биометриямен ашу қосылды.</string>
+    <string name="bio_unavailable">Биометриямен ашу қолжетімсіз. Құпия сөзді пайдаланыңыз.</string>
+    <string name="bio_disable_title">Биометриямен ашуды өшіру керек пе?</string>
+    <string name="bio_disable_message">Биометриямен ашу үшін сақталған құпия сөздер жойылады. Деректер қорлары өзгермейді.</string>
 </resources>

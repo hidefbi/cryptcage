@@ -130,4 +130,14 @@
     <string name="pin_saved">เปิดการปลดล็อกด้วย PIN แล้ว</string>
     <string name="pin_disable_title">ปิดการปลดล็อกด้วย PIN ใช่ไหม</string>
     <string name="pin_disable_message">PIN และรหัสผ่านที่บันทึกไว้สำหรับการปลดล็อกจะถูกลบ ฐานข้อมูลจะไม่เปลี่ยนแปลง</string>
+    <string name="pref_biometric">ปลดล็อกด้วยไบโอเมตริก</string>
+    <string name="pref_biometric_off">ปิด</string>
+    <string name="pref_biometric_on">เปิด</string>
+    <string name="bio_prompt_unlock">ปลดล็อกฐานข้อมูล</string>
+    <string name="bio_prompt_setup">ยืนยันการปลดล็อกด้วยไบโอเมตริกสำหรับฐานข้อมูลนี้</string>
+    <string name="bio_use_password">ใช้รหัสผ่าน</string>
+    <string name="bio_saved">เปิดการปลดล็อกด้วยไบโอเมตริกแล้ว</string>
+    <string name="bio_unavailable">ปลดล็อกด้วยไบโอเมตริกใช้ไม่ได้ กรุณาใช้รหัสผ่าน</string>
+    <string name="bio_disable_title">ปิดการปลดล็อกด้วยไบโอเมตริกใช่ไหม</string>
+    <string name="bio_disable_message">รหัสผ่านที่บันทึกไว้สำหรับการปลดล็อกด้วยไบโอเมตริกจะถูกลบ ฐานข้อมูลจะไม่เปลี่ยนแปลง</string>
 </resources>

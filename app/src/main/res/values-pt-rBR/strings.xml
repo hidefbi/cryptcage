@@ -130,4 +130,14 @@
     <string name="pin_saved">Desbloqueio com PIN ativado.</string>
     <string name="pin_disable_title">Desativar o desbloqueio com PIN?</string>
     <string name="pin_disable_message">O PIN e as senhas salvas para o desbloqueio serão apagados. Os bancos de dados não mudam.</string>
+    <string name="pref_biometric">Desbloqueio biométrico</string>
+    <string name="pref_biometric_off">Desativado</string>
+    <string name="pref_biometric_on">Ativado</string>
+    <string name="bio_prompt_unlock">Desbloquear o banco de dados</string>
+    <string name="bio_prompt_setup">Confirme o desbloqueio biométrico deste banco de dados</string>
+    <string name="bio_use_password">Usar senha</string>
+    <string name="bio_saved">Desbloqueio biométrico ativado.</string>
+    <string name="bio_unavailable">O desbloqueio biométrico não está disponível. Use a senha.</string>
+    <string name="bio_disable_title">Desativar o desbloqueio biométrico?</string>
+    <string name="bio_disable_message">As senhas salvas para o desbloqueio biométrico serão apagadas. Os bancos de dados não mudam.</string>
 </resources>

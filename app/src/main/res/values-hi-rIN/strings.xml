@@ -130,4 +130,14 @@
     <string name="pin_saved">PIN से अनलॉक चालू है।</string>
     <string name="pin_disable_title">PIN से अनलॉक बंद करें?</string>
     <string name="pin_disable_message">PIN और अनलॉक के लिए सहेजे गए पासवर्ड हटा दिए जाएँगे। डेटाबेस नहीं बदलेंगे।</string>
+    <string name="pref_biometric">बायोमेट्रिक अनलॉक</string>
+    <string name="pref_biometric_off">बंद</string>
+    <string name="pref_biometric_on">चालू</string>
+    <string name="bio_prompt_unlock">डेटाबेस अनलॉक करें</string>
+    <string name="bio_prompt_setup">इस डेटाबेस के लिए बायोमेट्रिक अनलॉक की पुष्टि करें</string>
+    <string name="bio_use_password">पासवर्ड इस्तेमाल करें</string>
+    <string name="bio_saved">बायोमेट्रिक अनलॉक चालू है।</string>
+    <string name="bio_unavailable">बायोमेट्रिक अनलॉक उपलब्ध नहीं है। पासवर्ड इस्तेमाल करें।</string>
+    <string name="bio_disable_title">बायोमेट्रिक अनलॉक बंद करें?</string>
+    <string name="bio_disable_message">बायोमेट्रिक अनलॉक के लिए सहेजे गए पासवर्ड हटा दिए जाएँगे। डेटाबेस नहीं बदलेंगे।</string>
 </resources>

@@ -130,4 +130,14 @@
     <string name="pin_saved">Odemknutí PINem je zapnuto.</string>
     <string name="pin_disable_title">Vypnout odemknutí PINem?</string>
     <string name="pin_disable_message">PIN a uložená hesla pro odemknutí se smažou. Databáze se nezmění.</string>
+    <string name="pref_biometric">Odemknutí biometrikou</string>
+    <string name="pref_biometric_off">Vypnuto</string>
+    <string name="pref_biometric_on">Zapnuto</string>
+    <string name="bio_prompt_unlock">Odemknout databázi</string>
+    <string name="bio_prompt_setup">Potvrďte odemknutí biometrikou pro tuto databázi</string>
+    <string name="bio_use_password">Použít heslo</string>
+    <string name="bio_saved">Odemknutí biometrikou je zapnuto.</string>
+    <string name="bio_unavailable">Odemknutí biometrikou není k dispozici. Zadejte heslo.</string>
+    <string name="bio_disable_title">Vypnout odemknutí biometrikou?</string>
+    <string name="bio_disable_message">Uložená hesla pro odemknutí biometrikou se smažou. Databáze se nezmění.</string>
 </resources>
