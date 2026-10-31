@@ -140,4 +140,8 @@
     <string name="bio_unavailable">O desbloqueio biométrico não está disponível. Use a senha.</string>
     <string name="bio_disable_title">Desativar o desbloqueio biométrico?</string>
     <string name="bio_disable_message">As senhas salvas para o desbloqueio biométrico serão apagadas. Os bancos de dados não mudam.</string>
+    <string name="bio_reason_os">O desbloqueio biométrico requer Android 6.0 ou superior.</string>
+    <string name="bio_reason_none_enrolled">Nenhuma digital está cadastrada. Adicione uma nas configurações do sistema primeiro.</string>
+    <string name="bio_reason_weak_only">O aparelho só tem desbloqueio facial, que não é forte o bastante para esta função.</string>
+    <string name="bio_reason_no_hardware">O aparelho não tem desbloqueio biométrico forte.</string>
 </resources>

@@ -140,4 +140,8 @@
     <string name="bio_unavailable">Buka kunci biometrik tidak tersedia. Gunakan kata sandi.</string>
     <string name="bio_disable_title">Matikan buka kunci biometrik?</string>
     <string name="bio_disable_message">Kata sandi tersimpan untuk buka kunci biometrik akan dihapus. Database tidak berubah.</string>
+    <string name="bio_reason_os">Buka kunci biometrik memerlukan Android 6.0 atau yang lebih baru.</string>
+    <string name="bio_reason_none_enrolled">Belum ada sidik jari yang disiapkan. Tambahkan dulu di pengaturan sistem.</string>
+    <string name="bio_reason_weak_only">Perangkat hanya punya buka kunci wajah, yang belum cukup kuat untuk fitur ini.</string>
+    <string name="bio_reason_no_hardware">Perangkat ini tidak punya buka kunci biometrik yang kuat.</string>
 </resources>

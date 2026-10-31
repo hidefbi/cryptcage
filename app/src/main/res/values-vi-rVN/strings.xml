@@ -140,4 +140,8 @@
     <string name="bio_unavailable">Không dùng được mở khóa sinh trắc học. Hãy dùng mật khẩu.</string>
     <string name="bio_disable_title">Tắt mở khóa bằng sinh trắc học?</string>
     <string name="bio_disable_message">Mật khẩu đã lưu để mở khóa bằng sinh trắc học sẽ bị xóa. Cơ sở dữ liệu không thay đổi.</string>
+    <string name="bio_reason_os">Mở khóa sinh trắc học cần Android 6.0 trở lên.</string>
+    <string name="bio_reason_none_enrolled">Chưa thiết lập vân tay. Hãy thêm vân tay trong cài đặt hệ thống trước.</string>
+    <string name="bio_reason_weak_only">Thiết bị chỉ có mở khóa bằng khuôn mặt, không đủ mạnh cho tính năng này.</string>
+    <string name="bio_reason_no_hardware">Thiết bị không có mở khóa sinh trắc học mạnh.</string>
 </resources>

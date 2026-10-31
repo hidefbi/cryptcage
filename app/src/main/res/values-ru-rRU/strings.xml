@@ -140,4 +140,8 @@
     <string name="bio_unavailable">Разблокировка по биометрии недоступна. Используйте пароль.</string>
     <string name="bio_disable_title">Выключить разблокировку по биометрии?</string>
     <string name="bio_disable_message">Сохранённые для разблокировки по биометрии пароли будут удалены. Базы данных не изменятся.</string>
+    <string name="bio_reason_os">Разблокировка по биометрии требует Android 6.0 или новее.</string>
+    <string name="bio_reason_none_enrolled">Отпечаток пальца не добавлен. Сначала добавьте его в настройках системы.</string>
+    <string name="bio_reason_weak_only">На устройстве есть только разблокировка по лицу, её недостаточно для этой функции.</string>
+    <string name="bio_reason_no_hardware">На устройстве нет надёжной разблокировки по биометрии.</string>
 </resources>

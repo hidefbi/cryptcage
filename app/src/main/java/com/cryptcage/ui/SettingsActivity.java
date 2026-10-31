@@ -198,8 +198,13 @@ public class SettingsActivity extends SecureActivity
             }
             final Preference biometric = findPreference("pref_biometric");
             if (biometric != null) {
-                biometric.setSummary(BiometricVault.isEnabled(context)
-                        ? R.string.pref_biometric_on : R.string.pref_biometric_off);
+                final int reason = BiometricVault.unavailableReason(context);
+                if (reason != 0) {
+                    biometric.setSummary(reason);
+                } else {
+                    biometric.setSummary(BiometricVault.isEnabled(context)
+                            ? R.string.pref_biometric_on : R.string.pref_biometric_off);
+                }
             }
         }
 
@@ -217,6 +222,11 @@ public class SettingsActivity extends SecureActivity
 
         private void onBiometricClicked() {
             final Context context = requireContext();
+            final int reason = BiometricVault.unavailableReason(context);
+            if (reason != 0) {
+                Toast.makeText(context, reason, Toast.LENGTH_LONG).show();
+                return;
+            }
             if (BiometricVault.isEnabled(context)) {
                 confirmDisable(R.string.bio_disable_title, R.string.bio_disable_message, () -> {
                     BiometricVault.disable(context);
@@ -306,7 +316,7 @@ public class SettingsActivity extends SecureActivity
             }
             final Preference biometric = findPreference("pref_biometric");
             if (biometric != null) {
-                biometric.setVisible(unlocked && BiometricVault.canUse(requireContext()));
+                biometric.setVisible(unlocked);
                 biometric.setOnPreferenceClickListener(preference -> {
                     onBiometricClicked();
                     return true;

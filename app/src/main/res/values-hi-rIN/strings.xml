@@ -140,4 +140,8 @@
     <string name="bio_unavailable">बायोमेट्रिक अनलॉक उपलब्ध नहीं है। पासवर्ड इस्तेमाल करें।</string>
     <string name="bio_disable_title">बायोमेट्रिक अनलॉक बंद करें?</string>
     <string name="bio_disable_message">बायोमेट्रिक अनलॉक के लिए सहेजे गए पासवर्ड हटा दिए जाएँगे। डेटाबेस नहीं बदलेंगे।</string>
+    <string name="bio_reason_os">बायोमेट्रिक अनलॉक के लिए Android 6.0 या नया संस्करण चाहिए।</string>
+    <string name="bio_reason_none_enrolled">कोई फिंगरप्रिंट सेट नहीं है। पहले सिस्टम सेटिंग्स में जोड़ें।</string>
+    <string name="bio_reason_weak_only">इस डिवाइस में केवल चेहरा अनलॉक है, जो इस सुविधा के लिए पर्याप्त सुरक्षित नहीं है।</string>
+    <string name="bio_reason_no_hardware">इस डिवाइस में मज़बूत बायोमेट्रिक अनलॉक नहीं है।</string>
 </resources>

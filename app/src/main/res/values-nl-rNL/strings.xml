@@ -140,4 +140,8 @@
     <string name="bio_unavailable">Ontgrendelen met biometrie is niet beschikbaar. Gebruik het wachtwoord.</string>
     <string name="bio_disable_title">Ontgrendelen met biometrie uitzetten?</string>
     <string name="bio_disable_message">De opgeslagen wachtwoorden voor ontgrendelen met biometrie worden verwijderd. De databases blijven gelijk.</string>
+    <string name="bio_reason_os">Ontgrendelen met biometrie vereist Android 6.0 of later.</string>
+    <string name="bio_reason_none_enrolled">Er is nog geen vingerafdruk ingesteld. Voeg er eerst een toe in de systeeminstellingen.</string>
+    <string name="bio_reason_weak_only">Op dit toestel is alleen gezichtsontgrendeling beschikbaar, die hier niet sterk genoeg is.</string>
+    <string name="bio_reason_no_hardware">Dit toestel heeft geen sterke biometrische ontgrendeling.</string>
 </resources>

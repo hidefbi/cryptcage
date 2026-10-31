@@ -189,4 +189,8 @@
     <string name="bio_unavailable">Biometric unlock is not available. Use your password.</string>
     <string name="bio_disable_title">Turn off biometric unlock?</string>
     <string name="bio_disable_message">The saved passwords for biometric unlock are deleted. Your databases are not changed.</string>
+    <string name="bio_reason_os">Biometric unlock needs Android 6.0 or later.</string>
+    <string name="bio_reason_none_enrolled">No fingerprint is set up. Add one in the system settings first.</string>
+    <string name="bio_reason_weak_only">This device only has face unlock, which is not strong enough for this feature.</string>
+    <string name="bio_reason_no_hardware">This device has no strong biometric unlock.</string>
 </resources>

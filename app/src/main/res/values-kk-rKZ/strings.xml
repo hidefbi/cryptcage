@@ -140,4 +140,8 @@
     <string name="bio_unavailable">Биометриямен ашу қолжетімсіз. Құпия сөзді пайдаланыңыз.</string>
     <string name="bio_disable_title">Биометриямен ашуды өшіру керек пе?</string>
     <string name="bio_disable_message">Биометриямен ашу үшін сақталған құпия сөздер жойылады. Деректер қорлары өзгермейді.</string>
+    <string name="bio_reason_os">Биометриямен ашу үшін Android 6.0 немесе одан жаңа нұсқа қажет.</string>
+    <string name="bio_reason_none_enrolled">Саусақ ізі орнатылмаған. Алдымен жүйе параметрлерінде қосыңыз.</string>
+    <string name="bio_reason_weak_only">Құрылғыда тек бет арқылы ашу бар, бұл функция үшін жеткіліксіз.</string>
+    <string name="bio_reason_no_hardware">Құрылғыда күшті биометриялық ашу жоқ.</string>
 </resources>

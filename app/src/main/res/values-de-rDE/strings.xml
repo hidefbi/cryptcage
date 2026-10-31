@@ -140,4 +140,8 @@
     <string name="bio_unavailable">Entsperren per Biometrie ist nicht verfügbar. Bitte Passwort verwenden.</string>
     <string name="bio_disable_title">Entsperren per Biometrie ausschalten?</string>
     <string name="bio_disable_message">Die gespeicherten Passwörter für das Entsperren per Biometrie werden gelöscht. Die Datenbanken bleiben unverändert.</string>
+    <string name="bio_reason_os">Entsperren per Biometrie benötigt Android 6.0 oder neuer.</string>
+    <string name="bio_reason_none_enrolled">Es ist noch kein Fingerabdruck eingerichtet. Bitte zuerst in den Systemeinstellungen hinzufügen.</string>
+    <string name="bio_reason_weak_only">Auf diesem Gerät ist nur Gesichtsentsperrung verfügbar, sie ist für diese Funktion nicht stark genug.</string>
+    <string name="bio_reason_no_hardware">Dieses Gerät hat keine starke biometrische Entsperrung.</string>
 </resources>

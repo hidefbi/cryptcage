@@ -140,4 +140,8 @@
     <string name="bio_unavailable">Odemknutí biometrikou není k dispozici. Zadejte heslo.</string>
     <string name="bio_disable_title">Vypnout odemknutí biometrikou?</string>
     <string name="bio_disable_message">Uložená hesla pro odemknutí biometrikou se smažou. Databáze se nezmění.</string>
+    <string name="bio_reason_os">Odemknutí biometrikou vyžaduje Android 6.0 nebo novější.</string>
+    <string name="bio_reason_none_enrolled">Není nastaven žádný otisk prstu. Nejprve jej přidejte v nastavení systému.</string>
+    <string name="bio_reason_weak_only">Zařízení má pouze odemknutí obličejem, které pro tuto funkci nestačí.</string>
+    <string name="bio_reason_no_hardware">Zařízení nemá silné biometrické odemknutí.</string>
 </resources>

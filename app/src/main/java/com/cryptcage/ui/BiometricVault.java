@@ -65,11 +65,29 @@ public final class BiometricVault {
     private BiometricVault() {
     }
 
-    /** True when the device has strong biometrics enrolled and the OS is new enough. */
+    /** True when strong biometrics are enrolled and the OS is new enough. */
     public static boolean canUse(final Context context) {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-                && BiometricManager.from(context).canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG)
-                == BiometricManager.BIOMETRIC_SUCCESS;
+        return unavailableReason(context) == 0;
+    }
+
+    /** The string that says why biometric unlock cannot be used on this device, or 0 when it can. */
+    public static int unavailableReason(final Context context) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return R.string.bio_reason_os;
+        }
+        final BiometricManager manager = BiometricManager.from(context);
+        final int strong = manager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG);
+        if (strong == BiometricManager.BIOMETRIC_SUCCESS) {
+            return 0;
+        }
+        if (strong == BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED) {
+            return R.string.bio_reason_none_enrolled;
+        }
+        final int weak = manager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_WEAK);
+        if (weak == BiometricManager.BIOMETRIC_SUCCESS) {
+            return R.string.bio_reason_weak_only;
+        }
+        return R.string.bio_reason_no_hardware;
     }
 
     public static boolean isEnabled(final Context context) {

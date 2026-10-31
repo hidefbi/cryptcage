@@ -140,4 +140,8 @@
     <string name="bio_unavailable">Biometrisk oplåsning er ikke tilgængelig. Brug adgangskoden.</string>
     <string name="bio_disable_title">Slå biometrisk oplåsning fra?</string>
     <string name="bio_disable_message">De gemte adgangskoder til biometrisk oplåsning slettes. Databaserne ændres ikke.</string>
+    <string name="bio_reason_os">Oplåsning med biometri kræver Android 6.0 eller nyere.</string>
+    <string name="bio_reason_none_enrolled">Der er ingen fingeraftryk oprettet. Tilføj et i systemindstillingerne først.</string>
+    <string name="bio_reason_weak_only">Enheden har kun ansigtsoplåsning, som ikke er stærk nok til denne funktion.</string>
+    <string name="bio_reason_no_hardware">Enheden har ingen stærk biometrisk oplåsning.</string>
 </resources>

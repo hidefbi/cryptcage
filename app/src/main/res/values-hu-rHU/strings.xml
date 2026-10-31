@@ -140,4 +140,8 @@
     <string name="bio_unavailable">A biometrikus feloldás nem elérhető. Használja a jelszót.</string>
     <string name="bio_disable_title">Kikapcsolja a biometrikus feloldást?</string>
     <string name="bio_disable_message">A biometrikus feloldáshoz mentett jelszavak törlődnek. Az adatbázisok nem változnak.</string>
+    <string name="bio_reason_os">A biometrikus feloldáshoz Android 6.0 vagy újabb kell.</string>
+    <string name="bio_reason_none_enrolled">Nincs ujjlenyomat beállítva. Először adja hozzá a rendszerbeállításokban.</string>
+    <string name="bio_reason_weak_only">Az eszközön csak arcfelismerés van, ez erre a funkcióra nem elég erős.</string>
+    <string name="bio_reason_no_hardware">Az eszközön nincs erős biometrikus feloldás.</string>
 </resources>

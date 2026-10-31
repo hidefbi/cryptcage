@@ -141,4 +141,8 @@
     <string name="bio_unavailable">Lo sblocco biometrico non è disponibile. Usa la password.</string>
     <string name="bio_disable_title">Disattivare lo sblocco biometrico?</string>
     <string name="bio_disable_message">Le password salvate per lo sblocco biometrico verranno eliminate. I database non cambiano.</string>
+    <string name="bio_reason_os">Lo sblocco biometrico richiede Android 6.0 o successivo.</string>
+    <string name="bio_reason_none_enrolled">Nessuna impronta configurata. Aggiungila prima nelle impostazioni di sistema.</string>
+    <string name="bio_reason_weak_only">Il dispositivo ha solo lo sblocco con il viso, troppo debole per questa funzione.</string>
+    <string name="bio_reason_no_hardware">Il dispositivo non ha uno sblocco biometrico sicuro.</string>
 </resources>

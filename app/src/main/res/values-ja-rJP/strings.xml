@@ -140,4 +140,8 @@
     <string name="bio_unavailable">生体認証でのロック解除は利用できません。パスワードを使用してください。</string>
     <string name="bio_disable_title">生体認証によるロック解除をオフにしますか？</string>
     <string name="bio_disable_message">生体認証用に保存したパスワードを削除します。データベースは変更されません。</string>
+    <string name="bio_reason_os">生体認証によるロック解除には Android 6.0 以降が必要です。</string>
+    <string name="bio_reason_none_enrolled">指紋が登録されていません。先にシステム設定で追加してください。</string>
+    <string name="bio_reason_weak_only">この端末は顔認証のみで、この機能には強度が足りません。</string>
+    <string name="bio_reason_no_hardware">この端末には強力な生体認証がありません。</string>
 </resources>

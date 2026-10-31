@@ -140,4 +140,8 @@
     <string name="bio_unavailable">Το ξεκλείδωμα με βιομετρικά δεν είναι διαθέσιμο. Χρησιμοποιήστε τον κωδικό.</string>
     <string name="bio_disable_title">Απενεργοποίηση ξεκλειδώματος με βιομετρικά;</string>
     <string name="bio_disable_message">Οι αποθηκευμένοι κωδικοί για ξεκλείδωμα με βιομετρικά θα διαγραφούν. Οι βάσεις δεν αλλάζουν.</string>
+    <string name="bio_reason_os">Το ξεκλείδωμα με βιομετρικά απαιτεί Android 6.0 ή νεότερο.</string>
+    <string name="bio_reason_none_enrolled">Δεν έχει ρυθμιστεί δακτυλικό αποτύπωμα. Προσθέστε ένα στις ρυθμίσεις του συστήματος.</string>
+    <string name="bio_reason_weak_only">Η συσκευή διαθέτει μόνο ξεκλείδωμα προσώπου, το οποίο δεν είναι αρκετά ισχυρό για αυτή τη λειτουργία.</string>
+    <string name="bio_reason_no_hardware">Η συσκευή δεν διαθέτει ισχυρό ξεκλείδωμα με βιομετρικά.</string>
 </resources>

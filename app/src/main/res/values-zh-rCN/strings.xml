@@ -185,4 +185,8 @@
     <string name="bio_unavailable">生物识别解锁不可用，请输入密码。</string>
     <string name="bio_disable_title">关闭生物识别解锁？</string>
     <string name="bio_disable_message">为生物识别解锁保存的密码会删除，数据库不会改变。</string>
+    <string name="bio_reason_os">生物识别解锁需要 Android 6.0 或更高版本。</string>
+    <string name="bio_reason_none_enrolled">尚未录入指纹，请先在系统设置中添加。</string>
+    <string name="bio_reason_weak_only">本机只有人脸解锁，强度不足以用于此功能。</string>
+    <string name="bio_reason_no_hardware">本机没有可用于此功能的强生物识别。</string>
 </resources>
