@@ -89,4 +89,10 @@
         <item>Azul</item>
         <item>Areia</item>
     </string-array>
+    <string name="action_select">Selecionar</string>
+    <string name="action_copy">Copiar</string>
+    <string name="action_readOnly">Só de leitura</string>
+    <string name="action_writable">Editável</string>
+    <string name="title_copyName">%1$s (cópia)</string>
+    <string name="toast_readOnlyKept">%1$d itens só de leitura mantidos, não eliminados</string>
 </resources>

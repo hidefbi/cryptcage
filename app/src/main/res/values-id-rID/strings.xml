@@ -89,4 +89,10 @@
         <item>Biru</item>
         <item>Pasir</item>
     </string-array>
+    <string name="action_select">Pilih</string>
+    <string name="action_copy">Salin</string>
+    <string name="action_readOnly">Hanya baca</string>
+    <string name="action_writable">Dapat ditulis</string>
+    <string name="title_copyName">%1$s (salinan)</string>
+    <string name="toast_readOnlyKept">%1$d item hanya-baca dibiarkan, tidak dihapus</string>
 </resources>

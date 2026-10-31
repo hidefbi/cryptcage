@@ -89,4 +89,10 @@
         <item>Blauw</item>
         <item>Zand</item>
     </string-array>
+    <string name="action_select">Selecteren</string>
+    <string name="action_copy">Kopiëren</string>
+    <string name="action_readOnly">Alleen-lezen</string>
+    <string name="action_writable">Schrijfbaar</string>
+    <string name="title_copyName">%1$s (kopie)</string>
+    <string name="toast_readOnlyKept">%1$d alleen-lezen items bewaard, niet verwijderd</string>
 </resources>

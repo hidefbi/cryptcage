@@ -89,4 +89,10 @@
         <item>Синя</item>
         <item>Піщана</item>
     </string-array>
+    <string name="action_select">Вибрати</string>
+    <string name="action_copy">Копіювати</string>
+    <string name="action_readOnly">Лише читання</string>
+    <string name="action_writable">Можна змінювати</string>
+    <string name="title_copyName">%1$s (копія)</string>
+    <string name="toast_readOnlyKept">Не видалено %1$d елементів лише для читання</string>
 </resources>

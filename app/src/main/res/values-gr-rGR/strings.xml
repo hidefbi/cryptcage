@@ -89,4 +89,10 @@
         <item>Μπλε</item>
         <item>Άμμος</item>
     </string-array>
+    <string name="action_select">Επιλογή</string>
+    <string name="action_copy">Αντιγραφή</string>
+    <string name="action_readOnly">Μόνο ανάγνωση</string>
+    <string name="action_writable">Εγγράψιμο</string>
+    <string name="title_copyName">%1$s (αντίγραφο)</string>
+    <string name="toast_readOnlyKept">Διατηρήθηκαν %1$d στοιχεία μόνο για ανάγνωση, δεν διαγράφηκαν</string>
 </resources>

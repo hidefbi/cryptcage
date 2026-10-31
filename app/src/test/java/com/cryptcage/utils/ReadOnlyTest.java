@@ -61,12 +61,59 @@ public class ReadOnlyTest {
     }
 
     @Test
-    public void readOnlyCanStillBeDeleted() throws Exception {
+    public void readOnlyCannotBeDeletedOrStarred() throws Exception {
         try (VaultSession vault = VaultSession.create(new File(folder.getRoot(), "c.cc3"), PASSWORD)) {
             final long id = vault.addNote("Title", "body", "");
             vault.setReadOnly(id, true);
-            vault.delete(id);
-            assertTrue(vault.list().isEmpty());
+            try {
+                vault.delete(id);
+                fail("a read-only note must not be deleted");
+            } catch (VaultException expected) {
+                assertEquals(Reason.REJECTED, expected.getReason());
+            }
+            try {
+                vault.setStarred(id, true);
+                fail("a read-only note must not be starred");
+            } catch (VaultException expected) {
+                assertEquals(Reason.REJECTED, expected.getReason());
+            }
+            assertEquals(1, vault.list().size());
+            assertFalse(vault.summary(id).starred);
+        }
+    }
+
+    @Test
+    public void copyIsPlacedAfterOriginalAndIsWritable() throws Exception {
+        try (VaultSession vault = VaultSession.create(new File(folder.getRoot(), "e.cc3"), PASSWORD)) {
+            final long first = vault.addNote("First", "a", "");
+            final long second = vault.addNote("Second", "b", "");
+            final long third = vault.addNote("Third", "c", "");
+            vault.setReadOnly(first, true);
+            final long copy = vault.duplicate(first, "First(copy)");
+            assertEquals("a", vault.body(copy));
+            assertFalse(vault.summary(copy).readOnly);
+            assertTrue(vault.summary(first).order < vault.summary(copy).order);
+            assertTrue(vault.summary(copy).order < vault.summary(second).order);
+            vault.updateNote(copy, "First(copy)", "changed", "");
+        }
+    }
+
+    @Test
+    public void manualOrderSurvivesReopen() throws Exception {
+        final File file = new File(folder.getRoot(), "f.cc3");
+        final long a;
+        final long b;
+        final long c;
+        try (VaultSession vault = VaultSession.create(file, PASSWORD)) {
+            a = vault.addNote("A", "x", "");
+            b = vault.addNote("B", "y", "");
+            c = vault.addNote("C", "z", "");
+            vault.reorder(java.util.Arrays.asList(c, a, b));
+            vault.save();
+        }
+        try (VaultSession vault = VaultSession.open(file, PASSWORD)) {
+            assertTrue(vault.summary(c).order < vault.summary(a).order);
+            assertTrue(vault.summary(a).order < vault.summary(b).order);
         }
     }
 

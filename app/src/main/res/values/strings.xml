@@ -138,4 +138,10 @@
     </string-array>
     <string name="pref_screenshot">Screenshot mode</string>
     <string name="pref_screenshot_summary">Allow screenshots and the recent-apps preview of notes. Off keeps notes hidden.</string>
+    <string name="action_select">Select</string>
+    <string name="action_copy">Copy</string>
+    <string name="action_readOnly">Read-only</string>
+    <string name="action_writable">Writable</string>
+    <string name="title_copyName">%1$s (copy)</string>
+    <string name="toast_readOnlyKept">Kept %1$d read-only items, they were not deleted</string>
 </resources>

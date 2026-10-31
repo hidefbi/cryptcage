@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -35,7 +37,9 @@ final class NoteRepository implements AutoCloseable {
     /** Unused bytes below this amount are not worth a rewrite. */
     static final long COMPACT_MIN_WASTE = 64L << 20;
 
-    private static final int INDEX_VERSION = 1;
+    /** Version 2 adds the manual order of each entry. Version 1 indexes are still read. */
+    private static final int INDEX_VERSION = 2;
+    private static final int INDEX_VERSION_WITHOUT_ORDER = 1;
     private static final int MAX_STRING_BYTES = 1 << 20;
     private static final int MAX_ENTRIES = 1_000_000;
     private static final int FLAG_STARRED = 1;
@@ -53,6 +57,8 @@ final class NoteRepository implements AutoCloseable {
         String fileName;
         boolean starred;
         boolean readOnly;
+        /** Position in the manual order. Entries are listed by this value when it is used. */
+        long order;
         long size;
         long[] blocks;
 
@@ -101,6 +107,67 @@ final class NoteRepository implements AutoCloseable {
         return put(null, KIND_NOTE, title, tags, null, bytes(body));
     }
 
+    /**
+     * Makes a copy of an entry under a new title. The copy is placed right after the original
+     * in the manual order, and the other entries keep their relative order.
+     */
+    long duplicate(final long id, final String title) throws StoreException {
+        final Entry source = find(id);
+        final long copyId = source.isFile()
+                ? put(null, KIND_FILE, title, "", title, readFile(id))
+                : put(null, KIND_NOTE, title, source.tags, null, bytes(readBody(id)));
+        final List<Entry> ordered = orderedEntries();
+        ordered.remove(entries.get(copyId));
+        ordered.add(ordered.indexOf(source) + 1, entries.get(copyId));
+        renumber(ordered);
+        return copyId;
+    }
+
+    /** Sets the manual order to the given ids. Entries not in the list keep their relative order after it. */
+    void reorder(final List<Long> ids) throws StoreException {
+        final List<Entry> ordered = new ArrayList<>();
+        final Set<Long> listed = new HashSet<>();
+        for (Long id : ids) {
+            ordered.add(find(id));
+            listed.add(id);
+        }
+        for (Entry entry : orderedEntries()) {
+            if (!listed.contains(entry.id)) {
+                ordered.add(entry);
+            }
+        }
+        renumber(ordered);
+    }
+
+    /** Entries sorted by their manual order, then by id. */
+    private List<Entry> orderedEntries() {
+        final List<Entry> ordered = new ArrayList<>(entries.values());
+        Collections.sort(ordered, new Comparator<Entry>() {
+            @Override
+            public int compare(final Entry a, final Entry b) {
+                if (a.order != b.order) {
+                    return a.order < b.order ? -1 : 1;
+                }
+                return a.id < b.id ? -1 : (a.id == b.id ? 0 : 1);
+            }
+        });
+        return ordered;
+    }
+
+    private static void renumber(final List<Entry> ordered) {
+        for (int i = 0; i < ordered.size(); i++) {
+            ordered.get(i).order = i + 1L;
+        }
+    }
+
+    private long nextOrder() {
+        long highest = 0;
+        for (Entry entry : entries.values()) {
+            highest = Math.max(highest, entry.order);
+        }
+        return highest + 1;
+    }
+
     void updateNote(final long id, final String title, final String body, final String tags)
             throws StoreException {
         put(requireWritable(id, KIND_NOTE), KIND_NOTE, title, tags, null, bytes(body));
@@ -117,7 +184,11 @@ final class NoteRepository implements AutoCloseable {
     }
 
     void setStarred(final long id, final boolean starred) throws StoreException {
-        find(id).starred = starred;
+        final Entry entry = find(id);
+        if (entry.readOnly) {
+            throw new StoreException(StoreException.Reason.BAD_ARGUMENT, "entry " + id + " is read-only");
+        }
+        entry.starred = starred;
     }
 
     void setReadOnly(final long id, final boolean readOnly) throws StoreException {
@@ -126,6 +197,9 @@ final class NoteRepository implements AutoCloseable {
 
     void delete(final long id) throws StoreException {
         final Entry entry = find(id);
+        if (entry.readOnly) {
+            throw new StoreException(StoreException.Reason.BAD_ARGUMENT, "entry " + id + " is read-only");
+        }
         entries.remove(id);
         releaseBlocks(entry.blocks);
     }
@@ -260,6 +334,9 @@ final class NoteRepository implements AutoCloseable {
             target.tags = cleanTags;
             target.fileName = cleanName;
         }
+        if (existing == null) {
+            target.order = nextOrder();
+        }
         final long[] old = target.blocks;
         target.blocks = blocks;
         target.size = data.length;
@@ -343,6 +420,7 @@ final class NoteRepository implements AutoCloseable {
                 writeString(out, entry.tags);
                 writeString(out, entry.fileName);
                 out.writeLong(entry.size);
+                out.writeLong(entry.order);
                 out.writeInt(entry.blocks.length);
                 for (long block : entry.blocks) {
                     out.writeLong(block);
@@ -364,7 +442,8 @@ final class NoteRepository implements AutoCloseable {
         }
         final Set<Long> referenced = new HashSet<>();
         try (DataInputStream in = new DataInputStream(new ByteArrayInputStream(raw))) {
-            if (in.readUnsignedByte() != INDEX_VERSION) {
+            final int version = in.readUnsignedByte();
+            if (version != INDEX_VERSION && version != INDEX_VERSION_WITHOUT_ORDER) {
                 throw corrupt("index version");
             }
             nextEntry = in.readLong();
@@ -384,6 +463,9 @@ final class NoteRepository implements AutoCloseable {
                 entry.starred = (flags & FLAG_STARRED) != 0;
                 entry.readOnly = (flags & FLAG_READ_ONLY) != 0;
                 entry.size = in.readLong();
+                if (version == INDEX_VERSION) {
+                    entry.order = in.readLong();
+                }
                 final int blocks = in.readInt();
                 if (blocks < 0 || blocks > BlockStore.MAX_BLOCKS) {
                     throw corrupt("block count");

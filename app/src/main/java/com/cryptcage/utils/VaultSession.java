@@ -45,6 +45,7 @@ public final class VaultSession implements AutoCloseable {
         public final String fileName;
         public final boolean starred;
         public final boolean readOnly;
+        public final long order;
         public final long size;
 
         Summary(final NoteRepository.Entry entry) {
@@ -55,6 +56,7 @@ public final class VaultSession implements AutoCloseable {
             this.fileName = entry.fileName;
             this.starred = entry.starred;
             this.readOnly = entry.readOnly;
+            this.order = entry.order;
             this.size = entry.size;
         }
     }
@@ -182,6 +184,24 @@ public final class VaultSession implements AutoCloseable {
     public synchronized void setReadOnly(final long id, final boolean readOnly) throws VaultException {
         try {
             live().setReadOnly(id, readOnly);
+        } catch (StoreException e) {
+            throw translate(e);
+        }
+    }
+
+    /** Copies a note or file under a new title. The copy is placed right after the original. */
+    public synchronized long duplicate(final long id, final String title) throws VaultException {
+        try {
+            return live().duplicate(id, title);
+        } catch (StoreException e) {
+            throw translate(e);
+        }
+    }
+
+    /** Sets the manual order to the given ids, in that order. */
+    public synchronized void reorder(final List<Long> ids) throws VaultException {
+        try {
+            live().reorder(ids);
         } catch (StoreException e) {
             throw translate(e);
         }

@@ -89,4 +89,10 @@
         <item>Albastru</item>
         <item>Nisip</item>
     </string-array>
+    <string name="action_select">Selectează</string>
+    <string name="action_copy">Copiază</string>
+    <string name="action_readOnly">Doar citire</string>
+    <string name="action_writable">Scriere permisă</string>
+    <string name="title_copyName">%1$s (copie)</string>
+    <string name="toast_readOnlyKept">%1$d elemente doar pentru citire păstrate, neșterse</string>
 </resources>

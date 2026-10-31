@@ -89,4 +89,10 @@
         <item>नीला</item>
         <item>रेत</item>
     </string-array>
+    <string name="action_select">चुनें</string>
+    <string name="action_copy">कॉपी करें</string>
+    <string name="action_readOnly">केवल पढ़ें</string>
+    <string name="action_writable">लिखने योग्य</string>
+    <string name="title_copyName">%1$s (कॉपी)</string>
+    <string name="toast_readOnlyKept">%1$d केवल-पढ़ने वाले आइटम नहीं हटाए गए</string>
 </resources>

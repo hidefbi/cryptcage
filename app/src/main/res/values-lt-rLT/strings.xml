@@ -89,4 +89,10 @@
         <item>Mėlyna</item>
         <item>Smėlio</item>
     </string-array>
+    <string name="action_select">Pasirinkti</string>
+    <string name="action_copy">Kopijuoti</string>
+    <string name="action_readOnly">Tik skaitymui</string>
+    <string name="action_writable">Redaguojama</string>
+    <string name="title_copyName">%1$s (kopija)</string>
+    <string name="toast_readOnlyKept">%1$d elementai tik skaitymui pasilikti, neištrinti</string>
 </resources>

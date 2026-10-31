@@ -89,4 +89,10 @@
         <item>Синяя</item>
         <item>Песочная</item>
     </string-array>
+    <string name="action_select">Выбрать</string>
+    <string name="action_copy">Копировать</string>
+    <string name="action_readOnly">Только чтение</string>
+    <string name="action_writable">Можно изменять</string>
+    <string name="title_copyName">%1$s (копия)</string>
+    <string name="toast_readOnlyKept">Не удалено %1$d элементов только для чтения</string>
 </resources>

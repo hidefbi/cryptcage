@@ -89,4 +89,10 @@
         <item>Көк</item>
         <item>Құм</item>
     </string-array>
+    <string name="action_select">Таңдау</string>
+    <string name="action_copy">Көшіру</string>
+    <string name="action_readOnly">Тек оқу</string>
+    <string name="action_writable">Жазуға болады</string>
+    <string name="title_copyName">%1$s (көшірме)</string>
+    <string name="toast_readOnlyKept">Тек оқуға арналған %1$d элемент жойылмады</string>
 </resources>

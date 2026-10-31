@@ -89,4 +89,10 @@
         <item>น้ำเงิน</item>
         <item>ทราย</item>
     </string-array>
+    <string name="action_select">เลือก</string>
+    <string name="action_copy">คัดลอก</string>
+    <string name="action_readOnly">อ่านอย่างเดียว</string>
+    <string name="action_writable">แก้ไขได้</string>
+    <string name="title_copyName">%1$s (สำเนา)</string>
+    <string name="toast_readOnlyKept">ไม่ได้ลบ %1$d รายการที่อ่านอย่างเดียว</string>
 </resources>

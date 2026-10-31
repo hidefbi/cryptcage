@@ -134,4 +134,10 @@
         <item>蓝青</item>
         <item>米色</item>
     </string-array>
+    <string name="action_select">选择</string>
+    <string name="action_copy">复制</string>
+    <string name="action_readOnly">只读</string>
+    <string name="action_writable">可写</string>
+    <string name="title_copyName">%1$s(复制)</string>
+    <string name="toast_readOnlyKept">已保留 %1$d 个只读条目,未删除</string>
 </resources>

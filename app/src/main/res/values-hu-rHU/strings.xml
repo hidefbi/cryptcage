@@ -89,4 +89,10 @@
         <item>Kék</item>
         <item>Homok</item>
     </string-array>
+    <string name="action_select">Kijelölés</string>
+    <string name="action_copy">Másolás</string>
+    <string name="action_readOnly">Csak olvasható</string>
+    <string name="action_writable">Szerkeszthető</string>
+    <string name="title_copyName">%1$s (másolat)</string>
+    <string name="toast_readOnlyKept">%1$d csak olvasható elem megmaradt, nem lett törölve</string>
 </resources>

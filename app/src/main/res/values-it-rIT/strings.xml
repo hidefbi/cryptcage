@@ -90,4 +90,10 @@
         <item>Blu</item>
         <item>Sabbia</item>
     </string-array>
+    <string name="action_select">Seleziona</string>
+    <string name="action_copy">Copia</string>
+    <string name="action_readOnly">Sola lettura</string>
+    <string name="action_writable">Scrivibile</string>
+    <string name="title_copyName">%1$s (copia)</string>
+    <string name="toast_readOnlyKept">%1$d elementi in sola lettura conservati, non eliminati</string>
 </resources>

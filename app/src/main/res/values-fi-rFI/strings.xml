@@ -89,4 +89,10 @@
         <item>Sininen</item>
         <item>Hiekka</item>
     </string-array>
+    <string name="action_select">Valitse</string>
+    <string name="action_copy">Kopioi</string>
+    <string name="action_readOnly">Vain luku</string>
+    <string name="action_writable">Muokattava</string>
+    <string name="title_copyName">%1$s (kopio)</string>
+    <string name="toast_readOnlyKept">%1$d vain luku -kohdetta säilytettiin, ei poistettu</string>
 </resources>

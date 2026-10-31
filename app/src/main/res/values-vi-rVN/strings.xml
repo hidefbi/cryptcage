@@ -89,4 +89,10 @@
         <item>Xanh dương</item>
         <item>Cát</item>
     </string-array>
+    <string name="action_select">Chọn</string>
+    <string name="action_copy">Sao chép</string>
+    <string name="action_readOnly">Chỉ đọc</string>
+    <string name="action_writable">Có thể ghi</string>
+    <string name="title_copyName">%1$s (bản sao)</string>
+    <string name="toast_readOnlyKept">Đã giữ %1$d mục chỉ đọc, không xóa</string>
 </resources>

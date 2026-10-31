@@ -89,4 +89,10 @@
         <item>الأزرق</item>
         <item>الرملي</item>
     </string-array>
+    <string name="action_select">تحديد</string>
+    <string name="action_copy">نسخ</string>
+    <string name="action_readOnly">للقراءة فقط</string>
+    <string name="action_writable">قابل للتعديل</string>
+    <string name="title_copyName">%1$s (نسخة)</string>
+    <string name="toast_readOnlyKept">تم الإبقاء على %1$d عنصر للقراءة فقط ولم يُحذف</string>
 </resources>

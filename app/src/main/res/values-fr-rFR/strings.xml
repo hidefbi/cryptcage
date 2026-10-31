@@ -89,4 +89,10 @@
         <item>Bleu</item>
         <item>Sable</item>
     </string-array>
+    <string name="action_select">Sélectionner</string>
+    <string name="action_copy">Copier</string>
+    <string name="action_readOnly">Lecture seule</string>
+    <string name="action_writable">Modifiable</string>
+    <string name="title_copyName">%1$s (copie)</string>
+    <string name="toast_readOnlyKept">%1$d élément(s) en lecture seule conservé(s), non supprimé(s)</string>
 </resources>

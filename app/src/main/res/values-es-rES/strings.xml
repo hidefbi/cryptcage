@@ -89,4 +89,10 @@
         <item>Azul</item>
         <item>Arena</item>
     </string-array>
+    <string name="action_select">Seleccionar</string>
+    <string name="action_copy">Copiar</string>
+    <string name="action_readOnly">Solo lectura</string>
+    <string name="action_writable">Editable</string>
+    <string name="title_copyName">%1$s (copia)</string>
+    <string name="toast_readOnlyKept">Se conservaron %1$d elementos de solo lectura, no se borraron</string>
 </resources>

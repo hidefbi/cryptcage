@@ -89,4 +89,10 @@
         <item>Blau</item>
         <item>Sand</item>
     </string-array>
+    <string name="action_select">Auswählen</string>
+    <string name="action_copy">Kopieren</string>
+    <string name="action_readOnly">Schreibgeschützt</string>
+    <string name="action_writable">Beschreibbar</string>
+    <string name="title_copyName">%1$s (Kopie)</string>
+    <string name="toast_readOnlyKept">%1$d schreibgeschützte Einträge wurden nicht gelöscht</string>
 </resources>

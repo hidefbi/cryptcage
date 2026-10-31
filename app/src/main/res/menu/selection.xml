@@ -9,12 +9,7 @@
         android:title="@string/action_exportSelected"/>
     <item
         android:id="@+id/action_deleteSelected"
-        android:icon="@drawable/icon_delete"
-        app:showAsAction="ifRoom"
-        android:title="@string/action_delete"/>
-    <item
-        android:id="@+id/action_cancelSelection"
         app:showAsAction="never"
-        android:title="@string/action_cancelSelection"/>
+        android:title="@string/action_delete"/>
 
 </menu>

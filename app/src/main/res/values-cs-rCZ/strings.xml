@@ -89,4 +89,10 @@
         <item>Modrý</item>
         <item>Písková</item>
     </string-array>
+    <string name="action_select">Vybrat</string>
+    <string name="action_copy">Kopírovat</string>
+    <string name="action_readOnly">Jen ke čtení</string>
+    <string name="action_writable">Upravitelné</string>
+    <string name="title_copyName">%1$s (kopie)</string>
+    <string name="toast_readOnlyKept">Ponecháno %1$d položek jen pro čtení, nesmazáno</string>
 </resources>

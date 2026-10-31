@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="220dp"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="?attr/colorSurface"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="6dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <LinearLayout
+            android:id="@+id/note_menu_select"
+            style="@style/FabMenuRow"
+            android:layout_width="match_parent"
+            android:layout_height="52dp">
+
+            <TextView
+                style="@style/NoteMenuIcon"
+                android:text="✅" />
+
+            <TextView
+                style="@style/FabMenuLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action_select" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/note_menu_export"
+            style="@style/FabMenuRow"
+            android:layout_width="match_parent"
+            android:layout_height="52dp">
+
+            <TextView
+                style="@style/NoteMenuIcon"
+                android:text="⏬" />
+
+            <TextView
+                style="@style/FabMenuLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action_exportFile" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/note_menu_copy"
+            style="@style/FabMenuRow"
+            android:layout_width="match_parent"
+            android:layout_height="52dp">
+
+            <TextView
+                style="@style/NoteMenuIcon"
+                android:text="📋" />
+
+            <TextView
+                style="@style/FabMenuLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action_copy" />
+        </LinearLayout>
+
+        <View
+            style="@style/NoteMenuDivider" />
+
+        <LinearLayout
+            android:id="@+id/note_menu_readonly"
+            style="@style/FabMenuRow"
+            android:layout_width="match_parent"
+            android:layout_height="52dp">
+
+            <TextView
+                android:id="@+id/note_menu_readonly_icon"
+                style="@style/NoteMenuIcon"
+                android:text="⛔" />
+
+            <TextView
+                android:id="@+id/note_menu_readonly_label"
+                style="@style/FabMenuLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action_readOnly" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/note_menu_divider_delete"
+            style="@style/NoteMenuDivider" />
+
+        <LinearLayout
+            android:id="@+id/note_menu_delete"
+            style="@style/FabMenuRow"
+            android:layout_width="match_parent"
+            android:layout_height="52dp">
+
+            <TextView
+                style="@style/NoteMenuIcon"
+                android:text="🗑️" />
+
+            <TextView
+                style="@style/FabMenuLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action_delete"
+                android:textColor="?attr/colorError" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

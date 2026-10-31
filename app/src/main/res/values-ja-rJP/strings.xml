@@ -89,4 +89,10 @@
         <item>ブルー</item>
         <item>サンド</item>
     </string-array>
+    <string name="action_select">選択</string>
+    <string name="action_copy">コピー</string>
+    <string name="action_readOnly">読み取り専用</string>
+    <string name="action_writable">編集可能</string>
+    <string name="title_copyName">%1$s（コピー）</string>
+    <string name="toast_readOnlyKept">読み取り専用の %1$d 件は削除されませんでした</string>
 </resources>

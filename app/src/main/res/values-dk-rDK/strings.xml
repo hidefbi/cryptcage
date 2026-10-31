@@ -89,4 +89,10 @@
         <item>Blå</item>
         <item>Sand</item>
     </string-array>
+    <string name="action_select">Vælg</string>
+    <string name="action_copy">Kopiér</string>
+    <string name="action_readOnly">Skrivebeskyttet</string>
+    <string name="action_writable">Skrivbar</string>
+    <string name="title_copyName">%1$s (kopi)</string>
+    <string name="toast_readOnlyKept">%1$d skrivebeskyttede elementer blev ikke slettet</string>
 </resources>

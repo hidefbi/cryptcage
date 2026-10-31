@@ -30,6 +30,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.HorizontalScrollView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,6 +67,7 @@ public class MainActivity extends SecureActivity
         implements ChoosePasswordDialogFragment.Callback, NoteFragment.Listener {
 
     private static final String PREF_ALPHABETICAL = "isAlphabeticalOrder";
+    private static final String PREF_MANUAL = "isManualOrder";
     private static final String DETAIL_TAG = "detail";
     private static final long NO_NOTE = Long.MIN_VALUE;
 
@@ -84,9 +86,12 @@ public class MainActivity extends SecureActivity
     private NotesAdapter adapter;
     private ActivityResultLauncher<String[]> importLauncher;
     private ExportFlow exportFlow;
+    private NoteGestures gestures;
+    private PopupWindow notePopup;
 
     private final Map<Integer, String> chipTags = new HashMap<>();
     private final Set<Long> selectedIds = new TreeSet<>();
+    private final Set<Long> readOnlyIds = new HashSet<>();
 
     private String selectedTag;
     private String query = "";
@@ -146,15 +151,40 @@ public class MainActivity extends SecureActivity
                 }
             }
 
-            @Override
-            public void onLongClick(final long id) {
-                if (!selecting) {
-                    enterSelection(id);
-                }
-            }
         });
         notesList.setLayoutManager(new LinearLayoutManager(this));
         notesList.setAdapter(adapter);
+        gestures = new NoteGestures(notesList, adapter, new NoteGestures.Host() {
+            @Override
+            public boolean menuAllowed() {
+                return !selecting;
+            }
+
+            @Override
+            public boolean dragAllowed() {
+                return !selecting && query.isEmpty() && selectedTag == null;
+            }
+
+            @Override
+            public void showMenu(final long id, final View row, final float x, final float y) {
+                MainActivity.this.dismissMenu();
+                final VaultSession.Summary note = summaryOrNull(id);
+                if (note != null) {
+                    notePopup = NoteMenu.show(MainActivity.this, notesList, id, note.readOnly, x, y, noteActions);
+                }
+            }
+
+            @Override
+            public void dismissMenu() {
+                MainActivity.this.dismissMenu();
+            }
+
+            @Override
+            public void orderChanged(final List<Long> ids) {
+                saveOrder(ids);
+            }
+        });
+        notesList.addOnItemTouchListener(gestures);
 
         searchField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -187,6 +217,15 @@ public class MainActivity extends SecureActivity
                 this::importFile);
         exportFlow = new ExportFlow(this);
         updateToolbarMenu();
+    }
+
+    @Override
+    protected void onPause() {
+        dismissMenu();
+        if (gestures != null) {
+            gestures.cancel();
+        }
+        super.onPause();
     }
 
     @Override
@@ -279,11 +318,9 @@ public class MainActivity extends SecureActivity
             exportFlow.start(ids);
         } else if (id == R.id.action_deleteSelected) {
             confirmDeleteSelected();
-        } else if (id == R.id.action_cancelSelection) {
-            exitSelection();
         } else if (id == R.id.action_sort) {
             final boolean alpha = !prefs().getBoolean(PREF_ALPHABETICAL, false);
-            prefs().edit().putBoolean(PREF_ALPHABETICAL, alpha).apply();
+            prefs().edit().putBoolean(PREF_ALPHABETICAL, alpha).putBoolean(PREF_MANUAL, false).apply();
             refresh();
             toast(alpha ? R.string.toast_sort_alphabet : R.string.toast_sort_creation);
         } else if (id == R.id.action_changePassword) {
@@ -416,20 +453,38 @@ public class MainActivity extends SecureActivity
     }
 
     private void confirmDeleteSelected() {
-        final List<Long> ids = new ArrayList<>(selectedIds);
+        confirmDelete(new ArrayList<>(selectedIds));
+    }
+
+    /** Asks before deleting. Read-only entries are left out, and the user is told how many were kept. */
+    private void confirmDelete(final List<Long> ids) {
         if (ids.isEmpty()) {
             toast(R.string.toast_nothingSelected);
             return;
         }
+        final List<Long> deletable = new ArrayList<>();
+        int kept = 0;
+        for (Long id : ids) {
+            if (readOnlyIds.contains(id)) {
+                kept++;
+            } else {
+                deletable.add(id);
+            }
+        }
+        if (deletable.isEmpty()) {
+            toastText(getString(R.string.toast_readOnlyKept, kept));
+            return;
+        }
+        final int keptCount = kept;
         new AlertDialog.Builder(this)
                 .setTitle(R.string.title_deleteNote)
-                .setMessage(getString(R.string.dialog_deleteSelected, ids.size()))
-                .setPositiveButton(R.string.yes, (dialog, which) -> deleteEntries(ids))
+                .setMessage(getString(R.string.dialog_deleteSelected, deletable.size()))
+                .setPositiveButton(R.string.yes, (dialog, which) -> deleteEntries(deletable, keptCount))
                 .setNegativeButton(R.string.no, null)
                 .show();
     }
 
-    private void deleteEntries(final List<Long> ids) {
+    private void deleteEntries(final List<Long> ids, final int kept) {
         final App.Session session = App.session();
         if (session != null) {
             for (Long id : ids) {
@@ -446,7 +501,116 @@ public class MainActivity extends SecureActivity
         if (twoPane && ids.contains(detailId)) {
             clearDetail();
         }
-        toast(R.string.toast_success_deleteNote);
+        if (kept > 0) {
+            toastText(getString(R.string.toast_readOnlyKept, kept));
+        } else {
+            toast(R.string.toast_success_deleteNote);
+        }
+    }
+
+    /** Actions of the long-press menu. Each one runs after the menu has closed. */
+    private final NoteMenu.Actions noteActions = new NoteMenu.Actions() {
+        @Override
+        public void select(final long id) {
+            if (!selecting) {
+                enterSelection(id);
+            }
+        }
+
+        @Override
+        public void export(final long id) {
+            exportFlow.start(Collections.singletonList(id));
+        }
+
+        @Override
+        public void copy(final long id) {
+            copyEntry(id);
+        }
+
+        @Override
+        public void toggleReadOnly(final long id) {
+            setReadOnly(id, !readOnlyIds.contains(id));
+        }
+
+        @Override
+        public void delete(final long id) {
+            confirmDelete(Collections.singletonList(id));
+        }
+    };
+
+    private void dismissMenu() {
+        if (notePopup != null) {
+            notePopup.dismiss();
+            notePopup = null;
+        }
+    }
+
+    /** The summary of a row, or null when it is gone. */
+    private VaultSession.Summary summaryOrNull(final long id) {
+        final App.Session session = App.session();
+        if (session == null) {
+            return null;
+        }
+        try {
+            return session.vault.summary(id);
+        } catch (VaultException e) {
+            return null;
+        }
+    }
+
+    /**
+     * Copies a note or file next to the original, with a copy suffix on the title. The copy is
+     * placed right after the original, which only shows in manual order, so the list switches to it.
+     */
+    private void copyEntry(final long id) {
+        final App.Session session = App.session();
+        if (session == null) {
+            return;
+        }
+        try {
+            final VaultSession.Summary note = session.vault.summary(id);
+            final String base = note.title == null || note.title.isEmpty() ? getString(R.string.no_title) : note.title;
+            session.vault.duplicate(id, getString(R.string.title_copyName, base));
+        } catch (VaultException e) {
+            toast(VaultMessages.messageFor(e.getReason()));
+            return;
+        }
+        prefs().edit().putBoolean(PREF_MANUAL, true).apply();
+        App.persist(this);
+        refresh();
+    }
+
+    private void setReadOnly(final long id, final boolean readOnly) {
+        final App.Session session = App.session();
+        if (session == null) {
+            return;
+        }
+        try {
+            session.vault.setReadOnly(id, readOnly);
+        } catch (VaultException e) {
+            toast(VaultMessages.messageFor(e.getReason()));
+            return;
+        }
+        App.persist(this);
+        refresh();
+    }
+
+    /** Saves the order left by a drag and switches the list to manual order. */
+    private void saveOrder(final List<Long> ids) {
+        final App.Session session = App.session();
+        if (session == null) {
+            return;
+        }
+        try {
+            session.vault.reorder(ids);
+        } catch (VaultException e) {
+            toast(VaultMessages.messageFor(e.getReason()));
+            refresh();
+            return;
+        }
+        prefs().edit().putBoolean(PREF_MANUAL, true).apply();
+        App.persist(this);
+        refresh();
     }
 
     private List<Long> allIds() {
@@ -500,6 +664,7 @@ public class MainActivity extends SecureActivity
         }
         final VaultSession vault = session.vault;
         final boolean alphabetical = prefs().getBoolean(PREF_ALPHABETICAL, false);
+        final boolean manual = prefs().getBoolean(PREF_MANUAL, false);
         final String untitled = getString(R.string.no_title);
 
         final List<VaultSession.Summary> all = vault.list();
@@ -526,7 +691,16 @@ public class MainActivity extends SecureActivity
             }
             rows.add(note);
         }
+        readOnlyIds.clear();
+        for (VaultSession.Summary note : all) {
+            if (note.readOnly) {
+                readOnlyIds.add(note.id);
+            }
+        }
         Collections.sort(rows, (a, b) -> {
+            if (manual) {
+                return Long.compare(a.order, b.order);
+            }
             final int starred = Boolean.compare(b.starred, a.starred);
             if (starred != 0) {
                 return starred;
@@ -560,11 +734,12 @@ public class MainActivity extends SecureActivity
         if (note.file) {
             final FileKinds.Type type = FileKinds.typeOf(note.fileName);
             final FileKinds.Type shownType = type == null ? FileKinds.Type.TXT : type;
-            return new NotesAdapter.Item(note.id, shownTitle, shownType.name(), shownType, false, selected);
+            return new NotesAdapter.Item(note.id, shownTitle, shownType.name(), shownType, false,
+                    note.readOnly, selected);
         }
         final String tags = note.tags;
         final String subtitle = tags == null || tags.isEmpty() ? null : tags.replace(",", ", ");
-        return new NotesAdapter.Item(note.id, shownTitle, subtitle, null, note.starred, selected);
+        return new NotesAdapter.Item(note.id, shownTitle, subtitle, null, note.starred, note.readOnly, selected);
     }
 
     private void rebuildChips(final int total, final Map<String, Integer> counts) {
@@ -650,6 +825,10 @@ public class MainActivity extends SecureActivity
 
     private void toast(final int message) {
         toast(this, message);
+    }
+
+    private void toastText(final String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
     private static void toast(final Context context, final int message) {

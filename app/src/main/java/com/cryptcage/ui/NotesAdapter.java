@@ -7,6 +7,7 @@
 package com.cryptcage.ui;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import android.view.LayoutInflater;
@@ -28,8 +29,6 @@ final class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.Holder> {
 
     interface Listener {
         void onClick(long id);
-
-        void onLongClick(long id);
     }
 
     /** One row. The type is null for a note, and set for a stored file. */
@@ -39,15 +38,17 @@ final class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.Holder> {
         final String subtitle;
         final FileKinds.Type type;
         final boolean starred;
+        final boolean readOnly;
         final boolean selected;
 
         Item(final long id, final String title, final String subtitle, final FileKinds.Type type,
-             final boolean starred, final boolean selected) {
+             final boolean starred, final boolean readOnly, final boolean selected) {
             this.id = id;
             this.title = title;
             this.subtitle = subtitle;
             this.type = type;
             this.starred = starred;
+            this.readOnly = readOnly;
             this.selected = selected;
         }
     }
@@ -75,6 +76,29 @@ final class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.Holder> {
         return null;
     }
 
+    /** Ids in the order they are shown. */
+    List<Long> idsInOrder() {
+        final List<Long> ids = new ArrayList<>(items.size());
+        for (final Item item : items) {
+            ids.add(item.id);
+        }
+        return ids;
+    }
+
+    /** The id of the row at this position, or -1 when the position is out of range. */
+    long idAt(final int position) {
+        if (position < 0 || position >= items.size()) {
+            return -1;
+        }
+        return items.get(position).id;
+    }
+
+    /** Moves a row while a drag is running. The rows change only on the screen until the drop. */
+    void move(final int from, final int to) {
+        Collections.swap(items, from, to);
+        notifyItemMoved(from, to);
+    }
+
     @NonNull
     @Override
     public Holder onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType) {
@@ -96,6 +120,14 @@ final class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.Holder> {
         }
         holder.star.setVisibility(item.starred ? View.VISIBLE : View.GONE);
 
+        final int text = item.readOnly
+                ? MaterialColors.getColor(view, com.google.android.material.R.attr.colorOnSurfaceVariant)
+                : MaterialColors.getColor(view, com.google.android.material.R.attr.colorOnSurface);
+        holder.title.setTextColor(text);
+        holder.subtitle.setTextColor(MaterialColors.getColor(view,
+                com.google.android.material.R.attr.colorOnSurfaceVariant));
+        holder.type.setAlpha(item.readOnly ? 0.6f : 1f);
+
         holder.card.setCardBackgroundColor(MaterialColors.getColor(view,
                 item.selected ? androidx.appcompat.R.attr.colorPrimary
                         : com.google.android.material.R.attr.colorSurface));
@@ -106,10 +138,6 @@ final class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.Holder> {
                 item.selected ? R.dimen.stroke_selected : R.dimen.stroke_normal));
 
         holder.card.setOnClickListener(v -> listener.onClick(item.id));
-        holder.card.setOnLongClickListener(v -> {
-            listener.onLongClick(item.id);
-            return true;
-        });
     }
 
     @Override

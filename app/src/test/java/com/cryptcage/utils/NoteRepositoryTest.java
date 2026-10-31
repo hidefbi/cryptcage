@@ -122,11 +122,16 @@ public class NoteRepositoryTest {
     }
 
     @Test
-    public void readOnlyEntryCannotBeChangedButCanBeStarred() throws Exception {
+    public void readOnlyEntryCannotBeChangedOrStarred() throws Exception {
         try (NoteRepository repo = NoteRepository.create(newFile(), password(), ITERATIONS)) {
             final long id = repo.addNote("t", "body", "");
             repo.setReadOnly(id, true);
-            repo.setStarred(id, true);
+            try {
+                repo.setStarred(id, true);
+                fail("read-only entry starred");
+            } catch (StoreException e) {
+                assertEquals(Reason.BAD_ARGUMENT, e.reason());
+            }
             try {
                 repo.updateNote(id, "t", "changed", "");
                 fail("read-only entry changed");
@@ -134,7 +139,7 @@ public class NoteRepositoryTest {
                 assertEquals(Reason.BAD_ARGUMENT, e.reason());
             }
             assertEquals("body", repo.readBody(id));
-            assertTrue(repo.entry(id).starred);
+            assertFalse(repo.entry(id).starred);
         }
     }
 

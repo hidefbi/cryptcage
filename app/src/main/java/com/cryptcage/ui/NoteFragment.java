@@ -72,6 +72,8 @@ public class NoteFragment extends Fragment {
     private boolean canEdit;
     private boolean canView;
     private boolean starred;
+    /** A read-only note cannot be edited, starred or deleted. */
+    private boolean readOnly;
     private byte[] originalData;
     private String originalTitle = "";
     private String originalTags = "";
@@ -89,6 +91,7 @@ public class NoteFragment extends Fragment {
         boolean canEdit;
         boolean canView;
         boolean starred;
+        boolean readOnly;
         byte[] data;
         String title;
         String tags;
@@ -223,6 +226,7 @@ public class NoteFragment extends Fragment {
         canEdit = in.canEdit;
         canView = in.canView;
         starred = in.starred;
+        readOnly = in.readOnly;
         originalData = in.data;
         originalTitle = in.title;
         originalTags = in.tags;
@@ -313,8 +317,9 @@ public class NoteFragment extends Fragment {
                 final byte[] stored = session.vault.fileData(id);
                 final FileTypes.Check check = FileTypes.check(note.fileName, stored);
                 in.fileMode = true;
-                in.canEdit = check.editable();
+                in.canEdit = check.editable() && !note.readOnly;
                 in.canView = check.text();
+                in.readOnly = note.readOnly;
                 in.starred = false;
                 in.data = stored;
                 in.title = nullToEmpty(note.fileName);
@@ -322,8 +327,9 @@ public class NoteFragment extends Fragment {
                 in.body = in.canView ? new String(stored, StandardCharsets.UTF_8) : "";
             } else {
                 in.fileMode = false;
-                in.canEdit = true;
+                in.canEdit = !note.readOnly;
                 in.canView = true;
+                in.readOnly = note.readOnly;
                 in.starred = note.starred;
                 in.data = null;
                 in.title = nullToEmpty(note.title);
@@ -394,13 +400,13 @@ public class NoteFragment extends Fragment {
 
         final Menu menu = toolbar.getMenu();
         menu.findItem(R.id.action_starred)
-                .setVisible(!editing && !fileMode)
+                .setVisible(!editing && !fileMode && !readOnly)
                 .setIcon(starred ? R.drawable.icon_star : R.drawable.icon_star_outline);
         menu.findItem(R.id.action_edit).setVisible(!editing && canEdit);
         menu.findItem(R.id.action_save).setVisible(editing);
         menu.findItem(R.id.action_share).setVisible(!editing && !fileMode);
         menu.findItem(R.id.action_exportFile).setVisible(!editing);
-        menu.findItem(R.id.action_delete).setVisible(!editing);
+        menu.findItem(R.id.action_delete).setVisible(!editing && !readOnly);
     }
 
     private void onNavigation() {
