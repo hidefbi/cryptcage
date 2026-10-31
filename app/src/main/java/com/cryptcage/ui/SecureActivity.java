@@ -8,14 +8,17 @@ package com.cryptcage.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.cryptcage.app.App;
 import com.cryptcage.R;
@@ -48,6 +51,32 @@ public abstract class SecureActivity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setBackgroundColor(themeBackground());
+        applySystemBars();
+    }
+
+    /**
+     * Screens without a toolbar at the top return true, so the status bar takes the background
+     * colour. Screens with a toolbar keep the default, which is the surface colour.
+     */
+    protected boolean statusBarFollowsBackground() {
+        return false;
+    }
+
+    /**
+     * Colours the status bar to match the top of the screen, so no seam appears between them,
+     * and sets the status icons to dark on light screens and light in night mode.
+     */
+    private void applySystemBars() {
+        final Window window = getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(statusBarFollowsBackground()
+                ? themeColor(android.R.attr.colorBackground)
+                : themeColor(com.google.android.material.R.attr.colorSurface));
+        final boolean night = (getResources().getConfiguration().uiMode
+                & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
+        new WindowInsetsControllerCompat(window, window.getDecorView())
+                .setAppearanceLightStatusBars(!night);
     }
 
     @Override
@@ -69,8 +98,12 @@ public abstract class SecureActivity extends AppCompatActivity {
     }
 
     private int themeBackground() {
+        return themeColor(android.R.attr.colorBackground);
+    }
+
+    private int themeColor(final int attr) {
         final TypedValue value = new TypedValue();
-        getTheme().resolveAttribute(android.R.attr.colorBackground, value, true);
+        getTheme().resolveAttribute(attr, value, true);
         return value.data;
     }
 

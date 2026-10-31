@@ -97,6 +97,12 @@ public class SelectDatabaseActivity extends SecureActivity
         return false;
     }
 
+    /** The start screen has no toolbar, so its top is the background. */
+    @Override
+    protected boolean statusBarFollowsBackground() {
+        return true;
+    }
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
