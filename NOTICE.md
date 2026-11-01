@@ -33,6 +33,7 @@ This list covers the changes made by hidefbi on 2026-10-31 and the earlier chang
 - The settings rows are grouped into cards under section titles. The cards are drawn by CardGroupDecoration.
 - The olive palette is the default. The unlocked screen has a dark header with the vault name and a search field, filter chips for all items, notes and files with their counts, note cards with an icon tile, and a rounded floating button.
 - A read-only entry no longer offers Copy (duplicate) or Copy to clipboard. It can still be viewed, shared and exported.
+- The header of the unlocked screen uses the colour of the chosen palette instead of a fixed dark colour. The search field is a light card with an outline.
 - Test coverage was added for the storage format, compaction, password change and the vault session.
 
 ## Dates

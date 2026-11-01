@@ -12,6 +12,4 @@
     <color name="olive_on_primary_container">#222C06</color>
     <color name="olive_secondary_container">#E9E5D0</color>
     <color name="olive_on_secondary_container">#3A3619</color>
-    <!-- Fixed in both themes: the header behind the vault name and the search field. -->
-    <color name="olive_header">#2F3B17</color>
 </resources>

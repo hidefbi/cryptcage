@@ -35,4 +35,11 @@
         <item name="android:colorBackground">@color/sand_background</item>
     </style>
 
+    <!-- The toolbar on the unlocked screen. Its icons and text take the container colour. -->
+    <style name="HeaderToolbarTheme" parent="ThemeOverlay.Material3.ActionBar">
+        <item name="colorControlNormal">?attr/colorOnPrimaryContainer</item>
+        <item name="android:textColorPrimary">?attr/colorOnPrimaryContainer</item>
+        <item name="android:textColorSecondary">?attr/colorOnPrimaryContainer</item>
+    </style>
+
 </resources>
