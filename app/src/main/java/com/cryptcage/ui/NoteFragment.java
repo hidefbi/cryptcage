@@ -442,7 +442,7 @@ public class NoteFragment extends Fragment {
         menu.findItem(R.id.action_edit).setVisible(!editing && canEdit);
         menu.findItem(R.id.action_save).setVisible(editing);
         menu.findItem(R.id.action_share).setVisible(!editing && !fileMode);
-        menu.findItem(R.id.action_copyToClipboard).setVisible(!editing && !fileMode);
+        menu.findItem(R.id.action_copyToClipboard).setVisible(!editing && !fileMode && !readOnly);
         menu.findItem(R.id.action_exportFile).setVisible(!editing);
         menu.findItem(R.id.action_delete).setVisible(!editing && !readOnly);
         menu.findItem(R.id.action_undo).setVisible(editing);

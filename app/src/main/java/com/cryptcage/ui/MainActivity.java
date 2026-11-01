@@ -598,6 +598,9 @@ public class MainActivity extends SecureActivity
      * placed right after the original, which only shows in manual order, so the list switches to it.
      */
     private void copyEntry(final long id) {
+        if (readOnlyIds.contains(id)) {
+            return;
+        }
         final App.Session session = App.session();
         if (session == null) {
             return;

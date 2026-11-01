@@ -41,7 +41,7 @@ final class NoteMenu {
 
     /**
      * Shows the menu near the touch point. The coordinates are relative to the parent view.
-     * A read-only note shows the writable row and no delete row.
+     * A read-only note shows the writable row and no copy or delete row.
      */
     static PopupWindow show(final Context context, final View parent, final long id, final boolean readOnly,
                             final float x, final float y, final Actions actions, final Runnable onClosed) {
@@ -60,7 +60,9 @@ final class NoteMenu {
             popup.dismiss();
             actions.export(id);
         });
-        content.findViewById(R.id.note_menu_copy).setOnClickListener(v -> {
+        final View copy = content.findViewById(R.id.note_menu_copy);
+        copy.setVisibility(readOnly ? View.GONE : View.VISIBLE);
+        copy.setOnClickListener(v -> {
             popup.dismiss();
             actions.copy(id);
         });
