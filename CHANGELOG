@@ -1,4 +1,11 @@
-Unreleased
+2.2 (versionCode 25)
+* The olive colour theme is the default now. The unlocked screen has a new header, a search field and filter chips for all items, notes and files.
+* The settings rows are grouped into cards under their section titles.
+* A read-only entry can no longer be duplicated or copied to the clipboard. It can still be viewed, shared and exported.
+* The toolbar of the unlocked screen only shows the settings icon. The sort option and the alphabetical order are removed. Dragging an entry still sets the manual order.
+* New launcher icon and in-app logo.
+* The About screen has links to check for updates, to the source code and to the issue tracker.
+* Fixed a crash when About was opened from the settings.
 * Removed the reader for first-release (1.x) files. Open them with 2.0 or 2.1 before updating.
 * Removed the option to hide entry names in encrypted exports. Names are kept as they are.
 * Encrypted exports are read back and compared with the source data before the file is kept.
