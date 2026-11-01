@@ -201,4 +201,5 @@
     <string name="autolock_1hour">1 小时</string>
     <string name="export_7z">7-Zip（无密码）</string>
     <string name="toast_archiveSaved">归档已保存</string>
+    <string name="dialog_checkingPassword">正在验证密码...</string>
 </resources>

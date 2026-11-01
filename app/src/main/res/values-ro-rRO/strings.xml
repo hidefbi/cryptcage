@@ -156,4 +156,5 @@
     <string name="autolock_1hour">1 oră</string>
     <string name="export_7z">7-Zip (fără parolă)</string>
     <string name="toast_archiveSaved">Arhiva a fost salvată</string>
+    <string name="dialog_checkingPassword">Se verifică parola...</string>
 </resources>

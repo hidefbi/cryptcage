@@ -156,4 +156,5 @@
     <string name="autolock_1hour">1 giờ</string>
     <string name="export_7z">7-Zip (không mật khẩu)</string>
     <string name="toast_archiveSaved">Đã lưu tệp nén</string>
+    <string name="dialog_checkingPassword">Đang kiểm tra mật khẩu...</string>
 </resources>

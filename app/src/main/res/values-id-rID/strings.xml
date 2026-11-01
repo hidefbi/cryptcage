@@ -156,4 +156,5 @@
     <string name="autolock_1hour">1 jam</string>
     <string name="export_7z">7-Zip (tanpa kata sandi)</string>
     <string name="toast_archiveSaved">Arsip disimpan</string>
+    <string name="dialog_checkingPassword">Memeriksa kata sandi...</string>
 </resources>

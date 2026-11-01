@@ -156,4 +156,5 @@
     <string name="autolock_1hour">1 сағат</string>
     <string name="export_7z">7-Zip (құпия сөзсіз)</string>
     <string name="toast_archiveSaved">Мұрағат сақталды</string>
+    <string name="dialog_checkingPassword">Құпия сөз тексерілуде...</string>
 </resources>

@@ -156,4 +156,5 @@
     <string name="autolock_1hour">1 година</string>
     <string name="export_7z">7-Zip (без пароля)</string>
     <string name="toast_archiveSaved">Архів збережено</string>
+    <string name="dialog_checkingPassword">Перевірка пароля...</string>
 </resources>

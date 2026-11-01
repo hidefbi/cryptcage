@@ -156,4 +156,5 @@
     <string name="autolock_1hour">1 time</string>
     <string name="export_7z">7-Zip (uden adgangskode)</string>
     <string name="toast_archiveSaved">Arkiv gemt</string>
+    <string name="dialog_checkingPassword">Adgangskoden kontrolleres...</string>
 </resources>

@@ -156,4 +156,5 @@
     <string name="autolock_1hour">1 घंटा</string>
     <string name="export_7z">7-Zip (बिना पासवर्ड)</string>
     <string name="toast_archiveSaved">आर्काइव सहेजा गया</string>
+    <string name="dialog_checkingPassword">पासवर्ड की जाँच हो रही है...</string>
 </resources>

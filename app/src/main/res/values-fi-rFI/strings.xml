@@ -156,4 +156,5 @@
     <string name="autolock_1hour">1 tunti</string>
     <string name="export_7z">7-Zip (ilman salasanaa)</string>
     <string name="toast_archiveSaved">Arkisto tallennettu</string>
+    <string name="dialog_checkingPassword">Tarkistetaan salasanaa...</string>
 </resources>

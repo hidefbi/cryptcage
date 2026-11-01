@@ -156,4 +156,5 @@
     <string name="autolock_1hour">1 uur</string>
     <string name="export_7z">7-Zip (zonder wachtwoord)</string>
     <string name="toast_archiveSaved">Archief opgeslagen</string>
+    <string name="dialog_checkingPassword">Wachtwoord controleren...</string>
 </resources>

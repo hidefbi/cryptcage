@@ -9,8 +9,15 @@ package com.cryptcage.ui;
 import java.io.File;
 import java.util.Arrays;
 
+import android.app.Activity;
 import android.content.Context;
+import android.view.Gravity;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.cryptcage.R;
 import com.cryptcage.app.App;
@@ -41,19 +48,51 @@ final class PasswordChange {
      * Opens the vault with the current password on a worker thread. onMatch runs on the UI thread
      * when the password is right. The array is cleared in every case.
      */
-    static void verifyCurrent(final Context context, final File file, final char[] current, final Runnable onMatch) {
-        final Context app = context.getApplicationContext();
+    static void verifyCurrent(final Activity activity, final File file, final char[] current,
+                              final Runnable onMatch) {
+        final Context app = activity.getApplicationContext();
+        // The check takes about a second, so the wait is shown right away instead of a blank gap.
+        final AlertDialog waiting = waitingDialog(activity);
         Tasks.io(() -> {
             try {
                 VaultSession.open(file, current).close();
-                Tasks.ui(onMatch);
+                Tasks.ui(() -> {
+                    dismiss(waiting);
+                    onMatch.run();
+                });
             } catch (VaultException e) {
                 final int message = VaultMessages.messageFor(e.getReason());
-                Tasks.ui(() -> Toast.makeText(app, message, Toast.LENGTH_SHORT).show());
+                Tasks.ui(() -> {
+                    dismiss(waiting);
+                    Toast.makeText(app, message, Toast.LENGTH_SHORT).show();
+                });
             } finally {
                 Arrays.fill(current, '\0');
             }
         });
+    }
+
+    private static AlertDialog waitingDialog(final Activity activity) {
+        final int pad = (int) (24 * activity.getResources().getDisplayMetrics().density);
+        final LinearLayout row = new LinearLayout(activity);
+        row.setOrientation(LinearLayout.HORIZONTAL);
+        row.setGravity(Gravity.CENTER_VERTICAL);
+        row.setPadding(pad, pad, pad, pad);
+        row.addView(new ProgressBar(activity));
+        final TextView text = new TextView(activity);
+        text.setText(R.string.dialog_checkingPassword);
+        text.setPadding(pad, 0, 0, 0);
+        row.addView(text);
+        return new AlertDialog.Builder(activity)
+                .setView(row)
+                .setCancelable(false)
+                .show();
+    }
+
+    private static void dismiss(final AlertDialog dialog) {
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
     }
 
     /**

@@ -156,4 +156,5 @@
     <string name="autolock_1hour">1 ώρα</string>
     <string name="export_7z">7-Zip (χωρίς κωδικό πρόσβασης)</string>
     <string name="toast_archiveSaved">Το αρχείο αποθηκεύτηκε</string>
+    <string name="dialog_checkingPassword">Έλεγχος κωδικού πρόσβασης...</string>
 </resources>

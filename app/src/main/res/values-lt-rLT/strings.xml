@@ -156,4 +156,5 @@
     <string name="autolock_1hour">1 valanda</string>
     <string name="export_7z">7-Zip (be slaptažodžio)</string>
     <string name="toast_archiveSaved">Archyvas išsaugotas</string>
+    <string name="dialog_checkingPassword">Tikrinamas slaptažodis...</string>
 </resources>

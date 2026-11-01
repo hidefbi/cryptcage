@@ -156,4 +156,5 @@
     <string name="autolock_1hour">1 óra</string>
     <string name="export_7z">7-Zip (jelszó nélkül)</string>
     <string name="toast_archiveSaved">Archívum mentve</string>
+    <string name="dialog_checkingPassword">Jelszó ellenőrzése...</string>
 </resources>
