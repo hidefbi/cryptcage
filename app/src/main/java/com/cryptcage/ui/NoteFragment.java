@@ -18,7 +18,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
-import android.os.Trace;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.TypedValue;
@@ -342,7 +341,6 @@ public class NoteFragment extends Fragment {
         if (session == null) {
             return null;
         }
-        Trace.beginSection("cc.readNote");
         try {
             final Loaded in = new Loaded();
             final VaultSession.Summary note = session.vault.summary(id);
@@ -373,8 +371,6 @@ public class NoteFragment extends Fragment {
             return in;
         } catch (VaultException e) {
             return null;
-        } finally {
-            Trace.endSection();
         }
     }
 
