@@ -146,4 +146,5 @@
     <string name="bio_reason_no_hardware">Perangkat ini tidak punya buka kunci biometrik yang kuat.</string>
     <string name="bio_enroll_title">Buka kunci biometrik</string>
     <string name="bio_enroll_action">Buka pengaturan</string>
+    <string name="title_currentPassword">Kata sandi utama saat ini</string>
 </resources>

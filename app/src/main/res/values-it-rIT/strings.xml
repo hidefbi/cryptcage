@@ -147,4 +147,5 @@
     <string name="bio_reason_no_hardware">Il dispositivo non ha uno sblocco biometrico sicuro.</string>
     <string name="bio_enroll_title">Sblocco biometrico</string>
     <string name="bio_enroll_action">Apri impostazioni</string>
+    <string name="title_currentPassword">Password principale attuale</string>
 </resources>

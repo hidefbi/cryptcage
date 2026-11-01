@@ -146,4 +146,5 @@
     <string name="bio_reason_no_hardware">На устройстве нет надёжной разблокировки по биометрии.</string>
     <string name="bio_enroll_title">Разблокировка по биометрии</string>
     <string name="bio_enroll_action">Открыть настройки</string>
+    <string name="title_currentPassword">Текущий главный пароль</string>
 </resources>

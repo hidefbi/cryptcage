@@ -146,4 +146,5 @@
     <string name="bio_reason_no_hardware">Laitteessa ei ole vahvaa biometrista lukitusta.</string>
     <string name="bio_enroll_title">Biometrinen lukitus</string>
     <string name="bio_enroll_action">Avaa asetukset</string>
+    <string name="title_currentPassword">Nykyinen pääsalasana</string>
 </resources>

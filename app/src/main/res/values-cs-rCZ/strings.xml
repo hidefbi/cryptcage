@@ -146,4 +146,5 @@
     <string name="bio_reason_no_hardware">Zařízení nemá silné biometrické odemknutí.</string>
     <string name="bio_enroll_title">Odemknutí biometrikou</string>
     <string name="bio_enroll_action">Otevřít nastavení</string>
+    <string name="title_currentPassword">Aktuální hlavní heslo</string>
 </resources>

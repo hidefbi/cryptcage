@@ -146,4 +146,5 @@
     <string name="bio_reason_no_hardware">Η συσκευή δεν διαθέτει ισχυρό ξεκλείδωμα με βιομετρικά.</string>
     <string name="bio_enroll_title">Ξεκλείδωμα με βιομετρικά</string>
     <string name="bio_enroll_action">Άνοιγμα ρυθμίσεων</string>
+    <string name="title_currentPassword">Τρέχων κύριος κωδικός πρόσβασης</string>
 </resources>

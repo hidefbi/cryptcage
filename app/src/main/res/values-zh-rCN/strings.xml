@@ -191,4 +191,5 @@
     <string name="bio_reason_no_hardware">本机没有可用于此功能的强生物识别。</string>
     <string name="bio_enroll_title">生物识别解锁</string>
     <string name="bio_enroll_action">前往设置</string>
+    <string name="title_currentPassword">当前主密码</string>
 </resources>

@@ -146,4 +146,5 @@
     <string name="bio_reason_no_hardware">Įrenginyje nėra stipraus biometrinio atrakinimo.</string>
     <string name="bio_enroll_title">Atrakinimas biometrija</string>
     <string name="bio_enroll_action">Atidaryti nustatymus</string>
+    <string name="title_currentPassword">Dabartinis pagrindinis slaptažodis</string>
 </resources>

@@ -146,4 +146,5 @@
     <string name="bio_reason_no_hardware">Az eszközön nincs erős biometrikus feloldás.</string>
     <string name="bio_enroll_title">Feloldás biometriával</string>
     <string name="bio_enroll_action">Beállítások megnyitása</string>
+    <string name="title_currentPassword">Jelenlegi főjelszó</string>
 </resources>

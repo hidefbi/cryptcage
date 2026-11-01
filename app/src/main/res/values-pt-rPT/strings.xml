@@ -146,4 +146,5 @@
     <string name="bio_reason_no_hardware">O dispositivo não tem desbloqueio biométrico forte.</string>
     <string name="bio_enroll_title">Desbloqueio biométrico</string>
     <string name="bio_enroll_action">Abrir definições</string>
+    <string name="title_currentPassword">Palavra-passe mestra atual</string>
 </resources>

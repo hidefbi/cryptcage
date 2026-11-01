@@ -146,4 +146,5 @@
     <string name="bio_reason_no_hardware">Dieses Gerät hat keine starke biometrische Entsperrung.</string>
     <string name="bio_enroll_title">Entsperren per Biometrie</string>
     <string name="bio_enroll_action">Einstellungen öffnen</string>
+    <string name="title_currentPassword">Aktuelles Hauptpasswort</string>
 </resources>

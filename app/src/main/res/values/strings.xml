@@ -195,4 +195,5 @@
     <string name="bio_reason_no_hardware">This device has no strong biometric unlock.</string>
     <string name="bio_enroll_title">Biometric unlock</string>
     <string name="bio_enroll_action">Open settings</string>
+    <string name="title_currentPassword">Current master password</string>
 </resources>

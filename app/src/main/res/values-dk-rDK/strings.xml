@@ -146,4 +146,5 @@
     <string name="bio_reason_no_hardware">Enheden har ingen stærk biometrisk oplåsning.</string>
     <string name="bio_enroll_title">Oplåsning med biometri</string>
     <string name="bio_enroll_action">Åbn indstillinger</string>
+    <string name="title_currentPassword">Nuværende hovedadgangskode</string>
 </resources>

@@ -146,4 +146,5 @@
     <string name="bio_reason_no_hardware">Urządzenie nie ma silnego odblokowania biometrycznego.</string>
     <string name="bio_enroll_title">Odblokowanie biometrią</string>
     <string name="bio_enroll_action">Otwórz ustawienia</string>
+    <string name="title_currentPassword">Obecne hasło główne</string>
 </resources>

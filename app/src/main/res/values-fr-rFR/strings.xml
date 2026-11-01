@@ -146,4 +146,5 @@
     <string name="bio_reason_no_hardware">Cet appareil ne dispose pas de déverrouillage biométrique fiable.</string>
     <string name="bio_enroll_title">Déverrouillage biométrique</string>
     <string name="bio_enroll_action">Ouvrir les paramètres</string>
+    <string name="title_currentPassword">Mot de passe principal actuel</string>
 </resources>

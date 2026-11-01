@@ -29,13 +29,15 @@ import androidx.preference.PreferenceFragmentCompat;
 import com.cryptcage.R;
 import com.cryptcage.app.App;
 import com.cryptcage.app.Tasks;
-import com.cryptcage.utils.StringMethods;
 import com.cryptcage.utils.VaultException;
 import com.cryptcage.utils.VaultSession;
 
 public class SettingsActivity extends SecureActivity
         implements ChoosePasswordDialogFragment.Callback, InsertPasswordDialogFragment.Callback,
         PinDialogFragment.Callback {
+
+    /** True while the current password is asked for before the master password is changed. */
+    private boolean pendingChange;
 
     @Override
     protected boolean needsVault() {
@@ -86,11 +88,23 @@ public class SettingsActivity extends SecureActivity
         if (session == null) {
             return;
         }
-        InsertPasswordDialogFragment.newInstance(vaultName(session.file))
+        InsertPasswordDialogFragment.newInstance(PasswordChange.vaultName(session.file))
                 .show(getSupportFragmentManager(), "setup_password");
     }
 
-    /** The password of the open vault, checked before biometric unlock is set up with it. */
+    /** Asks for the current password first. The new one is asked for only after it is checked. */
+    void startChangePassword() {
+        final App.Session session = App.session();
+        if (session == null) {
+            return;
+        }
+        pendingChange = true;
+        InsertPasswordDialogFragment.newInstance(PasswordChange.vaultName(session.file),
+                R.string.title_currentPassword)
+                .show(getSupportFragmentManager(), "change_old");
+    }
+
+    /** The password of the open vault, checked before it is changed or biometric unlock is set up. */
     @Override
     public void onPasswordEntered(final String fileName, final char[] password) {
         final App.Session session = App.session();
@@ -99,11 +113,16 @@ public class SettingsActivity extends SecureActivity
             return;
         }
         final File file = session.file;
+        if (pendingChange) {
+            pendingChange = false;
+            PasswordChange.verifyCurrent(this, file, password, this::showNewPasswordDialog);
+            return;
+        }
         Tasks.io(() -> {
             try {
                 VaultSession.open(file, password).close();
                 PinStore.holdPassword(password);
-                final String name = vaultName(file);
+                final String name = PasswordChange.vaultName(file);
                 final Cipher cipher = BiometricVault.encryptCipher();
                 Tasks.ui(() -> promptBiometricSetup(name, cipher));
             } catch (VaultException e) {
@@ -175,12 +194,9 @@ public class SettingsActivity extends SecureActivity
         }
     }
 
-    /** The name the vault is listed under, which is also the name the PIN and biometric stores use. */
-    private static String vaultName(final File file) {
-        final String name = file.getName();
-        return name.endsWith(StringMethods.EXTENSION)
-                ? name.substring(0, name.length() - StringMethods.EXTENSION.length())
-                : name;
+    private void showNewPasswordDialog() {
+        ChoosePasswordDialogFragment.newInstance(ChoosePasswordDialogFragment.PURPOSE_CHANGE)
+                .show(getSupportFragmentManager(), "change_password");
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {
@@ -314,8 +330,7 @@ public class SettingsActivity extends SecureActivity
             if (changePassword != null) {
                 changePassword.setVisible(unlocked);
                 changePassword.setOnPreferenceClickListener(preference -> {
-                    ChoosePasswordDialogFragment.newInstance(ChoosePasswordDialogFragment.PURPOSE_CHANGE)
-                            .show(getParentFragmentManager(), "change_password");
+                    ((SettingsActivity) requireActivity()).startChangePassword();
                     return true;
                 });
             }

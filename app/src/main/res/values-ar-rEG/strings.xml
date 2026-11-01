@@ -146,4 +146,5 @@
     <string name="bio_reason_no_hardware">لا يوجد على الجهاز فك قفل بيومتري قوي.</string>
     <string name="bio_enroll_title">فك القفل بالبصمة</string>
     <string name="bio_enroll_action">فتح الإعدادات</string>
+    <string name="title_currentPassword">كلمة المرور الرئيسية الحالية</string>
 </resources>

@@ -146,4 +146,5 @@
     <string name="bio_reason_no_hardware">Dispozitivul nu are deblocare biometrică puternică.</string>
     <string name="bio_enroll_title">Deblocare biometrică</string>
     <string name="bio_enroll_action">Deschideți setările</string>
+    <string name="title_currentPassword">Parola principală actuală</string>
 </resources>

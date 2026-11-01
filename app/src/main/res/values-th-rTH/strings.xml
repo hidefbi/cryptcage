@@ -146,4 +146,5 @@
     <string name="bio_reason_no_hardware">เครื่องนี้ไม่มีการปลดล็อกด้วยไบโอเมตริกที่แข็งแรง</string>
     <string name="bio_enroll_title">ปลดล็อกด้วยไบโอเมตริก</string>
     <string name="bio_enroll_action">เปิดการตั้งค่า</string>
+    <string name="title_currentPassword">รหัสผ่านหลักปัจจุบัน</string>
 </resources>

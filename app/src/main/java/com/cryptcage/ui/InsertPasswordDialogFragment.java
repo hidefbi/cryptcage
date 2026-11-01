@@ -27,13 +27,20 @@ public class InsertPasswordDialogFragment extends DialogFragment {
     }
 
     private static final String ARG_FILE = "file";
+    private static final String ARG_TITLE = "title";
 
     private EditText field;
 
     public static InsertPasswordDialogFragment newInstance(final String fileName) {
+        return newInstance(fileName, R.string.title_password);
+    }
+
+    /** The title says which password is asked for, for example the current one when it is changed. */
+    public static InsertPasswordDialogFragment newInstance(final String fileName, final int title) {
         final InsertPasswordDialogFragment fragment = new InsertPasswordDialogFragment();
         final Bundle args = new Bundle();
         args.putString(ARG_FILE, fileName);
+        args.putInt(ARG_TITLE, title);
         fragment.setArguments(args);
         return fragment;
     }
@@ -43,9 +50,10 @@ public class InsertPasswordDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(@Nullable final Bundle savedInstanceState) {
         final View view = LayoutInflater.from(requireContext()).inflate(R.layout.insert_password, null);
         field = view.findViewById(R.id.field_password);
+        final int title = getArguments() == null ? R.string.title_password : getArguments().getInt(ARG_TITLE);
         return new AlertDialog.Builder(requireContext())
                 .setView(view)
-                .setTitle(R.string.title_password)
+                .setTitle(title)
                 .setPositiveButton(android.R.string.ok, null)
                 .setNegativeButton(android.R.string.cancel, null)
                 .create();

@@ -146,4 +146,5 @@
     <string name="bio_reason_no_hardware">На пристрої немає надійного біометричного розблокування.</string>
     <string name="bio_enroll_title">Розблокування біометрією</string>
     <string name="bio_enroll_action">Відкрити налаштування</string>
+    <string name="title_currentPassword">Поточний головний пароль</string>
 </resources>

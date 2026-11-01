@@ -64,7 +64,8 @@ import com.google.android.material.textfield.TextInputEditText;
  * the bodies on a worker thread and the newest search wins.
  */
 public class MainActivity extends SecureActivity
-        implements ChoosePasswordDialogFragment.Callback, NoteFragment.Listener {
+        implements ChoosePasswordDialogFragment.Callback, InsertPasswordDialogFragment.Callback,
+        NoteFragment.Listener {
 
     private static final String PREF_ALPHABETICAL = "isAlphabeticalOrder";
     private static final String PREF_MANUAL = "isManualOrder";
@@ -278,6 +279,19 @@ public class MainActivity extends SecureActivity
         PasswordChange.apply(this, password);
     }
 
+    /** The current password, checked before the new one is asked for. */
+    @Override
+    public void onPasswordEntered(final String fileName, final char[] password) {
+        final App.Session session = App.session();
+        if (session == null) {
+            Arrays.fill(password, '\0');
+            return;
+        }
+        PasswordChange.verifyCurrent(this, session.file, password, () ->
+                ChoosePasswordDialogFragment.newInstance(ChoosePasswordDialogFragment.PURPOSE_CHANGE)
+                        .show(getSupportFragmentManager(), "change_password"));
+    }
+
     @Override
     public void onNoteChanged(final long noteId) {
         if (twoPane) {
@@ -318,8 +332,12 @@ public class MainActivity extends SecureActivity
             refresh();
             toast(alpha ? R.string.toast_sort_alphabet : R.string.toast_sort_creation);
         } else if (id == R.id.action_changePassword) {
-            ChoosePasswordDialogFragment.newInstance(ChoosePasswordDialogFragment.PURPOSE_CHANGE)
-                    .show(getSupportFragmentManager(), "change_password");
+            final App.Session session = App.session();
+            if (session != null) {
+                InsertPasswordDialogFragment.newInstance(PasswordChange.vaultName(session.file),
+                        R.string.title_currentPassword)
+                        .show(getSupportFragmentManager(), "change_old");
+            }
         } else if (id == R.id.action_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
         } else if (id == R.id.action_about) {

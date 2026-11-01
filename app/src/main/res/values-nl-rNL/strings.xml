@@ -146,4 +146,5 @@
     <string name="bio_reason_no_hardware">Dit toestel heeft geen sterke biometrische ontgrendeling.</string>
     <string name="bio_enroll_title">Ontgrendelen met biometrie</string>
     <string name="bio_enroll_action">Instellingen openen</string>
+    <string name="title_currentPassword">Huidig hoofdwachtwoord</string>
 </resources>

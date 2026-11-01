@@ -146,4 +146,5 @@
     <string name="bio_reason_no_hardware">この端末には強力な生体認証がありません。</string>
     <string name="bio_enroll_title">生体認証でロック解除</string>
     <string name="bio_enroll_action">設定を開く</string>
+    <string name="title_currentPassword">現在のマスターパスワード</string>
 </resources>
