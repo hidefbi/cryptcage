@@ -157,7 +157,7 @@
     <string name="export_7z">7-Zip (sans mot de passe)</string>
     <string name="toast_archiveSaved">Archive enregistrée</string>
     <string name="dialog_checkingPassword">Vérification du mot de passe...</string>
-    <string name="about_description">CryptCage garde vos notes et vos fichiers dans un seul coffre chiffré sur cet appareil. L'application ne demande aucun accès réseau, ne nécessite aucun compte et n'envoie rien.</string>
+    <string name="about_description">CryptCage garde vos notes et vos fichiers dans un seul coffre chiffré sur cet appareil. L\'application ne demande aucun accès réseau, ne nécessite aucun compte et n\'envoie rien.</string>
     <string name="about_licence">CryptCage est un logiciel libre distribué sous la licence publique générale GNU, version 3 ou ultérieure. Il est basé sur NoteCrypt Pro de Ludovico de Nittis. Les modifications sont listées dans NOTICE.md.</string>
     <string name="donation_title">Soutenir le projet</string>
     <string name="donation_text">Les dons sont facultatifs et ne débloquent rien.</string>

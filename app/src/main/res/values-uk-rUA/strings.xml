@@ -160,6 +160,6 @@
     <string name="about_description">CryptCage зберігає нотатки та файли в одному зашифрованому сховищі на цьому пристрої. Застосунку не потрібен доступ до мережі чи обліковий запис, і він нічого нікуди не надсилає.</string>
     <string name="about_licence">CryptCage є вільним програмним забезпеченням за ліцензією GNU General Public License версії 3 або новішої. Він базується на NoteCrypt Pro від Ludovico de Nittis. Зміни перелічено у файлі NOTICE.md.</string>
     <string name="donation_title">Підтримайте проєкт</string>
-    <string name="donation_text">Пожертви необов'язкові і нічого не відкривають.</string>
+    <string name="donation_text">Пожертви необов\'язкові і нічого не відкривають.</string>
     <string name="about_copied">Адресу скопійовано</string>
 </resources>
