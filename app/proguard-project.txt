@@ -1,1 +1,11 @@
 # The vault format is read by explicit code, so no class names need to be kept.
+
+# Release builds drop the logging calls, so nothing from them reaches the log.
+-assumenosideeffects class android.util.Log {
+    public static *** v(...);
+    public static *** d(...);
+    public static *** i(...);
+    public static *** w(...);
+    public static *** e(...);
+    public static *** wtf(...);
+}
