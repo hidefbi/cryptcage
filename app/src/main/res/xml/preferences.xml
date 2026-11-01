@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto" >
 
     <PreferenceCategory
+        android:layout="@layout/pref_category"
         android:key="category_appearance"
         android:title="@string/category_appearance">
 
@@ -24,6 +25,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:layout="@layout/pref_category"
         android:key="category_security"
         android:title="@string/category_security">
 
@@ -60,6 +62,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:layout="@layout/pref_category"
         android:key="category_about"
         android:title="@string/category_about">
 

@@ -14,6 +14,8 @@ import javax.crypto.Cipher;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -26,6 +28,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.color.MaterialColors;
 
 import com.cryptcage.R;
 import com.cryptcage.app.App;
@@ -303,6 +308,22 @@ public class SettingsActivity extends SecureActivity
             super.onResume();
             // The user may have added a fingerprint in the system settings, so the rows are read again.
             refreshSecurityRows();
+        }
+
+        @Override
+        public void onViewCreated(final View view, final Bundle savedInstanceState) {
+            super.onViewCreated(view, savedInstanceState);
+            final RecyclerView list = getListView();
+            final float density = getResources().getDisplayMetrics().density;
+            final int side = Math.round(16 * density);
+            list.setClipToPadding(false);
+            list.setPadding(side, list.getPaddingTop(), side, list.getPaddingBottom());
+            setDivider(new ColorDrawable(Color.TRANSPARENT));
+            setDividerHeight(0);
+            list.addItemDecoration(new CardGroupDecoration(
+                    16 * density, density, 16 * density,
+                    MaterialColors.getColor(view, com.google.android.material.R.attr.colorSurface, Color.WHITE),
+                    MaterialColors.getColor(view, com.google.android.material.R.attr.colorOutline, Color.GRAY)));
         }
 
         @Override
