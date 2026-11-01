@@ -147,4 +147,11 @@
     <string name="bio_enroll_title">Биометриямен ашу</string>
     <string name="bio_enroll_action">Параметрлерді ашу</string>
     <string name="title_currentPassword">Ағымдағы негізгі құпия сөз</string>
+    <string name="pref_autoLock">Бос тұрғанда құлыптау</string>
+    <string name="autolock_never">Ешқашан</string>
+    <string name="autolock_1min">1 минут</string>
+    <string name="autolock_5min">5 минут</string>
+    <string name="autolock_15min">15 минут</string>
+    <string name="autolock_30min">30 минут</string>
+    <string name="autolock_1hour">1 сағат</string>
 </resources>

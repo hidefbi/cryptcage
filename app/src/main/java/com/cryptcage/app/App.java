@@ -29,19 +29,13 @@ import java.io.File;
  * screens read the open database from here.
  *
  * The vault locks when any of these happens: the screen turns off, the last screen is
- * closed, or the app stays in the background for a minute. Locking saves pending changes
- * first and then overwrites the key bytes.
+ * closed, or the time set in the settings passes with no touch (see IdleLock). Locking saves
+ * pending changes first and then overwrites the key bytes.
  */
 public class App extends Application {
 
-    /** How long the app may stay in the background before the vault locks itself. */
-    private static final long AUTO_LOCK_MS = 60_000L;
-
     private static Session session;
-    private static int startedActivities;
     private static int aliveActivities;
-
-    private static final Runnable AUTO_LOCK = () -> lock();
 
     /** An unlocked vault: where it lives on disk and the open session on it. */
     public static final class Session {
@@ -69,22 +63,10 @@ public class App extends Application {
 
             @Override
             public void onActivityStarted(final Activity activity) {
-                synchronized (App.class) {
-                    startedActivities++;
-                }
-                Tasks.cancelUi(AUTO_LOCK);
             }
 
             @Override
             public void onActivityStopped(final Activity activity) {
-                boolean idle;
-                synchronized (App.class) {
-                    startedActivities--;
-                    idle = startedActivities <= 0;
-                }
-                if (idle) {
-                    Tasks.uiDelayed(AUTO_LOCK, AUTO_LOCK_MS);
-                }
             }
 
             @Override
@@ -162,7 +144,6 @@ public class App extends Application {
             closing = session;
             session = null;
         }
-        Tasks.cancelUi(AUTO_LOCK);
         if (closing == null) {
             return;
         }

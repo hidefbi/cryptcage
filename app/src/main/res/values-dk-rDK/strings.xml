@@ -147,4 +147,11 @@
     <string name="bio_enroll_title">Oplåsning med biometri</string>
     <string name="bio_enroll_action">Åbn indstillinger</string>
     <string name="title_currentPassword">Nuværende hovedadgangskode</string>
+    <string name="pref_autoLock">Lås ved inaktivitet</string>
+    <string name="autolock_never">Aldrig</string>
+    <string name="autolock_1min">1 minut</string>
+    <string name="autolock_5min">5 minutter</string>
+    <string name="autolock_15min">15 minutter</string>
+    <string name="autolock_30min">30 minutter</string>
+    <string name="autolock_1hour">1 time</string>
 </resources>

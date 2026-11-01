@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
 
     <PreferenceCategory
         android:key="category_appearance"
@@ -39,6 +40,15 @@
         <androidx.preference.Preference
             android:key="pref_biometric"
             android:title="@string/pref_biometric" />
+
+        <androidx.preference.ListPreference
+            android:defaultValue="300"
+            android:dialogTitle="@string/pref_autoLock"
+            android:entries="@array/pref_autoLock_entries"
+            android:entryValues="@array/pref_autoLock_values"
+            android:key="pref_autoLock"
+            android:title="@string/pref_autoLock"
+            app:useSimpleSummaryProvider="true" />
 
         <androidx.preference.Preference
             android:key="pref_clipboardTimeout"

@@ -136,6 +136,22 @@
         <item>blue</item>
         <item>sand</item>
     </string-array>
+    <string-array name="pref_autoLock_entries">
+        <item>@string/autolock_never</item>
+        <item>@string/autolock_1min</item>
+        <item>@string/autolock_5min</item>
+        <item>@string/autolock_15min</item>
+        <item>@string/autolock_30min</item>
+        <item>@string/autolock_1hour</item>
+    </string-array>
+    <string-array name="pref_autoLock_values">
+        <item>0</item>
+        <item>60</item>
+        <item>300</item>
+        <item>900</item>
+        <item>1800</item>
+        <item>3600</item>
+    </string-array>
     <string name="pref_screenshot">Screenshot mode</string>
     <string name="pref_screenshot_summary">Allow screenshots and the recent-apps preview of notes. Off keeps notes hidden.</string>
     <string name="action_select">Select</string>
@@ -196,4 +212,11 @@
     <string name="bio_enroll_title">Biometric unlock</string>
     <string name="bio_enroll_action">Open settings</string>
     <string name="title_currentPassword">Current master password</string>
+    <string name="pref_autoLock">Lock when idle</string>
+    <string name="autolock_never">Never</string>
+    <string name="autolock_1min">1 minute</string>
+    <string name="autolock_5min">5 minutes</string>
+    <string name="autolock_15min">15 minutes</string>
+    <string name="autolock_30min">30 minutes</string>
+    <string name="autolock_1hour">1 hour</string>
 </resources>

@@ -147,4 +147,11 @@
     <string name="bio_enroll_title">ปลดล็อกด้วยไบโอเมตริก</string>
     <string name="bio_enroll_action">เปิดการตั้งค่า</string>
     <string name="title_currentPassword">รหัสผ่านหลักปัจจุบัน</string>
+    <string name="pref_autoLock">ล็อกเมื่อไม่ใช้งาน</string>
+    <string name="autolock_never">ไม่เลย</string>
+    <string name="autolock_1min">1 นาที</string>
+    <string name="autolock_5min">5 นาที</string>
+    <string name="autolock_15min">15 นาที</string>
+    <string name="autolock_30min">30 นาที</string>
+    <string name="autolock_1hour">1 ชั่วโมง</string>
 </resources>

@@ -147,4 +147,11 @@
     <string name="bio_enroll_title">Ξεκλείδωμα με βιομετρικά</string>
     <string name="bio_enroll_action">Άνοιγμα ρυθμίσεων</string>
     <string name="title_currentPassword">Τρέχων κύριος κωδικός πρόσβασης</string>
+    <string name="pref_autoLock">Κλείδωμα όταν είναι αδρανές</string>
+    <string name="autolock_never">Ποτέ</string>
+    <string name="autolock_1min">1 λεπτό</string>
+    <string name="autolock_5min">5 λεπτά</string>
+    <string name="autolock_15min">15 λεπτά</string>
+    <string name="autolock_30min">30 λεπτά</string>
+    <string name="autolock_1hour">1 ώρα</string>
 </resources>

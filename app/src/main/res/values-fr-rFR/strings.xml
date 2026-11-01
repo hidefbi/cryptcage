@@ -147,4 +147,11 @@
     <string name="bio_enroll_title">Déverrouillage biométrique</string>
     <string name="bio_enroll_action">Ouvrir les paramètres</string>
     <string name="title_currentPassword">Mot de passe principal actuel</string>
+    <string name="pref_autoLock">Verrouiller après inactivité</string>
+    <string name="autolock_never">Jamais</string>
+    <string name="autolock_1min">1 minute</string>
+    <string name="autolock_5min">5 minutes</string>
+    <string name="autolock_15min">15 minutes</string>
+    <string name="autolock_30min">30 minutes</string>
+    <string name="autolock_1hour">1 heure</string>
 </resources>

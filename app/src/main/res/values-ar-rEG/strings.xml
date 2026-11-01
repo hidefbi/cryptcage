@@ -147,4 +147,11 @@
     <string name="bio_enroll_title">فك القفل بالبصمة</string>
     <string name="bio_enroll_action">فتح الإعدادات</string>
     <string name="title_currentPassword">كلمة المرور الرئيسية الحالية</string>
+    <string name="pref_autoLock">القفل عند الخمول</string>
+    <string name="autolock_never">أبداً</string>
+    <string name="autolock_1min">دقيقة واحدة</string>
+    <string name="autolock_5min">5 دقائق</string>
+    <string name="autolock_15min">15 دقيقة</string>
+    <string name="autolock_30min">30 دقيقة</string>
+    <string name="autolock_1hour">ساعة واحدة</string>
 </resources>

@@ -147,4 +147,11 @@
     <string name="bio_enroll_title">Atrakinimas biometrija</string>
     <string name="bio_enroll_action">Atidaryti nustatymus</string>
     <string name="title_currentPassword">Dabartinis pagrindinis slaptažodis</string>
+    <string name="pref_autoLock">Užrakinti neveikiant</string>
+    <string name="autolock_never">Niekada</string>
+    <string name="autolock_1min">1 minutė</string>
+    <string name="autolock_5min">5 minutės</string>
+    <string name="autolock_15min">15 minučių</string>
+    <string name="autolock_30min">30 minučių</string>
+    <string name="autolock_1hour">1 valanda</string>
 </resources>

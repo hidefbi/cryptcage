@@ -147,4 +147,11 @@
     <string name="bio_enroll_title">Feloldás biometriával</string>
     <string name="bio_enroll_action">Beállítások megnyitása</string>
     <string name="title_currentPassword">Jelenlegi főjelszó</string>
+    <string name="pref_autoLock">Zárolás tétlenség esetén</string>
+    <string name="autolock_never">Soha</string>
+    <string name="autolock_1min">1 perc</string>
+    <string name="autolock_5min">5 perc</string>
+    <string name="autolock_15min">15 perc</string>
+    <string name="autolock_30min">30 perc</string>
+    <string name="autolock_1hour">1 óra</string>
 </resources>

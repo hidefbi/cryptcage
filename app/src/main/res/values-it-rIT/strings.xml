@@ -148,4 +148,11 @@
     <string name="bio_enroll_title">Sblocco biometrico</string>
     <string name="bio_enroll_action">Apri impostazioni</string>
     <string name="title_currentPassword">Password principale attuale</string>
+    <string name="pref_autoLock">Blocca dopo inattività</string>
+    <string name="autolock_never">Mai</string>
+    <string name="autolock_1min">1 minuto</string>
+    <string name="autolock_5min">5 minuti</string>
+    <string name="autolock_15min">15 minuti</string>
+    <string name="autolock_30min">30 minuti</string>
+    <string name="autolock_1hour">1 ora</string>
 </resources>

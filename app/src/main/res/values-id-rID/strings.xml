@@ -147,4 +147,11 @@
     <string name="bio_enroll_title">Buka kunci biometrik</string>
     <string name="bio_enroll_action">Buka pengaturan</string>
     <string name="title_currentPassword">Kata sandi utama saat ini</string>
+    <string name="pref_autoLock">Kunci saat tidak aktif</string>
+    <string name="autolock_never">Tidak pernah</string>
+    <string name="autolock_1min">1 menit</string>
+    <string name="autolock_5min">5 menit</string>
+    <string name="autolock_15min">15 menit</string>
+    <string name="autolock_30min">30 menit</string>
+    <string name="autolock_1hour">1 jam</string>
 </resources>

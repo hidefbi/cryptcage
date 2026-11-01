@@ -147,4 +147,11 @@
     <string name="bio_enroll_title">बायोमेट्रिक अनलॉक</string>
     <string name="bio_enroll_action">सेटिंग्स खोलें</string>
     <string name="title_currentPassword">वर्तमान मुख्य पासवर्ड</string>
+    <string name="pref_autoLock">निष्क्रियता पर लॉक करें</string>
+    <string name="autolock_never">कभी नहीं</string>
+    <string name="autolock_1min">1 मिनट</string>
+    <string name="autolock_5min">5 मिनट</string>
+    <string name="autolock_15min">15 मिनट</string>
+    <string name="autolock_30min">30 मिनट</string>
+    <string name="autolock_1hour">1 घंटा</string>
 </resources>

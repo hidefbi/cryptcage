@@ -147,4 +147,11 @@
     <string name="bio_enroll_title">Розблокування біометрією</string>
     <string name="bio_enroll_action">Відкрити налаштування</string>
     <string name="title_currentPassword">Поточний головний пароль</string>
+    <string name="pref_autoLock">Блокувати після бездіяльності</string>
+    <string name="autolock_never">Ніколи</string>
+    <string name="autolock_1min">1 хвилина</string>
+    <string name="autolock_5min">5 хвилин</string>
+    <string name="autolock_15min">15 хвилин</string>
+    <string name="autolock_30min">30 хвилин</string>
+    <string name="autolock_1hour">1 година</string>
 </resources>

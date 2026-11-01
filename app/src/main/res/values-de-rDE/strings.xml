@@ -147,4 +147,11 @@
     <string name="bio_enroll_title">Entsperren per Biometrie</string>
     <string name="bio_enroll_action">Einstellungen öffnen</string>
     <string name="title_currentPassword">Aktuelles Hauptpasswort</string>
+    <string name="pref_autoLock">Bei Inaktivität sperren</string>
+    <string name="autolock_never">Nie</string>
+    <string name="autolock_1min">1 Minute</string>
+    <string name="autolock_5min">5 Minuten</string>
+    <string name="autolock_15min">15 Minuten</string>
+    <string name="autolock_30min">30 Minuten</string>
+    <string name="autolock_1hour">1 Stunde</string>
 </resources>

@@ -147,4 +147,11 @@
     <string name="bio_enroll_title">生体認証でロック解除</string>
     <string name="bio_enroll_action">設定を開く</string>
     <string name="title_currentPassword">現在のマスターパスワード</string>
+    <string name="pref_autoLock">無操作時にロック</string>
+    <string name="autolock_never">なし</string>
+    <string name="autolock_1min">1分</string>
+    <string name="autolock_5min">5分</string>
+    <string name="autolock_15min">15分</string>
+    <string name="autolock_30min">30分</string>
+    <string name="autolock_1hour">1時間</string>
 </resources>

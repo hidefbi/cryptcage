@@ -147,4 +147,11 @@
     <string name="bio_enroll_title">Biometrinen lukitus</string>
     <string name="bio_enroll_action">Avaa asetukset</string>
     <string name="title_currentPassword">Nykyinen pääsalasana</string>
+    <string name="pref_autoLock">Lukitse kun toimeton</string>
+    <string name="autolock_never">Ei koskaan</string>
+    <string name="autolock_1min">1 minuutti</string>
+    <string name="autolock_5min">5 minuuttia</string>
+    <string name="autolock_15min">15 minuuttia</string>
+    <string name="autolock_30min">30 minuuttia</string>
+    <string name="autolock_1hour">1 tunti</string>
 </resources>

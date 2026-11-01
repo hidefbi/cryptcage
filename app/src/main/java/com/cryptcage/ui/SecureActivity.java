@@ -13,6 +13,8 @@ import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.TypedValue;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -94,6 +96,7 @@ public abstract class SecureActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         ClipboardTimer.setForeground(false);
+        IdleLock.pause(this);
         super.onPause();
     }
 
@@ -102,6 +105,7 @@ public abstract class SecureActivity extends AppCompatActivity {
         super.onResume();
         applyScreenshotPolicy(this);
         ClipboardTimer.setForeground(true);
+        IdleLock.resume(this);
         ClipboardTimer.clearIfExpired(this);
         // The colour palette may have been changed on another screen while this one was in the back.
         if (paletteAtCreate != App.usesSandPalette(this)) {
@@ -138,12 +142,30 @@ public abstract class SecureActivity extends AppCompatActivity {
     /** Returns true if this screen was replaced by the database picker. */
     protected boolean redirectIfLocked() {
         if (needsVault() && !App.isUnlocked()) {
-            final Intent intent = new Intent(this, SelectDatabaseActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
+            showDatabasePicker();
             return true;
         }
         return false;
+    }
+
+    /** Replaces this screen with the database picker. */
+    void showDatabasePicker() {
+        final Intent intent = new Intent(this, SelectDatabaseActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    /** Every touch and key press restarts the idle lock timer. */
+    @Override
+    public boolean dispatchTouchEvent(final MotionEvent event) {
+        IdleLock.touch(this);
+        return super.dispatchTouchEvent(event);
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(final KeyEvent event) {
+        IdleLock.touch(this);
+        return super.dispatchKeyEvent(event);
     }
 }
