@@ -37,9 +37,6 @@ public class SettingsActivity extends SecureActivity
         implements ChoosePasswordDialogFragment.Callback, InsertPasswordDialogFragment.Callback,
         PinDialogFragment.Callback {
 
-    /** True when the password being asked for sets up biometric unlock, false for the PIN. */
-    private boolean setupForBiometric;
-
     @Override
     protected boolean needsVault() {
         return false;
@@ -77,18 +74,23 @@ public class SettingsActivity extends SecureActivity
         PasswordChange.apply(this, password);
     }
 
-    /** Asks for the password of the open vault before the PIN or biometric unlock is set up. */
-    void startSetup(final boolean biometric) {
+    /** Opens the PIN dialog for setup. The master password is not asked for. */
+    void startPinSetup() {
+        PinDialogFragment.newInstance(PinDialogFragment.MODE_SETUP, null)
+                .show(getSupportFragmentManager(), "pin_setup");
+    }
+
+    /** Asks for the password of the open vault before biometric unlock is set up. */
+    void startBiometricSetup() {
         final App.Session session = App.session();
         if (session == null) {
             return;
         }
-        setupForBiometric = biometric;
         InsertPasswordDialogFragment.newInstance(vaultName(session.file))
                 .show(getSupportFragmentManager(), "setup_password");
     }
 
-    /** The password of the open vault, checked before the PIN or biometric unlock is set up with it. */
+    /** The password of the open vault, checked before biometric unlock is set up with it. */
     @Override
     public void onPasswordEntered(final String fileName, final char[] password) {
         final App.Session session = App.session();
@@ -97,19 +99,13 @@ public class SettingsActivity extends SecureActivity
             return;
         }
         final File file = session.file;
-        final boolean biometric = setupForBiometric;
         Tasks.io(() -> {
             try {
                 VaultSession.open(file, password).close();
                 PinStore.holdPassword(password);
                 final String name = vaultName(file);
-                if (biometric) {
-                    final Cipher cipher = BiometricVault.encryptCipher();
-                    Tasks.ui(() -> promptBiometricSetup(name, cipher));
-                } else {
-                    Tasks.ui(() -> PinDialogFragment.newInstance(PinDialogFragment.MODE_SETUP, name)
-                            .show(getSupportFragmentManager(), "pin_setup"));
-                }
+                final Cipher cipher = BiometricVault.encryptCipher();
+                Tasks.ui(() -> promptBiometricSetup(name, cipher));
             } catch (VaultException e) {
                 PinStore.dropPassword();
                 final int message = VaultMessages.messageFor(e.getReason());
@@ -216,7 +212,7 @@ public class SettingsActivity extends SecureActivity
                     refreshSecurityRows();
                 });
             } else {
-                ((SettingsActivity) requireActivity()).startSetup(false);
+                ((SettingsActivity) requireActivity()).startPinSetup();
             }
         }
 
@@ -243,7 +239,7 @@ public class SettingsActivity extends SecureActivity
                     refreshSecurityRows();
                 });
             } else {
-                ((SettingsActivity) requireActivity()).startSetup(true);
+                ((SettingsActivity) requireActivity()).startBiometricSetup();
             }
         }
 

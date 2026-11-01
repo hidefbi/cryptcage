@@ -28,9 +28,8 @@ import com.cryptcage.app.Tasks;
 import com.cryptcage.utils.PinRules;
 
 /**
- * Asks for the PIN in one of three cases: setting it up (with the vault's password already
- * held), unlocking a vault, or saving a vault's password under the PIN the first time that vault
- * is opened.
+ * Asks for the PIN in one of three cases: setting it up, unlocking a vault, or saving a vault's
+ * password under the PIN the first time that vault is opened.
  */
 public class PinDialogFragment extends DialogFragment {
 
@@ -39,7 +38,7 @@ public class PinDialogFragment extends DialogFragment {
     public static final int MODE_REGISTER = 2;
 
     public interface Callback {
-        /** UNLOCK passes the master password. SETUP and REGISTER pass null after the copy is saved. */
+        /** UNLOCK passes the master password. SETUP and REGISTER pass null. */
         void onPinFinished(int mode, String vault, char[] password);
 
         /** The dialog closed without finishing. usePassword is true when the user chose the master password. */
@@ -147,20 +146,10 @@ public class PinDialogFragment extends DialogFragment {
     private static Outcome run(final Context app, final int mode, final String vault, final char[] pin) {
         try {
             if (mode == MODE_SETUP) {
-                final char[] password = PinStore.takePassword();
-                if (password == null) {
-                    return Outcome.of(Result.FAILED, null, 0);
-                }
-                try {
-                    final byte[] key = PinStore.enable(app, pin);
-                    try {
-                        PinStore.saveCredential(app, vault, key, password);
-                    } finally {
-                        Arrays.fill(key, (byte) 0);
-                    }
-                } finally {
-                    Arrays.fill(password, '\0');
-                }
+                // No password is needed here. Each database gets its own copy the next time it is
+                // opened with its master password.
+                final byte[] key = PinStore.enable(app, pin);
+                Arrays.fill(key, (byte) 0);
                 return Outcome.of(Result.DONE, null, 0);
             }
             final byte[] key = PinStore.deriveKey(app, pin);
