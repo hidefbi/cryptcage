@@ -157,4 +157,9 @@
     <string name="export_7z">7-Zip (be slaptažodžio)</string>
     <string name="toast_archiveSaved">Archyvas išsaugotas</string>
     <string name="dialog_checkingPassword">Tikrinamas slaptažodis...</string>
+    <string name="about_description">CryptCage užrašus ir failus laiko vienoje šifruotoje saugykloje šiame įrenginyje. Programa neprašo prieigos prie tinklo, nereikalauja paskyros ir niekur nieko nesiunčia.</string>
+    <string name="about_licence">CryptCage yra laisva programinė įranga pagal GNU bendrąją viešąją licenciją, 3 ar naujesnės versijos. Ji paremta Ludovico de Nittis NoteCrypt Pro. Pakeitimai išvardyti faile NOTICE.md.</string>
+    <string name="donation_title">Paremkite projektą</string>
+    <string name="donation_text">Aukos yra savanoriškos ir nieko neatrakina.</string>
+    <string name="about_copied">Adresas nukopijuotas</string>
 </resources>

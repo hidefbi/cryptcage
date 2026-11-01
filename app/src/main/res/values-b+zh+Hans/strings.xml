@@ -202,4 +202,9 @@
     <string name="export_7z">7-Zip（无密码）</string>
     <string name="toast_archiveSaved">归档已保存</string>
     <string name="dialog_checkingPassword">正在验证密码...</string>
+    <string name="about_description">CryptCage 把笔记和文件保存在本机的一个加密保险库文件里。本应用不请求网络权限，不需要账号，也不会向外发送任何内容。</string>
+    <string name="about_licence">CryptCage 是自由软件，依据 GNU 通用公共许可证第 3 版或更新版本发布。它基于 Ludovico de Nittis 的 NoteCrypt Pro 修改而来，改动记录在 NOTICE.md 中。</string>
+    <string name="donation_title">支持这个项目</string>
+    <string name="donation_text">捐助是自愿的，不会解锁任何功能。</string>
+    <string name="about_copied">地址已复制</string>
 </resources>

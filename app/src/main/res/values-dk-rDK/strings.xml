@@ -157,4 +157,9 @@
     <string name="export_7z">7-Zip (uden adgangskode)</string>
     <string name="toast_archiveSaved">Arkiv gemt</string>
     <string name="dialog_checkingPassword">Adgangskoden kontrolleres...</string>
+    <string name="about_description">CryptCage gemmer noter og filer i ét krypteret hvælv på denne enhed. Appen kræver ingen netværksadgang, ingen konto og sender intet ud.</string>
+    <string name="about_licence">CryptCage er fri software under GNU General Public License, version 3 eller nyere. Den bygger på NoteCrypt Pro af Ludovico de Nittis. Ændringerne står i filen NOTICE.md.</string>
+    <string name="donation_title">Støt projektet</string>
+    <string name="donation_text">Donationer er frivillige og låser ikke noget op.</string>
+    <string name="about_copied">Adresse kopieret</string>
 </resources>

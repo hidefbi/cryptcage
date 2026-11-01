@@ -13,6 +13,7 @@ import java.util.Arrays;
 import javax.crypto.Cipher;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -354,7 +355,7 @@ public class SettingsActivity extends SecureActivity
             final Preference about = findPreference("pref_about");
             if (about != null) {
                 about.setOnPreferenceClickListener(preference -> {
-                    AboutToast.show(requireContext());
+                    startActivity(new Intent(requireContext(), AboutActivity.class));
                     return true;
                 });
             }

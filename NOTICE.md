@@ -29,6 +29,7 @@ This list covers the changes made by hidefbi on 2026-10-31 and the earlier chang
 - A PIN of 4 to 8 digits can unlock a database in place of its master password, on Android 6.0 and later. Each database keeps its own copy of the master password, wrapped with a non-exportable Keystore key. Five wrong PINs remove the PIN and the copies, not the databases.
 - Biometric unlock can open a database with the fingerprint or face the device already has. Each database keeps its own copy of the master password, encrypted with a Keystore key that needs a biometric check for every use. Turning it off removes the copies and the key. A new fingerprint enrolment invalidates the key on Android 7 and later.
 - Export can write a plain ZIP, an encrypted ZIP, or a plain 7z archive. The 7z archive uses Apache Commons Compress and xz, and it is offered from Android 8.0. An encrypted 7z archive is not written yet.
+- The About page replaces the toast. It shows the version, the licence note and a donation card with BTC, ETH and XMR addresses. Tapping an address copies it. The addresses are the same ones KeePassPN uses, and donations do not unlock anything.
 - Test coverage was added for the storage format, compaction, password change and the vault session.
 
 ## Dates

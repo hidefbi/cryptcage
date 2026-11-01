@@ -157,4 +157,9 @@
     <string name="export_7z">7-Zip (құпия сөзсіз)</string>
     <string name="toast_archiveSaved">Мұрағат сақталды</string>
     <string name="dialog_checkingPassword">Құпия сөз тексерілуде...</string>
+    <string name="about_description">CryptCage жазбалары мен файлдарын осы құрылғыдағы бір шифрланған қоймада сақтайды. Қолданба желіге қатынауды сұрамайды, аккаунт қажет етпейді және ешқайда ештеңе жібермейді.</string>
+    <string name="about_licence">CryptCage — GNU General Public License 3-нұсқасы немесе одан жаңасы бойынша таратылатын бос бағдарлама. Ол Ludovico de Nittis әзірлеген NoteCrypt Pro негізінде жасалған. Өзгерістер NOTICE.md файлында тізілген.</string>
+    <string name="donation_title">Жобаны қолдаңыз</string>
+    <string name="donation_text">Қайырымдылық ерікті түрде жасалады және ешнәрсені ашпайды.</string>
+    <string name="about_copied">Мекенжай көшірілді</string>
 </resources>

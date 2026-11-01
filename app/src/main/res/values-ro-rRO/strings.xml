@@ -157,4 +157,9 @@
     <string name="export_7z">7-Zip (fără parolă)</string>
     <string name="toast_archiveSaved">Arhiva a fost salvată</string>
     <string name="dialog_checkingPassword">Se verifică parola...</string>
+    <string name="about_description">CryptCage păstrează notițele și fișierele într-un singur seif criptat pe acest dispozitiv. Aplicația nu cere acces la rețea, nu are nevoie de cont și nu trimite nimic nicăieri.</string>
+    <string name="about_licence">CryptCage este software liber sub licența GNU General Public License, versiunea 3 sau ulterioară. Se bazează pe NoteCrypt Pro, creat de Ludovico de Nittis. Modificările sunt enumerate în NOTICE.md.</string>
+    <string name="donation_title">Susțineți proiectul</string>
+    <string name="donation_text">Donațiile sunt opționale și nu deblochează nimic.</string>
+    <string name="about_copied">Adresa a fost copiată</string>
 </resources>

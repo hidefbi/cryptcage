@@ -341,7 +341,7 @@ public class MainActivity extends SecureActivity
         } else if (id == R.id.action_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
         } else if (id == R.id.action_about) {
-            AboutToast.show(this);
+            startActivity(new Intent(this, AboutActivity.class));
         } else {
             return false;
         }

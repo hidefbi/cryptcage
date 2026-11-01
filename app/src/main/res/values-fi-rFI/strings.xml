@@ -157,4 +157,9 @@
     <string name="export_7z">7-Zip (ilman salasanaa)</string>
     <string name="toast_archiveSaved">Arkisto tallennettu</string>
     <string name="dialog_checkingPassword">Tarkistetaan salasanaa...</string>
+    <string name="about_description">CryptCage tallentaa muistiinpanot ja tiedostot yhteen salattuun holviin tälle laitteelle. Sovellus ei pyydä verkkoyhteyttä, ei vaadi tiliä eikä lähetä mitään minnekään.</string>
+    <string name="about_licence">CryptCage on vapaata ohjelmistoa GNU General Public License -lisenssin version 3 tai uudemman mukaisesti. Se pohjautuu Ludovico de Nittisin NoteCrypt Pro -sovellukseen. Muutokset on lueteltu tiedostossa NOTICE.md.</string>
+    <string name="donation_title">Tue projektia</string>
+    <string name="donation_text">Lahjoitus on vapaaehtoinen eikä avaa mitään.</string>
+    <string name="about_copied">Osoite kopioitu</string>
 </resources>

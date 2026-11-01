@@ -222,4 +222,12 @@
     <string name="export_7z">7-Zip (no password)</string>
     <string name="toast_archiveSaved">Archive saved</string>
     <string name="dialog_checkingPassword">Checking password...</string>
+    <string name="about_description">CryptCage keeps your notes and files in one encrypted vault file on this device. The app asks for no network access, needs no account, and sends nothing anywhere.</string>
+    <string name="about_licence">CryptCage is free software under the GNU General Public License, version 3 or later. It is based on NoteCrypt Pro by Ludovico de Nittis. The changes are listed in NOTICE.md.</string>
+    <string name="donation_title">Support the project</string>
+    <string name="donation_text">Donations are optional and do not unlock anything.</string>
+    <string name="about_copied">Address copied</string>
+    <string name="donation_btc_address" translatable="false">bc1q34tccx8ttkqdpaywugmdvhamqmc9uhh9qttqn7</string>
+    <string name="donation_eth_address" translatable="false">0x21ac40d9afec1e6fd3c0abe730911da4a03d1d98</string>
+    <string name="donation_xmr_address" translatable="false">45FU335cDyD71wiG9XxBLaDrxRmqt15p5gHi1yu12ciabYDys7wrifWgFbQ5CC8F5Yj1DRvNtcVxRPjGwaCsRH7mAwDFkwx</string>
 </resources>

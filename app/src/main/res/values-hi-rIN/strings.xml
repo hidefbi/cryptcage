@@ -157,4 +157,9 @@
     <string name="export_7z">7-Zip (बिना पासवर्ड)</string>
     <string name="toast_archiveSaved">आर्काइव सहेजा गया</string>
     <string name="dialog_checkingPassword">पासवर्ड की जाँच हो रही है...</string>
+    <string name="about_description">CryptCage आपके नोट्स और फ़ाइलें इस डिवाइस पर एक एन्क्रिप्टेड वॉल्ट में रखता है। ऐप को नेटवर्क एक्सेस नहीं चाहिए, कोई खाता नहीं चाहिए और यह कुछ भी बाहर नहीं भेजता।</string>
+    <string name="about_licence">CryptCage GNU General Public License, संस्करण 3 या बाद के संस्करण के तहत मुक्त सॉफ़्टवेयर है। यह Ludovico de Nittis के NoteCrypt Pro पर आधारित है। बदलाव NOTICE.md में सूचीबद्ध हैं।</string>
+    <string name="donation_title">प्रोजेक्ट का समर्थन करें</string>
+    <string name="donation_text">दान वैकल्पिक है और इससे कुछ भी अनलॉक नहीं होता।</string>
+    <string name="about_copied">पता कॉपी हुआ</string>
 </resources>

@@ -157,4 +157,9 @@
     <string name="export_7z">7-Zip (jelszó nélkül)</string>
     <string name="toast_archiveSaved">Archívum mentve</string>
     <string name="dialog_checkingPassword">Jelszó ellenőrzése...</string>
+    <string name="about_description">A CryptCage a jegyzeteket és a fájlokat egyetlen titkosított tárolóban őrzi ezen az eszközön. Az alkalmazás nem kér hálózati hozzáférést, nem igényel fiókot, és semmit sem küld el.</string>
+    <string name="about_licence">A CryptCage szabad szoftver a GNU General Public License 3-as vagy újabb verziója szerint. Ludovico de Nittis NoteCrypt Pro alkalmazására épül. A változtatások a NOTICE.md fájlban vannak felsorolva.</string>
+    <string name="donation_title">Támogassa a projektet</string>
+    <string name="donation_text">Az adományozás nem kötelező, és nem nyit meg semmit.</string>
+    <string name="about_copied">Cím másolva</string>
 </resources>

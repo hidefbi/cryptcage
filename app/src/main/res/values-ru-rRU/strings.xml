@@ -157,4 +157,9 @@
     <string name="export_7z">7-Zip (без пароля)</string>
     <string name="toast_archiveSaved">Архив сохранён</string>
     <string name="dialog_checkingPassword">Проверка пароля...</string>
+    <string name="about_description">CryptCage хранит заметки и файлы в одном зашифрованном хранилище на этом устройстве. Приложению не нужен доступ к сети и аккаунт, и оно ничего никуда не отправляет.</string>
+    <string name="about_licence">CryptCage распространяется как свободное программное обеспечение по лицензии GNU General Public License версии 3 или новее. Основан на NoteCrypt Pro, автор Ludovico de Nittis. Изменения перечислены в файле NOTICE.md.</string>
+    <string name="donation_title">Поддержать проект</string>
+    <string name="donation_text">Пожертвования необязательны и ничего не открывают.</string>
+    <string name="about_copied">Адрес скопирован</string>
 </resources>

@@ -157,4 +157,9 @@
     <string name="export_7z">7-Zip (tanpa kata sandi)</string>
     <string name="toast_archiveSaved">Arsip disimpan</string>
     <string name="dialog_checkingPassword">Memeriksa kata sandi...</string>
+    <string name="about_description">CryptCage menyimpan catatan dan berkas Anda dalam satu brankas terenkripsi di perangkat ini. Aplikasi ini tidak meminta akses jaringan, tidak memerlukan akun, dan tidak mengirim apa pun.</string>
+    <string name="about_licence">CryptCage adalah perangkat lunak bebas di bawah GNU General Public License versi 3 atau yang lebih baru. Aplikasi ini didasarkan pada NoteCrypt Pro karya Ludovico de Nittis. Perubahannya tercantum di NOTICE.md.</string>
+    <string name="donation_title">Dukung proyek ini</string>
+    <string name="donation_text">Donasi bersifat sukarela dan tidak membuka fitur apa pun.</string>
+    <string name="about_copied">Alamat disalin</string>
 </resources>

@@ -157,4 +157,9 @@
     <string name="export_7z">7-Zip (χωρίς κωδικό πρόσβασης)</string>
     <string name="toast_archiveSaved">Το αρχείο αποθηκεύτηκε</string>
     <string name="dialog_checkingPassword">Έλεγχος κωδικού πρόσβασης...</string>
+    <string name="about_description">Το CryptCage αποθηκεύει σημειώσεις και αρχεία σε ένα κρυπτογραφημένο θησαυροφυλάκιο σε αυτή τη συσκευή. Η εφαρμογή δεν ζητά πρόσβαση στο δίκτυο, δεν χρειάζεται λογαριασμό και δεν στέλνει τίποτα.</string>
+    <string name="about_licence">Το CryptCage είναι ελεύθερο λογισμικό υπό την GNU General Public License, έκδοση 3 ή νεότερη. Βασίζεται στο NoteCrypt Pro του Ludovico de Nittis. Οι αλλαγές αναφέρονται στο NOTICE.md.</string>
+    <string name="donation_title">Υποστηρίξτε το έργο</string>
+    <string name="donation_text">Οι δωρεές είναι προαιρετικές και δεν ξεκλειδώνουν τίποτα.</string>
+    <string name="about_copied">Η διεύθυνση αντιγράφηκε</string>
 </resources>

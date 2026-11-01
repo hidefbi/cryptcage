@@ -38,6 +38,9 @@
             android:name="com.cryptcage.ui.SettingsActivity"
             android:exported="false" />
         <activity
+            android:name="com.cryptcage.ui.AboutActivity"
+            android:exported="false" />
+        <activity
             android:name="com.cryptcage.ui.FileViewActivity"
             android:exported="false" />
     </application>
