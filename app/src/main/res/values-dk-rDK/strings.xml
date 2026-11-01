@@ -88,6 +88,7 @@
     <string-array name="pref_palette_entries">
         <item>Blå</item>
         <item>Sand</item>
+        <item>Oliven</item>
     </string-array>
     <string name="action_select">Vælg</string>
     <string name="action_copy">Kopiér</string>
@@ -162,4 +163,8 @@
     <string name="donation_title">Støt projektet</string>
     <string name="donation_text">Donationer er frivillige og låser ikke noget op.</string>
     <string name="about_copied">Adresse kopieret</string>
+    <string name="header_unlocked">CRYPTCAGE · Låst op</string>
+    <string name="filter_notes">Noter</string>
+    <string name="filter_files">Filer</string>
+    <string name="note_hint">Note</string>
 </resources>

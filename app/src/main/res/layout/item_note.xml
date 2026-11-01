@@ -9,7 +9,7 @@
     android:layout_marginTop="4dp"
     android:layout_marginBottom="4dp"
     app:cardBackgroundColor="?attr/colorSurface"
-    app:cardCornerRadius="16dp"
+    app:cardCornerRadius="20dp"
     app:cardElevation="0dp"
     app:strokeColor="?attr/colorOutline"
     app:strokeWidth="1dp">
@@ -19,17 +19,25 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:paddingStart="14dp"
         android:paddingTop="14dp"
+        android:paddingEnd="8dp"
         android:paddingBottom="14dp">
 
-        <ImageView
-            android:id="@+id/type"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="16dp"
-            android:scaleType="fitCenter" />
+        <FrameLayout
+            android:id="@+id/tile"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="14dp"
+            android:background="@drawable/bg_tile">
+
+            <ImageView
+                android:id="@+id/type"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter" />
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -57,12 +65,20 @@
 
         <ImageView
             android:id="@+id/star"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="12dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
             android:scaleType="fitCenter"
             android:src="@drawable/icon_star"
             android:tint="?attr/colorPrimary"
             android:visibility="gone" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="4dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_chevron_right"
+            app:tint="?attr/colorOnSurfaceVariant" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

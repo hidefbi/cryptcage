@@ -131,10 +131,12 @@
     <string-array name="pref_palette_entries">
         <item>Blue</item>
         <item>Sand</item>
+        <item>Olive</item>
     </string-array>
     <string-array name="pref_palette_values">
         <item>blue</item>
         <item>sand</item>
+        <item>olive</item>
     </string-array>
     <string-array name="pref_autoLock_entries">
         <item>@string/autolock_never</item>
@@ -230,4 +232,8 @@
     <string name="donation_btc_address" translatable="false">bc1q34tccx8ttkqdpaywugmdvhamqmc9uhh9qttqn7</string>
     <string name="donation_eth_address" translatable="false">0x21ac40d9afec1e6fd3c0abe730911da4a03d1d98</string>
     <string name="donation_xmr_address" translatable="false">45FU335cDyD71wiG9XxBLaDrxRmqt15p5gHi1yu12ciabYDys7wrifWgFbQ5CC8F5Yj1DRvNtcVxRPjGwaCsRH7mAwDFkwx</string>
+    <string name="header_unlocked">CRYPTCAGE · Unlocked</string>
+    <string name="filter_notes">Notes</string>
+    <string name="filter_files">Files</string>
+    <string name="note_hint">Note</string>
 </resources>

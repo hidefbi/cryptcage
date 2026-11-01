@@ -88,6 +88,7 @@
     <string-array name="pref_palette_entries">
         <item>Синя</item>
         <item>Піщана</item>
+        <item>Оливковий</item>
     </string-array>
     <string name="action_select">Вибрати</string>
     <string name="action_copy">Копіювати</string>
@@ -162,4 +163,8 @@
     <string name="donation_title">Підтримайте проєкт</string>
     <string name="donation_text">Пожертви необов\'язкові і нічого не відкривають.</string>
     <string name="about_copied">Адресу скопійовано</string>
+    <string name="header_unlocked">CRYPTCAGE · Розблоковано</string>
+    <string name="filter_notes">Нотатки</string>
+    <string name="filter_files">Файли</string>
+    <string name="note_hint">Нотатка</string>
 </resources>

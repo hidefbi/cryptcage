@@ -37,8 +37,8 @@ public abstract class SecureActivity extends AppCompatActivity {
     /** Extra key for the id of a note. */
     public static final String EXTRA_NOTE_ID = "note_id";
 
-    /** Whether the sand palette was applied when this screen was created. */
-    private boolean paletteAtCreate;
+    /** The palette that was applied when this screen was created. */
+    private String paletteAtCreate;
 
     /** Screens that show note data return true. The database picker returns false. */
     protected boolean needsVault() {
@@ -49,13 +49,25 @@ public abstract class SecureActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         applyScreenshotPolicy(this);
         ClipboardTimer.install(this);
-        paletteAtCreate = App.usesSandPalette(this);
-        if (paletteAtCreate) {
-            getTheme().applyStyle(R.style.PaletteSand, true);
+        paletteAtCreate = App.palette(this);
+        final int style = paletteStyle(paletteAtCreate);
+        if (style != 0) {
+            getTheme().applyStyle(style, true);
         }
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setBackgroundColor(themeBackground());
         applySystemBars();
+    }
+
+    /** The style for a palette name, or 0 for the base blue theme. */
+    static int paletteStyle(final String palette) {
+        if ("olive".equals(palette)) {
+            return R.style.PaletteOlive;
+        }
+        if ("sand".equals(palette)) {
+            return R.style.PaletteSand;
+        }
+        return 0;
     }
 
     /** Blocks screenshots and the recent-apps preview unless the screenshot mode is on. */
@@ -108,7 +120,7 @@ public abstract class SecureActivity extends AppCompatActivity {
         IdleLock.resume(this);
         ClipboardTimer.clearIfExpired(this);
         // The colour palette may have been changed on another screen while this one was in the back.
-        if (paletteAtCreate != App.usesSandPalette(this)) {
+        if (!paletteAtCreate.equals(App.palette(this))) {
             recreate();
         }
     }

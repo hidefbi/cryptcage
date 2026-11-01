@@ -88,6 +88,7 @@
     <string-array name="pref_palette_entries">
         <item>नीला</item>
         <item>रेत</item>
+        <item>जैतून</item>
     </string-array>
     <string name="action_select">चुनें</string>
     <string name="action_copy">कॉपी करें</string>
@@ -162,4 +163,8 @@
     <string name="donation_title">प्रोजेक्ट का समर्थन करें</string>
     <string name="donation_text">दान वैकल्पिक है और इससे कुछ भी अनलॉक नहीं होता।</string>
     <string name="about_copied">पता कॉपी हुआ</string>
+    <string name="header_unlocked">CRYPTCAGE · अनलॉक</string>
+    <string name="filter_notes">नोट्स</string>
+    <string name="filter_files">फ़ाइलें</string>
+    <string name="note_hint">नोट</string>
 </resources>

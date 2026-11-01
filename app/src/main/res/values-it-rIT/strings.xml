@@ -89,6 +89,7 @@
     <string-array name="pref_palette_entries">
         <item>Blu</item>
         <item>Sabbia</item>
+        <item>Oliva</item>
     </string-array>
     <string name="action_select">Seleziona</string>
     <string name="action_copy">Copia</string>
@@ -163,4 +164,8 @@
     <string name="donation_title">Sostieni il progetto</string>
     <string name="donation_text">Le donazioni sono facoltative e non sbloccano nulla.</string>
     <string name="about_copied">Indirizzo copiato</string>
+    <string name="header_unlocked">CRYPTCAGE · Sbloccato</string>
+    <string name="filter_notes">Note</string>
+    <string name="filter_files">File</string>
+    <string name="note_hint">Nota</string>
 </resources>

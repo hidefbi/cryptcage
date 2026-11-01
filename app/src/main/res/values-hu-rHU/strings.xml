@@ -88,6 +88,7 @@
     <string-array name="pref_palette_entries">
         <item>Kék</item>
         <item>Homok</item>
+        <item>Olívazöld</item>
     </string-array>
     <string name="action_select">Kijelölés</string>
     <string name="action_copy">Másolás</string>
@@ -162,4 +163,8 @@
     <string name="donation_title">Támogassa a projektet</string>
     <string name="donation_text">Az adományozás nem kötelező, és nem nyit meg semmit.</string>
     <string name="about_copied">Cím másolva</string>
+    <string name="header_unlocked">CRYPTCAGE · Feloldva</string>
+    <string name="filter_notes">Jegyzetek</string>
+    <string name="filter_files">Fájlok</string>
+    <string name="note_hint">Jegyzet</string>
 </resources>

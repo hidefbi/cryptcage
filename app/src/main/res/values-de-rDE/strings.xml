@@ -88,6 +88,7 @@
     <string-array name="pref_palette_entries">
         <item>Blau</item>
         <item>Sand</item>
+        <item>Oliv</item>
     </string-array>
     <string name="action_select">Auswählen</string>
     <string name="action_copy">Kopieren</string>
@@ -162,4 +163,8 @@
     <string name="donation_title">Projekt unterstützen</string>
     <string name="donation_text">Spenden sind freiwillig und schalten nichts frei.</string>
     <string name="about_copied">Adresse kopiert</string>
+    <string name="header_unlocked">CRYPTCAGE · Entsperrt</string>
+    <string name="filter_notes">Notizen</string>
+    <string name="filter_files">Dateien</string>
+    <string name="note_hint">Notiz</string>
 </resources>

@@ -71,11 +71,19 @@ public class MainActivity extends SecureActivity
     private static final String PREF_MANUAL = "isManualOrder";
     private static final String DETAIL_TAG = "detail";
     private static final long NO_NOTE = Long.MIN_VALUE;
+    private static final int KIND_ALL = 0;
+    private static final int KIND_NOTES = 1;
+    private static final int KIND_FILES = 2;
 
     private MaterialToolbar toolbar;
     private TextInputEditText searchField;
     private HorizontalScrollView tagScroll;
     private ChipGroup tagGroup;
+    private ChipGroup kindGroup;
+    private Chip kindAll;
+    private Chip kindNotes;
+    private Chip kindFiles;
+    private int kindFilter = KIND_ALL;
     private RecyclerView notesList;
     private TextView emptyView;
     private FloatingActionButton fab;
@@ -117,6 +125,15 @@ public class MainActivity extends SecureActivity
         searchField = findViewById(R.id.search_field);
         tagScroll = findViewById(R.id.tag_scroll);
         tagGroup = findViewById(R.id.tag_group);
+        kindGroup = findViewById(R.id.kind_group);
+        kindAll = findViewById(R.id.kind_all);
+        kindNotes = findViewById(R.id.kind_notes);
+        kindFiles = findViewById(R.id.kind_files);
+        kindGroup.setOnCheckedStateChangeListener((group, ids) -> {
+            final int id = ids.isEmpty() ? R.id.kind_all : ids.get(0);
+            kindFilter = id == R.id.kind_notes ? KIND_NOTES : id == R.id.kind_files ? KIND_FILES : KIND_ALL;
+            refresh();
+        });
         notesList = findViewById(R.id.notes_list);
         emptyView = findViewById(R.id.empty);
         fab = findViewById(R.id.fab);
@@ -688,6 +705,14 @@ public class MainActivity extends SecureActivity
         final List<VaultSession.Summary> all = vault.list();
         final Map<String, Integer> counts = vault.tagCounts();
         final int total = all.size();
+        int noteCount = 0;
+        for (VaultSession.Summary note : all) {
+            if (!note.file) {
+                noteCount++;
+            }
+        }
+        final int fileCount = total - noteCount;
+        final String noteHint = getString(R.string.note_hint);
 
         final Set<Long> existing = new HashSet<>();
         for (VaultSession.Summary note : all) {
@@ -701,6 +726,9 @@ public class MainActivity extends SecureActivity
 
         final List<VaultSession.Summary> rows = new ArrayList<>();
         for (VaultSession.Summary note : all) {
+            if ((kindFilter == KIND_NOTES && note.file) || (kindFilter == KIND_FILES && !note.file)) {
+                continue;
+            }
             if (tagged != null && !tagged.contains(note.id)) {
                 continue;
             }
@@ -733,20 +761,24 @@ public class MainActivity extends SecureActivity
 
         final List<NotesAdapter.Item> shown = new ArrayList<>();
         for (VaultSession.Summary note : rows) {
-            shown.add(itemFor(note, untitled, selecting && selectedIds.contains(note.id)));
+            shown.add(itemFor(note, untitled, noteHint, selecting && selectedIds.contains(note.id)));
         }
 
         rebuildChips(total, counts);
-        tagScroll.setVisibility(total == 0 ? View.GONE : View.VISIBLE);
+        kindAll.setText(getString(R.string.all_items) + " (" + total + ")");
+        kindNotes.setText(getString(R.string.filter_notes) + " (" + noteCount + ")");
+        kindFiles.setText(getString(R.string.filter_files) + " (" + fileCount + ")");
+        tagScroll.setVisibility(counts.isEmpty() ? View.GONE : View.VISIBLE);
         emptyView.setVisibility(total == 0 ? View.VISIBLE : View.GONE);
         adapter.submit(shown);
         toolbar.setTitle(selecting
                 ? getString(R.string.selected_count, selectedIds.size())
                 : StringMethods.getNameDB(session.file.getName()));
+        toolbar.setSubtitle(selecting ? null : getString(R.string.header_unlocked));
     }
 
     private static NotesAdapter.Item itemFor(final VaultSession.Summary note, final String untitled,
-                                             final boolean selected) {
+                                             final String noteHint, final boolean selected) {
         final String title = note.title;
         final String shownTitle = title == null || title.isEmpty() ? untitled : title;
         if (note.file) {
@@ -756,7 +788,7 @@ public class MainActivity extends SecureActivity
                     note.readOnly, selected);
         }
         final String tags = note.tags;
-        final String subtitle = tags == null || tags.isEmpty() ? null : tags.replace(",", ", ");
+        final String subtitle = tags == null || tags.isEmpty() ? noteHint : tags.replace(",", ", ");
         return new NotesAdapter.Item(note.id, shownTitle, subtitle, null, note.starred, note.readOnly, selected);
     }
 

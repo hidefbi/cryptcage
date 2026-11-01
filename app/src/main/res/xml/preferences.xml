@@ -8,7 +8,7 @@
         android:title="@string/category_appearance">
 
         <androidx.preference.ListPreference
-            android:defaultValue="blue"
+            android:defaultValue="olive"
             android:dialogTitle="@string/pref_palette"
             android:entries="@array/pref_palette_entries"
             android:entryValues="@array/pref_palette_values"

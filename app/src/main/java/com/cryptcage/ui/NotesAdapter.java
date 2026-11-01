@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -146,9 +147,18 @@ final class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.Holder> {
         holder.title.setText(item.title);
         holder.subtitle.setText(item.subtitle);
         holder.subtitle.setVisibility(item.subtitle == null ? View.GONE : View.VISIBLE);
-        holder.type.setVisibility(item.type == null ? View.GONE : View.VISIBLE);
-        if (item.type != null) {
+        holder.type.setVisibility(View.VISIBLE);
+        if (item.type == null) {
+            holder.type.setImageResource(R.drawable.icon_edit);
+            holder.type.setImageTintList(ColorStateList.valueOf(MaterialColors.getColor(view,
+                    com.google.android.material.R.attr.colorOnPrimaryContainer)));
+            holder.tile.setBackgroundTintList(ColorStateList.valueOf(MaterialColors.getColor(view,
+                    com.google.android.material.R.attr.colorPrimaryContainer)));
+        } else {
             holder.type.setImageResource(iconFor(item.type));
+            holder.type.setImageTintList(null);
+            holder.tile.setBackgroundTintList(ColorStateList.valueOf(MaterialColors.getColor(view,
+                    com.google.android.material.R.attr.colorSecondaryContainer)));
         }
         holder.star.setVisibility(item.starred ? View.VISIBLE : View.GONE);
 
@@ -207,6 +217,7 @@ final class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.Holder> {
 
     static final class Holder extends RecyclerView.ViewHolder {
         final MaterialCardView card;
+        final View tile;
         final ImageView type;
         final TextView title;
         final TextView subtitle;
@@ -215,6 +226,7 @@ final class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.Holder> {
         Holder(final View view) {
             super(view);
             card = view.findViewById(R.id.card);
+            tile = view.findViewById(R.id.tile);
             type = view.findViewById(R.id.type);
             title = view.findViewById(R.id.title);
             subtitle = view.findViewById(R.id.subtitle);

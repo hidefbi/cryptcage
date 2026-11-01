@@ -88,6 +88,7 @@
     <string-array name="pref_palette_entries">
         <item>Xanh dương</item>
         <item>Cát</item>
+        <item>Ô liu</item>
     </string-array>
     <string name="action_select">Chọn</string>
     <string name="action_copy">Sao chép</string>
@@ -162,4 +163,8 @@
     <string name="donation_title">Ủng hộ dự án</string>
     <string name="donation_text">Quyên góp là tùy chọn và không mở khóa tính năng nào.</string>
     <string name="about_copied">Đã sao chép địa chỉ</string>
+    <string name="header_unlocked">CRYPTCAGE · Đã mở khóa</string>
+    <string name="filter_notes">Ghi chú</string>
+    <string name="filter_files">Tệp</string>
+    <string name="note_hint">Ghi chú</string>
 </resources>

@@ -88,6 +88,7 @@
     <string-array name="pref_palette_entries">
         <item>Modrý</item>
         <item>Písková</item>
+        <item>Olivová</item>
     </string-array>
     <string name="action_select">Vybrat</string>
     <string name="action_copy">Kopírovat</string>
@@ -162,4 +163,8 @@
     <string name="donation_title">Podpořte projekt</string>
     <string name="donation_text">Příspěvek je dobrovolný a nic neodemyká.</string>
     <string name="about_copied">Adresa zkopírována</string>
+    <string name="header_unlocked">CRYPTCAGE · Odemčeno</string>
+    <string name="filter_notes">Poznámky</string>
+    <string name="filter_files">Soubory</string>
+    <string name="note_hint">Poznámka</string>
 </resources>

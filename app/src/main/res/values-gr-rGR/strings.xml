@@ -88,6 +88,7 @@
     <string-array name="pref_palette_entries">
         <item>Μπλε</item>
         <item>Άμμος</item>
+        <item>Ελιά</item>
     </string-array>
     <string name="action_select">Επιλογή</string>
     <string name="action_copy">Αντιγραφή</string>
@@ -162,4 +163,8 @@
     <string name="donation_title">Υποστηρίξτε το έργο</string>
     <string name="donation_text">Οι δωρεές είναι προαιρετικές και δεν ξεκλειδώνουν τίποτα.</string>
     <string name="about_copied">Η διεύθυνση αντιγράφηκε</string>
+    <string name="header_unlocked">CRYPTCAGE · Ξεκλειδωμένο</string>
+    <string name="filter_notes">Σημειώσεις</string>
+    <string name="filter_files">Αρχεία</string>
+    <string name="note_hint">Σημείωση</string>
 </resources>

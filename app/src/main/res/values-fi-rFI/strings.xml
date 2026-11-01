@@ -88,6 +88,7 @@
     <string-array name="pref_palette_entries">
         <item>Sininen</item>
         <item>Hiekka</item>
+        <item>Oliivi</item>
     </string-array>
     <string name="action_select">Valitse</string>
     <string name="action_copy">Kopioi</string>
@@ -162,4 +163,8 @@
     <string name="donation_title">Tue projektia</string>
     <string name="donation_text">Lahjoitus on vapaaehtoinen eikä avaa mitään.</string>
     <string name="about_copied">Osoite kopioitu</string>
+    <string name="header_unlocked">CRYPTCAGE · Avattu</string>
+    <string name="filter_notes">Muistiinpanot</string>
+    <string name="filter_files">Tiedostot</string>
+    <string name="note_hint">Muistiinpano</string>
 </resources>

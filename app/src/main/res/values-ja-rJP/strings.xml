@@ -88,6 +88,7 @@
     <string-array name="pref_palette_entries">
         <item>ブルー</item>
         <item>サンド</item>
+        <item>オリーブ</item>
     </string-array>
     <string name="action_select">選択</string>
     <string name="action_copy">コピー</string>
@@ -162,4 +163,8 @@
     <string name="donation_title">プロジェクトを支援する</string>
     <string name="donation_text">寄付は任意で、機能が解放されることはありません。</string>
     <string name="about_copied">アドレスをコピーしました</string>
+    <string name="header_unlocked">CRYPTCAGE · ロック解除中</string>
+    <string name="filter_notes">メモ</string>
+    <string name="filter_files">ファイル</string>
+    <string name="note_hint">メモ</string>
 </resources>

@@ -88,6 +88,7 @@
     <string-array name="pref_palette_entries">
         <item>Bleu</item>
         <item>Sable</item>
+        <item>Olive</item>
     </string-array>
     <string name="action_select">Sélectionner</string>
     <string name="action_copy">Copier</string>
@@ -162,4 +163,8 @@
     <string name="donation_title">Soutenir le projet</string>
     <string name="donation_text">Les dons sont facultatifs et ne débloquent rien.</string>
     <string name="about_copied">Adresse copiée</string>
+    <string name="header_unlocked">CRYPTCAGE · Déverrouillé</string>
+    <string name="filter_notes">Notes</string>
+    <string name="filter_files">Fichiers</string>
+    <string name="note_hint">Note</string>
 </resources>

@@ -31,6 +31,7 @@ This list covers the changes made by hidefbi on 2026-10-31 and the earlier chang
 - Export can write a plain ZIP, an encrypted ZIP, or a plain 7z archive. The 7z archive uses Apache Commons Compress and xz, and it is offered from Android 8.0. An encrypted 7z archive is not written yet.
 - The About page replaces the toast. It shows the version, the licence note and a donation card with BTC, ETH and XMR addresses. Tapping an address copies it. The addresses are the same ones KeePassPN uses, and donations do not unlock anything.
 - The settings rows are grouped into cards under section titles. The cards are drawn by CardGroupDecoration.
+- The olive palette is the default. The unlocked screen has a dark header with the vault name and a search field, filter chips for all items, notes and files with their counts, note cards with an icon tile, and a rounded floating button.
 - Test coverage was added for the storage format, compaction, password change and the vault session.
 
 ## Dates

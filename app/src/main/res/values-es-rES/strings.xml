@@ -88,6 +88,7 @@
     <string-array name="pref_palette_entries">
         <item>Azul</item>
         <item>Arena</item>
+        <item>Oliva</item>
     </string-array>
     <string name="action_select">Seleccionar</string>
     <string name="action_copy">Copiar</string>
@@ -162,4 +163,8 @@
     <string name="donation_title">Apoya el proyecto</string>
     <string name="donation_text">Las donaciones son voluntarias y no desbloquean nada.</string>
     <string name="about_copied">Dirección copiada</string>
+    <string name="header_unlocked">CRYPTCAGE · Desbloqueado</string>
+    <string name="filter_notes">Notas</string>
+    <string name="filter_files">Archivos</string>
+    <string name="note_hint">Nota</string>
 </resources>

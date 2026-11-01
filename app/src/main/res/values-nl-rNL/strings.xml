@@ -88,6 +88,7 @@
     <string-array name="pref_palette_entries">
         <item>Blauw</item>
         <item>Zand</item>
+        <item>Olijf</item>
     </string-array>
     <string name="action_select">Selecteren</string>
     <string name="action_copy">Kopiëren</string>
@@ -162,4 +163,8 @@
     <string name="donation_title">Steun het project</string>
     <string name="donation_text">Donaties zijn vrijwillig en ontgrendelen niets.</string>
     <string name="about_copied">Adres gekopieerd</string>
+    <string name="header_unlocked">CRYPTCAGE · Ontgrendeld</string>
+    <string name="filter_notes">Notities</string>
+    <string name="filter_files">Bestanden</string>
+    <string name="note_hint">Notitie</string>
 </resources>

@@ -108,10 +108,9 @@ public class App extends Application {
                 .getBoolean("pref_screenshot", false);
     }
 
-    /** True when the settings choose the sand colour palette. The default is the blue palette. */
-    public static boolean usesSandPalette(final Context context) {
-        return "sand".equals(PreferenceManager.getDefaultSharedPreferences(context)
-                .getString("pref_palette", "blue"));
+    /** The colour palette chosen in the settings: "olive", "sand" or "blue". Olive is the default. */
+    public static String palette(final Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context).getString("pref_palette", "olive");
     }
 
     public static synchronized Session session() {

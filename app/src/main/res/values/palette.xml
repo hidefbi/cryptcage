@@ -5,6 +5,21 @@
         The sand palette. It is applied on top of the theme chosen in the settings
         (light, dark or system), so the day and night colours come from the sand_* resources.
     -->
+    <style name="PaletteOlive">
+        <item name="colorPrimary">@color/olive_primary</item>
+        <item name="colorOnPrimary">@color/olive_on_primary</item>
+        <item name="colorPrimaryContainer">@color/olive_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/olive_on_primary_container</item>
+        <item name="colorSecondaryContainer">@color/olive_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/olive_on_secondary_container</item>
+        <item name="colorSurface">@color/olive_surface</item>
+        <item name="colorOnSurface">@color/olive_on_surface</item>
+        <item name="colorSurfaceVariant">@color/olive_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/olive_on_surface_variant</item>
+        <item name="colorOutline">@color/olive_outline</item>
+        <item name="android:colorBackground">@color/olive_background</item>
+    </style>
+
     <style name="PaletteSand">
         <item name="colorPrimary">@color/sand_primary</item>
         <item name="colorOnPrimary">@color/sand_on_primary</item>

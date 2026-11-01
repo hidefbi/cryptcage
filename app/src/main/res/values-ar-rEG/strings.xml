@@ -88,6 +88,7 @@
     <string-array name="pref_palette_entries">
         <item>الأزرق</item>
         <item>الرملي</item>
+        <item>زيتوني</item>
     </string-array>
     <string name="action_select">تحديد</string>
     <string name="action_copy">نسخ</string>
@@ -162,4 +163,8 @@
     <string name="donation_title">ادعم المشروع</string>
     <string name="donation_text">التبرع اختياري ولا يفتح أي ميزة.</string>
     <string name="about_copied">تم نسخ العنوان</string>
+    <string name="header_unlocked">CRYPTCAGE · مفتوح</string>
+    <string name="filter_notes">ملاحظات</string>
+    <string name="filter_files">ملفات</string>
+    <string name="note_hint">ملاحظة</string>
 </resources>

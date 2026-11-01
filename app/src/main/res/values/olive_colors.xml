@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="olive_background">#F6F5EA</color>
+    <color name="olive_surface">#FFFFFF</color>
+    <color name="olive_on_surface">#1D2212</color>
+    <color name="olive_surface_variant">#ECEBDC</color>
+    <color name="olive_on_surface_variant">#575D45</color>
+    <color name="olive_outline">#CACDB2</color>
+    <color name="olive_primary">#5E6E25</color>
+    <color name="olive_on_primary">#FFFFFF</color>
+    <color name="olive_primary_container">#E4EBC4</color>
+    <color name="olive_on_primary_container">#222C06</color>
+    <color name="olive_secondary_container">#E9E5D0</color>
+    <color name="olive_on_secondary_container">#3A3619</color>
+    <!-- Fixed in both themes: the header behind the vault name and the search field. -->
+    <color name="olive_header">#2F3B17</color>
+</resources>

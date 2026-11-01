@@ -88,6 +88,7 @@
     <string-array name="pref_palette_entries">
         <item>Mėlyna</item>
         <item>Smėlio</item>
+        <item>Alyvuogė</item>
     </string-array>
     <string name="action_select">Pasirinkti</string>
     <string name="action_copy">Kopijuoti</string>
@@ -162,4 +163,8 @@
     <string name="donation_title">Paremkite projektą</string>
     <string name="donation_text">Aukos yra savanoriškos ir nieko neatrakina.</string>
     <string name="about_copied">Adresas nukopijuotas</string>
+    <string name="header_unlocked">CRYPTCAGE · Atrakinta</string>
+    <string name="filter_notes">Užrašai</string>
+    <string name="filter_files">Failai</string>
+    <string name="note_hint">Užrašas</string>
 </resources>

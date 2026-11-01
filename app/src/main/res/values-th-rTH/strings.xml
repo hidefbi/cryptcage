@@ -88,6 +88,7 @@
     <string-array name="pref_palette_entries">
         <item>น้ำเงิน</item>
         <item>ทราย</item>
+        <item>มะกอก</item>
     </string-array>
     <string name="action_select">เลือก</string>
     <string name="action_copy">คัดลอก</string>
@@ -162,4 +163,8 @@
     <string name="donation_title">สนับสนุนโครงการ</string>
     <string name="donation_text">การบริจาคเป็นทางเลือก และไม่ปลดล็อกฟีเจอร์ใด ๆ</string>
     <string name="about_copied">คัดลอกที่อยู่แล้ว</string>
+    <string name="header_unlocked">CRYPTCAGE · ปลดล็อกแล้ว</string>
+    <string name="filter_notes">โน้ต</string>
+    <string name="filter_files">ไฟล์</string>
+    <string name="note_hint">โน้ต</string>
 </resources>

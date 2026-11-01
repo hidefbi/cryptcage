@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="olive_background">#13170C</color>
+    <color name="olive_surface">#1C2211</color>
+    <color name="olive_on_surface">#E4EAD0</color>
+    <color name="olive_surface_variant">#262D1A</color>
+    <color name="olive_on_surface_variant">#B6BD9E</color>
+    <color name="olive_outline">#4A5235</color>
+    <color name="olive_primary">#BAD06F</color>
+    <color name="olive_on_primary">#263007</color>
+    <color name="olive_primary_container">#3C4A18</color>
+    <color name="olive_on_primary_container">#E4EEC2</color>
+    <color name="olive_secondary_container">#3A3720</color>
+    <color name="olive_on_secondary_container">#EEE6C2</color>
+</resources>

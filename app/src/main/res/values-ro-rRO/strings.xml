@@ -88,6 +88,7 @@
     <string-array name="pref_palette_entries">
         <item>Albastru</item>
         <item>Nisip</item>
+        <item>Măsliniu</item>
     </string-array>
     <string name="action_select">Selectează</string>
     <string name="action_copy">Copiază</string>
@@ -162,4 +163,8 @@
     <string name="donation_title">Susțineți proiectul</string>
     <string name="donation_text">Donațiile sunt opționale și nu deblochează nimic.</string>
     <string name="about_copied">Adresa a fost copiată</string>
+    <string name="header_unlocked">CRYPTCAGE · Deblocat</string>
+    <string name="filter_notes">Notițe</string>
+    <string name="filter_files">Fișiere</string>
+    <string name="note_hint">Notiță</string>
 </resources>

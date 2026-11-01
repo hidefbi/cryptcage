@@ -88,6 +88,7 @@
     <string-array name="pref_palette_entries">
         <item>Niebieski</item>
         <item>Piaskowy</item>
+        <item>Oliwkowy</item>
     </string-array>
     <string name="action_select">Zaznacz</string>
     <string name="action_copy">Kopiuj</string>
@@ -162,4 +163,8 @@
     <string name="donation_title">Wesprzyj projekt</string>
     <string name="donation_text">Darowizny są dobrowolne i niczego nie odblokowują.</string>
     <string name="about_copied">Adres skopiowany</string>
+    <string name="header_unlocked">CRYPTCAGE · Odblokowany</string>
+    <string name="filter_notes">Notatki</string>
+    <string name="filter_files">Pliki</string>
+    <string name="note_hint">Notatka</string>
 </resources>
