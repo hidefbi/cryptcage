@@ -156,7 +156,6 @@
     <string name="toast_archiveSaved">Đã lưu tệp nén</string>
     <string name="dialog_checkingPassword">Đang kiểm tra mật khẩu...</string>
     <string name="about_description">CryptCage lưu ghi chú và tệp của bạn trong một kho mã hóa duy nhất trên thiết bị này. Ứng dụng không xin quyền truy cập mạng, không cần tài khoản và không gửi gì đi đâu cả.</string>
-    <string name="about_licence">CryptCage là phần mềm tự do theo Giấy phép Công cộng GNU phiên bản 3 trở lên. Ứng dụng dựa trên NoteCrypt Pro của Ludovico de Nittis. Các thay đổi được liệt kê trong NOTICE.md.</string>
     <string name="donation_title">Ủng hộ dự án</string>
     <string name="donation_text">Quyên góp là tùy chọn và không mở khóa tính năng nào.</string>
     <string name="about_copied">Đã sao chép địa chỉ</string>
@@ -164,4 +163,9 @@
     <string name="filter_notes">Ghi chú</string>
     <string name="filter_files">Tệp</string>
     <string name="note_hint">Ghi chú</string>
+    <string name="about_update">Kiểm tra cập nhật</string>
+    <string name="about_update_hint">Mở trang phát hành. CryptCage không tự kiểm tra qua mạng.</string>
+    <string name="about_source">Mã nguồn</string>
+    <string name="about_feedback">Báo lỗi</string>
+    <string name="about_no_browser">Không có ứng dụng nào mở được liên kết này.</string>
 </resources>

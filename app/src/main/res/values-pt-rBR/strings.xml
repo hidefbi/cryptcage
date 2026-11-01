@@ -156,7 +156,6 @@
     <string name="toast_archiveSaved">Arquivo salvo</string>
     <string name="dialog_checkingPassword">Verificando a senha...</string>
     <string name="about_description">O CryptCage guarda suas notas e arquivos em um único cofre criptografado neste aparelho. O app não pede acesso à internet, não precisa de conta e não envia nada para lugar nenhum.</string>
-    <string name="about_licence">O CryptCage é software livre sob a GNU General Public License, versão 3 ou posterior. Ele é baseado no NoteCrypt Pro, de Ludovico de Nittis. As alterações estão listadas no NOTICE.md.</string>
     <string name="donation_title">Apoie o projeto</string>
     <string name="donation_text">As doações são opcionais e não desbloqueiam nada.</string>
     <string name="about_copied">Endereço copiado</string>
@@ -164,4 +163,9 @@
     <string name="filter_notes">Notas</string>
     <string name="filter_files">Arquivos</string>
     <string name="note_hint">Nota</string>
+    <string name="about_update">Verificar atualizações</string>
+    <string name="about_update_hint">Abre a página de versões. O CryptCage não consulta a internet por conta própria.</string>
+    <string name="about_source">Código-fonte</string>
+    <string name="about_feedback">Relatar um problema</string>
+    <string name="about_no_browser">Nenhum aplicativo consegue abrir este link.</string>
 </resources>

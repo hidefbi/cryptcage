@@ -156,7 +156,6 @@
     <string name="toast_archiveSaved">Archiv uložen</string>
     <string name="dialog_checkingPassword">Ověřuje se heslo...</string>
     <string name="about_description">CryptCage ukládá poznámky a soubory do jednoho šifrovaného trezoru v tomto zařízení. Aplikace nevyžaduje přístup k síti, nepotřebuje účet a nic neodesílá.</string>
-    <string name="about_licence">CryptCage je svobodný software podle GNU General Public License verze 3 nebo novější. Vychází z aplikace NoteCrypt Pro od Ludovica de Nittise. Změny jsou uvedeny v souboru NOTICE.md.</string>
     <string name="donation_title">Podpořte projekt</string>
     <string name="donation_text">Příspěvek je dobrovolný a nic neodemyká.</string>
     <string name="about_copied">Adresa zkopírována</string>
@@ -164,4 +163,9 @@
     <string name="filter_notes">Poznámky</string>
     <string name="filter_files">Soubory</string>
     <string name="note_hint">Poznámka</string>
+    <string name="about_update">Zkontrolovat aktualizace</string>
+    <string name="about_update_hint">Otevře stránku vydání. CryptCage se k síti nepřipojuje a kontrolu neprovádí sama.</string>
+    <string name="about_source">Zdrojový kód</string>
+    <string name="about_feedback">Nahlásit problém</string>
+    <string name="about_no_browser">Žádná aplikace tento odkaz neotevře.</string>
 </resources>

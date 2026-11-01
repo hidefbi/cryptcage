@@ -156,7 +156,6 @@
     <string name="toast_archiveSaved">Archief opgeslagen</string>
     <string name="dialog_checkingPassword">Wachtwoord controleren...</string>
     <string name="about_description">CryptCage bewaart notities en bestanden in één versleutelde kluis op dit apparaat. De app vraagt geen netwerktoegang, heeft geen account nodig en stuurt niets weg.</string>
-    <string name="about_licence">CryptCage is vrije software onder de GNU General Public License, versie 3 of later. Het is gebaseerd op NoteCrypt Pro van Ludovico de Nittis. De wijzigingen staan in NOTICE.md.</string>
     <string name="donation_title">Steun het project</string>
     <string name="donation_text">Donaties zijn vrijwillig en ontgrendelen niets.</string>
     <string name="about_copied">Adres gekopieerd</string>
@@ -164,4 +163,9 @@
     <string name="filter_notes">Notities</string>
     <string name="filter_files">Bestanden</string>
     <string name="note_hint">Notitie</string>
+    <string name="about_update">Controleren op updates</string>
+    <string name="about_update_hint">Opent de pagina met releases. CryptCage controleert zelf niets via het netwerk.</string>
+    <string name="about_source">Broncode</string>
+    <string name="about_feedback">Een probleem melden</string>
+    <string name="about_no_browser">Geen app kan deze link openen.</string>
 </resources>

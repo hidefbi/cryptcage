@@ -6,10 +6,14 @@
  */
 package com.cryptcage.ui;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +42,29 @@ public class AboutActivity extends SecureActivity {
         copyOnTap(R.id.donation_btc, R.string.donation_btc_address);
         copyOnTap(R.id.donation_eth, R.string.donation_eth_address);
         copyOnTap(R.id.donation_xmr, R.string.donation_xmr_address);
+        bindLink(R.id.link_update, R.string.about_update, getString(R.string.about_update_hint),
+                R.string.about_releases_url);
+        bindLink(R.id.link_source, R.string.about_source,
+                getString(R.string.about_repo_url).replace("https://", ""), R.string.about_repo_url);
+        bindLink(R.id.link_feedback, R.string.about_feedback,
+                getString(R.string.about_issues_url).replace("https://", ""), R.string.about_issues_url);
+    }
+
+    private void bindLink(final int row, final int title, final CharSequence subtitle, final int url) {
+        final View view = findViewById(row);
+        ((TextView) view.findViewById(R.id.link_title)).setText(title);
+        ((TextView) view.findViewById(R.id.link_subtitle)).setText(subtitle);
+        view.setOnClickListener(v -> openLink(url));
+    }
+
+    /** Opens the address in whatever browser the device has. The app itself makes no connection. */
+    private void openLink(final int url) {
+        final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(url)));
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(this, R.string.about_no_browser, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

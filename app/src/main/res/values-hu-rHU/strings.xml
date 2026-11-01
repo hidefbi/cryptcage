@@ -156,7 +156,6 @@
     <string name="toast_archiveSaved">Archívum mentve</string>
     <string name="dialog_checkingPassword">Jelszó ellenőrzése...</string>
     <string name="about_description">A CryptCage a jegyzeteket és a fájlokat egyetlen titkosított tárolóban őrzi ezen az eszközön. Az alkalmazás nem kér hálózati hozzáférést, nem igényel fiókot, és semmit sem küld el.</string>
-    <string name="about_licence">A CryptCage szabad szoftver a GNU General Public License 3-as vagy újabb verziója szerint. Ludovico de Nittis NoteCrypt Pro alkalmazására épül. A változtatások a NOTICE.md fájlban vannak felsorolva.</string>
     <string name="donation_title">Támogassa a projektet</string>
     <string name="donation_text">Az adományozás nem kötelező, és nem nyit meg semmit.</string>
     <string name="about_copied">Cím másolva</string>
@@ -164,4 +163,9 @@
     <string name="filter_notes">Jegyzetek</string>
     <string name="filter_files">Fájlok</string>
     <string name="note_hint">Jegyzet</string>
+    <string name="about_update">Frissítések keresése</string>
+    <string name="about_update_hint">Megnyitja a kiadások oldalát. A CryptCage nem ellenőriz a hálózaton.</string>
+    <string name="about_source">Forráskód</string>
+    <string name="about_feedback">Hiba jelentése</string>
+    <string name="about_no_browser">Egyetlen alkalmazás sem tudja megnyitni ezt a linket.</string>
 </resources>

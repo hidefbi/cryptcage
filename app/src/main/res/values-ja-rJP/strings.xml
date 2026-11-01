@@ -156,7 +156,6 @@
     <string name="toast_archiveSaved">アーカイブを保存しました</string>
     <string name="dialog_checkingPassword">パスワードを確認しています...</string>
     <string name="about_description">CryptCage は、メモとファイルを、この端末上の暗号化された 1 つの保管庫に保存します。アプリはネットワークへのアクセスを求めず、アカウントも不要で、どこにも何も送信しません。</string>
-    <string name="about_licence">CryptCage は GNU 一般公衆利用許諾契約書バージョン 3 以降のもとで配布されるフリーソフトウェアです。Ludovico de Nittis 氏の NoteCrypt Pro を元にしています。変更点は NOTICE.md に記載しています。</string>
     <string name="donation_title">プロジェクトを支援する</string>
     <string name="donation_text">寄付は任意で、機能が解放されることはありません。</string>
     <string name="about_copied">アドレスをコピーしました</string>
@@ -164,4 +163,9 @@
     <string name="filter_notes">メモ</string>
     <string name="filter_files">ファイル</string>
     <string name="note_hint">メモ</string>
+    <string name="about_update">アップデートを確認</string>
+    <string name="about_update_hint">リリースページを開きます。CryptCage 自身はネットワークを確認しません。</string>
+    <string name="about_source">ソースコード</string>
+    <string name="about_feedback">問題を報告</string>
+    <string name="about_no_browser">このリンクを開けるアプリがありません。</string>
 </resources>

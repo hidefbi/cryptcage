@@ -156,7 +156,6 @@
     <string name="toast_archiveSaved">บันทึกไฟล์เก็บถาวรแล้ว</string>
     <string name="dialog_checkingPassword">กำลังตรวจสอบรหัสผ่าน...</string>
     <string name="about_description">CryptCage เก็บโน้ตและไฟล์ไว้ในตู้นิรภัยที่เข้ารหัสไฟล์เดียวบนเครื่องนี้ แอปไม่ขอสิทธิ์เข้าถึงเครือข่าย ไม่ต้องใช้บัญชี และไม่ส่งข้อมูลไปที่ใด</string>
-    <string name="about_licence">CryptCage เป็นซอฟต์แวร์เสรีภายใต้ GNU General Public License เวอร์ชัน 3 หรือใหม่กว่า พัฒนาต่อยอดจาก NoteCrypt Pro ของ Ludovico de Nittis รายการการเปลี่ยนแปลงอยู่ในไฟล์ NOTICE.md</string>
     <string name="donation_title">สนับสนุนโครงการ</string>
     <string name="donation_text">การบริจาคเป็นทางเลือก และไม่ปลดล็อกฟีเจอร์ใด ๆ</string>
     <string name="about_copied">คัดลอกที่อยู่แล้ว</string>
@@ -164,4 +163,9 @@
     <string name="filter_notes">โน้ต</string>
     <string name="filter_files">ไฟล์</string>
     <string name="note_hint">โน้ต</string>
+    <string name="about_update">ตรวจสอบการอัปเดต</string>
+    <string name="about_update_hint">เปิดหน้ารายการรุ่น CryptCage ไม่ได้ตรวจสอบผ่านเครือข่ายด้วยตัวเอง</string>
+    <string name="about_source">ซอร์สโค้ด</string>
+    <string name="about_feedback">แจ้งปัญหา</string>
+    <string name="about_no_browser">ไม่มีแอปที่เปิดลิงก์นี้ได้</string>
 </resources>

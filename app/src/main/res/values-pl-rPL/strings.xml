@@ -156,7 +156,6 @@
     <string name="toast_archiveSaved">Archiwum zapisane</string>
     <string name="dialog_checkingPassword">Sprawdzanie hasła...</string>
     <string name="about_description">CryptCage przechowuje notatki i pliki w jednym zaszyfrowanym sejfie na tym urządzeniu. Aplikacja nie prosi o dostęp do sieci, nie wymaga konta i niczego nie wysyła.</string>
-    <string name="about_licence">CryptCage to wolne oprogramowanie na licencji GNU General Public License w wersji 3 lub nowszej. Opiera się na NoteCrypt Pro autorstwa Ludovico de Nittisa. Zmiany są wymienione w pliku NOTICE.md.</string>
     <string name="donation_title">Wesprzyj projekt</string>
     <string name="donation_text">Darowizny są dobrowolne i niczego nie odblokowują.</string>
     <string name="about_copied">Adres skopiowany</string>
@@ -164,4 +163,9 @@
     <string name="filter_notes">Notatki</string>
     <string name="filter_files">Pliki</string>
     <string name="note_hint">Notatka</string>
+    <string name="about_update">Sprawdź aktualizacje</string>
+    <string name="about_update_hint">Otwiera stronę wydań. CryptCage sam nie sprawdza sieci.</string>
+    <string name="about_source">Kod źródłowy</string>
+    <string name="about_feedback">Zgłoś problem</string>
+    <string name="about_no_browser">Żadna aplikacja nie otworzy tego linku.</string>
 </resources>

@@ -156,7 +156,6 @@
     <string name="toast_archiveSaved">تم حفظ الأرشيف</string>
     <string name="dialog_checkingPassword">جارٍ التحقق من كلمة المرور...</string>
     <string name="about_description">يحفظ CryptCage ملاحظاتك وملفاتك في ملف خزنة مشفّر واحد على هذا الجهاز. لا يطلب التطبيق أي وصول إلى الشبكة، ولا يحتاج إلى حساب، ولا يرسل أي شيء إلى أي جهة.</string>
-    <string name="about_licence">CryptCage برنامج حر مرخّص بموجب رخصة GNU العامة، الإصدار 3 أو أحدث. وهو مبني على NoteCrypt Pro لصاحبه Ludovico de Nittis. التغييرات مذكورة في ملف NOTICE.md.</string>
     <string name="donation_title">ادعم المشروع</string>
     <string name="donation_text">التبرع اختياري ولا يفتح أي ميزة.</string>
     <string name="about_copied">تم نسخ العنوان</string>
@@ -164,4 +163,9 @@
     <string name="filter_notes">ملاحظات</string>
     <string name="filter_files">ملفات</string>
     <string name="note_hint">ملاحظة</string>
+    <string name="about_update">التحقق من التحديثات</string>
+    <string name="about_update_hint">يفتح صفحة الإصدارات. لا يتصل CryptCage بالشبكة للتحقق بنفسه.</string>
+    <string name="about_source">الشيفرة المصدرية</string>
+    <string name="about_feedback">الإبلاغ عن مشكلة</string>
+    <string name="about_no_browser">لا يوجد تطبيق يفتح هذا الرابط.</string>
 </resources>
