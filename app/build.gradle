@@ -14,8 +14,8 @@ android {
         applicationId 'com.cryptcage'
         minSdk 21
         targetSdk 34
-        versionCode 24
-        versionName '2.1'
+        versionCode 25
+        versionName '2.2'
     }
 
     signingConfigs {
