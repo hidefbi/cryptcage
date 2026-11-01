@@ -111,7 +111,7 @@
     <string name="pw_strength_good">अच्छा</string>
     <string name="pw_strength_strong">मजबूत</string>
     <string name="pw_hint_short">%1$d अक्षर और जोड़ें।</string>
-    <string name="pw_hint_longer">16 अक्षर होने पर मिश्रण की ज़रूरत नहीं है।</string>
+    <string name="pw_hint_longer">मज़बूत पासवर्ड के लिए 16 या अधिक अक्षर रखें।</string>
     <string name="pref_pin">PIN से अनलॉक</string>
     <string name="pref_pin_off">बंद</string>
     <string name="pref_pin_on">चालू। PIN की समय-सीमा नहीं है।</string>
@@ -168,4 +168,6 @@
     <string name="about_source">सोर्स कोड</string>
     <string name="about_feedback">समस्या की रिपोर्ट करें</string>
     <string name="about_no_browser">इस लिंक को खोलने वाला कोई ऐप नहीं है।</string>
+    <string name="pw_too_simple">दोहराए गए अक्षरों, 1234 या abcd जैसे क्रमों और qwer जैसी कीबोर्ड पंक्तियों से बचें।</string>
+    <string name="pw_common">यह पासवर्ड बहुत आम है। कुछ ऐसा चुनें जिसका अनुमान लगाना मुश्किल हो।</string>
 </resources>

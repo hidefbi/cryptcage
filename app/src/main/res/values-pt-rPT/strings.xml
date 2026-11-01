@@ -111,7 +111,7 @@
     <string name="pw_strength_good">Boa</string>
     <string name="pw_strength_strong">Forte</string>
     <string name="pw_hint_short">Adicione mais %1$d caracteres.</string>
-    <string name="pw_hint_longer">Com 16 caracteres não é preciso misturar tipos.</string>
+    <string name="pw_hint_longer">Use 16 caracteres ou mais para uma senha mais forte.</string>
     <string name="pref_pin">Desbloqueio com PIN</string>
     <string name="pref_pin_off">Desativado</string>
     <string name="pref_pin_on">Ativado. O PIN nunca expira.</string>
@@ -168,4 +168,6 @@
     <string name="about_source">Código-fonte</string>
     <string name="about_feedback">Reportar um problema</string>
     <string name="about_no_browser">Nenhuma aplicação consegue abrir esta ligação.</string>
+    <string name="pw_too_simple">Evite caracteres repetidos, sequências como 1234 ou abcd e linhas do teclado como qwer.</string>
+    <string name="pw_common">Esta senha é muito comum. Escolha algo menos previsível.</string>
 </resources>

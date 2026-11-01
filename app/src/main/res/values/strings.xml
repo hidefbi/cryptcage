@@ -23,7 +23,7 @@
     <string name="hint_field_conf_password">Confirm password</string>
     <string name="hint_field_password">Password</string>
     <string name="pw_too_short">Use at least %1$d characters.</string>
-    <string name="pw_too_simple">Mix letters, digits or symbols, or use 16 characters or more.</string>
+    <string name="pw_too_simple">Avoid repeated characters, runs like 1234 or abcd, and keyboard rows like qwer.</string>
 
     <string name="butt_open">Open</string>
     <string name="deleteRecent_message">Delete this database?\nThis cannot be undone.</string>
@@ -177,7 +177,7 @@
     <string name="pw_strength_good">Good</string>
     <string name="pw_strength_strong">Strong</string>
     <string name="pw_hint_short">Add %1$d more characters.</string>
-    <string name="pw_hint_longer">Reach 16 characters to skip the mix rule.</string>
+    <string name="pw_hint_longer">Use 16 characters or more for a stronger password.</string>
     <string name="pref_pin">PIN unlock</string>
     <string name="pref_pin_off">Off</string>
     <string name="pref_pin_on">On. The PIN never expires.</string>
@@ -240,4 +240,5 @@
     <string name="about_repo_url" translatable="false">https://github.com/hidefbi/cryptcage</string>
     <string name="about_issues_url" translatable="false">https://github.com/hidefbi/cryptcage/issues</string>
     <string name="about_releases_url" translatable="false">https://github.com/hidefbi/cryptcage/releases</string>
+    <string name="pw_common">This password is too common. Choose something less predictable.</string>
 </resources>

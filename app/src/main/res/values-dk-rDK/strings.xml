@@ -111,7 +111,7 @@
     <string name="pw_strength_good">God</string>
     <string name="pw_strength_strong">Stærk</string>
     <string name="pw_hint_short">Tilføj %1$d tegn mere.</string>
-    <string name="pw_hint_longer">Med 16 tegn kræves ingen blanding.</string>
+    <string name="pw_hint_longer">Brug 16 tegn eller flere for en stærkere adgangskode.</string>
     <string name="pref_pin">PIN-oplåsning</string>
     <string name="pref_pin_off">Fra</string>
     <string name="pref_pin_on">Til. PIN udløber aldrig.</string>
@@ -168,4 +168,6 @@
     <string name="about_source">Kildekode</string>
     <string name="about_feedback">Anmeld et problem</string>
     <string name="about_no_browser">Ingen app kan åbne linket.</string>
+    <string name="pw_too_simple">Undgå gentagne tegn, rækker som 1234 eller abcd og tastaturrækker som qwer.</string>
+    <string name="pw_common">Denne adgangskode er for almindelig. Vælg noget mindre forudsigeligt.</string>
 </resources>

@@ -111,7 +111,7 @@
     <string name="pw_strength_good">Добрий</string>
     <string name="pw_strength_strong">Надійний</string>
     <string name="pw_hint_short">Додайте ще %1$d символів.</string>
-    <string name="pw_hint_longer">За 16 символів змішувати типи не потрібно.</string>
+    <string name="pw_hint_longer">Для надійнішого пароля використовуйте 16 символів або більше.</string>
     <string name="pref_pin">Розблокування PIN-кодом</string>
     <string name="pref_pin_off">Вимкнено</string>
     <string name="pref_pin_on">Увімкнено. PIN-код не спливає.</string>
@@ -168,4 +168,6 @@
     <string name="about_source">Вихідний код</string>
     <string name="about_feedback">Повідомити про проблему</string>
     <string name="about_no_browser">Жоден застосунок не може відкрити це посилання.</string>
+    <string name="pw_too_simple">Уникайте повторюваних символів, послідовностей на кшталт 1234 чи abcd та рядів клавіатури на кшталт qwer.</string>
+    <string name="pw_common">Цей пароль занадто поширений. Виберіть щось менш передбачуване.</string>
 </resources>

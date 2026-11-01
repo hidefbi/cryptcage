@@ -111,7 +111,7 @@
     <string name="pw_strength_good">Dobre</string>
     <string name="pw_strength_strong">Silne</string>
     <string name="pw_hint_short">Dodaj jeszcze %1$d znaków.</string>
-    <string name="pw_hint_longer">Przy 16 znakach nie trzeba mieszać rodzajów znaków.</string>
+    <string name="pw_hint_longer">Silniejsze hasło ma 16 lub więcej znaków.</string>
     <string name="pref_pin">Odblokowanie kodem PIN</string>
     <string name="pref_pin_off">Wyłączone</string>
     <string name="pref_pin_on">Włączone. Kod PIN nie wygasa.</string>
@@ -168,4 +168,6 @@
     <string name="about_source">Kod źródłowy</string>
     <string name="about_feedback">Zgłoś problem</string>
     <string name="about_no_browser">Żadna aplikacja nie otworzy tego linku.</string>
+    <string name="pw_too_simple">Unikaj powtarzających się znaków, ciągów takich jak 1234 lub abcd oraz rzędów klawiatury jak qwer.</string>
+    <string name="pw_common">To hasło jest zbyt popularne. Wybierz coś mniej przewidywalnego.</string>
 </resources>

@@ -29,22 +29,29 @@ public class PasswordStrengthTest {
     }
 
     @Test
-    public void longEnoughWithOneCharacterKindIsFair() {
-        final PasswordStrength.Reading reading = PasswordStrength.read("abcdefghijkl");
-        assertEquals(2, reading.level);
-        assertEquals(PasswordStrength.Hint.MIX, reading.hint);
+    public void commonPasswordIsWeakWithCommonHint() {
+        final PasswordStrength.Reading reading = PasswordStrength.read("password1234");
+        assertEquals(1, reading.level);
+        assertEquals(PasswordStrength.Hint.COMMON, reading.hint);
     }
 
     @Test
-    public void twoKindsAtTwelveCharactersIsGood() {
-        final PasswordStrength.Reading reading = PasswordStrength.read("abcdefghijk1");
+    public void predictablePatternIsFairWithPredictableHint() {
+        final PasswordStrength.Reading reading = PasswordStrength.read("zyxwvutsrqpo");
+        assertEquals(2, reading.level);
+        assertEquals(PasswordStrength.Hint.PREDICTABLE, reading.hint);
+    }
+
+    @Test
+    public void acceptedBelowSixteenCharactersIsGoodWithLongerHint() {
+        final PasswordStrength.Reading reading = PasswordStrength.read("lowercaseonly");
         assertEquals(3, reading.level);
         assertEquals(PasswordStrength.Hint.LONGER, reading.hint);
     }
 
     @Test
-    public void sixteenCharactersIsStrongWhateverTheKinds() {
-        final PasswordStrength.Reading reading = PasswordStrength.read("abcdefghijklmnop");
+    public void sixteenCharactersIsStrong() {
+        final PasswordStrength.Reading reading = PasswordStrength.read("mySecretHorse2026");
         assertEquals(4, reading.level);
         assertEquals(PasswordStrength.Hint.NONE, reading.hint);
     }
@@ -52,8 +59,9 @@ public class PasswordStrengthTest {
     @Test
     public void levelsThreeAndFourAgreeWithThePolicy() {
         final String[] samples = {
-            "", "a", "abcdefghijk", "abcdefghijkl", "abcdefghijk1", "ABCDEFGHIJKL",
-            "abcdefghijklmnop", "1234567890123456", "passw0rd-long-enough", "\u4E2D\u6587\u5BC6\u7801\u6D4B\u8BD5\u4E00\u4E8C\u4E09\u56DB\u4E94\u516D\u4E03\u516B"
+            "", "a", "abcdefghijk", "abcdefghijkl", "password1234", "lowercaseonly",
+            "mySecretHorse2026", "1234567890123456", "passw0rd-long-enough",
+            "中文密码测试一二三四五六七八"
         };
         for (final String sample : samples) {
             final boolean accepted = PasswordPolicy.check(sample) == PasswordPolicy.Result.OK;
@@ -64,8 +72,8 @@ public class PasswordStrengthTest {
 
     @Test
     public void countsCodePointsNotUnits() {
-        final String twelveEmoji = "\uD83D\uDE00\uD83D\uDE00\uD83D\uDE00\uD83D\uDE00\uD83D\uDE00\uD83D\uDE00"
-                + "\uD83D\uDE00\uD83D\uDE00\uD83D\uDE00\uD83D\uDE00\uD83D\uDE00\uD83D\uDE00";
+        final String twelveEmoji = "😀😀😀😀😀😀"
+                + "😀😀😀😀😀😀";
         assertTrue(PasswordStrength.read(twelveEmoji).missing == 0);
     }
 }

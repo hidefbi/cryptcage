@@ -23,7 +23,7 @@
     <string name="hint_field_conf_password">确认密码</string>
     <string name="hint_field_password">密码</string>
     <string name="pw_too_short">密码至少需要 %1$d 个字符。</string>
-    <string name="pw_too_simple">请混合使用字母、数字或符号，或使用 16 个字符以上的密码。</string>
+    <string name="pw_too_simple">请避免重复字符、1234 或 abcd 之类的连续序列，以及 qwer 之类的键盘排列。</string>
 
     <string name="butt_open">打开</string>
     <string name="deleteRecent_message">删除此数据库？\n此操作无法撤销。</string>
@@ -156,7 +156,7 @@
     <string name="pw_strength_good">良好</string>
     <string name="pw_strength_strong">强</string>
     <string name="pw_hint_short">还需输入 %1$d 个字符。</string>
-    <string name="pw_hint_longer">输入 16 个字符即可跳过字符种类要求。</string>
+    <string name="pw_hint_longer">使用 16 个字符以上的密码会更安全。</string>
     <string name="pref_pin">PIN 解锁</string>
     <string name="pref_pin_off">关闭</string>
     <string name="pref_pin_on">已开启，PIN 永不过期。</string>
@@ -213,4 +213,5 @@
     <string name="about_source">源代码</string>
     <string name="about_feedback">问题反馈</string>
     <string name="about_no_browser">没有可以打开此链接的应用。</string>
+    <string name="pw_common">这个密码太常见了，请换一个不容易猜到的。</string>
 </resources>

@@ -98,7 +98,9 @@ public class ChoosePasswordDialogFragment extends DialogFragment {
         switch (reading.level) {
             case 1:
                 strengthText.setText(getString(R.string.pw_strength_weak) + "\n"
-                        + getString(R.string.pw_hint_short, reading.missing));
+                        + (reading.hint == PasswordStrength.Hint.COMMON
+                        ? getString(R.string.pw_common)
+                        : getString(R.string.pw_hint_short, reading.missing)));
                 break;
             case 2:
                 strengthText.setText(getString(R.string.pw_strength_fair) + "\n"
@@ -123,6 +125,9 @@ public class ChoosePasswordDialogFragment extends DialogFragment {
         switch (PasswordPolicy.check(first)) {
             case TOO_SHORT:
                 fieldNew.setError(getString(R.string.pw_too_short, PasswordPolicy.MIN_LENGTH));
+                return;
+            case COMMON:
+                fieldNew.setError(getString(R.string.pw_common));
                 return;
             case TOO_SIMPLE:
                 fieldNew.setError(getString(R.string.pw_too_simple));

@@ -111,7 +111,7 @@
     <string name="pw_strength_good">Καλός</string>
     <string name="pw_strength_strong">Ισχυρός</string>
     <string name="pw_hint_short">Προσθέστε ακόμη %1$d χαρακτήρες.</string>
-    <string name="pw_hint_longer">Με 16 χαρακτήρες δεν χρειάζεται ανάμειξη.</string>
+    <string name="pw_hint_longer">Χρησιμοποίησε 16 χαρακτήρες ή περισσότερους για πιο ισχυρό κωδικό.</string>
     <string name="pref_pin">Ξεκλείδωμα με PIN</string>
     <string name="pref_pin_off">Απενεργοποιημένο</string>
     <string name="pref_pin_on">Ενεργοποιημένο. Το PIN δεν λήγει ποτέ.</string>
@@ -168,4 +168,6 @@
     <string name="about_source">Πηγαίος κώδικας</string>
     <string name="about_feedback">Αναφορά προβλήματος</string>
     <string name="about_no_browser">Καμία εφαρμογή δεν μπορεί να ανοίξει τον σύνδεσμο.</string>
+    <string name="pw_too_simple">Απόφυγε επαναλαμβανόμενους χαρακτήρες, σειρές όπως 1234 ή abcd και σειρές του πληκτρολογίου όπως qwer.</string>
+    <string name="pw_common">Αυτός ο κωδικός είναι πολύ συνηθισμένος. Επίλεξε κάτι λιγότερο προβλέψιμο.</string>
 </resources>

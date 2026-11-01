@@ -111,7 +111,7 @@
     <string name="pw_strength_good">Tốt</string>
     <string name="pw_strength_strong">Mạnh</string>
     <string name="pw_hint_short">Thêm %1$d ký tự nữa.</string>
-    <string name="pw_hint_longer">Dùng 16 ký tự trở lên thì không cần trộn loại ký tự.</string>
+    <string name="pw_hint_longer">Dùng từ 16 ký tự trở lên để mật khẩu mạnh hơn.</string>
     <string name="pref_pin">Mở khóa bằng PIN</string>
     <string name="pref_pin_off">Tắt</string>
     <string name="pref_pin_on">Bật. PIN không bao giờ hết hạn.</string>
@@ -168,4 +168,6 @@
     <string name="about_source">Mã nguồn</string>
     <string name="about_feedback">Báo lỗi</string>
     <string name="about_no_browser">Không có ứng dụng nào mở được liên kết này.</string>
+    <string name="pw_too_simple">Tránh ký tự lặp lại, chuỗi như 1234 hoặc abcd, và hàng phím như qwer.</string>
+    <string name="pw_common">Mật khẩu này quá phổ biến. Hãy chọn mật khẩu khó đoán hơn.</string>
 </resources>

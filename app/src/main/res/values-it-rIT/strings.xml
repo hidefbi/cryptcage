@@ -112,7 +112,7 @@
     <string name="pw_strength_good">Buona</string>
     <string name="pw_strength_strong">Forte</string>
     <string name="pw_hint_short">Aggiungi ancora %1$d caratteri.</string>
-    <string name="pw_hint_longer">Con 16 caratteri non serve mescolare i tipi.</string>
+    <string name="pw_hint_longer">Per una password più sicura usa 16 caratteri o più.</string>
     <string name="pref_pin">Sblocco con PIN</string>
     <string name="pref_pin_off">Disattivato</string>
     <string name="pref_pin_on">Attivo. Il PIN non scade mai.</string>
@@ -169,4 +169,6 @@
     <string name="about_source">Codice sorgente</string>
     <string name="about_feedback">Segnala un problema</string>
     <string name="about_no_browser">Nessuna app può aprire questo link.</string>
+    <string name="pw_too_simple">Evita caratteri ripetuti, sequenze come 1234 o abcd e file della tastiera come qwer.</string>
+    <string name="pw_common">Questa password è troppo comune. Scegline una meno prevedibile.</string>
 </resources>

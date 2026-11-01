@@ -111,7 +111,7 @@
     <string name="pw_strength_good">Dobré</string>
     <string name="pw_strength_strong">Silné</string>
     <string name="pw_hint_short">Přidejte ještě %1$d znaků.</string>
-    <string name="pw_hint_longer">Při 16 znacích není nutné míchat znaky.</string>
+    <string name="pw_hint_longer">Pro silnější heslo použijte 16 znaků nebo více.</string>
     <string name="pref_pin">Odemknutí PINem</string>
     <string name="pref_pin_off">Vypnuto</string>
     <string name="pref_pin_on">Zapnuto. PIN nevyprší.</string>
@@ -168,4 +168,6 @@
     <string name="about_source">Zdrojový kód</string>
     <string name="about_feedback">Nahlásit problém</string>
     <string name="about_no_browser">Žádná aplikace tento odkaz neotevře.</string>
+    <string name="pw_too_simple">Vyhněte se opakování znaků, řadám jako 1234 nebo abcd a řadám klávesnice jako qwer.</string>
+    <string name="pw_common">Toto heslo je příliš časté. Zvolte něco méně předvídatelného.</string>
 </resources>

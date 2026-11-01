@@ -7,7 +7,7 @@
 package com.cryptcage.utils;
 
 /**
- * A live reading of a password while it is typed. The levels follow {@link PasswordPolicy}: levels
+ * A live reading of a password while it is typed. The levels follow {@link PasswordPolicy}: level
  * 3 and 4 are the ones the policy accepts, and levels 1 and 2 are not. The hint says what would
  * make the password better.
  */
@@ -16,9 +16,13 @@ public final class PasswordStrength {
     public enum Hint {
         NONE,
         SHORT,
-        MIX,
+        COMMON,
+        PREDICTABLE,
         LONGER
     }
+
+    /** Length from which a password is reported as strong. */
+    private static final int STRONG_LENGTH = 16;
 
     public static final class Reading {
         /** 0 for an empty field, 1 to 4 otherwise. */
@@ -43,49 +47,19 @@ public final class PasswordStrength {
         if (length == 0) {
             return new Reading(0, Hint.NONE, 0);
         }
-        if (length < PasswordPolicy.MIN_LENGTH) {
-            return new Reading(1, Hint.SHORT, PasswordPolicy.MIN_LENGTH - length);
+        switch (PasswordPolicy.check(value)) {
+            case TOO_SHORT:
+                return new Reading(1, Hint.SHORT, PasswordPolicy.MIN_LENGTH - length);
+            case COMMON:
+                return new Reading(1, Hint.COMMON, 0);
+            case TOO_SIMPLE:
+                return new Reading(2, Hint.PREDICTABLE, 0);
+            default:
+                break;
         }
-        if (length >= PasswordPolicy.LONG_ENOUGH) {
+        if (length >= STRONG_LENGTH) {
             return new Reading(4, Hint.NONE, 0);
         }
-        if (kinds(value) >= 2) {
-            return new Reading(3, Hint.LONGER, 0);
-        }
-        return new Reading(2, Hint.MIX, 0);
-    }
-
-    /** Counts the character classes used: lower case, upper case, digits and everything else. */
-    private static int kinds(final String value) {
-        boolean lower = false;
-        boolean upper = false;
-        boolean digit = false;
-        boolean other = false;
-        for (int i = 0; i < value.length(); i++) {
-            final char c = value.charAt(i);
-            if (c >= 'a' && c <= 'z') {
-                lower = true;
-            } else if (c >= 'A' && c <= 'Z') {
-                upper = true;
-            } else if (c >= '0' && c <= '9') {
-                digit = true;
-            } else {
-                other = true;
-            }
-        }
-        int count = 0;
-        if (lower) {
-            count++;
-        }
-        if (upper) {
-            count++;
-        }
-        if (digit) {
-            count++;
-        }
-        if (other) {
-            count++;
-        }
-        return count;
+        return new Reading(3, Hint.LONGER, 0);
     }
 }

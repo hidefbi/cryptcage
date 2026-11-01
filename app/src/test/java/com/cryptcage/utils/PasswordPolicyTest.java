@@ -20,14 +20,30 @@ public class PasswordPolicyTest {
     }
 
     @Test
-    public void singleClassIsRejectedUnlessLong() {
-        assertEquals(PasswordPolicy.Result.TOO_SIMPLE, PasswordPolicy.check("abcdefghijkl"));
-        assertEquals(PasswordPolicy.Result.OK, PasswordPolicy.check("abcdefghijklmnop"));
+    public void commonPasswordsAreRejectedEvenWithDigitsAndSymbols() {
+        assertEquals(PasswordPolicy.Result.COMMON, PasswordPolicy.check("password1234"));
+        assertEquals(PasswordPolicy.Result.COMMON, PasswordPolicy.check("iloveyou2026"));
+        assertEquals(PasswordPolicy.Result.COMMON, PasswordPolicy.check("P@ssw0rd2026!"));
     }
 
     @Test
-    public void mixedPasswordIsAccepted() {
+    public void obviousPatternsAreRejected() {
+        assertEquals(PasswordPolicy.Result.TOO_SIMPLE, PasswordPolicy.check("aaaaaaaaaaaa"));
+        assertEquals(PasswordPolicy.Result.TOO_SIMPLE, PasswordPolicy.check("zyxwvutsrqpo"));
+        assertEquals(PasswordPolicy.Result.TOO_SIMPLE, PasswordPolicy.check("1234abcd5678"));
+        assertEquals(PasswordPolicy.Result.TOO_SIMPLE, PasswordPolicy.check("zqwerxcvbnmq"));
+        assertEquals(PasswordPolicy.Result.TOO_SIMPLE, PasswordPolicy.check("123123123123"));
+    }
+
+    @Test
+    public void singleCharacterKindIsAcceptedWhenNotPredictable() {
+        assertEquals(PasswordPolicy.Result.OK, PasswordPolicy.check("lowercaseonly"));
+    }
+
+    @Test
+    public void passphrasesAreAccepted() {
         assertEquals(PasswordPolicy.Result.OK, PasswordPolicy.check("correct horse 42"));
+        assertEquals(PasswordPolicy.Result.OK, PasswordPolicy.check("mySecretHorse2026"));
     }
 
     @Test

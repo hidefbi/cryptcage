@@ -111,7 +111,7 @@
     <string name="pw_strength_good">Baik</string>
     <string name="pw_strength_strong">Kuat</string>
     <string name="pw_hint_short">Tambahkan %1$d karakter lagi.</string>
-    <string name="pw_hint_longer">Dengan 16 karakter, campuran jenis karakter tidak diperlukan.</string>
+    <string name="pw_hint_longer">Gunakan 16 karakter atau lebih untuk kata sandi yang lebih kuat.</string>
     <string name="pref_pin">Buka kunci dengan PIN</string>
     <string name="pref_pin_off">Mati</string>
     <string name="pref_pin_on">Aktif. PIN tidak pernah kedaluwarsa.</string>
@@ -168,4 +168,6 @@
     <string name="about_source">Kode sumber</string>
     <string name="about_feedback">Laporkan masalah</string>
     <string name="about_no_browser">Tidak ada aplikasi yang bisa membuka tautan ini.</string>
+    <string name="pw_too_simple">Hindari karakter berulang, urutan seperti 1234 atau abcd, dan baris keyboard seperti qwer.</string>
+    <string name="pw_common">Kata sandi ini terlalu umum. Pilih yang lebih sulit ditebak.</string>
 </resources>

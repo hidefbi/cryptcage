@@ -111,7 +111,7 @@
     <string name="pw_strength_good">Geras</string>
     <string name="pw_strength_strong">Stiprus</string>
     <string name="pw_hint_short">Pridėkite dar %1$d simbolių.</string>
-    <string name="pw_hint_longer">Su 16 simbolių nereikia maišyti simbolių tipų.</string>
+    <string name="pw_hint_longer">Stipresniam slaptažodžiui naudokite 16 ar daugiau simbolių.</string>
     <string name="pref_pin">Atrakinimas PIN kodu</string>
     <string name="pref_pin_off">Išjungta</string>
     <string name="pref_pin_on">Įjungta. PIN kodas niekada nebegalioja.</string>
@@ -168,4 +168,6 @@
     <string name="about_source">Šaltinio kodas</string>
     <string name="about_feedback">Pranešti apie problemą</string>
     <string name="about_no_browser">Šios nuorodos neatidaro jokia programa.</string>
+    <string name="pw_too_simple">Venkite pasikartojančių simbolių, sekų kaip 1234 ar abcd ir klaviatūros eilių kaip qwer.</string>
+    <string name="pw_common">Šis slaptažodis per dažnas. Pasirinkite ką nors mažiau nuspėjamo.</string>
 </resources>

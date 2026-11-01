@@ -111,7 +111,7 @@
     <string name="pw_strength_good">Bună</string>
     <string name="pw_strength_strong">Puternică</string>
     <string name="pw_hint_short">Adăugați încă %1$d caractere.</string>
-    <string name="pw_hint_longer">Cu 16 caractere nu este nevoie de amestec de tipuri.</string>
+    <string name="pw_hint_longer">Folosește 16 caractere sau mai multe pentru o parolă mai puternică.</string>
     <string name="pref_pin">Deblocare cu PIN</string>
     <string name="pref_pin_off">Dezactivat</string>
     <string name="pref_pin_on">Activat. PIN-ul nu expiră niciodată.</string>
@@ -168,4 +168,6 @@
     <string name="about_source">Cod sursă</string>
     <string name="about_feedback">Raportează o problemă</string>
     <string name="about_no_browser">Nicio aplicație nu poate deschide linkul.</string>
+    <string name="pw_too_simple">Evită caracterele repetate, șirurile precum 1234 sau abcd și rândurile de tastatură precum qwer.</string>
+    <string name="pw_common">Această parolă este prea frecventă. Alege ceva mai puțin previzibil.</string>
 </resources>

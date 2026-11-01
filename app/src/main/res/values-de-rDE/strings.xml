@@ -111,7 +111,7 @@
     <string name="pw_strength_good">Gut</string>
     <string name="pw_strength_strong">Stark</string>
     <string name="pw_hint_short">Noch %1$d Zeichen hinzufügen.</string>
-    <string name="pw_hint_longer">Mit 16 Zeichen ist keine Mischung nötig.</string>
+    <string name="pw_hint_longer">Für ein stärkeres Passwort nimm 16 Zeichen oder mehr.</string>
     <string name="pref_pin">PIN-Entsperrung</string>
     <string name="pref_pin_off">Aus</string>
     <string name="pref_pin_on">An. Die PIN läuft nie ab.</string>
@@ -168,4 +168,6 @@
     <string name="about_source">Quellcode</string>
     <string name="about_feedback">Problem melden</string>
     <string name="about_no_browser">Keine App kann diesen Link öffnen.</string>
+    <string name="pw_too_simple">Vermeide wiederholte Zeichen, Reihen wie 1234 oder abcd und Tastaturreihen wie qwer.</string>
+    <string name="pw_common">Dieses Passwort ist zu verbreitet. Wähle etwas, das weniger vorhersehbar ist.</string>
 </resources>

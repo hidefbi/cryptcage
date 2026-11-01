@@ -124,6 +124,10 @@ final class ExportFlow {
                 first.setError(activity.getString(R.string.pw_too_short, PasswordPolicy.MIN_LENGTH));
                 return;
             }
+            if (result == PasswordPolicy.Result.COMMON) {
+                first.setError(activity.getString(R.string.pw_common));
+                return;
+            }
             if (result == PasswordPolicy.Result.TOO_SIMPLE) {
                 first.setError(activity.getString(R.string.pw_too_simple));
                 return;

@@ -111,7 +111,7 @@
     <string name="pw_strength_good">Buena</string>
     <string name="pw_strength_strong">Fuerte</string>
     <string name="pw_hint_short">Añade %1$d caracteres más.</string>
-    <string name="pw_hint_longer">Con 16 caracteres no hace falta mezclar tipos.</string>
+    <string name="pw_hint_longer">Usa 16 caracteres o más para una contraseña más segura.</string>
     <string name="pref_pin">Desbloqueo con PIN</string>
     <string name="pref_pin_off">Desactivado</string>
     <string name="pref_pin_on">Activado. El PIN no caduca.</string>
@@ -168,4 +168,6 @@
     <string name="about_source">Código fuente</string>
     <string name="about_feedback">Informar de un problema</string>
     <string name="about_no_browser">Ninguna aplicación puede abrir este enlace.</string>
+    <string name="pw_too_simple">Evita caracteres repetidos, secuencias como 1234 o abcd y filas del teclado como qwer.</string>
+    <string name="pw_common">Esta contraseña es demasiado común. Elige algo menos predecible.</string>
 </resources>

@@ -111,7 +111,7 @@
     <string name="pw_strength_good">ดี</string>
     <string name="pw_strength_strong">แข็งแรง</string>
     <string name="pw_hint_short">เพิ่มอีก %1$d ตัวอักษร</string>
-    <string name="pw_hint_longer">ใช้ 16 ตัวอักษรขึ้นไปก็ไม่ต้องผสมชนิดอักขระ</string>
+    <string name="pw_hint_longer">ใช้ 16 ตัวอักษรขึ้นไปเพื่อรหัสผ่านที่แข็งแรงกว่า</string>
     <string name="pref_pin">ปลดล็อกด้วย PIN</string>
     <string name="pref_pin_off">ปิด</string>
     <string name="pref_pin_on">เปิดอยู่ PIN ไม่มีวันหมดอายุ</string>
@@ -168,4 +168,6 @@
     <string name="about_source">ซอร์สโค้ด</string>
     <string name="about_feedback">แจ้งปัญหา</string>
     <string name="about_no_browser">ไม่มีแอปที่เปิดลิงก์นี้ได้</string>
+    <string name="pw_too_simple">หลีกเลี่ยงอักขระที่ซ้ำกัน ลำดับอย่าง 1234 หรือ abcd และแถวปุ่มบนคีย์บอร์ดอย่าง qwer</string>
+    <string name="pw_common">รหัสผ่านนี้ใช้กันบ่อยเกินไป ลองเลือกอย่างอื่นที่คาดเดาได้ยากกว่า</string>
 </resources>

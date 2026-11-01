@@ -111,7 +111,7 @@
     <string name="pw_strength_good">Goed</string>
     <string name="pw_strength_strong">Sterk</string>
     <string name="pw_hint_short">Voeg nog %1$d tekens toe.</string>
-    <string name="pw_hint_longer">Met 16 tekens hoef je geen tekensoorten te mengen.</string>
+    <string name="pw_hint_longer">Gebruik 16 tekens of meer voor een sterker wachtwoord.</string>
     <string name="pref_pin">Ontgrendelen met pincode</string>
     <string name="pref_pin_off">Uit</string>
     <string name="pref_pin_on">Aan. De pincode verloopt nooit.</string>
@@ -168,4 +168,6 @@
     <string name="about_source">Broncode</string>
     <string name="about_feedback">Een probleem melden</string>
     <string name="about_no_browser">Geen app kan deze link openen.</string>
+    <string name="pw_too_simple">Vermijd herhaalde tekens, reeksen zoals 1234 of abcd en toetsenbordrijen zoals qwer.</string>
+    <string name="pw_common">Dit wachtwoord komt te vaak voor. Kies iets dat minder voorspelbaar is.</string>
 </resources>

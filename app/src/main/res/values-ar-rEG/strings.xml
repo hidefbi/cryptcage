@@ -111,7 +111,7 @@
     <string name="pw_strength_good">جيدة</string>
     <string name="pw_strength_strong">قوية</string>
     <string name="pw_hint_short">أضف %1$d حرفًا آخر.</string>
-    <string name="pw_hint_longer">استخدم 16 حرفًا على الأقل لتجاوز قاعدة التنويع.</string>
+    <string name="pw_hint_longer">استخدم 16 حرفًا أو أكثر لكلمة مرور أقوى.</string>
     <string name="pref_pin">فك القفل بالرمز PIN</string>
     <string name="pref_pin_off">متوقف</string>
     <string name="pref_pin_on">مفعّل. الرمز لا تنتهي صلاحيته.</string>
@@ -168,4 +168,6 @@
     <string name="about_source">الشيفرة المصدرية</string>
     <string name="about_feedback">الإبلاغ عن مشكلة</string>
     <string name="about_no_browser">لا يوجد تطبيق يفتح هذا الرابط.</string>
+    <string name="pw_too_simple">تجنّب تكرار الحروف، وتسلسلات مثل 1234 أو abcd، وصفوف لوحة المفاتيح مثل qwer.</string>
+    <string name="pw_common">كلمة المرور هذه شائعة جدًا. اختر كلمة أقل قابلية للتوقع.</string>
 </resources>

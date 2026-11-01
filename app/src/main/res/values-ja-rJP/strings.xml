@@ -111,7 +111,7 @@
     <string name="pw_strength_good">良好</string>
     <string name="pw_strength_strong">強い</string>
     <string name="pw_hint_short">あと %1$d 文字追加してください。</string>
-    <string name="pw_hint_longer">16 文字以上にすると文字の種類の条件は不要です。</string>
+    <string name="pw_hint_longer">より強力なパスワードには 16 文字以上を使ってください。</string>
     <string name="pref_pin">PIN でロック解除</string>
     <string name="pref_pin_off">オフ</string>
     <string name="pref_pin_on">オン。PIN は期限切れになりません。</string>
@@ -168,4 +168,6 @@
     <string name="about_source">ソースコード</string>
     <string name="about_feedback">問題を報告</string>
     <string name="about_no_browser">このリンクを開けるアプリがありません。</string>
+    <string name="pw_too_simple">同じ文字の繰り返し、1234 や abcd のような連続した並び、qwer のようなキーボードの並びは避けてください。</string>
+    <string name="pw_common">よく使われているパスワードです。推測されにくいものにしてください。</string>
 </resources>

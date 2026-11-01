@@ -111,7 +111,7 @@
     <string name="pw_strength_good">Bon</string>
     <string name="pw_strength_strong">Fort</string>
     <string name="pw_hint_short">Ajoutez encore %1$d caractères.</string>
-    <string name="pw_hint_longer">16 caractères suffisent sans mélange de types.</string>
+    <string name="pw_hint_longer">Utilisez 16 caractères ou plus pour un mot de passe plus solide.</string>
     <string name="pref_pin">Déverrouillage par code PIN</string>
     <string name="pref_pin_off">Désactivé</string>
     <string name="pref_pin_on">Activé, sans expiration du code PIN.</string>
@@ -168,4 +168,6 @@
     <string name="about_source">Code source</string>
     <string name="about_feedback">Signaler un problème</string>
     <string name="about_no_browser">Aucune application ne peut ouvrir ce lien.</string>
+    <string name="pw_too_simple">Évitez les caractères répétés, les suites comme 1234 ou abcd et les rangées du clavier comme qwer.</string>
+    <string name="pw_common">Ce mot de passe est trop courant. Choisissez quelque chose de moins prévisible.</string>
 </resources>

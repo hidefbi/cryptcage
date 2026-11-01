@@ -111,7 +111,7 @@
     <string name="pw_strength_good">Jó</string>
     <string name="pw_strength_strong">Erős</string>
     <string name="pw_hint_short">Még %1$d karaktert adjon hozzá.</string>
-    <string name="pw_hint_longer">16 karakternél nem kell vegyes karaktereket használni.</string>
+    <string name="pw_hint_longer">Erősebb jelszóhoz használj 16 vagy több karaktert.</string>
     <string name="pref_pin">Feloldás PIN-kóddal</string>
     <string name="pref_pin_off">Ki</string>
     <string name="pref_pin_on">Be. A PIN-kód nem jár le.</string>
@@ -168,4 +168,6 @@
     <string name="about_source">Forráskód</string>
     <string name="about_feedback">Hiba jelentése</string>
     <string name="about_no_browser">Egyetlen alkalmazás sem tudja megnyitni ezt a linket.</string>
+    <string name="pw_too_simple">Kerüld az ismétlődő karaktereket, a 1234 vagy abcd típusú sorozatokat és a qwer típusú billentyűsorokat.</string>
+    <string name="pw_common">Ez a jelszó túl gyakori. Válassz valami kevésbé kiszámíthatót.</string>
 </resources>

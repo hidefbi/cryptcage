@@ -111,7 +111,7 @@
     <string name="pw_strength_good">Hyvä</string>
     <string name="pw_strength_strong">Vahva</string>
     <string name="pw_hint_short">Lisää vielä %1$d merkkiä.</string>
-    <string name="pw_hint_longer">16 merkillä sekoitusta ei tarvita.</string>
+    <string name="pw_hint_longer">Vahvempi salasana on 16 merkkiä tai pidempi.</string>
     <string name="pref_pin">PIN-lukitus</string>
     <string name="pref_pin_off">Pois</string>
     <string name="pref_pin_on">Päällä. PIN ei vanhene.</string>
@@ -168,4 +168,6 @@
     <string name="about_source">Lähdekoodi</string>
     <string name="about_feedback">Ilmoita ongelmasta</string>
     <string name="about_no_browser">Mikään sovellus ei voi avata linkkiä.</string>
+    <string name="pw_too_simple">Vältä toistuvia merkkejä, sarjoja kuten 1234 tai abcd ja näppäimistön rivejä kuten qwer.</string>
+    <string name="pw_common">Tämä salasana on liian yleinen. Valitse jotain vähemmän ennalta arvattavaa.</string>
 </resources>
