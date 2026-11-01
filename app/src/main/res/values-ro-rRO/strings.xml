@@ -31,9 +31,6 @@
     <string name="title_deleteNote">Sterge Notita</string>
     <string name="yes">Da</string>
     <string name="no">Nu</string>
-    <string name="action_sort">Sorteaza Lista</string>
-    <string name="toast_sort_alphabet">Sorteaza Alfabetic</string>
-    <string name="toast_sort_creation">Sorteaza dupa Data</string>
     <string name="toast_success_deleteNote">Sters cu success</string>
     <string name="dialog_backClose">Sigur vrei sa inchizi baza de date?</string>
     <string name="title_backClose">Inchide</string>

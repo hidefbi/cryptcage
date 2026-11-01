@@ -31,9 +31,6 @@
     <string name="title_deleteNote">Notiz löschen</string>
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
-    <string name="action_sort">Liste sortieren</string>
-    <string name="toast_sort_alphabet">Alphabetische sortierung</string>
-    <string name="toast_sort_creation">Sortieren nach Erstellungsdatum</string>
     <string name="toast_success_deleteNote">Erfolgreich gelöscht</string>
     <string name="dialog_backClose">Willst du die Datenbank wirklich schließen?</string>
     <string name="title_backClose">Schließen</string>

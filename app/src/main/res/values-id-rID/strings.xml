@@ -31,9 +31,6 @@
     <string name="title_deleteNote">Hapus Catatan</string>
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
-    <string name="action_sort">Urutkan Daftar</string>
-    <string name="toast_sort_alphabet">Menurut abjad</string>
-    <string name="toast_sort_creation">Menurut Tgl Dibuat</string>
     <string name="toast_success_deleteNote">Berhasil dihapus</string>
     <string name="dialog_backClose">Apakah yakin ingin menutup database?</string>
     <string name="title_backClose">Tutup</string>

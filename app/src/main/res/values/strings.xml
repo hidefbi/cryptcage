@@ -8,7 +8,6 @@
     <string name="action_changePassword">Change password</string>
     <string name="action_export">Export all</string>
     <string name="action_import">Import database</string>
-    <string name="action_sort">Sort list</string>
     <string name="action_search">Search</string>
     <string name="action_starred">Starred</string>
     <string name="action_share">Share</string>
@@ -64,8 +63,6 @@
     <string name="toast_tooLarge">The file is too large</string>
     <string name="toast_IOError">Read or write error</string>
     <string name="toast_fatalError">Unexpected error</string>
-    <string name="toast_sort_alphabet">Sorted by title</string>
-    <string name="toast_sort_creation">Sorted by creation time</string>
     <string name="toast_version">CryptCage version</string>
     <string name="toast_errorVersion">Could not read the version</string>
 

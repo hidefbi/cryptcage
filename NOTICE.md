@@ -35,6 +35,7 @@ This list covers the changes made by hidefbi on 2026-10-31 and the earlier chang
 - A read-only entry no longer offers Copy (duplicate) or Copy to clipboard. It can still be viewed, shared and exported.
 - The header of the unlocked screen uses the colour of the chosen palette instead of a fixed dark colour. The search field is a light card with an outline.
 - The About screen uses the theme without an action bar, because it supplies its own toolbar.
+- The unlocked screen's toolbar shows only the settings icon. The sort and About items are removed, and About opens from the settings. The alphabetical order is removed; a drag still sets the manual order.
 - Test coverage was added for the storage format, compaction, password change and the vault session.
 
 ## Dates

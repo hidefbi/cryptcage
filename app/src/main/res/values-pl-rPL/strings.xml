@@ -31,9 +31,6 @@
     <string name="title_deleteNote">Usuń notatkę</string>
     <string name="yes">Tak</string>
     <string name="no">Nie</string>
-    <string name="action_sort">Sortuj listę</string>
-    <string name="toast_sort_alphabet">Sortowanie alfabetyczne</string>
-    <string name="toast_sort_creation">Sortowanie według daty</string>
     <string name="toast_success_deleteNote">Pomyślnie usunięto</string>
     <string name="dialog_backClose">Czy na pewno zamknąć bazę danych?</string>
     <string name="title_backClose">Zamknij</string>

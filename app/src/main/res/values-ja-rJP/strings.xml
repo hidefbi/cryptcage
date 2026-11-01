@@ -31,9 +31,6 @@
     <string name="title_deleteNote">メモを削除</string>
     <string name="yes">はい</string>
     <string name="no">いいえ</string>
-    <string name="action_sort">リストを並び替え</string>
-    <string name="toast_sort_alphabet">アルファベット順に並び替え</string>
-    <string name="toast_sort_creation">作成順に並び替え</string>
     <string name="toast_success_deleteNote">削除しました</string>
     <string name="dialog_backClose">データベースを閉じてもよろしいですか?</string>
     <string name="title_backClose">閉じる</string>

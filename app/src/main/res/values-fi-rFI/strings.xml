@@ -31,9 +31,6 @@
     <string name="title_deleteNote">Poista muistiinpano</string>
     <string name="yes">Kyllä</string>
     <string name="no">Ei</string>
-    <string name="action_sort">Järjestä lista</string>
-    <string name="toast_sort_alphabet">Järjestys aakkosjärjestykseen</string>
-    <string name="toast_sort_creation">Järjestys luontiajankohdan mukaan</string>
     <string name="toast_success_deleteNote">Poistettu onnistuneesti</string>
     <string name="dialog_backClose">Haluatko varmasti sulkea tietokannan?</string>
     <string name="title_backClose">Sulje</string>

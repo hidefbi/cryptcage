@@ -8,7 +8,6 @@
     <string name="action_changePassword">修改密码</string>
     <string name="action_export">导出全部</string>
     <string name="action_import">导入数据库</string>
-    <string name="action_sort">排序</string>
     <string name="action_search">搜索</string>
     <string name="action_starred">星标</string>
     <string name="action_share">分享</string>
@@ -64,8 +63,6 @@
     <string name="toast_tooLarge">文件太大</string>
     <string name="toast_IOError">读写出错</string>
     <string name="toast_fatalError">发生未知错误</string>
-    <string name="toast_sort_alphabet">已按标题排序</string>
-    <string name="toast_sort_creation">已按创建时间排序</string>
     <string name="toast_version">CryptCage 版本</string>
     <string name="toast_errorVersion">无法读取版本信息</string>
 

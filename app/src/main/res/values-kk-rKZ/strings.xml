@@ -31,9 +31,6 @@
     <string name="title_deleteNote">Ескертуді жою</string>
     <string name="yes">Иә</string>
     <string name="no">Жоқ</string>
-    <string name="action_sort">Тізімді сұрыптау</string>
-    <string name="toast_sort_alphabet">Әліпби бойынша сұрыптау</string>
-    <string name="toast_sort_creation">Сұрыптауды қосу</string>
     <string name="toast_success_deleteNote">Сәтті жойылған</string>
     <string name="dialog_backClose">Дерекқорды шынымен жабу керек пе?</string>
     <string name="title_backClose">Жабу</string>

@@ -31,9 +31,6 @@
     <string name="title_deleteNote">नोट मिटाएं</string>
     <string name="yes">हाँ</string>
     <string name="no">नहीं</string>
-    <string name="action_sort">सूची क्रमबद्ध करें</string>
-    <string name="toast_sort_alphabet">वर्णमाला क्रमबद्ध करें</string>
-    <string name="toast_sort_creation">निर्माण क्रमबद्ध करें</string>
     <string name="toast_success_deleteNote">सफलतापूर्वक मिटाये गए</string>
     <string name="dialog_backClose">वाकई में डेटाबेस बंद करें?</string>
     <string name="title_backClose">बंद करें</string>

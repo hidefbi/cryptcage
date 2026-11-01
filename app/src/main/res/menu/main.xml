@@ -9,16 +9,5 @@
         android:orderInCategory="99"
         app:showAsAction="always"
         android:title="@string/action_settings"/>
-    <item
-        android:id="@+id/action_sort"
-        android:icon="@drawable/icon_sort"
-        app:showAsAction="ifRoom"
-        android:title="@string/action_sort"/>
-    <item
-        android:id="@+id/action_about"
-        android:menuCategory="system"
-        android:orderInCategory="100"
-        app:showAsAction="never"
-        android:title="@string/action_about"/>
 
 </menu>

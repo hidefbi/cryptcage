@@ -31,9 +31,6 @@
     <string name="title_deleteNote">حذف الملحوظة</string>
     <string name="yes">نعم</string>
     <string name="no">لا</string>
-    <string name="action_sort">رتب القائمة</string>
-    <string name="toast_sort_alphabet">ترتيب ابجدي</string>
-    <string name="toast_sort_creation">ترتيب بحسب الانشاء</string>
     <string name="toast_success_deleteNote">تم الحذف بنجاح</string>
     <string name="dialog_backClose">متأكد من اغلاق قاعدة البيانات؟</string>
     <string name="title_backClose">اغلق</string>

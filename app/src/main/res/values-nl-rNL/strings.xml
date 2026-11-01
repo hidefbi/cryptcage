@@ -31,9 +31,6 @@
     <string name="title_deleteNote">Notitie verwijderen</string>
     <string name="yes">Ja</string>
     <string name="no">Nee</string>
-    <string name="action_sort">Lijst Sorteren</string>
-    <string name="toast_sort_alphabet">Alfabetisch Sorteren</string>
-    <string name="toast_sort_creation">Creatie Sorteren</string>
     <string name="toast_success_deleteNote">Succesvol verwijderd</string>
     <string name="dialog_backClose">Wil je de database sluiten?</string>
     <string name="title_backClose">Sluiten</string>

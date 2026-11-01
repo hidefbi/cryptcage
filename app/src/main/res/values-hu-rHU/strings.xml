@@ -31,9 +31,6 @@
     <string name="title_deleteNote">Jegyzet Törlése</string>
     <string name="yes">Igen</string>
     <string name="no">Nem</string>
-    <string name="action_sort">Lista Rendezése</string>
-    <string name="toast_sort_alphabet">ABC szerint</string>
-    <string name="toast_sort_creation">Létrehozás ideje szerint</string>
     <string name="toast_success_deleteNote">Sikeresen törölve</string>
     <string name="dialog_backClose">Biztosan bezárja az adatbázist?</string>
     <string name="title_backClose">Bezárás</string>

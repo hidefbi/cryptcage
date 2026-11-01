@@ -31,9 +31,6 @@
     <string name="title_deleteNote">ลบบันทึก</string>
     <string name="yes">ใช่</string>
     <string name="no">ไม่ใช่</string>
-    <string name="action_sort">จัดเรียง</string>
-    <string name="toast_sort_alphabet">จัดเรียงตามตัวอักษร</string>
-    <string name="toast_sort_creation">จัดเรียงตามวันที่</string>
     <string name="toast_success_deleteNote">ลบสำเร็จแล้ว</string>
     <string name="dialog_backClose">ต้องการปิดฐานข้อมูลนี้ใช่ไหม</string>
     <string name="title_backClose">ปิด</string>

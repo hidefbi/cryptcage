@@ -31,9 +31,6 @@
     <string name="title_deleteNote">Elimina nota</string>
     <string name="yes">Si</string>
     <string name="no">No</string>
-    <string name="action_sort">Ordina la lista</string>
-    <string name="toast_sort_alphabet">Ordine alfabetico</string>
-    <string name="toast_sort_creation">Ordine di creazione</string>
     <string name="toast_success_deleteNote">Eliminata con successo</string>
     <string name="dialog_backClose">Chiudere il database?</string>
     <string name="title_backClose">Chiudi</string>

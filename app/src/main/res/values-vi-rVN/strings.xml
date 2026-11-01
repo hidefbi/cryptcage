@@ -31,9 +31,6 @@
     <string name="title_deleteNote">Xóa Ghi chú</string>
     <string name="yes">Có</string>
     <string name="no">Không</string>
-    <string name="action_sort">Sắp xếp Danh sách</string>
-    <string name="toast_sort_alphabet">Sắp xếp theo chữ cái</string>
-    <string name="toast_sort_creation">Sắp xếp theo thời gian</string>
     <string name="toast_success_deleteNote">Ghi chú đã bị xóa</string>
     <string name="dialog_backClose">Đóng cơ sở dữ liệu?</string>
     <string name="title_backClose">Đóng</string>

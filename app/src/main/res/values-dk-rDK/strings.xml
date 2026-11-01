@@ -31,9 +31,6 @@
     <string name="title_deleteNote">Slet Note</string>
     <string name="yes">Ja</string>
     <string name="no">Nej</string>
-    <string name="action_sort">Sorter Liste</string>
-    <string name="toast_sort_alphabet">Alfabetisk orden</string>
-    <string name="toast_sort_creation">Oprettelse orden</string>
     <string name="toast_success_deleteNote">Succesfuldt slettet</string>
     <string name="dialog_backClose">Er du sikker på du vil lukke databasen?</string>
     <string name="title_backClose">Luk</string>

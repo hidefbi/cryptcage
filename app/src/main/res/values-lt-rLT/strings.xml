@@ -31,9 +31,6 @@
     <string name="title_deleteNote">Ištrinti lapą</string>
     <string name="yes">Taip</string>
     <string name="no">Ne</string>
-    <string name="action_sort">Rušiavimo sąrašas</string>
-    <string name="toast_sort_alphabet">Abėcėlės rušiavimas</string>
-    <string name="toast_sort_creation">Sukurimo datos rušiavimas</string>
     <string name="toast_success_deleteNote">Sekmingai ištrintas jūsų lapas</string>
     <string name="dialog_backClose">Tikrai išjungti duomenų bazę?</string>
     <string name="title_backClose">Išjungti</string>

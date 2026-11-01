@@ -31,9 +31,6 @@
     <string name="title_deleteNote">Видалити нотатку</string>
     <string name="yes">Так</string>
     <string name="no">Ні</string>
-    <string name="action_sort">Сортувати список</string>
-    <string name="toast_sort_alphabet">Сортування за алфавітом</string>
-    <string name="toast_sort_creation">Сортування за датою створення</string>
     <string name="toast_success_deleteNote">Успішно видалено</string>
     <string name="dialog_backClose">Дійсно закрити базу даних?</string>
     <string name="title_backClose">Закрити</string>

@@ -31,9 +31,6 @@
     <string name="title_deleteNote">Apagar Nota</string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>
-    <string name="action_sort">Ordenar Lista</string>
-    <string name="toast_sort_alphabet">Ordem alfabética</string>
-    <string name="toast_sort_creation">Ordem por criação</string>
     <string name="toast_success_deleteNote">Apagada com sucesso</string>
     <string name="dialog_backClose">Realmente deseja fechar o banco de dados?</string>
     <string name="title_backClose">Fechar</string>

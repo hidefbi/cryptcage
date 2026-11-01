@@ -31,9 +31,6 @@
     <string name="title_deleteNote">Odstranit Poznámku</string>
     <string name="yes">Ano</string>
     <string name="no">Ne</string>
-    <string name="action_sort">Seřadit Seznam</string>
-    <string name="toast_sort_alphabet">Seřazeno abecedně</string>
-    <string name="toast_sort_creation">Seřazeno podle datumu vzniku</string>
     <string name="toast_success_deleteNote">Úspěšně smazáno</string>
     <string name="dialog_backClose">Určitě chcete zavřít databázi?</string>
     <string name="title_backClose">Zavřít</string>

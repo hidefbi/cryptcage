@@ -67,7 +67,6 @@ public class MainActivity extends SecureActivity
         implements ChoosePasswordDialogFragment.Callback, InsertPasswordDialogFragment.Callback,
         NoteFragment.Listener {
 
-    private static final String PREF_ALPHABETICAL = "isAlphabeticalOrder";
     private static final String PREF_MANUAL = "isManualOrder";
     private static final String DETAIL_TAG = "detail";
     private static final long NO_NOTE = Long.MIN_VALUE;
@@ -343,11 +342,6 @@ public class MainActivity extends SecureActivity
             exportFlow.start(ids);
         } else if (id == R.id.action_deleteSelected) {
             confirmDeleteSelected();
-        } else if (id == R.id.action_sort) {
-            final boolean alpha = !prefs().getBoolean(PREF_ALPHABETICAL, false);
-            prefs().edit().putBoolean(PREF_ALPHABETICAL, alpha).putBoolean(PREF_MANUAL, false).apply();
-            refresh();
-            toast(alpha ? R.string.toast_sort_alphabet : R.string.toast_sort_creation);
         } else if (id == R.id.action_changePassword) {
             final App.Session session = App.session();
             if (session != null) {
@@ -357,8 +351,6 @@ public class MainActivity extends SecureActivity
             }
         } else if (id == R.id.action_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
-        } else if (id == R.id.action_about) {
-            startActivity(new Intent(this, AboutActivity.class));
         } else {
             return false;
         }
@@ -701,7 +693,6 @@ public class MainActivity extends SecureActivity
             return;
         }
         final VaultSession vault = session.vault;
-        final boolean alphabetical = prefs().getBoolean(PREF_ALPHABETICAL, false);
         final boolean manual = prefs().getBoolean(PREF_MANUAL, false);
         final String untitled = getString(R.string.no_title);
 
@@ -753,11 +744,6 @@ public class MainActivity extends SecureActivity
             final int starred = Boolean.compare(b.starred, a.starred);
             if (starred != 0) {
                 return starred;
-            }
-            if (alphabetical) {
-                final String ta = a.title == null ? "" : a.title;
-                final String tb = b.title == null ? "" : b.title;
-                return ta.compareToIgnoreCase(tb);
             }
             return Long.compare(a.id, b.id);
         });

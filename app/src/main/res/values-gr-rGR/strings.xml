@@ -31,9 +31,6 @@
     <string name="title_deleteNote">Διαγραφή σημείωσης</string>
     <string name="yes">Ναι</string>
     <string name="no">Όχι</string>
-    <string name="action_sort">Ταξινόμηση Λίστας</string>
-    <string name="toast_sort_alphabet">Αλφαβητική ταξινόμηση</string>
-    <string name="toast_sort_creation">Ταξινόμηση ημερομηνίας δημιουργίας</string>
     <string name="toast_success_deleteNote">Διαγράφηκε επιτυχώς</string>
     <string name="dialog_backClose">Να κλέισει όντως η βάση δεδομένων;</string>
     <string name="title_backClose">Κλείσιμο</string>
