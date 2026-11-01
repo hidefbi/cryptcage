@@ -241,7 +241,7 @@
         android:layout_margin="16dp"
         android:contentDescription="@string/action_newNote"
         app:backgroundTint="?attr/colorPrimary"
-        app:shapeAppearance="@style/ShapeAppearance.CryptCage.Fab"
+        app:shapeAppearance="@style/CryptCageFabShape"
         app:srcCompat="@drawable/ic_add_white_24dp"
         app:tint="?attr/colorOnPrimary" />
 

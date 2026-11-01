@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="ShapeAppearance.CryptCage.Fab">
+    <style name="CryptCageFabShape">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">18dp</item>
     </style>
