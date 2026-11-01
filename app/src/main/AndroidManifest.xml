@@ -39,7 +39,8 @@
             android:exported="false" />
         <activity
             android:name="com.cryptcage.ui.AboutActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppBaseTheme.NoActionBar" />
         <activity
             android:name="com.cryptcage.ui.FileViewActivity"
             android:exported="false" />
