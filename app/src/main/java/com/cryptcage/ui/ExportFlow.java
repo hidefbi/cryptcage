@@ -17,6 +17,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
 import android.text.InputType;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -31,27 +32,36 @@ import com.cryptcage.app.App;
 import com.cryptcage.app.Tasks;
 import com.cryptcage.utils.EncryptedZip;
 import com.cryptcage.utils.PasswordPolicy;
+import com.cryptcage.utils.SevenZipExport;
 import com.cryptcage.utils.ZipExport;
 import com.cryptcage.R;
 
 /**
- * Asks for plain or encrypted export, then writes a ZIP of the chosen entries
- * to a location the user picks. Entry names are kept as they are.
+ * Asks for the export format, then writes the chosen entries to a location the user picks.
+ * Entry names are kept as they are. Formats: plain ZIP, encrypted ZIP, and plain 7z, which is
+ * offered from Android 8.0 because its writer needs java.nio.file.
  */
 final class ExportFlow {
 
     private static final String MIME_ZIP = "application/zip";
+    private static final String MIME_7Z = "application/x-7z-compressed";
+
+    private enum Format { ZIP_PLAIN, ZIP_ENCRYPTED, SEVEN_ZIP_PLAIN }
 
     private final AppCompatActivity activity;
-    private final ActivityResultLauncher<String> launcher;
+    private final ActivityResultLauncher<String> zipLauncher;
+    private final ActivityResultLauncher<String> sevenZipLauncher;
     private List<Long> pendingIds;
-    private boolean pendingEncrypted;
+    private Format pendingFormat;
     private char[] pendingPassword;
 
     ExportFlow(final AppCompatActivity activity) {
         this.activity = activity;
-        this.launcher = activity.registerForActivityResult(
+        this.zipLauncher = activity.registerForActivityResult(
                 new ActivityResultContracts.CreateDocument(MIME_ZIP),
+                uri -> onTarget(uri));
+        this.sevenZipLauncher = activity.registerForActivityResult(
+                new ActivityResultContracts.CreateDocument(MIME_7Z),
                 uri -> onTarget(uri));
     }
 
@@ -62,22 +72,32 @@ final class ExportFlow {
             return;
         }
         pendingIds = new ArrayList<>(ids);
-        final String[] modes = {
-                activity.getString(R.string.export_plain),
-                activity.getString(R.string.export_encrypted)
-        };
+        final List<String> modes = new ArrayList<>();
+        modes.add(activity.getString(R.string.export_plain));
+        modes.add(activity.getString(R.string.export_encrypted));
+        if (sevenZipAvailable()) {
+            modes.add(activity.getString(R.string.export_7z));
+        }
         new AlertDialog.Builder(activity)
                 .setTitle(R.string.export_mode_title)
-                .setItems(modes, (dialog, which) -> {
+                .setItems(modes.toArray(new String[0]), (dialog, which) -> {
                     if (which == 0) {
-                        pendingEncrypted = false;
-                        launcher.launch(fileName(false));
-                    } else {
+                        pendingFormat = Format.ZIP_PLAIN;
+                        zipLauncher.launch(fileName(Format.ZIP_PLAIN));
+                    } else if (which == 1) {
                         askPassword();
+                    } else {
+                        pendingFormat = Format.SEVEN_ZIP_PLAIN;
+                        sevenZipLauncher.launch(fileName(Format.SEVEN_ZIP_PLAIN));
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, (dialog, which) -> pendingIds = null)
                 .show();
+    }
+
+    /** 7z is written with java.nio.file, which Android has from version 8.0. */
+    private static boolean sevenZipAvailable() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O;
     }
 
     private void askPassword() {
@@ -113,9 +133,9 @@ final class ExportFlow {
                 return;
             }
             pendingPassword = a.toCharArray();
-            pendingEncrypted = true;
+            pendingFormat = Format.ZIP_ENCRYPTED;
             dialog.dismiss();
-            launcher.launch(fileName(true));
+            zipLauncher.launch(fileName(Format.ZIP_ENCRYPTED));
         });
     }
 
@@ -126,19 +146,26 @@ final class ExportFlow {
         return field;
     }
 
-    private static String fileName(final boolean encrypted) {
-        return encrypted ? "cryptcage-export-encrypted.zip" : "cryptcage-export.zip";
+    private static String fileName(final Format format) {
+        switch (format) {
+            case ZIP_ENCRYPTED:
+                return "cryptcage-export-encrypted.zip";
+            case SEVEN_ZIP_PLAIN:
+                return "cryptcage-export.7z";
+            default:
+                return "cryptcage-export.zip";
+        }
     }
 
     private void onTarget(final Uri uri) {
         final List<Long> ids = pendingIds;
-        final boolean encrypted = pendingEncrypted;
+        final Format format = pendingFormat;
         final char[] password = pendingPassword;
         pendingIds = null;
         pendingPassword = null;
-        pendingEncrypted = false;
+        pendingFormat = null;
         final App.Session session = App.session();
-        if (uri == null || ids == null) {
+        if (uri == null || ids == null || format == null) {
             wipe(password);
             return;
         }
@@ -148,15 +175,22 @@ final class ExportFlow {
             return;
         }
         final Context app = activity.getApplicationContext();
+        final String suffix = format == Format.SEVEN_ZIP_PLAIN ? ".7z" : ".zip";
         Tasks.io(() -> {
-            final File temp = new File(app.getCacheDir(), "export-" + System.nanoTime() + ".zip");
+            final File temp = new File(app.getCacheDir(), "export-" + System.nanoTime() + suffix);
             boolean ok;
             try {
                 final ZipExport.Plan plan = ZipExport.collect(session.vault, ids);
-                if (encrypted) {
-                    EncryptedZip.write(temp, plan, password);
-                } else {
-                    ZipExport.writePlain(temp, plan);
+                switch (format) {
+                    case ZIP_ENCRYPTED:
+                        EncryptedZip.write(temp, plan, password);
+                        break;
+                    case SEVEN_ZIP_PLAIN:
+                        SevenZipExport.writePlain(temp, plan);
+                        break;
+                    default:
+                        ZipExport.writePlain(temp, plan);
+                        break;
                 }
                 ok = copyTo(app, temp, uri);
             } catch (Exception e) {
@@ -166,8 +200,9 @@ final class ExportFlow {
                 wipe(password);
             }
             final boolean success = ok;
-            Tasks.ui(() -> Toast.makeText(app,
-                    success ? R.string.toast_zipSaved : R.string.toast_exportFailed, Toast.LENGTH_LONG).show());
+            final int message = !success ? R.string.toast_exportFailed
+                    : format == Format.SEVEN_ZIP_PLAIN ? R.string.toast_archiveSaved : R.string.toast_zipSaved;
+            Tasks.ui(() -> Toast.makeText(app, message, Toast.LENGTH_LONG).show());
         });
     }
 

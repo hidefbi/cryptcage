@@ -154,4 +154,6 @@
     <string name="autolock_15min">15 λεπτά</string>
     <string name="autolock_30min">30 λεπτά</string>
     <string name="autolock_1hour">1 ώρα</string>
+    <string name="export_7z">7-Zip (χωρίς κωδικό πρόσβασης)</string>
+    <string name="toast_archiveSaved">Το αρχείο αποθηκεύτηκε</string>
 </resources>

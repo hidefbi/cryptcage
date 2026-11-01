@@ -154,4 +154,6 @@
     <string name="autolock_15min">15 минут</string>
     <string name="autolock_30min">30 минут</string>
     <string name="autolock_1hour">1 сағат</string>
+    <string name="export_7z">7-Zip (құпия сөзсіз)</string>
+    <string name="toast_archiveSaved">Мұрағат сақталды</string>
 </resources>

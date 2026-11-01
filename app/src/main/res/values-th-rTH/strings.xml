@@ -154,4 +154,6 @@
     <string name="autolock_15min">15 นาที</string>
     <string name="autolock_30min">30 นาที</string>
     <string name="autolock_1hour">1 ชั่วโมง</string>
+    <string name="export_7z">7-Zip (ไม่ใส่รหัสผ่าน)</string>
+    <string name="toast_archiveSaved">บันทึกไฟล์เก็บถาวรแล้ว</string>
 </resources>

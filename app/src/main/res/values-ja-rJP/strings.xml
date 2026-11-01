@@ -154,4 +154,6 @@
     <string name="autolock_15min">15分</string>
     <string name="autolock_30min">30分</string>
     <string name="autolock_1hour">1時間</string>
+    <string name="export_7z">7-Zip（パスワードなし）</string>
+    <string name="toast_archiveSaved">アーカイブを保存しました</string>
 </resources>

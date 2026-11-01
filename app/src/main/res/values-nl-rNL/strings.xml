@@ -154,4 +154,6 @@
     <string name="autolock_15min">15 minuten</string>
     <string name="autolock_30min">30 minuten</string>
     <string name="autolock_1hour">1 uur</string>
+    <string name="export_7z">7-Zip (zonder wachtwoord)</string>
+    <string name="toast_archiveSaved">Archief opgeslagen</string>
 </resources>

@@ -154,4 +154,6 @@
     <string name="autolock_15min">15 perc</string>
     <string name="autolock_30min">30 perc</string>
     <string name="autolock_1hour">1 óra</string>
+    <string name="export_7z">7-Zip (jelszó nélkül)</string>
+    <string name="toast_archiveSaved">Archívum mentve</string>
 </resources>
