@@ -168,6 +168,11 @@
     <string name="about_source">Código fuente</string>
     <string name="about_feedback">Informar de un problema</string>
     <string name="about_no_browser">Ninguna aplicación puede abrir este enlace.</string>
-    <string name="pw_too_simple">Evita caracteres repetidos, secuencias como 1234 o abcd y filas del teclado como qwer.</string>
     <string name="pw_common">Esta contraseña es demasiado común. Elige algo menos predecible.</string>
+    <string name="action_backupVault">Hacer copia de seguridad de la base de datos</string>
+    <string name="action_backupAnyway">Hacer copia de todos modos</string>
+    <string name="backup_drafts_warning">Algunas notas tienen cambios sin guardar. Esos cambios no estarán en la copia. Vuelve atrás para guardarlos o haz la copia sin ellos.</string>
+    <string name="backup_done">Copia guardada y verificada</string>
+    <string name="backup_mismatch">No se pudo verificar la copia. Inténtalo de nuevo.</string>
+    <string name="pw_too_simple">Evita caracteres repetidos, secuencias como 1234 o abcd y filas del teclado como qwer.</string>
 </resources>

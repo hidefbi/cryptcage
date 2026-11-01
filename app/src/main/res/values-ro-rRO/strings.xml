@@ -168,6 +168,11 @@
     <string name="about_source">Cod sursă</string>
     <string name="about_feedback">Raportează o problemă</string>
     <string name="about_no_browser">Nicio aplicație nu poate deschide linkul.</string>
-    <string name="pw_too_simple">Evită caracterele repetate, șirurile precum 1234 sau abcd și rândurile de tastatură precum qwer.</string>
     <string name="pw_common">Această parolă este prea frecventă. Alege ceva mai puțin previzibil.</string>
+    <string name="action_backupVault">Fă o copie de siguranță a bazei</string>
+    <string name="action_backupAnyway">Fă copia oricum</string>
+    <string name="backup_drafts_warning">Unele notițe au modificări nesalvate. Acestea nu vor fi în copia de siguranță. Întoarce-te să le salvezi sau fă copia fără ele.</string>
+    <string name="backup_done">Copie salvată și verificată</string>
+    <string name="backup_mismatch">Copia nu a putut fi verificată. Încearcă din nou.</string>
+    <string name="pw_too_simple">Evită caracterele repetate, șirurile precum 1234 sau abcd și rândurile de tastatură precum qwer.</string>
 </resources>

@@ -168,6 +168,11 @@
     <string name="about_source">Kildekode</string>
     <string name="about_feedback">Anmeld et problem</string>
     <string name="about_no_browser">Ingen app kan åbne linket.</string>
-    <string name="pw_too_simple">Undgå gentagne tegn, rækker som 1234 eller abcd og tastaturrækker som qwer.</string>
     <string name="pw_common">Denne adgangskode er for almindelig. Vælg noget mindre forudsigeligt.</string>
+    <string name="action_backupVault">Sikkerhedskopiér database</string>
+    <string name="action_backupAnyway">Sikkerhedskopiér alligevel</string>
+    <string name="backup_drafts_warning">Nogle noter har ikke-gemte ændringer. De er ikke med i sikkerhedskopien. Gå tilbage og gem dem, eller lav sikkerhedskopien uden dem.</string>
+    <string name="backup_done">Sikkerhedskopi gemt og kontrolleret</string>
+    <string name="backup_mismatch">Sikkerhedskopien kunne ikke kontrolleres. Prøv igen.</string>
+    <string name="pw_too_simple">Undgå gentagne tegn, rækker som 1234 eller abcd og tastaturrækker som qwer.</string>
 </resources>

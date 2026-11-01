@@ -168,6 +168,11 @@
     <string name="about_source">Mã nguồn</string>
     <string name="about_feedback">Báo lỗi</string>
     <string name="about_no_browser">Không có ứng dụng nào mở được liên kết này.</string>
-    <string name="pw_too_simple">Tránh ký tự lặp lại, chuỗi như 1234 hoặc abcd, và hàng phím như qwer.</string>
     <string name="pw_common">Mật khẩu này quá phổ biến. Hãy chọn mật khẩu khó đoán hơn.</string>
+    <string name="action_backupVault">Sao lưu cơ sở dữ liệu</string>
+    <string name="action_backupAnyway">Vẫn sao lưu</string>
+    <string name="backup_drafts_warning">Một số ghi chú có thay đổi chưa lưu. Các thay đổi này sẽ không có trong bản sao lưu. Quay lại để lưu, hoặc sao lưu mà không có chúng.</string>
+    <string name="backup_done">Đã lưu và kiểm tra bản sao lưu</string>
+    <string name="backup_mismatch">Không thể kiểm tra bản sao lưu. Vui lòng thử lại.</string>
+    <string name="pw_too_simple">Tránh ký tự lặp lại, chuỗi như 1234 hoặc abcd, và hàng phím như qwer.</string>
 </resources>

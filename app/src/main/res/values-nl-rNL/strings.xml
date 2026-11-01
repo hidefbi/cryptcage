@@ -168,6 +168,11 @@
     <string name="about_source">Broncode</string>
     <string name="about_feedback">Een probleem melden</string>
     <string name="about_no_browser">Geen app kan deze link openen.</string>
-    <string name="pw_too_simple">Vermijd herhaalde tekens, reeksen zoals 1234 of abcd en toetsenbordrijen zoals qwer.</string>
     <string name="pw_common">Dit wachtwoord komt te vaak voor. Kies iets dat minder voorspelbaar is.</string>
+    <string name="action_backupVault">Database back-uppen</string>
+    <string name="action_backupAnyway">Toch back-uppen</string>
+    <string name="backup_drafts_warning">Sommige notities hebben niet-opgeslagen wijzigingen. Die zitten niet in de back-up. Ga terug om ze op te slaan, of maak de back-up zonder.</string>
+    <string name="backup_done">Back-up opgeslagen en gecontroleerd</string>
+    <string name="backup_mismatch">De back-up kon niet worden gecontroleerd. Probeer het opnieuw.</string>
+    <string name="pw_too_simple">Vermijd herhaalde tekens, reeksen zoals 1234 of abcd en toetsenbordrijen zoals qwer.</string>
 </resources>

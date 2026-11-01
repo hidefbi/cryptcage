@@ -168,6 +168,11 @@
     <string name="about_source">Kod źródłowy</string>
     <string name="about_feedback">Zgłoś problem</string>
     <string name="about_no_browser">Żadna aplikacja nie otworzy tego linku.</string>
-    <string name="pw_too_simple">Unikaj powtarzających się znaków, ciągów takich jak 1234 lub abcd oraz rzędów klawiatury jak qwer.</string>
     <string name="pw_common">To hasło jest zbyt popularne. Wybierz coś mniej przewidywalnego.</string>
+    <string name="action_backupVault">Utwórz kopię zapasową bazy</string>
+    <string name="action_backupAnyway">Mimo to utwórz kopię</string>
+    <string name="backup_drafts_warning">Niektóre notatki mają niezapisane zmiany. Nie trafią do kopii zapasowej. Wróć, aby je zapisać, lub utwórz kopię bez nich.</string>
+    <string name="backup_done">Kopia zapasowa zapisana i sprawdzona</string>
+    <string name="backup_mismatch">Nie udało się sprawdzić kopii zapasowej. Spróbuj ponownie.</string>
+    <string name="pw_too_simple">Unikaj powtarzających się znaków, ciągów takich jak 1234 lub abcd oraz rzędów klawiatury jak qwer.</string>
 </resources>

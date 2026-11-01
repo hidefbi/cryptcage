@@ -168,6 +168,11 @@
     <string name="about_source">Kode sumber</string>
     <string name="about_feedback">Laporkan masalah</string>
     <string name="about_no_browser">Tidak ada aplikasi yang bisa membuka tautan ini.</string>
-    <string name="pw_too_simple">Hindari karakter berulang, urutan seperti 1234 atau abcd, dan baris keyboard seperti qwer.</string>
     <string name="pw_common">Kata sandi ini terlalu umum. Pilih yang lebih sulit ditebak.</string>
+    <string name="action_backupVault">Cadangkan basis data</string>
+    <string name="action_backupAnyway">Tetap cadangkan</string>
+    <string name="backup_drafts_warning">Beberapa catatan memiliki perubahan yang belum disimpan. Perubahan itu tidak ada di cadangan. Kembali untuk menyimpannya, atau cadangkan tanpa itu.</string>
+    <string name="backup_done">Cadangan disimpan dan diperiksa</string>
+    <string name="backup_mismatch">Cadangan tidak dapat diperiksa. Silakan coba lagi.</string>
+    <string name="pw_too_simple">Hindari karakter berulang, urutan seperti 1234 atau abcd, dan baris keyboard seperti qwer.</string>
 </resources>

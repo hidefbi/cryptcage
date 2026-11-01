@@ -875,7 +875,7 @@ public class NoteFragment extends Fragment {
 
     /** Drafts are kept in the no-backup folder, so they are not copied to a cloud backup. */
     private File draftDir() {
-        return new File(requireContext().getNoBackupFilesDir(), "drafts");
+        return DraftStore.dirUnder(requireContext().getNoBackupFilesDir());
     }
 
     private void toast(final int message) {

@@ -168,6 +168,11 @@
     <string name="about_source">Бастапқы код</string>
     <string name="about_feedback">Мәселе туралы хабарлау</string>
     <string name="about_no_browser">Бұл сілтемені ашатын қолданба жоқ.</string>
-    <string name="pw_too_simple">Қайталанатын таңбаларды, 1234 немесе abcd сияқты реттік қатарларды және qwer сияқты пернетақта жолдарын қолданбаңыз.</string>
     <string name="pw_common">Бұл құпия сөз тым кең таралған. Болжауға қиынырақ нәрсе таңдаңыз.</string>
+    <string name="action_backupVault">Деректер қорын сақтық көшіру</string>
+    <string name="action_backupAnyway">Бәрібір сақтық көшіру</string>
+    <string name="backup_drafts_warning">Кейбір жазбаларда сақталмаған өзгерістер бар. Олар сақтық көшірмеге кірмейді. Оларды сақтау үшін артқа қайтыңыз немесе осыларсыз сақтық көшіріңіз.</string>
+    <string name="backup_done">Сақтық көшірме сақталды және тексерілді</string>
+    <string name="backup_mismatch">Сақтық көшірмені тексеру мүмкін болмады. Қайта көріңіз.</string>
+    <string name="pw_too_simple">Қайталанатын таңбаларды, 1234 немесе abcd сияқты реттік қатарларды және qwer сияқты пернетақта жолдарын қолданбаңыз.</string>
 </resources>

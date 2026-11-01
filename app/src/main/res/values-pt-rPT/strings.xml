@@ -168,6 +168,11 @@
     <string name="about_source">Código-fonte</string>
     <string name="about_feedback">Reportar um problema</string>
     <string name="about_no_browser">Nenhuma aplicação consegue abrir esta ligação.</string>
-    <string name="pw_too_simple">Evite caracteres repetidos, sequências como 1234 ou abcd e linhas do teclado como qwer.</string>
     <string name="pw_common">Esta senha é muito comum. Escolha algo menos previsível.</string>
+    <string name="action_backupVault">Fazer cópia de segurança da base</string>
+    <string name="action_backupAnyway">Fazer cópia mesmo assim</string>
+    <string name="backup_drafts_warning">Algumas notas têm alterações não guardadas. Essas alterações não ficam na cópia. Volte atrás para as guardar ou faça a cópia sem elas.</string>
+    <string name="backup_done">Cópia guardada e verificada</string>
+    <string name="backup_mismatch">Não foi possível verificar a cópia. Tente novamente.</string>
+    <string name="pw_too_simple">Evite caracteres repetidos, sequências como 1234 ou abcd e linhas do teclado como qwer.</string>
 </resources>

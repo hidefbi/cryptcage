@@ -6,7 +6,10 @@
  */
 package com.cryptcage.ui;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -44,8 +47,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cryptcage.app.App;
 import com.cryptcage.app.Tasks;
+import com.cryptcage.utils.DraftStore;
 import com.cryptcage.utils.FileKinds;
 import com.cryptcage.utils.FileTypes;
+import com.cryptcage.utils.VaultBackup;
 import com.cryptcage.utils.StringMethods;
 import com.cryptcage.utils.VaultException;
 import com.cryptcage.utils.VaultSession;
@@ -93,6 +98,9 @@ public class MainActivity extends SecureActivity
     private TextView detailEmpty;
     private NotesAdapter adapter;
     private ActivityResultLauncher<String[]> importLauncher;
+    private ActivityResultLauncher<String> backupLauncher;
+    /** The vault whose backup is waiting for a destination from the file picker. */
+    private App.Session pendingBackup;
     private ExportFlow exportFlow;
     private NoteGestures gestures;
     private View screenshotBar;
@@ -158,6 +166,10 @@ public class MainActivity extends SecureActivity
         findViewById(R.id.fab_action_export).setOnClickListener(v -> {
             closeFabMenu();
             exportFlow.start(allIds());
+        });
+        findViewById(R.id.fab_action_backup).setOnClickListener(v -> {
+            closeFabMenu();
+            startBackup();
         });
 
         adapter = new NotesAdapter(new NotesAdapter.Listener() {
@@ -237,6 +249,9 @@ public class MainActivity extends SecureActivity
 
         importLauncher = registerForActivityResult(new ActivityResultContracts.OpenDocument(),
                 this::importFile);
+        backupLauncher = registerForActivityResult(
+                new ActivityResultContracts.CreateDocument("application/octet-stream"),
+                this::writeBackup);
         exportFlow = new ExportFlow(this);
         updateToolbarMenu();
     }
@@ -465,6 +480,70 @@ public class MainActivity extends SecureActivity
         fabScrim.setVisibility(View.VISIBLE);
         fabMenu.setVisibility(View.VISIBLE);
         fab.animate().rotation(45f).setDuration(150).start();
+    }
+
+    /**
+     * Starts a whole-vault backup. The vault file is copied as it is, so the backup opens with the
+     * same master password. Unsaved drafts live outside the vault file and are not in the copy, so
+     * the user is warned first when there are any.
+     */
+    private void startBackup() {
+        final App.Session session = App.session();
+        if (session == null) {
+            return;
+        }
+        final DraftStore drafts = new DraftStore(DraftStore.dirUnder(getNoBackupFilesDir()));
+        if (drafts.hasDraftsFor(session.file.getPath())) {
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.action_backupVault)
+                    .setMessage(R.string.backup_drafts_warning)
+                    .setPositiveButton(R.string.action_backupAnyway, (d, which) -> askBackupLocation(session))
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .show();
+            return;
+        }
+        askBackupLocation(session);
+    }
+
+    private void askBackupLocation(final App.Session session) {
+        pendingBackup = session;
+        backupLauncher.launch(VaultBackup.suggestedName(session.file.getName()));
+    }
+
+    /** Saves the vault, copies its file to the chosen place, and checks the copy by its digest. */
+    private void writeBackup(final Uri uri) {
+        final App.Session session = pendingBackup;
+        pendingBackup = null;
+        if (uri == null || session == null) {
+            return;
+        }
+        final ContentResolver resolver = getContentResolver();
+        Tasks.io(() -> {
+            boolean ok;
+            try {
+                final VaultBackup.Digest written;
+                synchronized (session.vault) {
+                    session.vault.save();
+                    try (InputStream in = new FileInputStream(session.file);
+                            OutputStream out = resolver.openOutputStream(uri, "wt")) {
+                        if (out == null) {
+                            throw new IOException("No output stream");
+                        }
+                        written = VaultBackup.copy(in, out);
+                    }
+                }
+                try (InputStream in = resolver.openInputStream(uri)) {
+                    if (in == null) {
+                        throw new IOException("No input stream");
+                    }
+                    ok = written.equals(VaultBackup.digest(in));
+                }
+            } catch (VaultException | IOException e) {
+                ok = false;
+            }
+            final int message = ok ? R.string.backup_done : R.string.backup_mismatch;
+            Tasks.ui(() -> toast(message));
+        });
     }
 
     private void closeFabMenu() {

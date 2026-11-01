@@ -168,6 +168,11 @@
     <string name="about_source">ซอร์สโค้ด</string>
     <string name="about_feedback">แจ้งปัญหา</string>
     <string name="about_no_browser">ไม่มีแอปที่เปิดลิงก์นี้ได้</string>
-    <string name="pw_too_simple">หลีกเลี่ยงอักขระที่ซ้ำกัน ลำดับอย่าง 1234 หรือ abcd และแถวปุ่มบนคีย์บอร์ดอย่าง qwer</string>
     <string name="pw_common">รหัสผ่านนี้ใช้กันบ่อยเกินไป ลองเลือกอย่างอื่นที่คาดเดาได้ยากกว่า</string>
+    <string name="action_backupVault">สำรองฐานข้อมูล</string>
+    <string name="action_backupAnyway">สำรองต่อไป</string>
+    <string name="backup_drafts_warning">บางบันทึกมีการแก้ไขที่ยังไม่ได้บันทึก การแก้ไขเหล่านั้นจะไม่อยู่ในไฟล์สำรอง ย้อนกลับไปบันทึกก่อน หรือสำรองโดยไม่รวมการแก้ไขเหล่านั้น</string>
+    <string name="backup_done">บันทึกไฟล์สำรองและตรวจสอบแล้ว</string>
+    <string name="backup_mismatch">ไม่สามารถตรวจสอบไฟล์สำรองได้ กรุณาลองอีกครั้ง</string>
+    <string name="pw_too_simple">หลีกเลี่ยงอักขระที่ซ้ำกัน ลำดับอย่าง 1234 หรือ abcd และแถวปุ่มบนคีย์บอร์ดอย่าง qwer</string>
 </resources>

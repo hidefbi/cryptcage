@@ -168,6 +168,11 @@
     <string name="about_source">Quellcode</string>
     <string name="about_feedback">Problem melden</string>
     <string name="about_no_browser">Keine App kann diesen Link öffnen.</string>
-    <string name="pw_too_simple">Vermeide wiederholte Zeichen, Reihen wie 1234 oder abcd und Tastaturreihen wie qwer.</string>
     <string name="pw_common">Dieses Passwort ist zu verbreitet. Wähle etwas, das weniger vorhersehbar ist.</string>
+    <string name="action_backupVault">Datenbank sichern</string>
+    <string name="action_backupAnyway">Trotzdem sichern</string>
+    <string name="backup_drafts_warning">Einige Notizen haben nicht gespeicherte Änderungen. Diese sind nicht in der Sicherung enthalten. Speichere sie zuerst oder sichere ohne sie.</string>
+    <string name="backup_done">Sicherung gespeichert und geprüft</string>
+    <string name="backup_mismatch">Die Sicherung konnte nicht geprüft werden. Bitte versuche es erneut.</string>
+    <string name="pw_too_simple">Vermeide wiederholte Zeichen, Reihen wie 1234 oder abcd und Tastaturreihen wie qwer.</string>
 </resources>

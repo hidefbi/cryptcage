@@ -31,6 +31,26 @@ public final class DraftStore {
         this.dir = dir;
     }
 
+    /** The drafts folder inside the given no-backup files folder of the app. */
+    public static File dirUnder(final File noBackupFilesDir) {
+        return new File(noBackupFilesDir, "drafts");
+    }
+
+    /** True when at least one note of the vault at this path has a draft that is not saved yet. */
+    public boolean hasDraftsFor(final String vaultPath) {
+        final String[] names = dir.list();
+        if (names == null) {
+            return false;
+        }
+        final String prefix = hash(vaultPath) + "-";
+        for (String name : names) {
+            if (name.startsWith(prefix)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /** The file name for a note in a vault. The vault path is hashed, so the path is not visible. */
     public static String nameFor(final String vaultPath, final long noteId) {
         return hash(vaultPath) + "-" + (noteId < 0 ? NEW_NOTE : Long.toString(noteId));

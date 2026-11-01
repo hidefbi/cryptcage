@@ -168,6 +168,11 @@
     <string name="about_source">Code source</string>
     <string name="about_feedback">Signaler un problème</string>
     <string name="about_no_browser">Aucune application ne peut ouvrir ce lien.</string>
-    <string name="pw_too_simple">Évitez les caractères répétés, les suites comme 1234 ou abcd et les rangées du clavier comme qwer.</string>
     <string name="pw_common">Ce mot de passe est trop courant. Choisissez quelque chose de moins prévisible.</string>
+    <string name="action_backupVault">Sauvegarder la base</string>
+    <string name="action_backupAnyway">Sauvegarder quand même</string>
+    <string name="backup_drafts_warning">Certaines notes ont des modifications non enregistrées. Elles ne seront pas dans la sauvegarde. Revenez les enregistrer ou sauvegardez sans elles.</string>
+    <string name="backup_done">Sauvegarde enregistrée et vérifiée</string>
+    <string name="backup_mismatch">La sauvegarde n’a pas pu être vérifiée. Réessayez.</string>
+    <string name="pw_too_simple">Évitez les caractères répétés, les suites comme 1234 ou abcd et les rangées du clavier comme qwer.</string>
 </resources>

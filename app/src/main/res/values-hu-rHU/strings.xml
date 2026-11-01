@@ -168,6 +168,11 @@
     <string name="about_source">Forráskód</string>
     <string name="about_feedback">Hiba jelentése</string>
     <string name="about_no_browser">Egyetlen alkalmazás sem tudja megnyitni ezt a linket.</string>
-    <string name="pw_too_simple">Kerüld az ismétlődő karaktereket, a 1234 vagy abcd típusú sorozatokat és a qwer típusú billentyűsorokat.</string>
     <string name="pw_common">Ez a jelszó túl gyakori. Válassz valami kevésbé kiszámíthatót.</string>
+    <string name="action_backupVault">Adatbázis mentése</string>
+    <string name="action_backupAnyway">Mentés mindenképp</string>
+    <string name="backup_drafts_warning">Néhány jegyzetben nincs mentett módosítás. Ezek nem kerülnek a mentésbe. Térj vissza és mentsd őket, vagy mentsd nélkülük.</string>
+    <string name="backup_done">Mentés elkészült és ellenőrizve</string>
+    <string name="backup_mismatch">A mentést nem sikerült ellenőrizni. Próbáld újra.</string>
+    <string name="pw_too_simple">Kerüld az ismétlődő karaktereket, a 1234 vagy abcd típusú sorozatokat és a qwer típusú billentyűsorokat.</string>
 </resources>

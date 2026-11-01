@@ -168,6 +168,11 @@
     <string name="about_source">Šaltinio kodas</string>
     <string name="about_feedback">Pranešti apie problemą</string>
     <string name="about_no_browser">Šios nuorodos neatidaro jokia programa.</string>
-    <string name="pw_too_simple">Venkite pasikartojančių simbolių, sekų kaip 1234 ar abcd ir klaviatūros eilių kaip qwer.</string>
     <string name="pw_common">Šis slaptažodis per dažnas. Pasirinkite ką nors mažiau nuspėjamo.</string>
+    <string name="action_backupVault">Kurti duomenų bazės atsarginę kopiją</string>
+    <string name="action_backupAnyway">Vis tiek kurti kopiją</string>
+    <string name="backup_drafts_warning">Kai kuriose užrašuose yra neišsaugotų pakeitimų. Jų nebus atsarginėje kopijoje. Grįžkite ir išsaugokite arba kurkite kopiją be jų.</string>
+    <string name="backup_done">Atsarginė kopija išsaugota ir patikrinta</string>
+    <string name="backup_mismatch">Atsarginės kopijos patikrinti nepavyko. Bandykite dar kartą.</string>
+    <string name="pw_too_simple">Venkite pasikartojančių simbolių, sekų kaip 1234 ar abcd ir klaviatūros eilių kaip qwer.</string>
 </resources>

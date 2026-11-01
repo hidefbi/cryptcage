@@ -241,6 +241,25 @@
                     android:layout_height="wrap_content"
                     android:text="@string/action_export" />
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fab_action_backup"
+                style="@style/FabMenuRow"
+                android:layout_width="match_parent"
+                android:layout_height="56dp">
+
+                <TextView
+                    style="@style/NoteMenuIcon"
+                    android:layout_height="wrap_content"
+                    android:importantForAccessibility="no"
+                    android:text="&#x1F4BE;" />
+
+                <TextView
+                    style="@style/FabMenuLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/action_backupVault" />
+            </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 

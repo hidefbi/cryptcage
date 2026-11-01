@@ -168,6 +168,11 @@
     <string name="about_source">Πηγαίος κώδικας</string>
     <string name="about_feedback">Αναφορά προβλήματος</string>
     <string name="about_no_browser">Καμία εφαρμογή δεν μπορεί να ανοίξει τον σύνδεσμο.</string>
-    <string name="pw_too_simple">Απόφυγε επαναλαμβανόμενους χαρακτήρες, σειρές όπως 1234 ή abcd και σειρές του πληκτρολογίου όπως qwer.</string>
     <string name="pw_common">Αυτός ο κωδικός είναι πολύ συνηθισμένος. Επίλεξε κάτι λιγότερο προβλέψιμο.</string>
+    <string name="action_backupVault">Δημιουργία αντιγράφου βάσης</string>
+    <string name="action_backupAnyway">Αντίγραφο ούτως ή άλλως</string>
+    <string name="backup_drafts_warning">Ορισμένες σημειώσεις έχουν μη αποθηκευμένες αλλαγές. Αυτές δεν θα είναι στο αντίγραφο. Γύρνα πίσω για να τις αποθηκεύσεις ή κάνε αντίγραφο χωρίς αυτές.</string>
+    <string name="backup_done">Το αντίγραφο αποθηκεύτηκε και ελέγχθηκε</string>
+    <string name="backup_mismatch">Το αντίγραφο δεν μπόρεσε να ελεγχθεί. Δοκίμασε ξανά.</string>
+    <string name="pw_too_simple">Απόφυγε επαναλαμβανόμενους χαρακτήρες, σειρές όπως 1234 ή abcd και σειρές του πληκτρολογίου όπως qwer.</string>
 </resources>

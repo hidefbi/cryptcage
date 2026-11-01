@@ -37,6 +37,8 @@ This list covers the changes made by hidefbi on 2026-10-31 and the earlier chang
 - The About screen uses the theme without an action bar, because it supplies its own toolbar.
 - The unlocked screen's toolbar shows only the settings icon. The sort and About items are removed, and About opens from the settings. The alphabetical order is removed; a drag still sets the manual order.
 - Test coverage was added for the storage format, compaction, password change and the vault session.
+- A whole-vault backup can be saved from the note list menu. It is a byte-for-byte copy of the vault file, encrypted with the same master password, so it is restored by importing it and opening it with that password. The copy is checked by its SHA-256 digest before the message says it is saved. The code is in VaultBackup.
+- The password rules were changed. Passwords are still at least 12 characters, but the mixed-kinds rule and the 16-character exemption are gone. A password is refused when it is a common word, or a common word with digits or symbols around it, or when it has a repeated character run, a counting run such as 1234 or abcd, a keyboard row such as qwer, or a block repeated over and over. The same rules apply to the export password. The word list is in PasswordPolicy.
 
 ## Dates
 

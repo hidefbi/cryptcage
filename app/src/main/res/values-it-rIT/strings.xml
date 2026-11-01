@@ -169,6 +169,11 @@
     <string name="about_source">Codice sorgente</string>
     <string name="about_feedback">Segnala un problema</string>
     <string name="about_no_browser">Nessuna app può aprire questo link.</string>
-    <string name="pw_too_simple">Evita caratteri ripetuti, sequenze come 1234 o abcd e file della tastiera come qwer.</string>
     <string name="pw_common">Questa password è troppo comune. Scegline una meno prevedibile.</string>
+    <string name="action_backupVault">Backup del database</string>
+    <string name="action_backupAnyway">Esegui il backup comunque</string>
+    <string name="backup_drafts_warning">Alcune note hanno modifiche non salvate. Quelle modifiche non saranno nel backup. Torna indietro per salvarle, oppure fai il backup senza.</string>
+    <string name="backup_done">Backup salvato e verificato</string>
+    <string name="backup_mismatch">Impossibile verificare il backup. Riprova.</string>
+    <string name="pw_too_simple">Evita caratteri ripetuti, sequenze come 1234 o abcd e file della tastiera come qwer.</string>
 </resources>

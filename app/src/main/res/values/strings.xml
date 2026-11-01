@@ -241,4 +241,9 @@
     <string name="about_issues_url" translatable="false">https://github.com/hidefbi/cryptcage/issues</string>
     <string name="about_releases_url" translatable="false">https://github.com/hidefbi/cryptcage/releases</string>
     <string name="pw_common">This password is too common. Choose something less predictable.</string>
+    <string name="action_backupVault">Back up database</string>
+    <string name="action_backupAnyway">Back up anyway</string>
+    <string name="backup_drafts_warning">Some notes have unsaved edits. Those edits are not in the backup. Go back to save them, or back up without them.</string>
+    <string name="backup_done">Backup saved and checked</string>
+    <string name="backup_mismatch">The backup could not be verified. Please try again.</string>
 </resources>

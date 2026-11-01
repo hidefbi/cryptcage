@@ -168,6 +168,11 @@
     <string name="about_source">Вихідний код</string>
     <string name="about_feedback">Повідомити про проблему</string>
     <string name="about_no_browser">Жоден застосунок не може відкрити це посилання.</string>
-    <string name="pw_too_simple">Уникайте повторюваних символів, послідовностей на кшталт 1234 чи abcd та рядів клавіатури на кшталт qwer.</string>
     <string name="pw_common">Цей пароль занадто поширений. Виберіть щось менш передбачуване.</string>
+    <string name="action_backupVault">Резервна копія бази</string>
+    <string name="action_backupAnyway">Все одно зберегти копію</string>
+    <string name="backup_drafts_warning">У деяких нотатках є незбережені зміни. Їх не буде в резервній копії. Поверніться, щоб їх зберегти, або створіть копію без них.</string>
+    <string name="backup_done">Копію збережено і перевірено</string>
+    <string name="backup_mismatch">Не вдалося перевірити резервну копію. Спробуйте ще раз.</string>
+    <string name="pw_too_simple">Уникайте повторюваних символів, послідовностей на кшталт 1234 чи abcd та рядів клавіатури на кшталт qwer.</string>
 </resources>

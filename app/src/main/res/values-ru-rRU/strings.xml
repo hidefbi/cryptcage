@@ -168,6 +168,11 @@
     <string name="about_source">Исходный код</string>
     <string name="about_feedback">Сообщить о проблеме</string>
     <string name="about_no_browser">Нет приложения, которое может открыть эту ссылку.</string>
-    <string name="pw_too_simple">Избегайте повторяющихся символов, последовательностей вроде 1234 или abcd и рядов клавиатуры вроде qwer.</string>
     <string name="pw_common">Этот пароль слишком распространён. Выберите что-то менее предсказуемое.</string>
+    <string name="action_backupVault">Резервная копия базы</string>
+    <string name="action_backupAnyway">Всё равно сделать копию</string>
+    <string name="backup_drafts_warning">В некоторых заметках есть несохранённые изменения. Их не будет в резервной копии. Вернитесь и сохраните их или сделайте копию без них.</string>
+    <string name="backup_done">Копия сохранена и проверена</string>
+    <string name="backup_mismatch">Не удалось проверить резервную копию. Попробуйте ещё раз.</string>
+    <string name="pw_too_simple">Избегайте повторяющихся символов, последовательностей вроде 1234 или abcd и рядов клавиатуры вроде qwer.</string>
 </resources>

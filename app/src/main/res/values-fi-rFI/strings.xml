@@ -168,6 +168,11 @@
     <string name="about_source">Lähdekoodi</string>
     <string name="about_feedback">Ilmoita ongelmasta</string>
     <string name="about_no_browser">Mikään sovellus ei voi avata linkkiä.</string>
-    <string name="pw_too_simple">Vältä toistuvia merkkejä, sarjoja kuten 1234 tai abcd ja näppäimistön rivejä kuten qwer.</string>
     <string name="pw_common">Tämä salasana on liian yleinen. Valitse jotain vähemmän ennalta arvattavaa.</string>
+    <string name="action_backupVault">Varmuuskopioi tietokanta</string>
+    <string name="action_backupAnyway">Varmuuskopioi silti</string>
+    <string name="backup_drafts_warning">Joissakin muistiinpanoissa on tallentamattomia muutoksia. Niitä ei ole varmuuskopiossa. Palaa tallentamaan ne tai varmuuskopioi ilman niitä.</string>
+    <string name="backup_done">Varmuuskopio tallennettu ja tarkistettu</string>
+    <string name="backup_mismatch">Varmuuskopiota ei voitu tarkistaa. Yritä uudelleen.</string>
+    <string name="pw_too_simple">Vältä toistuvia merkkejä, sarjoja kuten 1234 tai abcd ja näppäimistön rivejä kuten qwer.</string>
 </resources>

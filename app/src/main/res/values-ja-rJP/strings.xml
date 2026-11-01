@@ -168,6 +168,11 @@
     <string name="about_source">ソースコード</string>
     <string name="about_feedback">問題を報告</string>
     <string name="about_no_browser">このリンクを開けるアプリがありません。</string>
-    <string name="pw_too_simple">同じ文字の繰り返し、1234 や abcd のような連続した並び、qwer のようなキーボードの並びは避けてください。</string>
     <string name="pw_common">よく使われているパスワードです。推測されにくいものにしてください。</string>
+    <string name="action_backupVault">データベースをバックアップ</string>
+    <string name="action_backupAnyway">このままバックアップ</string>
+    <string name="backup_drafts_warning">未保存の変更があるメモがあります。その変更はバックアップに含まれません。戻って保存するか、そのままバックアップしてください。</string>
+    <string name="backup_done">バックアップを保存し、確認しました</string>
+    <string name="backup_mismatch">バックアップを確認できませんでした。もう一度お試しください。</string>
+    <string name="pw_too_simple">同じ文字の繰り返し、1234 や abcd のような連続した並び、qwer のようなキーボードの並びは避けてください。</string>
 </resources>

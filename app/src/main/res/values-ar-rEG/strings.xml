@@ -168,6 +168,11 @@
     <string name="about_source">الشيفرة المصدرية</string>
     <string name="about_feedback">الإبلاغ عن مشكلة</string>
     <string name="about_no_browser">لا يوجد تطبيق يفتح هذا الرابط.</string>
-    <string name="pw_too_simple">تجنّب تكرار الحروف، وتسلسلات مثل 1234 أو abcd، وصفوف لوحة المفاتيح مثل qwer.</string>
     <string name="pw_common">كلمة المرور هذه شائعة جدًا. اختر كلمة أقل قابلية للتوقع.</string>
+    <string name="action_backupVault">نسخ احتياطي لقاعدة البيانات</string>
+    <string name="action_backupAnyway">النسخ على أي حال</string>
+    <string name="backup_drafts_warning">بعض الملاحظات بها تعديلات غير محفوظة، ولن تكون هذه التعديلات في النسخة الاحتياطية. ارجع لحفظها، أو انسخ دون ذلك.</string>
+    <string name="backup_done">تم حفظ النسخة الاحتياطية والتحقق منها</string>
+    <string name="backup_mismatch">تعذّر التحقق من النسخة الاحتياطية. حاول مرة أخرى.</string>
+    <string name="pw_too_simple">تجنّب تكرار الحروف، وتسلسلات مثل 1234 أو abcd، وصفوف لوحة المفاتيح مثل qwer.</string>
 </resources>

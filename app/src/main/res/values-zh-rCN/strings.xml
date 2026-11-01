@@ -214,4 +214,9 @@
     <string name="about_feedback">问题反馈</string>
     <string name="about_no_browser">没有可以打开此链接的应用。</string>
     <string name="pw_common">这个密码太常见了，请换一个不容易猜到的。</string>
+    <string name="action_backupVault">备份数据库</string>
+    <string name="action_backupAnyway">仍然备份</string>
+    <string name="backup_drafts_warning">有些笔记还有未保存的修改，这些修改不会包含在备份中。可以返回保存，也可以直接备份。</string>
+    <string name="backup_done">备份已保存并校验</string>
+    <string name="backup_mismatch">备份无法校验，请重试。</string>
 </resources>
