@@ -14,7 +14,7 @@ CryptCage does not request any permission. Your notes are kept in the app's priv
 
 Your notes are stored in encrypted database files inside the app's private storage. The files are encrypted with the password you choose. The developer has no access to them and has no way to recover them if the password is lost.
 
-The app also stores a small preference for the sort order and the tag drawer, and the text size you chose. These settings contain no note content.
+The app also stores a small preference for the sort order and the tag drawer, and the text size you chose. These settings contain no note content. It keeps a version number for each vault so that older copies are refused. If you use PIN or fingerprint unlock, it also keeps an encrypted copy of your master password on the device.
 
 ## Security of data
 
@@ -32,4 +32,4 @@ This policy may be updated when the app changes. The date of the latest change i
 
 Questions about this policy can be sent through the issue tracker of the repository you obtained CryptCage from.
 
-Last updated: 2026-10-27.
+Last updated: 2026-11-04.

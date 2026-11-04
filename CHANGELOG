@@ -2,6 +2,11 @@ Unreleased
 * Whole-vault backup: the note list menu has a new "Back up database" item. It saves a copy of the vault file, encrypted with the same master password. Import the copy to restore it. The backup is checked after it is written.
 * Notes with unsaved edits are not in the backup, and the app asks before it goes on.
 * New passwords and export passwords are refused when they are common words or follow an obvious pattern (repeated characters, runs such as 1234, keyboard rows). The mixed-kinds rule is removed; length is still at least 12 characters.
+* Older copies of a vault are refused instead of opened. A damaged header is reported as damaged, not replaced by an older one.
+* The clipboard is cleared only when it still holds the copy the app made.
+* Note fields ask the keyboard not to suggest or learn words.
+* Plain ZIP and 7z exports ask for confirmation first.
+* Leftover plain copies from an interrupted view or export are removed at launch.
 
 2.2 (versionCode 25)
 * The olive colour theme is the default now. The unlocked screen has a new header, a search field and filter chips for all items, notes and files.

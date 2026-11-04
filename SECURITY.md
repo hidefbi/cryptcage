@@ -25,7 +25,7 @@ The first 43 bytes are passed to AES-GCM as additional authenticated data, so ch
 
 The password is converted to UTF-8 bytes and run through PBKDF2 with HMAC-SHA256 for 600,000 iterations, which produces a 256-bit key. The key is kept in memory while the vault is open. It is wiped when the vault locks. The password itself is not kept after the key is derived.
 
-New passwords must have at least 12 characters, and must mix character kinds unless they are 16 characters or longer. Existing passwords are not checked when they are used to open a vault.
+New passwords must have at least 12 characters. Common passwords and simple patterns are refused. Existing passwords are not checked when they are used to open a vault.
 
 There is no recovery. A lost password means the notes cannot be read.
 
@@ -38,9 +38,11 @@ those versions rewrite each file in the current format on opening.
 
 Every change is written to a temporary file in the same folder, flushed to the disk, and then renamed over the database. An interrupted write therefore leaves the previous version in place.
 
+Each vault file has a version number that goes up on every save. The newest number this device has seen for a vault is kept in the app's own preferences, outside the vault file. If a file comes back with an older number, the app refuses to open it. This stops someone from quietly putting an old copy back in place. Clearing the app's data, or moving the vault to another device, starts that record again.
+
 The vault locks when the app has been in the background for a minute, or when the user closes it from the menu. Locking first saves any pending change and then wipes the key.
 
-The app blocks screenshots and recent-apps previews on every screen. Application data is excluded from system backups.
+The app blocks screenshots and recent-apps previews on every screen unless Screenshot mode is turned on in the settings. Application data is excluded from system backups.
 
 ## Import and export
 
@@ -51,6 +53,11 @@ Export copies the encrypted file to a location the user picks. Import copies a f
 - Anyone who knows the password can read the notes. Choose a long, unique password.
 - While a vault is open, its notes are in memory. A malicious program with full access to the device, or a rooted device, can read them. Lock the vault when you step away.
 - Java strings cannot be overwritten, so a password typed into a text field may remain in memory until it is garbage collected.
+- PIN and fingerprint unlock keep a copy of the master password on the device, wrapped by a key in the Android Keystore. Turn them off if you do not want that copy.
+- A plain ZIP or 7z export has no password. Anyone who gets that file can read it.
+- Deleting a vault removes the file, but the flash storage underneath may keep the old bytes for a while. The app does not promise a secure erase.
+- Accessibility services can read what is on the screen, including open notes.
+- The clipboard is cleared after the set time only if it still holds the copy CryptCage made.
 - The password dialog uses the system keyboard. Keyboards that learn words may store what you type.
 - Key derivation takes about a second on a typical phone. That cost is what makes guessing expensive.
 

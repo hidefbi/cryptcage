@@ -15,12 +15,12 @@ CryptCage has quite a handful of features they include;
 - Note sorting
 - The database is encrypted with AES-256 in GCM mode, which also detects any change made to the file. The key is derived from your password with PBKDF2-HMAC-SHA256 (600,000 iterations) and a random salt. A new random nonce is used on every save.
 - Saves are atomic: the file is replaced only after the new version is fully written, so an interrupted save does not corrupt your notes.
-- The app locks itself after a minute in the background, and blocks screenshots.
+- The app locks itself after a minute in the background, and blocks screenshots unless you turn on Screenshot mode in the settings.
 - Note search.
 
 **What are the rules for a password?**
 
-- A new or changed password must have at least 12 characters. It also needs letters, digits or symbols mixed together, unless it is 16 characters or longer. Passwords that were accepted by older versions still open normally.
+- A new or changed password must have at least 12 characters. Common passwords and simple patterns, such as repeats, runs like 1234 and keyboard rows, are refused. Passwords accepted by older versions still open normally.
 
 **Can I change my database password at a later time?**
 
@@ -37,7 +37,7 @@ CryptCage has quite a handful of features they include;
 
 **Where are my databases stored?**
 
-- Databases are kept in the app's private storage. Other apps cannot read them, and CryptCage does not ask for any storage permission. To keep a copy somewhere else, use "Export encrypted copy" in the menu of an open database. To open a database that is stored elsewhere, use the import button on the start screen.
+- Databases are kept in the app's private storage. Other apps cannot read them, and CryptCage does not ask for any storage permission. To keep a copy somewhere else, use the export option and pick the encrypted ZIP. To open a database that is stored elsewhere, use the import button on the start screen.
 
 **Can I share my notes to other locations and mediums?**
 
