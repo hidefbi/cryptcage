@@ -23,6 +23,7 @@
     <string name="toast_emptyPassword">खाली पासवर्ड की अनुमति नहीं है</string>
     <string name="toast_wrongPassword">गलत पासवर्ड या दूषित डेटाबेस</string>
     <string name="toast_rolledBack">यह प्रति इस डिवाइस पर पिछली बार सहेजी गई प्रति से पुरानी है, इसलिए इसे नहीं खोला गया।</string>
+    <string name="export_plain_warning">इस निर्यात में पासवर्ड नहीं है, इसलिए फ़ाइल जिसके हाथ लगेगी वह इसकी सारी सामग्री पढ़ सकता है।</string>
     <string name="toast_errorCreatingDB">डेटाबेस बनाने में त्रुटि।\nपथ की शुद्धता की जांच करें</string>
     <string name="toast_wrongNewPassword">पासवर्ड मेल नहीं खाते</string>
     <string name="dialog_backNoSave">आपके संपादन सहेज नहीं होंगे।\nक्या आप वाकई बाहर निकलना चाहते हैं?</string>

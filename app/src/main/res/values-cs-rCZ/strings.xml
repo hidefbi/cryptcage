@@ -23,6 +23,7 @@
     <string name="toast_emptyPassword">Prázdné heslo není povoleno</string>
     <string name="toast_wrongPassword">Špatné heslo nebo poškozená databáze</string>
     <string name="toast_rolledBack">Tato kopie je starší než poslední verze uložená v tomto zařízení, proto nebyla otevřena.</string>
+    <string name="export_plain_warning">Tento export nemá heslo, takže kdokoli soubor získá, může přečíst celý jeho obsah.</string>
     <string name="toast_errorCreatingDB">Chyba při vytváření databáze.\nZkontrolujte správnost cesty</string>
     <string name="toast_wrongNewPassword">Hesla se neshodují</string>
     <string name="dialog_backNoSave">Vaše úpravy nebudou uloženy.\nChcete zkončit bez uložení?</string>

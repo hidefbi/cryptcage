@@ -23,6 +23,7 @@
     <string name="toast_emptyPassword">Nu este permisa parola goala</string>
     <string name="toast_wrongPassword">Parola este gresita sau baza de date este corupta</string>
     <string name="toast_rolledBack">Această copie este mai veche decât ultima salvată pe acest dispozitiv, așa că nu a fost deschisă.</string>
+    <string name="export_plain_warning">Acest export nu are parolă, deci oricine primește fișierul poate citi tot ce conține.</string>
     <string name="toast_errorCreatingDB">Eroare la creearea bazei de date.\nVerifica corectitudinea locatiei</string>
     <string name="toast_wrongNewPassword">Parolele sunt diferite</string>
     <string name="dialog_backNoSave">Schimbarile nu vor fi salvate.\nSigur vrei sa iesi?</string>

@@ -23,6 +23,7 @@
     <string name="toast_emptyPassword">Бос құпиясөз болмайды</string>
     <string name="toast_wrongPassword">Жарамсыз пароль немесе бүлінген дерекқор</string>
     <string name="toast_rolledBack">Бұл көшірме осы құрылғыда соңғы сақталғанынан ескі, сондықтан ашылмады.</string>
+    <string name="export_plain_warning">Бұл экспортта құпия сөз жоқ, сондықтан файлды алған адам ішіндегінің бәрін оқи алады.</string>
     <string name="toast_errorCreatingDB">db қосу қатесі. \ nЖолдың дұрыстығын тексеріңіз </string>
     <string name="toast_wrongNewPassword">Құпия сөздер сәйкес емес</string>
     <string name="dialog_backNoSave">Сіздің өзгертулеріңіз сақталмайды. \ n Шығуды қалайсыз ба?</string>

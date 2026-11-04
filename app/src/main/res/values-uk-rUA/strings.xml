@@ -23,6 +23,7 @@
     <string name="toast_emptyPassword">Порожній пароль не дозволений</string>
     <string name="toast_wrongPassword">Неправильний пароль або пошкоджена база даних</string>
     <string name="toast_rolledBack">Ця копія старша за останню збережену на цьому пристрої, тому її не відкрито.</string>
+    <string name="export_plain_warning">Цей експорт без пароля, тож кожен, хто отримає файл, зможе прочитати все, що в ньому є.</string>
     <string name="toast_errorCreatingDB">Помилка при створенні бази даних.\nПеревірте коректність заданого шляху</string>
     <string name="toast_wrongNewPassword">Пароль не співпадає</string>
     <string name="dialog_backNoSave">Ваші зміни не будуть збережені.\nВи впевненні, що хочете закрити?</string>

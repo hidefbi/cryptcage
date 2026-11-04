@@ -23,6 +23,7 @@
     <string name="toast_emptyPassword">Contraseña vacía no permitida</string>
     <string name="toast_wrongPassword">Contraseña incorrecta o base de datos corrupta</string>
     <string name="toast_rolledBack">Esta copia es más antigua que la última guardada en este dispositivo, así que no se ha abierto.</string>
+    <string name="export_plain_warning">Esta exportación no tiene contraseña, así que quien consiga el archivo puede leer todo lo que contiene.</string>
     <string name="toast_errorCreatingDB">Error creando la base de datos.\nCompruebe si el directorio es correcto.</string>
     <string name="toast_wrongNewPassword">Las contraseñas no coinciden</string>
     <string name="dialog_backNoSave">Sus cambios no van a ser guardados.\n¿Está seguro de que desea salir?</string>

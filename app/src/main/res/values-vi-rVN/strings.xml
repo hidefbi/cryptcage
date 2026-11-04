@@ -23,6 +23,7 @@
     <string name="toast_emptyPassword">Mật khẩu không được để trống</string>
     <string name="toast_wrongPassword">Mật khẩu sai hoặc cơ sở dữ liệu bị hỏng</string>
     <string name="toast_rolledBack">Bản sao này cũ hơn bản được lưu lần cuối trên thiết bị này nên không được mở.</string>
+    <string name="export_plain_warning">Bản xuất này không có mật khẩu, nên ai có được tệp cũng đọc được toàn bộ nội dung.</string>
     <string name="toast_errorCreatingDB">Không thể tạo cơ sở dữ liệu.\nVui lòng kiểm tra lại đường dẫn của file</string>
     <string name="toast_wrongNewPassword">Mật khẩu không trùng khớp</string>
     <string name="dialog_backNoSave">Các thay đổi của bạn sẽ không được lưu.\nBạn có muốn thoát?</string>

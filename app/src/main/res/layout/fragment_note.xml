@@ -84,7 +84,8 @@
                         android:id="@+id/field_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
+                        android:imeOptions="flagNoPersonalizedLearning"
+                        android:inputType="text|textNoSuggestions"
                         android:maxLines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,7 +101,8 @@
                         android:id="@+id/field_tags"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text" />
+                        android:imeOptions="flagNoPersonalizedLearning"
+                        android:inputType="text|textNoSuggestions" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -116,7 +118,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="top"
-                        android:inputType="textMultiLine"
+                        android:imeOptions="flagNoPersonalizedLearning"
+                        android:inputType="textMultiLine|textNoSuggestions"
                         android:minLines="8" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>

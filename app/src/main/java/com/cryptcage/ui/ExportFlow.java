@@ -82,13 +82,27 @@ final class ExportFlow {
                 .setTitle(R.string.export_mode_title)
                 .setItems(modes.toArray(new String[0]), (dialog, which) -> {
                     if (which == 0) {
-                        pendingFormat = Format.ZIP_PLAIN;
-                        zipLauncher.launch(fileName(Format.ZIP_PLAIN));
+                        confirmPlain(Format.ZIP_PLAIN);
                     } else if (which == 1) {
                         askPassword();
                     } else {
-                        pendingFormat = Format.SEVEN_ZIP_PLAIN;
-                        sevenZipLauncher.launch(fileName(Format.SEVEN_ZIP_PLAIN));
+                        confirmPlain(Format.SEVEN_ZIP_PLAIN);
+                    }
+                })
+                .setNegativeButton(android.R.string.cancel, (dialog, which) -> pendingIds = null)
+                .show();
+    }
+
+    /** A plain export has no password, so the user confirms it before picking a place to save. */
+    private void confirmPlain(final Format format) {
+        new AlertDialog.Builder(activity)
+                .setMessage(R.string.export_plain_warning)
+                .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                    pendingFormat = format;
+                    if (format == Format.ZIP_PLAIN) {
+                        zipLauncher.launch(fileName(format));
+                    } else {
+                        sevenZipLauncher.launch(fileName(format));
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, (dialog, which) -> pendingIds = null)

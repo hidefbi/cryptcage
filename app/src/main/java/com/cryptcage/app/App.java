@@ -51,6 +51,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        removeLeftoverPlainCopies();
         // Light or dark follows the system. The colour palette has its own night colours.
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
@@ -184,5 +185,19 @@ public class App extends Application {
                 // nothing to report: the data is saved and the old file is still valid
             }
         });
+    }
+
+    /** Plain copies made for viewing or exporting are removed here if an earlier run died before cleaning up. */
+    private void removeLeftoverPlainCopies() {
+        final File[] files = getCacheDir().listFiles();
+        if (files == null) {
+            return;
+        }
+        for (final File file : files) {
+            final String name = file.getName();
+            if (name.startsWith("view-") || name.startsWith("export-")) {
+                file.delete();
+            }
+        }
     }
 }

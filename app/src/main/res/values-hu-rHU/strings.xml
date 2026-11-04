@@ -23,6 +23,7 @@
     <string name="toast_emptyPassword">Üres Jelszó nem engedélyezett</string>
     <string name="toast_wrongPassword">Hibás Jelszó vagy rossz adatbázis</string>
     <string name="toast_rolledBack">Ez a másolat régebbi, mint az eszközön legutóbb mentett, ezért nem nyílt meg.</string>
+    <string name="export_plain_warning">Ez az exportálás nem jelszavas, ezért aki megkapja a fájlt, mindent elolvashat benne.</string>
     <string name="toast_errorCreatingDB">Hiba az adatbázis létrehozásánál.\nEllenőrizze az elérési útvonalat</string>
     <string name="toast_wrongNewPassword">Jelszó nem egyezik</string>
     <string name="dialog_backNoSave">A módosítások nem lesznek elmentve.\nBiztosan ki akar lépni?</string>

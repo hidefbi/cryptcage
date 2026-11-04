@@ -23,6 +23,7 @@
     <string name="toast_emptyPassword">Tušti slaptažodžiai nera galimi</string>
     <string name="toast_wrongPassword">Klaidingas slaptažodis arba sugadintą duomenų bazę</string>
     <string name="toast_rolledBack">Ši kopija senesnė nei paskutinė šiame įrenginyje išsaugota, todėl ji neatidaryta.</string>
+    <string name="export_plain_warning">Šis eksportas be slaptažodžio, todėl kas gaus failą, galės perskaityti viską, kas jame yra.</string>
     <string name="toast_errorCreatingDB">Klaida sukuriant jūsų duomenų bazę.\nPatikrinkite kelio teisingumą</string>
     <string name="toast_wrongNewPassword">Slaptažodžiai nesutampa</string>
     <string name="dialog_backNoSave">Jūsų taisymas nebus išsaugotas.\nAr jus tikri kad norite išeiti?</string>

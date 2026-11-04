@@ -6,6 +6,7 @@
  */
 package com.cryptcage.ui;
 
+import android.content.ClipDescription;
 import java.util.Locale;
 import java.util.UUID;
 
@@ -156,6 +157,13 @@ final class ClipboardTimer {
     private static void clear(final Context app) {
         final ClipboardManager clipboard = (ClipboardManager) app.getSystemService(Context.CLIPBOARD_SERVICE);
         if (clipboard == null) {
+            return;
+        }
+        // Copies from this app carry its name as the label. If the clipboard holds something
+        // else now, it was copied after ours, so it stays. An empty clipboard has nothing to clear.
+        final ClipDescription description = clipboard.getPrimaryClipDescription();
+        if (description == null
+                || !app.getString(R.string.app_name).equals(String.valueOf(description.getLabel()))) {
             return;
         }
         if (Build.VERSION.SDK_INT >= 28) {
