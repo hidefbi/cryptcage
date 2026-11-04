@@ -22,6 +22,7 @@
     <string name="title_password">Ingrese contraseña</string>
     <string name="toast_emptyPassword">Contraseña vacia no permitida</string>
     <string name="toast_wrongPassword">Contraseña erronea o base de datos corrompida</string>
+    <string name="toast_rolledBack">Esta copia es más antigua que la última guardada en este dispositivo, por eso no se abrió.</string>
     <string name="toast_errorCreatingDB">Error creando bd.\nCheca el camino correctamente</string>
     <string name="toast_wrongNewPassword">Las contraseñas no son iguales</string>
     <string name="dialog_backNoSave">Tu edición no será guardada.\nEsta seguro que desea salir?</string>

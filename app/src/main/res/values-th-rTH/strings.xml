@@ -22,6 +22,7 @@
     <string name="title_password">กรอกรหัสผ่าน</string>
     <string name="toast_emptyPassword">กรุณากรอกรหัสผ่าน</string>
     <string name="toast_wrongPassword">รหัสผ่านไม่ถูกต้อง หรือ ฐานข้อมูลมีปัญหา</string>
+    <string name="toast_rolledBack">สำเนานี้เก่ากว่าเวอร์ชันล่าสุดที่บันทึกไว้ในอุปกรณ์นี้ จึงไม่ได้เปิด</string>
     <string name="toast_errorCreatingDB">มีปัญหาขณะกำลังสร้างฐานข้อมูล\nกรุณาตรวจสอบที่อยู่ให้ถูกต้อง</string>
     <string name="toast_wrongNewPassword">รหัสผ่านไม่ตรงกัน</string>
     <string name="dialog_backNoSave">การแก้ไขของคุณยังไม่ถูกบันทึก\nคุณแน่ใจใช่ไหมที่ต้องการจะออก</string>

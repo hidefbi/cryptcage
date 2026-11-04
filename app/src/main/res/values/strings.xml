@@ -55,6 +55,7 @@
     <string name="toast_locked">The database is locked</string>
     <string name="toast_emptyPassword">Password cannot be empty</string>
     <string name="toast_wrongPassword">Wrong password, or the database is damaged</string>
+    <string name="toast_rolledBack">This copy is older than the last one saved on this device, so it was not opened.</string>
     <string name="toast_errorCreatingDB">Could not create the database</string>
     <string name="toast_wrongNewPassword">The two passwords do not match</string>
     <string name="toast_nameInvalid">Use letters, digits, spaces or dashes in the name</string>

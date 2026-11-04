@@ -22,6 +22,7 @@
     <string name="title_password">ادخل كلمة السر</string>
     <string name="toast_emptyPassword">كلمة السر الفارغة غير مسموح بها</string>
     <string name="toast_wrongPassword">خطأ في كلمة السر او قاعدة البيانات تالفة</string>
+    <string name="toast_rolledBack">هذه النسخة أقدم من آخر نسخة حفظها هذا الجهاز، لذلك لم تُفتح.</string>
     <string name="toast_errorCreatingDB">خطأ في انشاء قاعدة البيانات.\n تحقق من صحة المسار</string>
     <string name="toast_wrongNewPassword">كلمات السر غير متطابقة</string>
     <string name="dialog_backNoSave">لن يتم حفظ تعديلاتك.\n هل انت متأكد من الخروج ؟</string>

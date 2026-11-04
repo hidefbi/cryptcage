@@ -22,6 +22,7 @@
     <string name="title_password">Saisir un mot de passe</string>
     <string name="toast_emptyPassword">Les mots de passe vides sont invalides</string>
     <string name="toast_wrongPassword">Mauvais mot de passe ou base de données corrompue</string>
+    <string name="toast_rolledBack">Cette copie est plus ancienne que la dernière enregistrée sur cet appareil, elle n’a donc pas été ouverte.</string>
     <string name="toast_errorCreatingDB">Erreur lors de la création de la base de données.\nVérifier le chemin.</string>
     <string name="toast_wrongNewPassword">Mauvais mot de passe</string>
     <string name="dialog_backNoSave">Vos modifications ne seront pas sauvegardées.\nÊtes vous sûr de vouloir quitter ?</string>

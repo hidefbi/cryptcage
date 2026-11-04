@@ -22,6 +22,7 @@
     <string name="title_password">Syötä salasana</string>
     <string name="toast_emptyPassword">Tyhjä salasana ei ole sallittu</string>
     <string name="toast_wrongPassword">Väärä salasana tai korruptoitunut tietokanta</string>
+    <string name="toast_rolledBack">Tämä kopio on vanhempi kuin tällä laitteella viimeksi tallennettu, joten sitä ei avattu.</string>
     <string name="toast_errorCreatingDB">Virhe tietokannan luonnissa.\nTarkista syötetty tiedostopolku</string>
     <string name="toast_wrongNewPassword">Salasana ei täsmää</string>
     <string name="dialog_backNoSave">Tekemiäsi muutoksia ei tallenneta.\nHaluatko varmasti poistua?</string>

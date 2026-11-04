@@ -22,6 +22,7 @@
     <string name="title_password">Insira A Senha</string>
     <string name="toast_emptyPassword">Uma senha vazia não é permitida</string>
     <string name="toast_wrongPassword">Senha errada ou banco de dados corrompido</string>
+    <string name="toast_rolledBack">Esta cópia é mais antiga que a última salva neste aparelho, então não foi aberta.</string>
     <string name="toast_errorCreatingDB">Erro ao criar o banco de dados.\nVerifique a exatidão do caminho</string>
     <string name="toast_wrongNewPassword">Senhas não coincidem</string>
     <string name="dialog_backNoSave">Sua edição não será salva.\nTem certeza que deseja sair?</string>

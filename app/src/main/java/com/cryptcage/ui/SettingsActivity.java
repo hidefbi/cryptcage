@@ -35,6 +35,7 @@ import com.google.android.material.color.MaterialColors;
 import com.cryptcage.R;
 import com.cryptcage.app.App;
 import com.cryptcage.app.Tasks;
+import com.cryptcage.app.VaultGenerations;
 import com.cryptcage.utils.VaultException;
 import com.cryptcage.utils.VaultSession;
 
@@ -126,7 +127,7 @@ public class SettingsActivity extends SecureActivity
         }
         Tasks.io(() -> {
             try {
-                VaultSession.open(file, password).close();
+                VaultSession.open(file, password, new VaultGenerations(this)).close();
                 PinStore.holdPassword(password);
                 final String name = PasswordChange.vaultName(file);
                 final Cipher cipher = BiometricVault.encryptCipher();

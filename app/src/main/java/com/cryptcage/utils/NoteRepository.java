@@ -92,6 +92,11 @@ final class NoteRepository implements AutoCloseable {
         return store.openOutside(DRAFT_LABEL, sealed);
     }
 
+    /** The generation of the file as last read or written. */
+    long generation() {
+        return store.generation();
+    }
+
     private NoteRepository(final BlockStore store) {
         this.store = store;
     }

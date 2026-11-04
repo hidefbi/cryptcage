@@ -22,6 +22,7 @@
     <string name="title_password">パスワードを入力</string>
     <string name="toast_emptyPassword">空のパスワードは許可されていません</string>
     <string name="toast_wrongPassword">パスワードが間違っているか、データベースが破損しています</string>
+    <string name="toast_rolledBack">このコピーは、この端末で最後に保存されたものより古いため、開きませんでした。</string>
     <string name="toast_errorCreatingDB">DB の作成中にエラーが発生しました。\nパスが正しいか確認してください</string>
     <string name="toast_wrongNewPassword">パスワードが一致しません</string>
     <string name="dialog_backNoSave">編集内容は保存されません。\n終了してもよろしいですか?</string>

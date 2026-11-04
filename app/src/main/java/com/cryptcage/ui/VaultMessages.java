@@ -27,6 +27,8 @@ final class VaultMessages {
                 return R.string.toast_vaultFull;
             case IO:
                 return R.string.toast_IOError;
+            case ROLLED_BACK:
+                return R.string.toast_rolledBack;
             default:
                 return R.string.toast_fatalError;
         }

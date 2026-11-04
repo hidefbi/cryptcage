@@ -25,7 +25,9 @@ public class VaultException extends Exception {
         /** The vault has reached its content limit, so the change was not made. */
         LIMIT_REACHED,
         /** The change is not allowed, for example because the entry is read-only. */
-        REJECTED
+        REJECTED,
+        /** The file is older than the last version this device saved or opened, so it is not opened. */
+        ROLLED_BACK
     }
 
     private final Reason reason;

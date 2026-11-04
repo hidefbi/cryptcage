@@ -22,6 +22,7 @@
     <string name="title_password">Passwort eingeben</string>
     <string name="toast_emptyPassword">Leeres Passwort ist nicht erlaubt</string>
     <string name="toast_wrongPassword">Falsches Passwort oder korrupierte Datenbank</string>
+    <string name="toast_rolledBack">Diese Kopie ist älter als die zuletzt auf diesem Gerät gespeicherte, deshalb wurde sie nicht geöffnet.</string>
     <string name="toast_errorCreatingDB">Fehler beim erstellen der Datenbank.\nÜberprüfe ob der Pfad korrekt ist</string>
     <string name="toast_wrongNewPassword">Passwörter stimmen nicht überein</string>
     <string name="dialog_backNoSave">Deine Änderungen werden nicht gespeichert.\nWillst du das Programm sicher schließen?</string>

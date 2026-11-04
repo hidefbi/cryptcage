@@ -22,6 +22,7 @@
     <string name="title_password">Indtast kodeord</string>
     <string name="toast_emptyPassword">Tomt Kodeord ikke tilladt</string>
     <string name="toast_wrongPassword">Forkert Kodeord eller corrupted database</string>
+    <string name="toast_rolledBack">Denne kopi er ældre end den sidste, der blev gemt på denne enhed, så den blev ikke åbnet.</string>
     <string name="toast_errorCreatingDB">Fejl ved oprettelsen af db.\nCheck om stien er korrekt</string>
     <string name="toast_wrongNewPassword">Kodeordene er ikke ens</string>
     <string name="dialog_backNoSave">Dine ændringer vil ikke blive gemt.\nEr du sikker på du vil lukke?</string>

@@ -22,6 +22,7 @@
     <string name="title_password">Wachtwoord Invoeren</string>
     <string name="toast_emptyPassword">Leeg wachtwoord niet toegestaan</string>
     <string name="toast_wrongPassword">Verkeerd wachtwoord of corrupte database</string>
+    <string name="toast_rolledBack">Deze kopie is ouder dan de laatst op dit apparaat opgeslagen versie, dus die is niet geopend.</string>
     <string name="toast_errorCreatingDB">Fout bij het aanmaken van de database.\nCheck de correctheid van het bestand</string>
     <string name="toast_wrongNewPassword">Wachtwoorden zijn niet hetzelfde</string>
     <string name="dialog_backNoSave">Je aanpassingen zijn nog niet opgeslagen.\nWeet je zeker dat je wil stoppen?</string>

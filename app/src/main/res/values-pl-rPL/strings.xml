@@ -22,6 +22,7 @@
     <string name="title_password">Wprowadź Hasło</string>
     <string name="toast_emptyPassword">Puste hasło jest niedozwolone</string>
     <string name="toast_wrongPassword">Złe hasło lub uszkodzona baza danych</string>
+    <string name="toast_rolledBack">Ta kopia jest starsza niż ostatnia zapisana na tym urządzeniu, więc nie została otwarta.</string>
     <string name="toast_errorCreatingDB">Błąd podczas tworzenia pliku bazy danych.\nSprawdź poprawność ścieżki</string>
     <string name="toast_wrongNewPassword">Hasła nie pasują do siebie</string>
     <string name="dialog_backNoSave">Twoje zmiany nie zostaną zapisane.\nCzy na pewno zakończyć?</string>

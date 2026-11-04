@@ -55,6 +55,7 @@
     <string name="toast_locked">数据库已锁定</string>
     <string name="toast_emptyPassword">密码不能为空</string>
     <string name="toast_wrongPassword">密码错误，或数据库已损坏</string>
+    <string name="toast_rolledBack">这是比本机上次保存的版本更旧的副本，已拒绝打开。</string>
     <string name="toast_errorCreatingDB">无法创建数据库</string>
     <string name="toast_wrongNewPassword">两次输入的密码不一致</string>
     <string name="toast_nameInvalid">名称只能包含字母、数字、空格或短横线</string>

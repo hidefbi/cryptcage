@@ -22,6 +22,7 @@
     <string name="title_password">Inserir Password</string>
     <string name="toast_emptyPassword">Não é permitido o uso de passwords vazias</string>
     <string name="toast_wrongPassword">Password errada ou  base de dados Corrumpida</string>
+    <string name="toast_rolledBack">Esta cópia é mais antiga do que a última guardada neste dispositivo, por isso não foi aberta.</string>
     <string name="toast_errorCreatingDB">Erro durante a criação da base de dados.\nVerifique se o caminho para o ficheiro é válido</string>
     <string name="toast_wrongNewPassword">As Passwords não são iguais</string>
     <string name="dialog_backNoSave">A sua edição não foi gravada.\nDeseja mesmo sair?</string>

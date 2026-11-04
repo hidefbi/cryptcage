@@ -22,6 +22,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.cryptcage.R;
 import com.cryptcage.app.App;
 import com.cryptcage.app.Tasks;
+import com.cryptcage.app.VaultGenerations;
 import com.cryptcage.utils.StringMethods;
 import com.cryptcage.utils.VaultException;
 import com.cryptcage.utils.VaultSession;
@@ -55,7 +56,7 @@ final class PasswordChange {
         final AlertDialog waiting = waitingDialog(activity);
         Tasks.io(() -> {
             try {
-                VaultSession.open(file, current).close();
+                VaultSession.open(file, current, new VaultGenerations(app)).close();
                 Tasks.ui(() -> {
                     dismiss(waiting);
                     onMatch.run();

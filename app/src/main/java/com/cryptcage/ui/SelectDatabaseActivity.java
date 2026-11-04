@@ -43,6 +43,7 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.cryptcage.app.App;
 import com.cryptcage.app.Tasks;
+import com.cryptcage.app.VaultGenerations;
 import com.cryptcage.utils.FileTypes;
 import com.cryptcage.utils.StringMethods;
 import com.cryptcage.utils.VaultException;
@@ -411,6 +412,7 @@ public class SelectDatabaseActivity extends SecureActivity
                 .setMessage(R.string.deleteRecent_message)
                 .setPositiveButton(R.string.action_delete, (dialog, which) -> {
                     if (fileFor(name).delete()) {
+                        new VaultGenerations(this).forget(fileFor(name).getAbsolutePath());
                         PinStore.removeCredential(this, name);
                         BiometricVault.removeCredential(this, name);
                         toast(R.string.toast_success_deleteNote);
@@ -427,7 +429,7 @@ public class SelectDatabaseActivity extends SecureActivity
         setBusy(true);
         Tasks.io(() -> {
             try {
-                final VaultSession vault = VaultSession.open(file, password);
+                final VaultSession vault = VaultSession.open(file, password, new VaultGenerations(this));
                 // With biometric or PIN unlock on, a vault without a saved password is offered one.
                 // The copy is held here, because the caller wipes its array as soon as this returns.
                 Cipher biometricCipher = null;
@@ -519,7 +521,7 @@ public class SelectDatabaseActivity extends SecureActivity
         Tasks.io(() -> {
             VaultSession vault = null;
             try {
-                vault = VaultSession.create(file, password);
+                vault = VaultSession.create(file, password, new VaultGenerations(this));
                 if (imported != null) {
                     vault.addFile(imported.fileName, imported.data);
                 }
@@ -537,6 +539,7 @@ public class SelectDatabaseActivity extends SecureActivity
                     vault.close();
                 }
                 file.delete();
+                new VaultGenerations(this).forget(file.getAbsolutePath());
                 Tasks.ui(() -> {
                     setBusy(false);
                     toast(R.string.toast_errorCreatingDB);
@@ -643,6 +646,7 @@ public class SelectDatabaseActivity extends SecureActivity
                 if (!tmp.renameTo(target)) {
                     throw new IOException("rename failed");
                 }
+                new VaultGenerations(this).forget(target.getAbsolutePath());
                 result = R.string.toast_imported;
             } catch (VaultException e) {
                 result = VaultMessages.messageFor(e.getReason());

@@ -167,6 +167,13 @@ final class BlockStore implements AutoCloseable {
     }
 
     /** Opens an existing container and loads its index. */
+    private static boolean startsWithMagic(final RandomAccessFile raf) throws IOException {
+        final byte[] head = new byte[MAGIC.length];
+        raf.seek(0);
+        raf.readFully(head);
+        return Arrays.equals(head, MAGIC);
+    }
+
     static BlockStore open(final File file, final char[] password) throws StoreException {
         if (!file.isFile()) {
             throw new StoreException(Reason.IO, "missing file");
@@ -178,7 +185,10 @@ final class BlockStore implements AutoCloseable {
         try {
             raf = new RandomAccessFile(file, "rw");
             if (raf.length() < DATA_START) {
-                throw new StoreException(Reason.NOT_A_STORE, "too short");
+                // A vault that was cut short still starts with its magic, so it is damaged, not
+                // some other kind of file.
+                final boolean cutShort = raf.length() >= MAGIC.length && startsWithMagic(raf);
+                throw new StoreException(cutShort ? Reason.CORRUPT : Reason.NOT_A_STORE, "too short");
             }
             final byte[] prologue = new byte[PROLOGUE_BYTES];
             raf.seek(0);
@@ -281,6 +291,11 @@ final class BlockStore implements AutoCloseable {
     }
 
     /** Saves the current blocks and the payload as the new state. */
+    /** The generation of the last commit that was read or written. */
+    long generation() {
+        return generation;
+    }
+
     void commit(final byte[] userPayload) throws StoreException {
         ensureOpen();
         if (userPayload == null || userPayload.length > MAX_PAYLOAD_BYTES) {
@@ -443,6 +458,9 @@ final class BlockStore implements AutoCloseable {
     private void writeCopy(final File tmp, final byte[] prologue) throws IOException, StoreException {
         final RandomAccessFile out = new RandomAccessFile(tmp, "rw");
         final BlockStore copy = new BlockStore(out, tmp, fileId, dataKey, blockKey, macKey);
+        // Keep counting from this file's generation, so a rewritten file is never "older" than
+        // the one it replaces. The rollback check depends on this.
+        copy.generation = generation;
         boolean done = false;
         try {
             out.write(prologue);
@@ -462,6 +480,9 @@ final class BlockStore implements AutoCloseable {
 
     private void load() throws StoreException, IOException, GeneralSecurityException {
         final long fileLength = raf.length();
+        if (fileLength < DATA_START) {
+            throw new StoreException(Reason.CORRUPT, "file is shorter than its header");
+        }
         final Slot first = readSlot(SLOT_A, fileLength);
         final Slot second = readSlot(SLOT_B, fileLength);
         Slot best = first;
@@ -497,9 +518,13 @@ final class BlockStore implements AutoCloseable {
         final long gen = b.getLong(0);
         final long offset = b.getLong(8);
         final int length = b.getInt(16);
-        if (gen < 1 || offset < DATA_START || length < RECORD_OVERHEAD
-                || length > MAX_INDEX_RECORD || offset + length > fileLength) {
-            return null;
+        if (gen < 1 || offset < DATA_START || length < RECORD_OVERHEAD || length > MAX_INDEX_RECORD) {
+            throw new StoreException(Reason.CORRUPT, "header slot has impossible values");
+        }
+        if (offset + length > fileLength) {
+            // The slot passed its check, so its index was synced first. Pointing past the end
+            // means the file was cut short, and an older slot must not take its place.
+            throw new StoreException(Reason.CORRUPT, "header slot points past the end of the file");
         }
         return new Slot(gen, offset, length);
     }

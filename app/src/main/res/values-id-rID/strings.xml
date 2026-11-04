@@ -22,6 +22,7 @@
     <string name="title_password">Masukkan Kata Sandi</string>
     <string name="toast_emptyPassword">Kata Sandi Kosong tidak diizinkan</string>
     <string name="toast_wrongPassword">Kata Sandi salah atau database rusak</string>
+    <string name="toast_rolledBack">Salinan ini lebih lama daripada yang terakhir disimpan di perangkat ini, jadi tidak dibuka.</string>
     <string name="toast_errorCreatingDB">Kesalahan saat membuat db.\nPeriksa kebenaran pathnya</string>
     <string name="toast_wrongNewPassword">Sandi tidak cocok</string>
     <string name="dialog_backNoSave">Hasil edit Anda tidak akan disimpan.\nApakah Anda yakin ingin keluar?</string>

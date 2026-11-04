@@ -22,6 +22,7 @@
     <string name="title_password">Inserire Password</string>
     <string name="toast_emptyPassword">Non è consentita una Password vuota</string>
     <string name="toast_wrongPassword">Password errata o database corrotto</string>
+    <string name="toast_rolledBack">Questa copia è più vecchia dell’ultima salvata su questo dispositivo, quindi non è stata aperta.</string>
     <string name="toast_errorCreatingDB">Errore durante la creazione del database.\nControllare la correttezza dell\'indirizzo</string>
     <string name="toast_wrongNewPassword">La Password non coincide</string>
     <string name="dialog_backNoSave">Le modifiche effettuate verranno perse.\nSicuro di voler uscire?</string>

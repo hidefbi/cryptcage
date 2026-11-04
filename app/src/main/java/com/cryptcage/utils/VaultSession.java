@@ -65,16 +65,42 @@ public final class VaultSession implements AutoCloseable {
     }
 
     private final NoteRepository repo;
+    private final GenerationGuard guard;
+    private final String path;
     private boolean closed;
 
-    private VaultSession(final NoteRepository repo) {
+    private VaultSession(final NoteRepository repo, final GenerationGuard guard, final String path) {
         this.repo = repo;
+        this.guard = guard;
+        this.path = path;
+    }
+
+    private void remember() {
+        if (guard != null) {
+            guard.remember(path, repo.generation());
+        }
     }
 
     /** Creates a new, empty vault at a path that does not exist yet. */
     public static VaultSession create(final File file, final char[] password) throws VaultException {
+        return create(file, password, null);
+    }
+
+    /**
+     * Creates a new vault and, when a guard is given, starts its record for this path. An older
+     * record for the same path belongs to a file that is gone, so it is dropped first.
+     */
+    public static VaultSession create(final File file, final char[] password, final GenerationGuard guard)
+            throws VaultException {
+        final String path = file.getAbsolutePath();
         try {
-            return new VaultSession(NoteRepository.create(file, password, Cryptox.DEFAULT_ITERATIONS));
+            if (guard != null) {
+                guard.forget(path);
+            }
+            final VaultSession session = new VaultSession(
+                    NoteRepository.create(file, password, Cryptox.DEFAULT_ITERATIONS), guard, path);
+            session.remember();
+            return session;
         } catch (StoreException e) {
             throw translate(e);
         }
@@ -82,11 +108,30 @@ public final class VaultSession implements AutoCloseable {
 
     /** Opens an existing vault. A wrong password and a damaged file give the same error. */
     public static VaultSession open(final File file, final char[] password) throws VaultException {
+        return open(file, password, null);
+    }
+
+    /**
+     * Opens an existing vault. With a guard, a file older than the newest generation recorded for
+     * this path is refused and nothing is written.
+     */
+    public static VaultSession open(final File file, final char[] password, final GenerationGuard guard)
+            throws VaultException {
+        final String path = file.getAbsolutePath();
+        final VaultSession session;
         try {
-            return new VaultSession(NoteRepository.open(file, password));
+            session = new VaultSession(NoteRepository.open(file, password), guard, path);
         } catch (StoreException e) {
             throw translate(e);
         }
+        if (guard != null) {
+            if (session.repo.generation() < guard.seen(path)) {
+                session.close();
+                throw new VaultException(VaultException.Reason.ROLLED_BACK, null);
+            }
+            session.remember();
+        }
+        return session;
     }
 
     /** True if the file starts with the container magic. Only checks the first bytes. */
@@ -297,6 +342,7 @@ public final class VaultSession implements AutoCloseable {
         } catch (StoreException e) {
             throw translate(e);
         }
+        remember();
     }
 
     /**
@@ -309,6 +355,7 @@ public final class VaultSession implements AutoCloseable {
         } catch (StoreException e) {
             throw translate(e);
         }
+        remember();
     }
 
     /** True when the file holds enough unused data that a rewrite would be worth it. */
@@ -327,6 +374,7 @@ public final class VaultSession implements AutoCloseable {
         } catch (StoreException e) {
             throw translate(e);
         }
+        remember();
     }
 
     /** Content counted against {@link #CONTENT_LIMIT}. Zero after close. */

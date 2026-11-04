@@ -22,6 +22,7 @@
     <string name="title_password">Εισάγετε Κωδικό Πρόσβασης</string>
     <string name="toast_emptyPassword">Δεν επιτρέπεται Κενός Κωδικός Πρόσβασης</string>
     <string name="toast_wrongPassword">Λανθασμένος Κωδικός Πρόσβασης ή αλλοιωμένη βάση δεδομένων</string>
+    <string name="toast_rolledBack">Αυτό το αντίγραφο είναι παλαιότερο από το τελευταίο που αποθηκεύτηκε σε αυτή τη συσκευή, γι’ αυτό δεν άνοιξε.</string>
     <string name="toast_errorCreatingDB">Σφάλμα δημιουργίας της βάσης δεδομένων.\nΕλέγξτε την ορθότητα της διαδρομής αρχείου</string>
     <string name="toast_wrongNewPassword">Οι Κωδικοί Πρόσβασης δεν ταιριάζουν</string>
     <string name="dialog_backNoSave">Η επεξεργασία σας δεν θα αποθηκευτεί.\nΕίστε σίγουροι ότι θέλετε να αποχωρήσετε;</string>
