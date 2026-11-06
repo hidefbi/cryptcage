@@ -8,12 +8,12 @@ def releaseKeystore = findProperty('CC_KEYSTORE')
 
 android {
     namespace 'com.cryptcage'
-    compileSdk 34
+    compileSdk 36
 
     defaultConfig {
         applicationId 'com.cryptcage'
         minSdk 21
-        targetSdk 34
+        targetSdk 36
         versionCode 25
         versionName '2.2'
     }
