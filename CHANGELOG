@@ -7,6 +7,7 @@ Unreleased
 * Note fields ask the keyboard not to suggest or learn words.
 * Plain ZIP and 7z exports ask for confirmation first.
 * Leftover plain copies from an interrupted view or export are removed at launch.
+* A single file can be up to 100 MB now (it was 8 MB).
 
 2.2 (versionCode 25)
 * The olive colour theme is the default now. The unlocked screen has a new header, a search field and filter chips for all items, notes and files.

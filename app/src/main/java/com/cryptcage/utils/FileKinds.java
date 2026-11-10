@@ -19,7 +19,7 @@ import java.util.Locale;
 public final class FileKinds {
 
     /** Largest single file that can be stored. */
-    public static final long MAX_FILE_BYTES = 8L * 1024 * 1024;
+    public static final long MAX_FILE_BYTES = 100L * 1024 * 1024;
 
     public enum Type {
         OVPN,
