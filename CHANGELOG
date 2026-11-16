@@ -1,4 +1,9 @@
-Unreleased
+2.3.1 (versionCode 27)
+* Screens are drawn behind the status and navigation bars and keep their content clear of them, so the top and bottom of a screen are no longer cut off on Android 15 and newer.
+* The keyboard pushes the note editor up through the window insets instead of the window resizing.
+* The start screen, Settings and the file viewer use a toolbar in the layout, like the other screens, instead of the system action bar.
+
+2.3 (versionCode 26)
 * Whole-vault backup: the note list menu has a new "Back up database" item. It saves a copy of the vault file, encrypted with the same master password. Import the copy to restore it. The backup is checked after it is written.
 * Notes with unsaved edits are not in the backup, and the app asks before it goes on.
 * New passwords and export passwords are refused when they are common words or follow an obvious pattern (repeated characters, runs such as 1234, keyboard rows). The mixed-kinds rule is removed; length is still at least 12 characters.
@@ -12,11 +17,6 @@ Unreleased
 * A vault made with fewer PBKDF2 rounds is rekeyed to the current count the first time it opens.
 * When a new fingerprint is enrolled, the saved fingerprint copies are cleared, because they cannot be read any more.
 * A single file can be up to 100 MB now (it was 8 MB).
-* Screens are drawn behind the status and navigation bars and keep their content clear of them, so the top and bottom of a screen are no longer cut off on Android 15 and newer.
-* The keyboard pushes the note editor up through the window insets instead of the window resizing.
-* The start screen, Settings and the file viewer use a toolbar in the layout, like the other screens, instead of the system action bar.
-
-
 2.2 (versionCode 25)
 * The olive colour theme is the default now. The unlocked screen has a new header, a search field and filter chips for all items, notes and files.
 * The settings rows are grouped into cards under their section titles.
