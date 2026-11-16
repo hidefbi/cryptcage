@@ -24,9 +24,10 @@ public final class PinEnvelope {
     private PinEnvelope() {
     }
 
-    /** The PIN key: PBKDF2 of the PIN with the salt. The caller wipes it when done. */
-    public static byte[] deriveKey(final char[] pin, final byte[] salt) throws GeneralSecurityException {
-        return PinRules.hash(pin, salt);
+    /** The PIN key: PBKDF2 of the PIN with the salt and the given rounds. The caller wipes it when done. */
+    public static byte[] deriveKey(final char[] pin, final byte[] salt, final int iterations)
+            throws GeneralSecurityException {
+        return PinRules.hash(pin, salt, iterations);
     }
 
     /** A value that only the right PIN key can open. Stored once, when the PIN is set. */

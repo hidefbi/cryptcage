@@ -167,26 +167,40 @@ public class PinDialogFragment extends DialogFragment {
                     default:
                         break;
                 }
-                if (mode == MODE_REGISTER) {
-                    final char[] password = PinStore.takePassword();
-                    if (password == null) {
-                        return Outcome.of(Result.FAILED, null, 0);
+                // The PIN is right, so an older hash and older saved copies can move to the stronger count now.
+                final byte[] upgraded = PinStore.upgradeIfNeeded(app, pin, key);
+                try {
+                    return unlockWith(app, mode, vault, upgraded == null ? key : upgraded);
+                } finally {
+                    if (upgraded != null) {
+                        Arrays.fill(upgraded, (byte) 0);
                     }
-                    try {
-                        PinStore.saveCredential(app, vault, key, password);
-                    } finally {
-                        Arrays.fill(password, '\0');
-                    }
-                    return Outcome.of(Result.DONE, null, 0);
                 }
-                final char[] password = PinStore.loadCredential(app, vault, key);
-                return password == null ? Outcome.of(Result.FAILED, null, 0) : Outcome.of(Result.DONE, password, 0);
             } finally {
                 Arrays.fill(key, (byte) 0);
             }
         } catch (GeneralSecurityException e) {
             return Outcome.of(Result.FAILED, null, 0);
         }
+    }
+
+    /** Saves or reads the vault's password with a PIN key that has already been checked. */
+    private static Outcome unlockWith(final Context app, final int mode, final String vault, final byte[] key)
+            throws GeneralSecurityException {
+        if (mode == MODE_REGISTER) {
+            final char[] password = PinStore.takePassword();
+            if (password == null) {
+                return Outcome.of(Result.FAILED, null, 0);
+            }
+            try {
+                PinStore.saveCredential(app, vault, key, password);
+            } finally {
+                Arrays.fill(password, '\0');
+            }
+            return Outcome.of(Result.DONE, null, 0);
+        }
+        final char[] password = PinStore.loadCredential(app, vault, key);
+        return password == null ? Outcome.of(Result.FAILED, null, 0) : Outcome.of(Result.DONE, password, 0);
     }
 
     /** Disables the buttons while the PIN is checked, so a second tap does not start another check. */

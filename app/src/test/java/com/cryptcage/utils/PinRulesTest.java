@@ -17,6 +17,13 @@ import org.junit.Test;
 
 public class PinRulesTest {
 
+    private static final int TEST_ITERATIONS = 1000;
+
+    @Test
+    public void newPinsUseMoreRoundsThanLegacyOnes() {
+        assertTrue(PinRules.ITERATIONS > PinRules.LEGACY_ITERATIONS);
+    }
+
     @Test
     public void acceptsFourToEightDigits() {
         assertTrue(PinRules.isValid("1234"));
@@ -54,10 +61,10 @@ public class PinRulesTest {
         final byte[] salt = new byte[32];
         final byte[] other = new byte[32];
         other[0] = 1;
-        final byte[] first = PinRules.hash("1234".toCharArray(), salt);
-        assertArrayEquals(first, PinRules.hash("1234".toCharArray(), salt));
-        assertFalse(PinRules.matches(first, PinRules.hash("1235".toCharArray(), salt)));
-        assertFalse(PinRules.matches(first, PinRules.hash("1234".toCharArray(), other)));
-        assertTrue(PinRules.matches(first, PinRules.hash("1234".toCharArray(), salt)));
+        final byte[] first = PinRules.hash("1234".toCharArray(), salt, TEST_ITERATIONS);
+        assertArrayEquals(first, PinRules.hash("1234".toCharArray(), salt, TEST_ITERATIONS));
+        assertFalse(PinRules.matches(first, PinRules.hash("1235".toCharArray(), salt, TEST_ITERATIONS)));
+        assertFalse(PinRules.matches(first, PinRules.hash("1234".toCharArray(), other, TEST_ITERATIONS)));
+        assertTrue(PinRules.matches(first, PinRules.hash("1234".toCharArray(), salt, TEST_ITERATIONS)));
     }
 }

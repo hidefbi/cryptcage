@@ -19,12 +19,14 @@ public final class PinRules {
     public static final int MAX_DIGITS = 8;
     public static final int MAX_FAILURES = 5;
 
+    /** PBKDF2 rounds for a PIN that is set now. The same count as the master password. */
+    public static final int ITERATIONS = Cryptox.DEFAULT_ITERATIONS;
+
     /**
-     * PBKDF2 rounds for the PIN hash. The vault's own key is derived with far more, but the PIN
-     * only gates the saved passwords, which the Keystore key protects. A small count keeps the
-     * check quick on a phone.
+     * Rounds used by PINs set before ITERATIONS was raised. Such a PIN still opens with this count,
+     * and it is moved to ITERATIONS the next time it unlocks.
      */
-    public static final int HASH_ITERATIONS = Cryptox.MIN_ITERATIONS;
+    public static final int LEGACY_ITERATIONS = Cryptox.MIN_ITERATIONS;
 
     private PinRules() {
     }
@@ -53,8 +55,9 @@ public final class PinRules {
     }
 
     /** PBKDF2 of the PIN with the salt. Only the hash is stored, never the PIN. */
-    public static byte[] hash(final char[] pin, final byte[] salt) throws GeneralSecurityException {
-        return Cryptox.pbkdf2Sha256(pin, salt, HASH_ITERATIONS);
+    public static byte[] hash(final char[] pin, final byte[] salt, final int iterations)
+            throws GeneralSecurityException {
+        return Cryptox.pbkdf2Sha256(pin, salt, iterations);
     }
 
     /** Compares two hashes in constant time. */

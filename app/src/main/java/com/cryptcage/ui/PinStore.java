@@ -13,6 +13,7 @@ import java.security.Key;
 import java.security.KeyStore;
 import java.security.SecureRandom;
 import java.util.Arrays;
+import java.util.Map;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
@@ -55,6 +56,7 @@ public final class PinStore {
     private static final String KEY_SALT = "salt";
     private static final String KEY_VERIFIER = "verifier";
     private static final String KEY_FAILURES = "failures";
+    private static final String KEY_ITERATIONS = "iterations";
     private static final String VAULT_PREFIX = "vault_";
     private static final String DEVICE_ALIAS = "cryptcage_pin_device_key";
     private static final String OLD_ALIAS = "cryptcage_pin_wrap";
@@ -97,7 +99,7 @@ public final class PinStore {
     public static byte[] enable(final Context context, final char[] pin) throws GeneralSecurityException {
         final byte[] salt = new byte[SALT_BYTES];
         RANDOM.nextBytes(salt);
-        final byte[] key = PinEnvelope.deriveKey(pin, salt);
+        final byte[] key = PinEnvelope.deriveKey(pin, salt, PinRules.ITERATIONS);
         try {
             final byte[] verifier = PinEnvelope.verifier(key);
             deviceKey(context, true);
@@ -105,6 +107,7 @@ public final class PinStore {
             prefs(context).edit()
                     .putString(KEY_SALT, encode(salt))
                     .putString(KEY_VERIFIER, encode(verifier))
+                    .putInt(KEY_ITERATIONS, PinRules.ITERATIONS)
                     .putInt(KEY_FAILURES, 0)
                     .apply();
             deleteLegacy(context);
@@ -116,11 +119,55 @@ public final class PinStore {
 
     /** The PIN key for a PIN, from the stored salt. Null when no PIN is set. The caller wipes it. */
     public static byte[] deriveKey(final Context context, final char[] pin) throws GeneralSecurityException {
-        final byte[] salt = decode(prefs(context).getString(KEY_SALT, null));
+        final SharedPreferences prefs = prefs(context);
+        final byte[] salt = decode(prefs.getString(KEY_SALT, null));
         if (salt == null) {
             return null;
         }
-        return PinEnvelope.deriveKey(pin, salt);
+        final int iterations = prefs.getInt(KEY_ITERATIONS, PinRules.LEGACY_ITERATIONS);
+        return PinEnvelope.deriveKey(pin, salt, iterations);
+    }
+
+    /**
+     * Moves a PIN set before the stronger count to that count, with its saved copies. Call it only
+     * after the PIN key has been checked. Returns the new key, or null when nothing was moved. The
+     * caller wipes the returned key. If anything fails, nothing is changed.
+     */
+    @RequiresApi(Build.VERSION_CODES.M)
+    public static byte[] upgradeIfNeeded(final Context context, final char[] pin, final byte[] oldKey) {
+        final SharedPreferences prefs = prefs(context);
+        if (prefs.getInt(KEY_ITERATIONS, PinRules.LEGACY_ITERATIONS) >= PinRules.ITERATIONS) {
+            return null;
+        }
+        try {
+            final byte[] salt = new byte[SALT_BYTES];
+            RANDOM.nextBytes(salt);
+            final byte[] key = PinEnvelope.deriveKey(pin, salt, PinRules.ITERATIONS);
+            final SharedPreferences.Editor edit = prefs.edit();
+            for (Map.Entry<String, ?> entry : prefs.getAll().entrySet()) {
+                final String name = entry.getKey();
+                if (!name.startsWith(VAULT_PREFIX) || !(entry.getValue() instanceof String)) {
+                    continue;
+                }
+                final String vault = name.substring(VAULT_PREFIX.length());
+                try {
+                    final byte[] outer = decode((String) entry.getValue());
+                    final byte[] inner = PinEnvelope.unwrapForVault(oldKey, vault, outer);
+                    edit.putString(name, encode(PinEnvelope.wrapForVault(key, vault, inner)));
+                } catch (GeneralSecurityException | RuntimeException e) {
+                    // This copy cannot be read any more. The vault asks for its password next time.
+                    edit.remove(name);
+                }
+            }
+            edit.putString(KEY_SALT, encode(salt))
+                    .putString(KEY_VERIFIER, encode(PinEnvelope.verifier(key)))
+                    .putInt(KEY_ITERATIONS, PinRules.ITERATIONS)
+                    .putInt(KEY_FAILURES, 0)
+                    .apply();
+            return key;
+        } catch (GeneralSecurityException | RuntimeException e) {
+            return null;
+        }
     }
 
     /**

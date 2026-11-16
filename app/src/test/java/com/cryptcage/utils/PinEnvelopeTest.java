@@ -18,6 +18,8 @@ import org.junit.Test;
 
 public class PinEnvelopeTest {
 
+    private static final int TEST_ITERATIONS = 1000;
+
     private static byte[] salt(final int seed) {
         final byte[] salt = new byte[32];
         Arrays.fill(salt, (byte) seed);
@@ -27,16 +29,16 @@ public class PinEnvelopeTest {
     @Test
     public void verifierOpensOnlyWithTheRightPin() throws GeneralSecurityException {
         final byte[] salt = salt(1);
-        final byte[] key = PinEnvelope.deriveKey("1234".toCharArray(), salt);
+        final byte[] key = PinEnvelope.deriveKey("1234".toCharArray(), salt, TEST_ITERATIONS);
         final byte[] verifier = PinEnvelope.verifier(key);
-        assertTrue(PinEnvelope.verifies(PinEnvelope.deriveKey("1234".toCharArray(), salt), verifier));
-        assertFalse(PinEnvelope.verifies(PinEnvelope.deriveKey("1235".toCharArray(), salt), verifier));
-        assertFalse(PinEnvelope.verifies(PinEnvelope.deriveKey("1234".toCharArray(), salt(2)), verifier));
+        assertTrue(PinEnvelope.verifies(PinEnvelope.deriveKey("1234".toCharArray(), salt, TEST_ITERATIONS), verifier));
+        assertFalse(PinEnvelope.verifies(PinEnvelope.deriveKey("1235".toCharArray(), salt, TEST_ITERATIONS), verifier));
+        assertFalse(PinEnvelope.verifies(PinEnvelope.deriveKey("1234".toCharArray(), salt(2), TEST_ITERATIONS), verifier));
     }
 
     @Test
     public void vaultWrapRoundTrips() throws GeneralSecurityException {
-        final byte[] key = PinEnvelope.deriveKey("1234".toCharArray(), salt(3));
+        final byte[] key = PinEnvelope.deriveKey("1234".toCharArray(), salt(3), TEST_ITERATIONS);
         final byte[] inner = {1, 2, 3, 4, 5};
         final byte[] outer = PinEnvelope.wrapForVault(key, "Work", inner);
         assertArrayEquals(inner, PinEnvelope.unwrapForVault(key, "Work", outer));
@@ -44,7 +46,7 @@ public class PinEnvelopeTest {
 
     @Test
     public void vaultWrapFailsForAnotherVaultOrAnotherKey() throws GeneralSecurityException {
-        final byte[] key = PinEnvelope.deriveKey("1234".toCharArray(), salt(4));
+        final byte[] key = PinEnvelope.deriveKey("1234".toCharArray(), salt(4), TEST_ITERATIONS);
         final byte[] outer = PinEnvelope.wrapForVault(key, "Work", new byte[]{9, 9});
         try {
             PinEnvelope.unwrapForVault(key, "Home", outer);
@@ -53,7 +55,7 @@ public class PinEnvelopeTest {
             // expected
         }
         try {
-            PinEnvelope.unwrapForVault(PinEnvelope.deriveKey("0000".toCharArray(), salt(4)), "Work", outer);
+            PinEnvelope.unwrapForVault(PinEnvelope.deriveKey("0000".toCharArray(), salt(4), TEST_ITERATIONS), "Work", outer);
             fail("another PIN must not open the copy");
         } catch (GeneralSecurityException expected) {
             // expected
