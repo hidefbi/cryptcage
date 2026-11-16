@@ -12,6 +12,7 @@
 
         <activity
             android:name="com.cryptcage.ui.SelectDatabaseActivity"
+            android:theme="@style/AppBaseTheme.NoActionBar"
             android:exported="true"
             android:label="@string/app_name"
             android:windowSoftInputMode="stateHidden">
@@ -26,16 +27,17 @@
             android:exported="false"
             android:label="@string/app_name"
             android:theme="@style/AppBaseTheme.NoActionBar"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustNothing" />
 
         <activity
             android:name="com.cryptcage.ui.NoteActivity"
             android:exported="false"
             android:theme="@style/AppBaseTheme.NoActionBar"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustNothing" />
 
         <activity
             android:name="com.cryptcage.ui.SettingsActivity"
+            android:theme="@style/AppBaseTheme.NoActionBar"
             android:exported="false" />
         <activity
             android:name="com.cryptcage.ui.AboutActivity"
@@ -43,6 +45,7 @@
             android:theme="@style/AppBaseTheme.NoActionBar" />
         <activity
             android:name="com.cryptcage.ui.FileViewActivity"
+            android:theme="@style/AppBaseTheme.NoActionBar"
             android:exported="false" />
     </application>
 

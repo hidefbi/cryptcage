@@ -105,16 +105,12 @@ public class SelectDatabaseActivity extends SecureActivity
         return false;
     }
 
-    /** The start screen has no toolbar, so its top is the background. */
-    @Override
-    protected boolean statusBarFollowsBackground() {
-        return true;
-    }
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_database);
+        setSupportActionBar(findViewById(R.id.toolbar));
         setTitle(R.string.app_name);
 
         importLauncher = registerForActivityResult(new ActivityResultContracts.OpenDocument(),

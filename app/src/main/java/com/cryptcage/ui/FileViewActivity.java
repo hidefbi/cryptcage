@@ -47,6 +47,7 @@ public class FileViewActivity extends SecureActivity {
             return;
         }
         setContentView(R.layout.activity_file_view);
+        setSupportActionBar(findViewById(R.id.toolbar));
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }

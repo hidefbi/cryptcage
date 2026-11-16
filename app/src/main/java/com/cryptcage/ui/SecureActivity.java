@@ -16,11 +16,13 @@ import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.cryptcage.app.App;
@@ -55,6 +57,7 @@ public abstract class SecureActivity extends AppCompatActivity {
             getTheme().applyStyle(style, true);
         }
         super.onCreate(savedInstanceState);
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         getWindow().getDecorView().setBackgroundColor(themeBackground());
         applySystemBars();
     }
@@ -81,7 +84,7 @@ public abstract class SecureActivity extends AppCompatActivity {
     }
 
     /**
-     * Screens without a toolbar at the top return true, so the status bar takes the background
+     * Screens without a toolbar at the top return true, so the status bar area takes the background
      * colour. Screens with a toolbar keep the default, which is the surface colour.
      */
     protected boolean statusBarFollowsBackground() {
@@ -89,16 +92,11 @@ public abstract class SecureActivity extends AppCompatActivity {
     }
 
     /**
-     * Colours the status bar to match the top of the screen, so no seam appears between them,
-     * and sets the status icons to dark on light screens and light in night mode.
+     * The window is drawn behind the system bars, and {@link SystemBars} pads the content so
+     * nothing sits under them. This only sets the status icons: dark on light screens, light at night.
      */
     private void applySystemBars() {
         final Window window = getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(statusBarFollowsBackground()
-                ? themeColor(android.R.attr.colorBackground)
-                : themeColor(com.google.android.material.R.attr.colorSurface));
         final boolean night = (getResources().getConfiguration().uiMode
                 & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
         new WindowInsetsControllerCompat(window, window.getDecorView())
@@ -129,8 +127,18 @@ public abstract class SecureActivity extends AppCompatActivity {
     public void onContentChanged() {
         super.onContentChanged();
         final View content = findViewById(android.R.id.content);
-        if (content != null) {
-            content.setBackgroundColor(themeBackground());
+        if (content == null) {
+            return;
+        }
+        // The status bar area shows this colour. Screens with a toolbar use the surface colour, which
+        // is the toolbar's colour, so the two look like one piece.
+        content.setBackgroundColor(statusBarFollowsBackground()
+                ? themeBackground()
+                : themeColor(com.google.android.material.R.attr.colorSurface));
+        if (content instanceof ViewGroup && ((ViewGroup) content).getChildCount() > 0) {
+            final View root = ((ViewGroup) content).getChildAt(0);
+            root.setBackgroundColor(themeBackground());
+            SystemBars.fit(root);
         }
     }
 
