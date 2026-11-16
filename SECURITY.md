@@ -23,7 +23,7 @@ The first 43 bytes are passed to AES-GCM as additional authenticated data, so ch
 
 ## Keys and passwords
 
-The password is converted to UTF-8 bytes and run through PBKDF2 with HMAC-SHA256 for 600,000 iterations, which produces a 256-bit key. The key is kept in memory while the vault is open. It is wiped when the vault locks. The password itself is not kept after the key is derived.
+The password is converted to UTF-8 bytes and run through PBKDF2 with HMAC-SHA256 for 600,000 iterations, which produces a 256-bit key. The PIN uses the same count now. A PIN set by an older version is moved to 600,000 the next time it unlocks. The key is kept in memory while the vault is open. It is wiped when the vault locks. The password itself is not kept after the key is derived.
 
 New passwords must have at least 12 characters. Common passwords and simple patterns are refused. Existing passwords are not checked when they are used to open a vault.
 
@@ -55,6 +55,7 @@ Export copies the encrypted file to a location the user picks. Import copies a f
 - Java strings cannot be overwritten, so a password typed into a text field may remain in memory until it is garbage collected.
 - PIN and fingerprint unlock keep a copy of the master password on the device, wrapped by a key in the Android Keystore. Turn them off if you do not want that copy.
 - A plain ZIP or 7z export has no password. Anyone who gets that file can read it.
+- The encrypted copy is a normal vault file. It uses the same key settings as the vault, so it can only be opened in CryptCage.
 - Deleting a vault removes the file, but the flash storage underneath may keep the old bytes for a while. The app does not promise a secure erase.
 - Accessibility services can read what is on the screen, including open notes.
 - The clipboard is cleared after the set time only if it still holds the copy CryptCage made.

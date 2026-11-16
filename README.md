@@ -18,7 +18,7 @@ The app has no network access and no account. Nothing leaves the device unless y
 - Lock the vault after a set time without any touch, or when the screen turns off. The default is 5 minutes, and you can choose "Never".
 - Clear copied text from the clipboard after a set time.
 - Block screenshots and recent-apps previews. You can allow them in the settings.
-- Export a whole vault as an encrypted copy, or export notes and files as a plain ZIP, an encrypted ZIP or an unencrypted 7z archive. The 7z option needs Android 8.0 or later.
+- Export a whole vault as an encrypted copy, or export notes and files as a plain ZIP, an encrypted copy that opens in CryptCage, or an unencrypted 7z archive. The 7z option needs Android 8.0 or later.
 - Choose a light, dark or system look, and a colour theme (blue, sand or olive).
 
 ## Security

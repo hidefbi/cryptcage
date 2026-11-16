@@ -57,6 +57,8 @@
     <string name="toast_wrongPassword">Wrong password, or the database is damaged</string>
     <string name="toast_rolledBack">This copy is older than the last one saved on this device, so it was not opened.</string>
     <string name="export_plain_warning">This export has no password, so anyone who gets the file can read everything in it.</string>
+    <string name="export_encrypted">Encrypted copy (CryptCage file)</string>
+    <string name="toast_copySaved">Encrypted copy saved</string>
     <string name="toast_errorCreatingDB">Could not create the database</string>
     <string name="toast_wrongNewPassword">The two passwords do not match</string>
     <string name="toast_nameInvalid">Use letters, digits, spaces or dashes in the name</string>
@@ -100,7 +102,6 @@
     <string name="action_cancelSelection">Cancel selection</string>
     <string name="export_mode_title">Export as</string>
     <string name="export_plain">Plain ZIP (no password)</string>
-    <string name="export_encrypted">Encrypted ZIP (AES-256)</string>
     <string name="export_password_title">Set an export password</string>
     <string name="toast_zipSaved">ZIP saved</string>
     <string name="toast_nothingSelected">Select at least one item first</string>

@@ -30,27 +30,29 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.cryptcage.app.App;
 import com.cryptcage.app.Tasks;
-import com.cryptcage.utils.EncryptedZip;
 import com.cryptcage.utils.PasswordPolicy;
 import com.cryptcage.utils.SevenZipExport;
+import com.cryptcage.utils.VaultExport;
 import com.cryptcage.utils.ZipExport;
 import com.cryptcage.R;
 
 /**
  * Asks for the export format, then writes the chosen entries to a location the user picks.
- * Entry names are kept as they are. Formats: plain ZIP, encrypted ZIP, and plain 7z, which is
+ * Formats: plain ZIP, an encrypted copy that is a CryptCage vault file, and plain 7z, which is
  * offered from Android 8.0 because its writer needs java.nio.file.
  */
 final class ExportFlow {
 
     private static final String MIME_ZIP = "application/zip";
     private static final String MIME_7Z = "application/x-7z-compressed";
+    private static final String MIME_VAULT = "application/octet-stream";
 
-    private enum Format { ZIP_PLAIN, ZIP_ENCRYPTED, SEVEN_ZIP_PLAIN }
+    private enum Format { ZIP_PLAIN, VAULT_COPY, SEVEN_ZIP_PLAIN }
 
     private final AppCompatActivity activity;
     private final ActivityResultLauncher<String> zipLauncher;
     private final ActivityResultLauncher<String> sevenZipLauncher;
+    private final ActivityResultLauncher<String> vaultLauncher;
     private List<Long> pendingIds;
     private Format pendingFormat;
     private char[] pendingPassword;
@@ -62,6 +64,9 @@ final class ExportFlow {
                 uri -> onTarget(uri));
         this.sevenZipLauncher = activity.registerForActivityResult(
                 new ActivityResultContracts.CreateDocument(MIME_7Z),
+                uri -> onTarget(uri));
+        this.vaultLauncher = activity.registerForActivityResult(
+                new ActivityResultContracts.CreateDocument(MIME_VAULT),
                 uri -> onTarget(uri));
     }
 
@@ -151,9 +156,9 @@ final class ExportFlow {
                 return;
             }
             pendingPassword = a.toCharArray();
-            pendingFormat = Format.ZIP_ENCRYPTED;
+            pendingFormat = Format.VAULT_COPY;
             dialog.dismiss();
-            zipLauncher.launch(fileName(Format.ZIP_ENCRYPTED));
+            vaultLauncher.launch(fileName(Format.VAULT_COPY));
         });
     }
 
@@ -166,8 +171,8 @@ final class ExportFlow {
 
     private static String fileName(final Format format) {
         switch (format) {
-            case ZIP_ENCRYPTED:
-                return "cryptcage-export-encrypted.zip";
+            case VAULT_COPY:
+                return "cryptcage-export-encrypted.ncf";
             case SEVEN_ZIP_PLAIN:
                 return "cryptcage-export.7z";
             default:
@@ -193,15 +198,16 @@ final class ExportFlow {
             return;
         }
         final Context app = activity.getApplicationContext();
-        final String suffix = format == Format.SEVEN_ZIP_PLAIN ? ".7z" : ".zip";
+        final String suffix = format == Format.SEVEN_ZIP_PLAIN ? ".7z"
+                : format == Format.VAULT_COPY ? ".ncf" : ".zip";
         Tasks.io(() -> {
             final File temp = new File(app.getCacheDir(), "export-" + System.nanoTime() + suffix);
             boolean ok;
             try {
-                final ZipExport.Plan plan = ZipExport.collect(session.vault, ids);
+                final ZipExport.Plan plan = format == Format.VAULT_COPY ? null : ZipExport.collect(session.vault, ids);
                 switch (format) {
-                    case ZIP_ENCRYPTED:
-                        EncryptedZip.write(temp, plan, password);
+                    case VAULT_COPY:
+                        VaultExport.write(temp, session.vault, ids, password);
                         break;
                     case SEVEN_ZIP_PLAIN:
                         SevenZipExport.writePlain(temp, plan);
@@ -219,7 +225,8 @@ final class ExportFlow {
             }
             final boolean success = ok;
             final int message = !success ? R.string.toast_exportFailed
-                    : format == Format.SEVEN_ZIP_PLAIN ? R.string.toast_archiveSaved : R.string.toast_zipSaved;
+                    : format == Format.SEVEN_ZIP_PLAIN ? R.string.toast_archiveSaved
+                    : format == Format.VAULT_COPY ? R.string.toast_copySaved : R.string.toast_zipSaved;
             Tasks.ui(() -> Toast.makeText(app, message, Toast.LENGTH_LONG).show());
         });
     }

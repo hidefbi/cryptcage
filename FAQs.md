@@ -37,7 +37,7 @@ CryptCage has quite a handful of features they include;
 
 **Where are my databases stored?**
 
-- Databases are kept in the app's private storage. Other apps cannot read them, and CryptCage does not ask for any storage permission. To keep a copy somewhere else, use the export option and pick the encrypted ZIP. To open a database that is stored elsewhere, use the import button on the start screen.
+- Databases are kept in the app's private storage. Other apps cannot read them, and CryptCage does not ask for any storage permission. To keep a copy somewhere else, use the export option and pick the encrypted copy. It is a CryptCage file, so open it with CryptCage, not a zip tool. To open a database that is stored elsewhere, use the import button on the start screen.
 
 **Can I share my notes to other locations and mediums?**
 

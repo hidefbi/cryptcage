@@ -7,6 +7,8 @@ Unreleased
 * Note fields ask the keyboard not to suggest or learn words.
 * Plain ZIP and 7z exports ask for confirmation first.
 * Leftover plain copies from an interrupted view or export are removed at launch.
+* The PIN uses 600,000 rounds, the same as the master password. An older PIN is upgraded the next time it unlocks.
+* The encrypted export is now a CryptCage vault file, with names and contents encrypted. The old encrypted ZIP is no longer written. zip4j is removed.
 * A single file can be up to 100 MB now (it was 8 MB).
 
 2.2 (versionCode 25)
