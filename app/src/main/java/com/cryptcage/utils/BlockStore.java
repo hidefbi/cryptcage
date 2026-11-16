@@ -87,6 +87,7 @@ final class BlockStore implements AutoCloseable {
     private final Map<Long, Ref> catalog = new TreeMap<>();
     private byte[] payload = new byte[0];
     private long generation;
+    private int iterations;
     private boolean closed;
     private boolean pending;
     private List<byte[]> nonceLog;
@@ -214,6 +215,7 @@ final class BlockStore implements AutoCloseable {
             }
             final byte[] fileId = Arrays.copyOfRange(prologue, OFF_FILE_ID, OFF_FILE_ID + FILE_ID_BYTES);
             final BlockStore store = withDataKey(raf, file, fileId, dataKey);
+            store.iterations = iterations;
             store.load();
             opened = true;
             return store;
@@ -294,6 +296,11 @@ final class BlockStore implements AutoCloseable {
     /** The generation of the last commit that was read or written. */
     long generation() {
         return generation;
+    }
+
+    /** The PBKDF2 rounds the file was last keyed with. */
+    int iterations() {
+        return iterations;
     }
 
     void commit(final byte[] userPayload) throws StoreException {
@@ -461,6 +468,7 @@ final class BlockStore implements AutoCloseable {
         // Keep counting from this file's generation, so a rewritten file is never "older" than
         // the one it replaces. The rollback check depends on this.
         copy.generation = generation;
+        copy.iterations = ByteBuffer.wrap(prologue).getInt(OFF_ITERATIONS);
         boolean done = false;
         try {
             out.write(prologue);

@@ -131,7 +131,22 @@ public final class VaultSession implements AutoCloseable {
             }
             session.remember();
         }
+        if (session.repo.iterations() < Cryptox.DEFAULT_ITERATIONS) {
+            session.upgradeKdf(password);
+        }
         return session;
+    }
+
+    /**
+     * A vault keyed with fewer rounds than the current default is rekeyed now, while its password
+     * is known. This is best effort. If it fails, the vault stays as it was and is still open.
+     */
+    private void upgradeKdf(final char[] password) {
+        try {
+            changePassword(password);
+        } catch (VaultException e) {
+            // Keep the old key. The next open tries again.
+        }
     }
 
     /** True if the file starts with the container magic. Only checks the first bytes. */

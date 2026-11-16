@@ -48,6 +48,21 @@ The app blocks screenshots and recent-apps previews on every screen unless Scree
 
 Export copies the encrypted file to a location the user picks. Import copies a file the user picks into the private folder after checking that it starts with a vault header. The app never scans shared storage.
 
+## Saved copies
+
+PIN and fingerprint unlock keep a copy of the master password for each vault. A copy is removed when:
+
+- the vault is deleted,
+- the master password is changed (the copies would hold the old one),
+- PIN unlock is turned off, or the PIN is entered wrong five times (this removes the PIN copies only),
+- a new fingerprint is enrolled. Android then drops the key, so the fingerprint copies cannot be read and are cleared.
+
+## Key rounds
+
+Vaults are keyed with PBKDF2-HMAC-SHA256 at 600,000 rounds. A vault made with fewer rounds is rekeyed the first time it opens with its password. That takes a second or two, once. If the rekey fails, the vault is left as it was.
+
+A memory-hard function such as Argon2id is the next step. It needs a new field in the file header and support for reading both formats, so it is not in this version.
+
 ## Known limits
 
 - Anyone who knows the password can read the notes. Choose a long, unique password.

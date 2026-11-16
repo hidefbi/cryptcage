@@ -97,6 +97,11 @@ final class NoteRepository implements AutoCloseable {
         return store.generation();
     }
 
+    /** The PBKDF2 rounds the file was last keyed with. */
+    int iterations() {
+        return store.iterations();
+    }
+
     private NoteRepository(final BlockStore store) {
         this.store = store;
     }
