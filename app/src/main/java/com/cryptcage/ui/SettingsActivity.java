@@ -130,7 +130,7 @@ public class SettingsActivity extends SecureActivity
                 VaultSession.open(file, password, new VaultGenerations(this)).close();
                 PinStore.holdPassword(password);
                 final String name = PasswordChange.vaultName(file);
-                final Cipher cipher = BiometricVault.encryptCipher();
+                final Cipher cipher = BiometricVault.encryptCipher(this);
                 Tasks.ui(() -> promptBiometricSetup(name, cipher));
             } catch (VaultException e) {
                 PinStore.dropPassword();

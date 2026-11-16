@@ -121,18 +121,31 @@ public final class BiometricVault {
 
     /**
      * A cipher for saving a password. The first use creates the Keystore key. If the key was
-     * invalidated by a new enrolment, it is replaced.
+     * invalidated by a new enrolment, every saved copy is cleared with it, because none of them
+     * can be read any more, and a new key is made.
      */
     @RequiresApi(Build.VERSION_CODES.M)
-    public static Cipher encryptCipher() throws GeneralSecurityException {
+    public static Cipher encryptCipher(final Context context) throws GeneralSecurityException {
         final Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
         try {
             cipher.init(Cipher.ENCRYPT_MODE, key(true));
         } catch (KeyPermanentlyInvalidatedException e) {
+            forgetAllCredentials(context);
             deleteKey();
             cipher.init(Cipher.ENCRYPT_MODE, key(true));
         }
         return cipher;
+    }
+
+    private static void forgetAllCredentials(final Context context) {
+        final SharedPreferences prefs = prefs(context);
+        final SharedPreferences.Editor edit = prefs.edit();
+        for (String name : prefs.getAll().keySet()) {
+            if (name.startsWith(CREDENTIAL_PREFIX)) {
+                edit.remove(name);
+            }
+        }
+        edit.putBoolean(KEY_ENABLED, false).apply();
     }
 
     /** A cipher for reading the saved password of one database. It still needs the biometric check. */

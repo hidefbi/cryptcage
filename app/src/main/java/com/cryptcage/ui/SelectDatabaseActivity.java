@@ -435,7 +435,7 @@ public class SelectDatabaseActivity extends SecureActivity
                 Cipher biometricCipher = null;
                 if (BiometricVault.isEnabled(this) && !BiometricVault.hasCredential(this, fileName)) {
                     try {
-                        biometricCipher = BiometricVault.encryptCipher();
+                        biometricCipher = BiometricVault.encryptCipher(this);
                         PinStore.holdPassword(password);
                     } catch (GeneralSecurityException e) {
                         biometricCipher = null;
