@@ -294,6 +294,8 @@ final class NoteRepository implements AutoCloseable {
 
     @Override
     public void close() {
+        // Titles, tags and file names are kept in memory as plain text. Drop them with the store.
+        entries.clear();
         store.close();
     }
 

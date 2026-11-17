@@ -387,6 +387,10 @@ final class BlockStore implements AutoCloseable {
         Arrays.fill(dataKey, (byte) 0);
         Arrays.fill(blockKey, (byte) 0);
         Arrays.fill(macKey, (byte) 0);
+        // The saved index is decrypted text (titles, tags, file names), so it goes too.
+        Arrays.fill(payload, (byte) 0);
+        payload = new byte[0];
+        catalog.clear();
         closeQuietly(raf);
     }
 
