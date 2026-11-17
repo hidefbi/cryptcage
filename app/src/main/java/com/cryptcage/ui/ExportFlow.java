@@ -30,6 +30,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.cryptcage.app.App;
 import com.cryptcage.app.Tasks;
+import com.cryptcage.utils.EncryptedZip;
 import com.cryptcage.utils.PasswordPolicy;
 import com.cryptcage.utils.SevenZipExport;
 import com.cryptcage.utils.VaultExport;
@@ -38,8 +39,8 @@ import com.cryptcage.R;
 
 /**
  * Asks for the export format, then writes the chosen entries to a location the user picks.
- * Formats: plain ZIP, an encrypted copy that is a CryptCage vault file, and plain 7z, which is
- * offered from Android 8.0 because its writer needs java.nio.file.
+ * Formats: plain ZIP, plain 7z (offered from Android 8.0, because its writer needs java.nio.file),
+ * an encrypted ZIP with AES, and an encrypted copy that is a CryptCage vault file.
  */
 final class ExportFlow {
 
@@ -47,7 +48,7 @@ final class ExportFlow {
     private static final String MIME_7Z = "application/x-7z-compressed";
     private static final String MIME_VAULT = "application/octet-stream";
 
-    private enum Format { ZIP_PLAIN, VAULT_COPY, SEVEN_ZIP_PLAIN }
+    private enum Format { ZIP_PLAIN, SEVEN_ZIP_PLAIN, ZIP_ENCRYPTED, VAULT_COPY }
 
     private final AppCompatActivity activity;
     private final ActivityResultLauncher<String> zipLauncher;
@@ -77,21 +78,26 @@ final class ExportFlow {
             return;
         }
         pendingIds = new ArrayList<>(ids);
-        final List<String> modes = new ArrayList<>();
-        modes.add(activity.getString(R.string.export_plain));
-        modes.add(activity.getString(R.string.export_encrypted));
+        final List<Format> formats = new ArrayList<>();
+        final List<String> labels = new ArrayList<>();
+        formats.add(Format.ZIP_PLAIN);
+        labels.add(activity.getString(R.string.export_plain));
         if (sevenZipAvailable()) {
-            modes.add(activity.getString(R.string.export_7z));
+            formats.add(Format.SEVEN_ZIP_PLAIN);
+            labels.add(activity.getString(R.string.export_7z));
         }
+        formats.add(Format.ZIP_ENCRYPTED);
+        labels.add(activity.getString(R.string.export_zip_encrypted));
+        formats.add(Format.VAULT_COPY);
+        labels.add(activity.getString(R.string.export_encrypted));
         new AlertDialog.Builder(activity)
                 .setTitle(R.string.export_mode_title)
-                .setItems(modes.toArray(new String[0]), (dialog, which) -> {
-                    if (which == 0) {
-                        confirmPlain(Format.ZIP_PLAIN);
-                    } else if (which == 1) {
-                        askPassword();
+                .setItems(labels.toArray(new String[0]), (dialog, which) -> {
+                    final Format chosen = formats.get(which);
+                    if (chosen == Format.ZIP_PLAIN || chosen == Format.SEVEN_ZIP_PLAIN) {
+                        confirmPlain(chosen);
                     } else {
-                        confirmPlain(Format.SEVEN_ZIP_PLAIN);
+                        askPassword(chosen);
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, (dialog, which) -> pendingIds = null)
@@ -119,7 +125,7 @@ final class ExportFlow {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O;
     }
 
-    private void askPassword() {
+    private void askPassword(final Format format) {
         final int pad = (int) (16 * activity.getResources().getDisplayMetrics().density);
         final LinearLayout layout = new LinearLayout(activity);
         layout.setOrientation(LinearLayout.VERTICAL);
@@ -156,9 +162,9 @@ final class ExportFlow {
                 return;
             }
             pendingPassword = a.toCharArray();
-            pendingFormat = Format.VAULT_COPY;
+            pendingFormat = format;
             dialog.dismiss();
-            vaultLauncher.launch(fileName(Format.VAULT_COPY));
+            (format == Format.VAULT_COPY ? vaultLauncher : zipLauncher).launch(fileName(format));
         });
     }
 
@@ -173,6 +179,8 @@ final class ExportFlow {
         switch (format) {
             case VAULT_COPY:
                 return "cryptcage-export-encrypted.ncf";
+            case ZIP_ENCRYPTED:
+                return "cryptcage-export-encrypted.zip";
             case SEVEN_ZIP_PLAIN:
                 return "cryptcage-export.7z";
             default:
@@ -211,6 +219,9 @@ final class ExportFlow {
                         break;
                     case SEVEN_ZIP_PLAIN:
                         SevenZipExport.writePlain(temp, plan);
+                        break;
+                    case ZIP_ENCRYPTED:
+                        EncryptedZip.write(temp, plan, password);
                         break;
                     default:
                         ZipExport.writePlain(temp, plan);

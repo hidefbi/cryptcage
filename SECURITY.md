@@ -70,6 +70,7 @@ A memory-hard function such as Argon2id is the next step. It needs a new field i
 - Java strings cannot be overwritten, so a password typed into a text field may remain in memory until it is garbage collected.
 - PIN and fingerprint unlock keep a copy of the master password on the device, wrapped by a key in the Android Keystore. Turn them off if you do not want that copy.
 - A plain ZIP or 7z export has no password. Anyone who gets that file can read it.
+- The encrypted ZIP uses AES-256, but its key comes from the password with a fixed 1000 rounds, which is far fewer than the vault uses. A short password can be guessed from a copy of the file. Use a long one. The file names inside are hidden, but the number of entries and their sizes are not.
 - The encrypted copy is a normal vault file. It uses the same key settings as the vault, so it can only be opened in CryptCage.
 - Deleting a vault removes the file, but the flash storage underneath may keep the old bytes for a while. The app does not promise a secure erase.
 - Accessibility services can read what is on the screen, including open notes.

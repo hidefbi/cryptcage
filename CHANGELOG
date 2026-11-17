@@ -1,4 +1,8 @@
 2.3.1 (versionCode 27)
+* Export has four options again: plain ZIP, 7-Zip, an AES-encrypted ZIP, and the encrypted CryptCage file. The two unencrypted ones say so in their labels.
+* The encrypted ZIP does not show the names of the files inside. They are listed in an encrypted manifest, and the entries are named item-0001 and so on.
+* A release build stops when the signing values are missing, instead of making an unsigned APK.
+* When a vault closes, the decrypted titles and the saved index are dropped from memory too.
 * Screens are drawn behind the status and navigation bars and keep their content clear of them, so the top and bottom of a screen are no longer cut off on Android 15 and newer.
 * The keyboard pushes the note editor up through the window insets instead of the window resizing.
 * The start screen, Settings and the file viewer use a toolbar in the layout, like the other screens, instead of the system action bar.
