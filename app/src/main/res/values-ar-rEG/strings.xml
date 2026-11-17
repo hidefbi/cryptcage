@@ -156,7 +156,8 @@
     <string name="autolock_15min">15 دقيقة</string>
     <string name="autolock_30min">30 دقيقة</string>
     <string name="autolock_1hour">ساعة واحدة</string>
-    <string name="export_7z">7-Zip (بدون كلمة مرور)</string>
+    <string name="export_7z">7-Zip (غير مشفّر)</string>
+    <string name="export_zip_encrypted">ZIP (مشفّر)</string>
     <string name="toast_archiveSaved">تم حفظ الأرشيف</string>
     <string name="dialog_checkingPassword">جارٍ التحقق من كلمة المرور...</string>
     <string name="about_description">يحفظ CryptCage ملاحظاتك وملفاتك في ملف خزنة مشفّر واحد على هذا الجهاز. لا يطلب التطبيق أي وصول إلى الشبكة، ولا يحتاج إلى حساب، ولا يرسل أي شيء إلى أي جهة.</string>

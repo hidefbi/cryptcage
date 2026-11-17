@@ -156,7 +156,8 @@
     <string name="autolock_15min">15 मिनट</string>
     <string name="autolock_30min">30 मिनट</string>
     <string name="autolock_1hour">1 घंटा</string>
-    <string name="export_7z">7-Zip (बिना पासवर्ड)</string>
+    <string name="export_7z">7-Zip (एन्क्रिप्ट नहीं)</string>
+    <string name="export_zip_encrypted">ZIP (एन्क्रिप्टेड)</string>
     <string name="toast_archiveSaved">आर्काइव सहेजा गया</string>
     <string name="dialog_checkingPassword">पासवर्ड की जाँच हो रही है...</string>
     <string name="about_description">CryptCage आपके नोट्स और फ़ाइलें इस डिवाइस पर एक एन्क्रिप्टेड वॉल्ट में रखता है। ऐप को नेटवर्क एक्सेस नहीं चाहिए, कोई खाता नहीं चाहिए और यह कुछ भी बाहर नहीं भेजता।</string>

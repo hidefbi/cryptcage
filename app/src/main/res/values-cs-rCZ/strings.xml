@@ -156,7 +156,8 @@
     <string name="autolock_15min">15 minut</string>
     <string name="autolock_30min">30 minut</string>
     <string name="autolock_1hour">1 hodina</string>
-    <string name="export_7z">7-Zip (bez hesla)</string>
+    <string name="export_7z">7-Zip (nešifrováno)</string>
+    <string name="export_zip_encrypted">ZIP (šifrováno)</string>
     <string name="toast_archiveSaved">Archiv uložen</string>
     <string name="dialog_checkingPassword">Ověřuje se heslo...</string>
     <string name="about_description">CryptCage ukládá poznámky a soubory do jednoho šifrovaného trezoru v tomto zařízení. Aplikace nevyžaduje přístup k síti, nepotřebuje účet a nic neodesílá.</string>

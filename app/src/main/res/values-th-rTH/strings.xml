@@ -156,7 +156,8 @@
     <string name="autolock_15min">15 นาที</string>
     <string name="autolock_30min">30 นาที</string>
     <string name="autolock_1hour">1 ชั่วโมง</string>
-    <string name="export_7z">7-Zip (ไม่ใส่รหัสผ่าน)</string>
+    <string name="export_7z">7-Zip (ไม่เข้ารหัส)</string>
+    <string name="export_zip_encrypted">ZIP (เข้ารหัส)</string>
     <string name="toast_archiveSaved">บันทึกไฟล์เก็บถาวรแล้ว</string>
     <string name="dialog_checkingPassword">กำลังตรวจสอบรหัสผ่าน...</string>
     <string name="about_description">CryptCage เก็บโน้ตและไฟล์ไว้ในตู้นิรภัยที่เข้ารหัสไฟล์เดียวบนเครื่องนี้ แอปไม่ขอสิทธิ์เข้าถึงเครือข่าย ไม่ต้องใช้บัญชี และไม่ส่งข้อมูลไปที่ใด</string>

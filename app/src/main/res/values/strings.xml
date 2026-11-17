@@ -101,7 +101,7 @@
     <string name="action_exportSelected">Export selected</string>
     <string name="action_cancelSelection">Cancel selection</string>
     <string name="export_mode_title">Export as</string>
-    <string name="export_plain">Plain ZIP (no password)</string>
+    <string name="export_plain">Plain ZIP (not encrypted)</string>
     <string name="export_password_title">Set an export password</string>
     <string name="toast_zipSaved">ZIP saved</string>
     <string name="toast_nothingSelected">Select at least one item first</string>
@@ -221,7 +221,8 @@
     <string name="autolock_15min">15 minutes</string>
     <string name="autolock_30min">30 minutes</string>
     <string name="autolock_1hour">1 hour</string>
-    <string name="export_7z">7-Zip (no password)</string>
+    <string name="export_7z">7-Zip (not encrypted)</string>
+    <string name="export_zip_encrypted">ZIP (encrypted)</string>
     <string name="toast_archiveSaved">Archive saved</string>
     <string name="dialog_checkingPassword">Checking password...</string>
     <string name="about_description">CryptCage keeps your notes and files in one encrypted vault file on this device. The app asks for no network access, needs no account, and sends nothing anywhere.</string>

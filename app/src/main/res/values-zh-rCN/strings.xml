@@ -200,7 +200,8 @@
     <string name="autolock_15min">15 分钟</string>
     <string name="autolock_30min">30 分钟</string>
     <string name="autolock_1hour">1 小时</string>
-    <string name="export_7z">7-Zip（无密码）</string>
+    <string name="export_7z">7-Zip（不加密）</string>
+    <string name="export_zip_encrypted">ZIP（加密）</string>
     <string name="toast_archiveSaved">归档已保存</string>
     <string name="dialog_checkingPassword">正在验证密码...</string>
     <string name="about_description">CryptCage 把笔记和文件保存在本机的一个加密保险库文件里。本应用不请求网络权限，不需要账号，也不会向外发送任何内容。</string>

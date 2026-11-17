@@ -156,7 +156,8 @@
     <string name="autolock_15min">15 minutter</string>
     <string name="autolock_30min">30 minutter</string>
     <string name="autolock_1hour">1 time</string>
-    <string name="export_7z">7-Zip (uden adgangskode)</string>
+    <string name="export_7z">7-Zip (ikke krypteret)</string>
+    <string name="export_zip_encrypted">ZIP (krypteret)</string>
     <string name="toast_archiveSaved">Arkiv gemt</string>
     <string name="dialog_checkingPassword">Adgangskoden kontrolleres...</string>
     <string name="about_description">CryptCage gemmer noter og filer i ét krypteret hvælv på denne enhed. Appen kræver ingen netværksadgang, ingen konto og sender intet ud.</string>

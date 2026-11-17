@@ -156,7 +156,8 @@
     <string name="autolock_15min">15分</string>
     <string name="autolock_30min">30分</string>
     <string name="autolock_1hour">1時間</string>
-    <string name="export_7z">7-Zip（パスワードなし）</string>
+    <string name="export_7z">7-Zip（暗号化なし）</string>
+    <string name="export_zip_encrypted">ZIP（暗号化）</string>
     <string name="toast_archiveSaved">アーカイブを保存しました</string>
     <string name="dialog_checkingPassword">パスワードを確認しています...</string>
     <string name="about_description">CryptCage は、メモとファイルを、この端末上の暗号化された 1 つの保管庫に保存します。アプリはネットワークへのアクセスを求めず、アカウントも不要で、どこにも何も送信しません。</string>

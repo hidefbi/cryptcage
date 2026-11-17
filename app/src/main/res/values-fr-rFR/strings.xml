@@ -156,7 +156,8 @@
     <string name="autolock_15min">15 minutes</string>
     <string name="autolock_30min">30 minutes</string>
     <string name="autolock_1hour">1 heure</string>
-    <string name="export_7z">7-Zip (sans mot de passe)</string>
+    <string name="export_7z">7-Zip (non chiffré)</string>
+    <string name="export_zip_encrypted">ZIP (chiffré)</string>
     <string name="toast_archiveSaved">Archive enregistrée</string>
     <string name="dialog_checkingPassword">Vérification du mot de passe...</string>
     <string name="about_description">CryptCage garde vos notes et vos fichiers dans un seul coffre chiffré sur cet appareil. L\'application ne demande aucun accès réseau, ne nécessite aucun compte et n\'envoie rien.</string>

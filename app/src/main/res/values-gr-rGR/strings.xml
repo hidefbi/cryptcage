@@ -156,7 +156,8 @@
     <string name="autolock_15min">15 λεπτά</string>
     <string name="autolock_30min">30 λεπτά</string>
     <string name="autolock_1hour">1 ώρα</string>
-    <string name="export_7z">7-Zip (χωρίς κωδικό πρόσβασης)</string>
+    <string name="export_7z">7-Zip (χωρίς κρυπτογράφηση)</string>
+    <string name="export_zip_encrypted">ZIP (κρυπτογραφημένο)</string>
     <string name="toast_archiveSaved">Το αρχείο αποθηκεύτηκε</string>
     <string name="dialog_checkingPassword">Έλεγχος κωδικού πρόσβασης...</string>
     <string name="about_description">Το CryptCage αποθηκεύει σημειώσεις και αρχεία σε ένα κρυπτογραφημένο θησαυροφυλάκιο σε αυτή τη συσκευή. Η εφαρμογή δεν ζητά πρόσβαση στο δίκτυο, δεν χρειάζεται λογαριασμό και δεν στέλνει τίποτα.</string>

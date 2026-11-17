@@ -156,7 +156,8 @@
     <string name="autolock_15min">15 minut</string>
     <string name="autolock_30min">30 minut</string>
     <string name="autolock_1hour">1 godzina</string>
-    <string name="export_7z">7-Zip (bez hasła)</string>
+    <string name="export_7z">7-Zip (bez szyfrowania)</string>
+    <string name="export_zip_encrypted">ZIP (szyfrowany)</string>
     <string name="toast_archiveSaved">Archiwum zapisane</string>
     <string name="dialog_checkingPassword">Sprawdzanie hasła...</string>
     <string name="about_description">CryptCage przechowuje notatki i pliki w jednym zaszyfrowanym sejfie na tym urządzeniu. Aplikacja nie prosi o dostęp do sieci, nie wymaga konta i niczego nie wysyła.</string>
