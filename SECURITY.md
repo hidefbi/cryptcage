@@ -77,6 +77,18 @@ A memory-hard function such as Argon2id is the next step. It needs a new field i
 - The password dialog uses the system keyboard. Keyboards that learn words may store what you type.
 - Key derivation takes about a second on a typical phone. That cost is what makes guessing expensive.
 
+## Release signing
+
+Release APKs are signed with the same key as version 2.3 and later. The SHA-256 fingerprint of that certificate is:
+
+`2E:DE:A3:2F:04:6C:2B:BA:7F:DC:58:85:27:9E:A4:D1:4A:BE:6D:BE:CA:7D:E0:6D:39:38:8B:DF:5C:67:D6:E7`
+
+To check a downloaded APK:
+
+    apksigner verify --print-certs cryptcage.apk
+
+The SHA-256 line has to match. The build also stops when the signing values are missing, so an unsigned release cannot come out by accident.
+
 ## Reporting a problem
 
 If you find a security problem, report it privately when you can instead of opening a public issue.

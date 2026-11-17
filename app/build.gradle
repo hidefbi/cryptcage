@@ -2,9 +2,16 @@ plugins {
     id 'com.android.application'
 }
 
-// Release signing is optional. Put the values in ~/.gradle/gradle.properties,
-// never in this project. Without them, the release build is left unsigned.
+// Release signing values go in ~/.gradle/gradle.properties, never in this project.
 def releaseKeystore = findProperty('CC_KEYSTORE')
+
+// A release build without a keystore would come out unsigned and look fine, so stop here.
+gradle.taskGraph.whenReady { graph ->
+    boolean releaseBuild = graph.hasTask(':app:assembleRelease') || graph.hasTask(':app:bundleRelease')
+    if (releaseBuild && !releaseKeystore) {
+        throw new GradleException('Release builds need CC_KEYSTORE, CC_STORE_PASS, CC_KEY_ALIAS and CC_KEY_PASS in ~/.gradle/gradle.properties.')
+    }
+}
 
 android {
     namespace 'com.cryptcage'
