@@ -88,7 +88,7 @@ To check a downloaded APK:
 
     apksigner verify --print-certs cryptcage.apk
 
-The SHA-256 line has to match. The build also stops when the signing values are missing, so an unsigned release cannot come out by accident.
+The SHA-256 line has to match. A release build without the signing values still builds, but it warns that the APK is unsigned. Add `-PrequireSigning=true` to make that a failure.
 
 ## Reporting a problem
 

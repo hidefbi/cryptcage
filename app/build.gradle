@@ -5,11 +5,16 @@ plugins {
 // Release signing values go in ~/.gradle/gradle.properties, never in this project.
 def releaseKeystore = findProperty('CC_KEYSTORE')
 
-// A release build without a keystore would come out unsigned and look fine, so stop here.
+// A release build without a keystore comes out unsigned. That is fine for signing by hand later,
+// but it is easy to miss, so warn. Pass -PrequireSigning=true to make it a hard error.
 gradle.taskGraph.whenReady { graph ->
     boolean releaseBuild = graph.hasTask(':app:assembleRelease') || graph.hasTask(':app:bundleRelease')
     if (releaseBuild && !releaseKeystore) {
-        throw new GradleException('Release builds need CC_KEYSTORE, CC_STORE_PASS, CC_KEY_ALIAS and CC_KEY_PASS in ~/.gradle/gradle.properties.')
+        String message = 'Release APK is unsigned: CC_KEYSTORE is not set in ~/.gradle/gradle.properties.'
+        if (findProperty('requireSigning') == 'true') {
+            throw new GradleException(message)
+        }
+        project.logger.warn(message)
     }
 }
 
