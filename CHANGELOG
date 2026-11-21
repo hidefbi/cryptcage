@@ -1,4 +1,4 @@
-2.3.1 (versionCode 27)
+2.4.1 (versionCode 27)
 * Export has four options again: plain ZIP, 7-Zip, an AES-encrypted ZIP, and the encrypted CryptCage file. The two unencrypted ones say so in their labels.
 * The encrypted ZIP does not show the names of the files inside. They are listed in an encrypted manifest, and the entries are named item-0001 and so on.
 * A release build without the signing values warns that the APK is unsigned. `-PrequireSigning=true` makes it fail instead.
